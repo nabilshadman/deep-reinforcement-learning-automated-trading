@@ -102,7 +102,7 @@ def mlp(input_dim, n_action, n_hidden_layers=1, hidden_dim=32):
   model = Model(i, x)
 
   model.compile(loss='mse', optimizer='adam')
-  print((model.summary()))
+  #print((model.summary()))
   return model
 
 
