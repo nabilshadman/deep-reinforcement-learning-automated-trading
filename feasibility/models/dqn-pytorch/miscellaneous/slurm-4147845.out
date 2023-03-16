@@ -1,0 +1,14 @@
+Loading pytorch/1.13.1-gpu
+  Loading requirement: gcc/8.2.0 nvidia/nvhpc-nompi/22.2
+    nvidia/cudnn/8.6.0-cuda-11.6 openmpi/4.1.4-cuda-11.6 python/3.10.8-gpu
+    nvidia/tensorrt/8.4.3.1-u2
+episode: 1/10, episode end value: 40771.71, duration: 0:00:03.692483
+episode: 2/10, episode end value: 28632.56, duration: 0:00:00.496958
+episode: 3/10, episode end value: 33782.48, duration: 0:00:00.497576
+episode: 4/10, episode end value: 35375.65, duration: 0:00:00.495789
+episode: 5/10, episode end value: 21261.16, duration: 0:00:00.493389
+episode: 6/10, episode end value: 35721.21, duration: 0:00:00.493016
+episode: 7/10, episode end value: 34308.01, duration: 0:00:00.495039
+episode: 8/10, episode end value: 36931.21, duration: 0:00:00.493394
+episode: 9/10, episode end value: 36484.11, duration: 0:00:00.494664
+episode: 10/10, episode end value: 37013.99, duration: 0:00:00.495278

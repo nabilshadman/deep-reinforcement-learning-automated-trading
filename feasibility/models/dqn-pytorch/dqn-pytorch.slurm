@@ -3,7 +3,7 @@
 # Slurm job options (name, compute nodes, job time)
 #SBATCH --job-name=dqn-pytorch
 #SBATCH --time=0:40:0
-# Remove --exclusive so that we do not burn extra CPU hours
+#SBATCH --exclusive
 #SBATCH --nodes=1
 #SBATCH --tasks-per-node=1
 #SBATCH --cpus-per-task=1
