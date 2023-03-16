@@ -12,6 +12,7 @@ import re
 import os
 import pickle
 
+
 from sklearn.preprocessing import StandardScaler
 
 
@@ -115,7 +116,7 @@ def predict(model, np_states):
   with torch.no_grad():
     inputs = torch.from_numpy(np_states.astype(np.float32))
     output = model(inputs)
-    # print("output:", output)
+    #print("output:", output)
     return output.numpy()
 
 
