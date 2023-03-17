@@ -15,7 +15,7 @@
 # We use the "standard" QoS as our runtime is more than 20 mins 
 #SBATCH --qos=short
 
-module load tensorflow
+module load tensorflow/2.10.0
 
 # Change to the submission directory
 cd $SLURM_SUBMIT_DIR

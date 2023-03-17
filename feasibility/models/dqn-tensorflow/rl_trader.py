@@ -270,7 +270,7 @@ class DQNAgent(object):
   def act(self, state):
     if np.random.rand() <= self.epsilon:
       return np.random.choice(self.action_size)
-    act_values = self.model.predict(state)
+    act_values = self.model.predict(state, verbose=0)
     return np.argmax(act_values[0])  # returns action
 
 
@@ -288,7 +288,7 @@ class DQNAgent(object):
     done = minibatch['d']
 
     # Calculate the tentative target: Q(s',a)
-    target = rewards + (1 - done) * self.gamma * np.amax(self.model.predict(next_states), axis=1)
+    target = rewards + (1 - done) * self.gamma * np.amax(self.model.predict(next_states, verbose=0), axis=1)
 
     # With the Keras API, the target (usually) must have the same
     # shape as the predictions.
@@ -298,7 +298,7 @@ class DQNAgent(object):
     # the prediction for all values.
     # Then, only change the targets for the actions taken.
     # Q(s,a)
-    target_full = self.model.predict(states)
+    target_full = self.model.predict(states, verbose=0)
     target_full[np.arange(batch_size), actions] = target
 
     # Run one training step

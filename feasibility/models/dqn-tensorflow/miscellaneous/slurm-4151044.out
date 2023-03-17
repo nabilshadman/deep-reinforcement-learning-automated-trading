@@ -1,0 +1,22 @@
+Loading tensorflow/2.10.0
+  Loading requirement: gcc/8.2.0 openmpi/4.1.4 python/3.9.13
+2023-03-17 04:38:53.439731: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-03-17 04:40:00.319721: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+Model: "model"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_1 (InputLayer)        [(None, 7)]               0         
+                                                                 
+ dense (Dense)               (None, 32)                256       
+                                                                 
+ dense_1 (Dense)             (None, 27)                891       
+                                                                 
+=================================================================
+Total params: 1,147
+Trainable params: 1,147
+Non-trainable params: 0
+_________________________________________________________________
+slurmstepd: error: *** JOB 4151044 ON r1i0n19 CANCELLED AT 2023-03-17T04:49:02 DUE TO TIME LIMIT ***

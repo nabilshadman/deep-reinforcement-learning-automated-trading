@@ -58,7 +58,6 @@ class ReplayBuffer:
 
 
 
-
 def get_scaler(env):
   # return scikit-learn scaler object to scale the states
   # Note: you could also populate the replay buffer here
@@ -112,12 +111,14 @@ class MLP(nn.Module):
 
 
 
+
 def predict(model, np_states):
   with torch.no_grad():
     inputs = torch.from_numpy(np_states.astype(np.float32))
     output = model(inputs)
     #print("output:", output)
     return output.numpy()
+
 
 
 
@@ -136,6 +137,7 @@ def train_one_step(model, criterion, optimizer, inputs, targets):
   # Backward and optimize
   loss.backward()
   optimizer.step()
+
 
 
 
@@ -281,7 +283,6 @@ class MultiStockEnv:
 
 
 
-
 class DQNAgent(object):
   def __init__(self, state_size, action_size):
     self.state_size = state_size
@@ -351,6 +352,12 @@ class DQNAgent(object):
     self.model.save_weights(name)
 
 
+  def print_model_summary(self):
+    print(self.model)
+
+
+
+
 def play_one_episode(agent, env, is_train):
   # note: after transforming states are already 1xD
   state = env.reset()
@@ -367,6 +374,7 @@ def play_one_episode(agent, env, is_train):
     state = next_state
 
   return info['cur_val']
+
 
 
 
@@ -400,6 +408,8 @@ if __name__ == '__main__':
   state_size = env.state_dim
   action_size = len(env.action_space)
   agent = DQNAgent(state_size, action_size)
+  # print model summary
+  agent.print_model_summary()
   scaler = get_scaler(env)
 
   # store the final value of the portfolio (end of episode)
