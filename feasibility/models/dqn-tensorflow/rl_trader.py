@@ -102,7 +102,7 @@ def mlp(input_dim, n_action, n_hidden_layers=1, hidden_dim=32):
   model = Model(i, x)
 
   model.compile(loss='mse', optimizer='adam')
-  #print((model.summary()))
+  print((model.summary()))
   return model
 
 
@@ -270,7 +270,7 @@ class DQNAgent(object):
   def act(self, state):
     if np.random.rand() <= self.epsilon:
       return np.random.choice(self.action_size)
-    act_values = self.model.predict(state, verbose = 0)
+    act_values = self.model.predict(state)
     return np.argmax(act_values[0])  # returns action
 
 
@@ -288,7 +288,7 @@ class DQNAgent(object):
     done = minibatch['d']
 
     # Calculate the tentative target: Q(s',a)
-    target = rewards + (1 - done) * self.gamma * np.amax(self.model.predict(next_states, verbose = 0), axis=1)
+    target = rewards + (1 - done) * self.gamma * np.amax(self.model.predict(next_states), axis=1)
 
     # With the Keras API, the target (usually) must have the same
     # shape as the predictions.
@@ -298,7 +298,7 @@ class DQNAgent(object):
     # the prediction for all values.
     # Then, only change the targets for the actions taken.
     # Q(s,a)
-    target_full = self.model.predict(states, verbose = 0)
+    target_full = self.model.predict(states)
     target_full[np.arange(batch_size), actions] = target
 
     # Run one training step
@@ -340,7 +340,7 @@ if __name__ == '__main__':
   # config
   models_folder = 'rl_trader_models'
   rewards_folder = 'rl_trader_rewards'
-  num_episodes = 2000
+  num_episodes = 10
   batch_size = 32
   initial_investment = 20000
 
@@ -405,3 +405,4 @@ if __name__ == '__main__':
 
   # save portfolio value for each episode
   np.save(f'{rewards_folder}/{args.mode}.npy', portfolio_value)
+  

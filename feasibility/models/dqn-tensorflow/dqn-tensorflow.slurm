@@ -2,7 +2,7 @@
 
 # Slurm job options (name, compute nodes, job time)
 #SBATCH --job-name=dqn-tensorflow
-#SBATCH --time=0:40:0
+#SBATCH --time=0:10:0
 #SBATCH --exclusive
 #SBATCH --nodes=1
 #SBATCH --tasks-per-node=1
@@ -13,7 +13,7 @@
 # We use the "standard" partition as we are running on CPU nodes
 #SBATCH --partition=standard
 # We use the "standard" QoS as our runtime is more than 20 mins 
-#SBATCH --qos=standard
+#SBATCH --qos=short
 
 module load tensorflow
 
