@@ -1,5 +1,5 @@
 # Deep Reinforcement Learning Trading Algorithm with Deep Q Learning (DQN) Agent  
-Tech stack: python, pytorch, numpy, pandas  
+Tech stack: python, tensorflow, numpy, pandas  
 
 The script has a train/test mode. In both cases, there is a main loop called    
 play_one_episode() that is called several times. The loop mainly goes back and  
