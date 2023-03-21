@@ -1,0 +1,92 @@
+Loading tensorflow/2.11.0-gpu
+  Loading requirement: nvidia/tensorrt/8.4.3.1-u2 gcc/8.2.0
+    nvidia/nvhpc-nompi/22.2 nvidia/cudnn/8.6.0-cuda-11.6 openmpi/4.1.4-cuda-11.6
+    python/3.10.8-gpu
+2023-03-21 09:55:39.009141: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F AVX512_VNNI FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-03-21 09:55:41.380031: I tensorflow/core/util/port.cc:104] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2023-03-21 09:57:30.163942: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F AVX512_VNNI FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-03-21 09:57:30.983487: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 14622 MB memory:  -> device: 0, name: Tesla V100-SXM2-16GB, pci bus id: 0000:1a:00.0, compute capability: 7.0
+Model: "model"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_1 (InputLayer)        [(None, 7)]               0         
+                                                                 
+ dense (Dense)               (None, 32)                256       
+                                                                 
+ dense_1 (Dense)             (None, 27)                891       
+                                                                 
+=================================================================
+Total params: 1,147
+Trainable params: 1,147
+Non-trainable params: 0
+_________________________________________________________________
+2023-03-21 09:57:39.526561: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x1d8f5e00 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2023-03-21 09:57:39.526623: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): Tesla V100-SXM2-16GB, Compute Capability 7.0
+2023-03-21 09:57:39.532595: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+2023-03-21 09:57:39.776599: W tensorflow/compiler/xla/service/gpu/nvptx_helper.cc:56] Can't find libdevice directory ${CUDA_DIR}/nvvm/libdevice. This may result in compilation or runtime failures, if the program we try to run uses routines from libdevice.
+Searched for CUDA in the following directories:
+  ./cuda_sdk_lib
+  /usr/local/cuda-11.2
+  /usr/local/cuda
+  .
+You can choose the search directory by setting xla_gpu_cuda_data_dir in HloModule's DebugOptions.  For most apps, setting the environment variable XLA_FLAGS=--xla_gpu_cuda_data_dir=/path/to/cuda will work.
+2023-03-21 09:57:39.780067: W tensorflow/compiler/xla/service/gpu/llvm_gpu_backend/gpu_backend_lib.cc:326] libdevice is required by this HLO module but was not found at ./libdevice.10.bc
+2023-03-21 09:57:39.780695: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+2023-03-21 09:57:39.780965: W tensorflow/core/framework/op_kernel.cc:1830] OP_REQUIRES failed at xla_ops.cc:446 : INTERNAL: libdevice not found at ./libdevice.10.bc
+2023-03-21 09:57:39.797671: W tensorflow/compiler/xla/service/gpu/llvm_gpu_backend/gpu_backend_lib.cc:326] libdevice is required by this HLO module but was not found at ./libdevice.10.bc
+2023-03-21 09:57:39.797879: W tensorflow/core/framework/op_kernel.cc:1830] OP_REQUIRES failed at xla_ops.cc:446 : INTERNAL: libdevice not found at ./libdevice.10.bc
+2023-03-21 09:57:39.814162: W tensorflow/compiler/xla/service/gpu/llvm_gpu_backend/gpu_backend_lib.cc:326] libdevice is required by this HLO module but was not found at ./libdevice.10.bc
+2023-03-21 09:57:39.814382: W tensorflow/core/framework/op_kernel.cc:1830] OP_REQUIRES failed at xla_ops.cc:446 : INTERNAL: libdevice not found at ./libdevice.10.bc
+2023-03-21 09:57:39.830179: W tensorflow/compiler/xla/service/gpu/llvm_gpu_backend/gpu_backend_lib.cc:326] libdevice is required by this HLO module but was not found at ./libdevice.10.bc
+2023-03-21 09:57:39.830396: W tensorflow/core/framework/op_kernel.cc:1830] OP_REQUIRES failed at xla_ops.cc:446 : INTERNAL: libdevice not found at ./libdevice.10.bc
+None
+Traceback (most recent call last):
+  File "/mnt/lustre/indy2lfs/work/m22ol/m22ol/t2134758/s2134758/feasibility/models/dqn-tensorflow/rl_trader.py", line 391, in <module>
+    val = play_one_episode(agent, env, args.mode)
+  File "/mnt/lustre/indy2lfs/work/m22ol/m22ol/t2134758/s2134758/feasibility/models/dqn-tensorflow/rl_trader.py", line 331, in play_one_episode
+    agent.replay(batch_size)
+  File "/mnt/lustre/indy2lfs/work/m22ol/m22ol/t2134758/s2134758/feasibility/models/dqn-tensorflow/rl_trader.py", line 305, in replay
+    self.model.train_on_batch(states, target_full)
+  File "/mnt/lustre/indy2lfs/sw/horovod/0.26.1-gpu/python/3.10.8/lib/python3.10/site-packages/keras/engine/training.py", line 2478, in train_on_batch
+    logs = self.train_function(iterator)
+  File "/mnt/lustre/indy2lfs/sw/horovod/0.26.1-gpu/python/3.10.8/lib/python3.10/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/mnt/lustre/indy2lfs/sw/horovod/0.26.1-gpu/python/3.10.8/lib/python3.10/site-packages/tensorflow/python/eager/execute.py", line 52, in quick_execute
+    tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,
+tensorflow.python.framework.errors_impl.InternalError: Graph execution error:
+
+Detected at node 'StatefulPartitionedCall_2' defined at (most recent call last):
+    File "/mnt/lustre/indy2lfs/work/m22ol/m22ol/t2134758/s2134758/feasibility/models/dqn-tensorflow/rl_trader.py", line 391, in <module>
+      val = play_one_episode(agent, env, args.mode)
+    File "/mnt/lustre/indy2lfs/work/m22ol/m22ol/t2134758/s2134758/feasibility/models/dqn-tensorflow/rl_trader.py", line 331, in play_one_episode
+      agent.replay(batch_size)
+    File "/mnt/lustre/indy2lfs/work/m22ol/m22ol/t2134758/s2134758/feasibility/models/dqn-tensorflow/rl_trader.py", line 305, in replay
+      self.model.train_on_batch(states, target_full)
+    File "/mnt/lustre/indy2lfs/sw/horovod/0.26.1-gpu/python/3.10.8/lib/python3.10/site-packages/keras/engine/training.py", line 2478, in train_on_batch
+      logs = self.train_function(iterator)
+    File "/mnt/lustre/indy2lfs/sw/horovod/0.26.1-gpu/python/3.10.8/lib/python3.10/site-packages/keras/engine/training.py", line 1249, in train_function
+      return step_function(self, iterator)
+    File "/mnt/lustre/indy2lfs/sw/horovod/0.26.1-gpu/python/3.10.8/lib/python3.10/site-packages/keras/engine/training.py", line 1233, in step_function
+      outputs = model.distribute_strategy.run(run_step, args=(data,))
+    File "/mnt/lustre/indy2lfs/sw/horovod/0.26.1-gpu/python/3.10.8/lib/python3.10/site-packages/keras/engine/training.py", line 1222, in run_step
+      outputs = model.train_step(data)
+    File "/mnt/lustre/indy2lfs/sw/horovod/0.26.1-gpu/python/3.10.8/lib/python3.10/site-packages/keras/engine/training.py", line 1027, in train_step
+      self.optimizer.minimize(loss, self.trainable_variables, tape=tape)
+    File "/mnt/lustre/indy2lfs/sw/horovod/0.26.1-gpu/python/3.10.8/lib/python3.10/site-packages/keras/optimizers/optimizer_experimental/optimizer.py", line 527, in minimize
+      self.apply_gradients(grads_and_vars)
+    File "/mnt/lustre/indy2lfs/sw/horovod/0.26.1-gpu/python/3.10.8/lib/python3.10/site-packages/keras/optimizers/optimizer_experimental/optimizer.py", line 1140, in apply_gradients
+      return super().apply_gradients(grads_and_vars, name=name)
+    File "/mnt/lustre/indy2lfs/sw/horovod/0.26.1-gpu/python/3.10.8/lib/python3.10/site-packages/keras/optimizers/optimizer_experimental/optimizer.py", line 634, in apply_gradients
+      iteration = self._internal_apply_gradients(grads_and_vars)
+    File "/mnt/lustre/indy2lfs/sw/horovod/0.26.1-gpu/python/3.10.8/lib/python3.10/site-packages/keras/optimizers/optimizer_experimental/optimizer.py", line 1166, in _internal_apply_gradients
+      return tf.__internal__.distribute.interim.maybe_merge_call(
+    File "/mnt/lustre/indy2lfs/sw/horovod/0.26.1-gpu/python/3.10.8/lib/python3.10/site-packages/keras/optimizers/optimizer_experimental/optimizer.py", line 1216, in _distributed_apply_gradients_fn
+      distribution.extended.update(
+    File "/mnt/lustre/indy2lfs/sw/horovod/0.26.1-gpu/python/3.10.8/lib/python3.10/site-packages/keras/optimizers/optimizer_experimental/optimizer.py", line 1211, in apply_grad_to_update_var
+      return self._update_step_xla(grad, var, id(self._var_key(var)))
+Node: 'StatefulPartitionedCall_2'
+libdevice not found at ./libdevice.10.bc
+	 [[{{node StatefulPartitionedCall_2}}]] [Op:__inference_train_function_725]
