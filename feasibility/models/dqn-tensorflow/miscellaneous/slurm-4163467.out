@@ -1,0 +1,30 @@
+Loading tensorflow/2.11.0-gpu
+  Loading requirement: nvidia/tensorrt/8.4.3.1-u2 gcc/8.2.0
+    nvidia/nvhpc-nompi/22.2 nvidia/cudnn/8.6.0-cuda-11.6 openmpi/4.1.4-cuda-11.6
+    python/3.10.8-gpu
+2023-03-23 09:50:49.137078: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F AVX512_VNNI FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-03-23 09:50:52.438408: I tensorflow/core/util/port.cc:104] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2023-03-23 09:53:54.192059: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F AVX512_VNNI FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-03-23 09:53:56.947170: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 14622 MB memory:  -> device: 0, name: Tesla V100-SXM2-16GB, pci bus id: 0000:8a:00.0, compute capability: 7.0
+Model: "model"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_1 (InputLayer)        [(None, 7)]               0         
+                                                                 
+ dense (Dense)               (None, 32)                256       
+                                                                 
+ dense_1 (Dense)             (None, 27)                891       
+                                                                 
+=================================================================
+Total params: 1,147
+Trainable params: 1,147
+Non-trainable params: 0
+_________________________________________________________________
+2023-03-23 09:54:18.536980: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x1ef6a9a0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2023-03-23 09:54:18.537565: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): Tesla V100-SXM2-16GB, Compute Capability 7.0
+2023-03-23 09:54:18.896000: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+2023-03-23 09:54:20.376068: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+slurmstepd: error: *** JOB 4163467 ON r2i4n1 CANCELLED AT 2023-03-23T10:00:37 DUE TO TIME LIMIT ***

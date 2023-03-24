@@ -380,6 +380,20 @@ def play_one_episode(agent, env, is_train):
 
 if __name__ == '__main__':
 
+  # log device info
+  # setting device on GPU if available, else CPU
+  device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+  print('Using device:', device)
+  print()
+
+  # additional info when using cuda
+  if device.type == 'cuda':
+      print(torch.cuda.get_device_name(0))
+      print('Memory Usage:')
+      print('Allocated:', round(torch.cuda.memory_allocated(0)/1024**3,1), 'GB')
+      print('Cached:   ', round(torch.cuda.memory_cached(0)/1024**3,1), 'GB')
+
+  
   # config
   models_folder = 'rl_trader_models'
   rewards_folder = 'rl_trader_rewards'
