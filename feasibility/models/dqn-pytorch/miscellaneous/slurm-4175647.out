@@ -1,0 +1,44 @@
+STAGE:2023-03-30 10:30:25 1955709:1955709 ActivityProfilerController.cpp:311] Completed Stage: Warm Up
+/work/m22ol/m22ol/t2134758/miniconda3/envs/pt/lib/python3.10/site-packages/torch/cuda/memory.py:416: FutureWarning: torch.cuda.memory_cached has been renamed to torch.cuda.memory_reserved
+  warnings.warn(
+STAGE:2023-03-30 10:30:44 1955709:1955709 ActivityProfilerController.cpp:317] Completed Stage: Collection
+STAGE:2023-03-30 10:30:44 1955709:1955709 ActivityProfilerController.cpp:321] Completed Stage: Post Processing
+Using device: cuda
+
+Tesla V100-SXM2-16GB
+Memory Usage:
+Allocated: 0.0 GB
+Cached:    0.0 GB
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=27, bias=True)
+  )
+)
+episode: 1/10, episode end value: 22300.02, duration: 0:00:02.527450
+episode: 2/10, episode end value: 16919.39, duration: 0:00:00.803759
+episode: 3/10, episode end value: 38705.58, duration: 0:00:00.806351
+episode: 4/10, episode end value: 35730.41, duration: 0:00:00.844967
+episode: 5/10, episode end value: 40790.83, duration: 0:00:00.951916
+episode: 6/10, episode end value: 26726.64, duration: 0:00:01.067684
+episode: 7/10, episode end value: 30362.49, duration: 0:00:01.064350
+episode: 8/10, episode end value: 36912.37, duration: 0:00:01.037701
+episode: 9/10, episode end value: 40740.56, duration: 0:00:00.943966
+episode: 10/10, episode end value: 39393.84, duration: 0:00:00.983391
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg       CPU Mem  Self CPU Mem    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                  cudaDeviceSynchronize        33.03%        3.599s        33.03%        3.599s        3.599s           0 b           0 b             1  
+                               Optimizer.step#Adam.step        14.46%        1.575s        28.44%        3.098s     495.800us       8.98 Kb     -54.82 Mb          6249  
+                                           aten::linear         2.08%     226.161ms        15.27%        1.664s      33.615us     136.37 Mb       3.04 Mb         49488  
+                                            aten::addmm         8.32%     906.682ms        10.39%        1.131s      22.863us     136.37 Mb     131.29 Mb         49488  
+    autograd::engine::evaluate_function: AddmmBackward0         0.82%      89.239ms         6.05%     658.631ms      52.699us       6.75 Mb     -42.08 Mb         12498  
+                                               aten::to         1.41%     153.965ms         5.44%     592.466ms       3.957us     511.08 Kb      47.47 Kb        149728  
+                                         aten::_to_copy         3.09%     336.218ms         4.38%     476.690ms       3.633us     513.45 Kb     158.57 Kb        131229  
+                                         AddmmBackward0         0.80%      87.111ms         4.32%     470.401ms      37.638us      50.35 Mb           0 b         12498  
+                                             aten::add_         2.15%     234.520ms         4.26%     463.759ms       6.184us      51.76 Kb    -157.08 Kb         74988  
+                                                aten::t         2.39%     259.832ms         4.15%     451.921ms       4.847us           0 b           0 b         93231  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 10.894s
+
