@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-import tensorflow as tf
+#import tensorflow as tf
 
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Dense, Input
@@ -339,7 +339,7 @@ def play_one_episode(agent, env, is_train):
 if __name__ == '__main__':
 
   # log device placement
-  tf.debugging.set_log_device_placement(True)
+  # tf.debugging.set_log_device_placement(True)
 
   # config
   models_folder = 'rl_trader_models'

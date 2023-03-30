@@ -397,7 +397,7 @@ if __name__ == '__main__':
   # config
   models_folder = 'rl_trader_models'
   rewards_folder = 'rl_trader_rewards'
-  num_episodes = 10
+  num_episodes = 100
   batch_size = 32
   initial_investment = 20000
 
