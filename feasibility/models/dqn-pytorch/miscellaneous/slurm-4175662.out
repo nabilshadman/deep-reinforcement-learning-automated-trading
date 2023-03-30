@@ -1,0 +1,40 @@
+/work/m22ol/m22ol/t2134758/miniconda3/envs/pt/lib/python3.10/site-packages/torch/autograd/profiler.py:179: UserWarning: CUDA is not available, disabling CUDA profiling
+  warn("CUDA is not available, disabling CUDA profiling")
+STAGE:2023-03-30 10:46:03 669018:669018 ActivityProfilerController.cpp:311] Completed Stage: Warm Up
+STAGE:2023-03-30 10:46:22 669018:669018 ActivityProfilerController.cpp:317] Completed Stage: Collection
+STAGE:2023-03-30 10:46:23 669018:669018 ActivityProfilerController.cpp:321] Completed Stage: Post Processing
+Using device: cpu
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=27, bias=True)
+  )
+)
+episode: 1/10, episode end value: 39307.84, duration: 0:00:02.632373
+episode: 2/10, episode end value: 20419.85, duration: 0:00:01.419943
+episode: 3/10, episode end value: 38974.04, duration: 0:00:01.428570
+episode: 4/10, episode end value: 21080.65, duration: 0:00:01.427984
+episode: 5/10, episode end value: 36425.75, duration: 0:00:01.430525
+episode: 6/10, episode end value: 31897.20, duration: 0:00:01.431479
+episode: 7/10, episode end value: 21121.99, duration: 0:00:01.426759
+episode: 8/10, episode end value: 33024.59, duration: 0:00:01.436515
+episode: 9/10, episode end value: 31688.11, duration: 0:00:01.427404
+episode: 10/10, episode end value: 20632.01, duration: 0:00:01.426903
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg       CPU Mem  Self CPU Mem    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                               Optimizer.step#Adam.step        24.29%        2.407s        47.77%        4.733s     757.339us       8.98 Kb     -54.79 Mb          6249  
+                                           aten::linear         1.86%     183.869ms        21.26%        2.107s      42.567us     136.37 Mb     857.34 Kb         49488  
+                                            aten::addmm        11.30%        1.120s        15.03%        1.489s      30.085us     136.37 Mb     136.37 Mb         49488  
+                                               aten::to         2.12%     209.659ms         9.04%     895.931ms       5.984us     512.61 Kb      55.23 Kb        149728  
+    autograd::engine::evaluate_function: AddmmBackward0         1.42%     141.038ms         8.70%     861.939ms      68.966us       6.75 Mb     -45.01 Mb         12498  
+                                         aten::_to_copy         4.06%     401.988ms         7.73%     765.696ms       5.835us     512.61 Kb      12.58 Kb        131229  
+                                             aten::add_         3.96%     392.342ms         7.72%     764.970ms      10.201us      37.13 Kb    -184.49 Kb         74988  
+                                                aten::t         3.65%     361.579ms         6.61%     655.267ms       7.028us           0 b           0 b         93231  
+                                             aten::mul_         2.77%     274.423ms         5.96%     590.879ms      11.819us      39.90 Kb    -172.44 Kb         49992  
+                                         AddmmBackward0         1.25%     123.574ms         5.54%     548.879ms      43.917us      50.35 Mb           0 b         12498  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 9.907s
+
