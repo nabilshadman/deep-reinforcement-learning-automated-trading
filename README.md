@@ -1,4 +1,4 @@
-# Comparison of DRL Models for Automated Trading on Heterogeneous HPC System
+# Comparison of Deep Reinforcement Learning Models for Automated Trading on Heterogeneous HPC System  
 
 Both of the repository and its wiki (where applicable) should be clear and easy to navigate,  
 and show a good level of organisation. There should be READMEs throughout the repository,  
