@@ -1,0 +1,16 @@
+2023-04-07 07:31:50.153312: I tensorflow/core/profiler/lib/profiler_session.cc:101] Profiler session initializing.
+2023-04-07 07:31:50.153359: I tensorflow/core/profiler/lib/profiler_session.cc:116] Profiler session started.
+2023-04-07 07:31:50.218702: I tensorflow/core/profiler/lib/profiler_session.cc:67] Profiler session collecting data.
+2023-04-07 07:31:50.220158: I tensorflow/core/profiler/lib/profiler_session.cc:128] Profiler session tear down.
+2023-04-07 07:31:50.223426: I tensorflow/core/profiler/rpc/client/save_profile.cc:136] Creating directory: logdir/plugins/profile/2023_04_07_07_31_50
+
+2023-04-07 07:31:50.226981: I tensorflow/core/profiler/rpc/client/save_profile.cc:142] Dumped gzipped tool data for trace.json.gz to logdir/plugins/profile/2023_04_07_07_31_50/cirrus-login1.trace.json.gz
+2023-04-07 07:31:50.229673: I tensorflow/core/profiler/rpc/client/save_profile.cc:136] Creating directory: logdir/plugins/profile/2023_04_07_07_31_50
+
+2023-04-07 07:31:50.231961: I tensorflow/core/profiler/rpc/client/save_profile.cc:142] Dumped gzipped tool data for memory_profile.json.gz to logdir/plugins/profile/2023_04_07_07_31_50/cirrus-login1.memory_profile.json.gz
+2023-04-07 07:31:50.239223: I tensorflow/core/profiler/rpc/client/capture_profile.cc:251] Creating directory: logdir/plugins/profile/2023_04_07_07_31_50
+Dumped tool data for xplane.pb to logdir/plugins/profile/2023_04_07_07_31_50/cirrus-login1.xplane.pb
+Dumped tool data for overview_page.pb to logdir/plugins/profile/2023_04_07_07_31_50/cirrus-login1.overview_page.pb
+Dumped tool data for input_pipeline.pb to logdir/plugins/profile/2023_04_07_07_31_50/cirrus-login1.input_pipeline.pb
+Dumped tool data for tensorflow_stats.pb to logdir/plugins/profile/2023_04_07_07_31_50/cirrus-login1.tensorflow_stats.pb
+Dumped tool data for kernel_stats.pb to logdir/plugins/profile/2023_04_07_07_31_50/cirrus-login1.kernel_stats.pb
