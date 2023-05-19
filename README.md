@@ -18,7 +18,7 @@ There are different types of DRL algorithms: value-based algorithms (e.g., [DQN]
 
 In our experiments, we used an open-source implementation of a DQN algorithm for multi-stock trading developed with the Python programming language. There are implementations of the model in [PyTorch](https://github.com/lazyprogrammer/machine_learning_examples/tree/master/pytorch) and in [TensorFlow](https://github.com/lazyprogrammer/machine_learning_examples/tree/master/tf2.0), which are two widely used machine learning (ML) frameworks. We ran the models on the backend nodes of Cirrus, on both CPU and GPU nodes.  
 
-One of the main objectives of the POC work was to ensure we have the capability to run available DRL model on both CPUs and GPUs and understand its performance. Therefore, we searched for pre-existing open-source models. The open-source DQN model experiment is relevant in our study as it informs us about the runtime, memory usage, CPU utilisation, GPU utilisation, and other metrics. We can use the metrics to estimate the performance metrics in the dissertation stage when we will scale the problem size.  
+One of the main objectives of the POC work was to ensure we have the capability to run available DRL model on both CPUs and GPUs and understand its performance. Therefore, we searched for pre-existing open-source models. The open-source **DQN** model experiment is relevant in our study as it informs us about the runtime, memory usage, CPU utilisation, GPU utilisation, and other metrics. We can use the metrics to estimate the performance metrics in the dissertation stage when we will scale the problem size.  
 
 
 ## Proposal
