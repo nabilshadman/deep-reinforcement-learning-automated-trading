@@ -3,7 +3,7 @@
 
 
 ## Code 
-The code includes an open source [implementation](https://github.com/lazyprogrammer/machine_learning_examples/tree/master/pytorch) of **DQN** model for algorithmic trading.  
+The [code](https://git.ecdf.ed.ac.uk/msc-22-23/s2134758/-/blob/main/feasibility/models/dqn-pytorch/rl_trader.py) includes an open source [implementation](https://github.com/lazyprogrammer/machine_learning_examples/tree/master/pytorch) of **DQN** model for algorithmic trading.  
 
 The script has a train/test mode. In both cases, there is a main loop called    
 **play_one_episode()** that is called several times. The loop mainly goes back and  
