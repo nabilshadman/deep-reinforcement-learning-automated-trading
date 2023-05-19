@@ -37,10 +37,10 @@ For **testing** mode, execute:
 
 ## How to run the script on backend node of Cirrus  
 To run on a **CPU** node, execute:  
-`sbatch dqn-pytorch-cpu.slurm`
+`sbatch dqn-tensorflow-cpu.slurm`
 
 To run on a **GPU** node, execute:  
-`sbatch dqn-pytorch-gpu.slurm`
+`sbatch dqn-tensorflow-gpu.slurm`
 
 
 ## To plot results  
