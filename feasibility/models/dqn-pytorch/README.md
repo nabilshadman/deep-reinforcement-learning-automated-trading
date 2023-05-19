@@ -23,23 +23,23 @@ and SBUX (Starbucks).
 
 
 ## Load relevant module on Cirrus
-To load the latest **pytorch** module, execute:
+To load the latest **pytorch** module, execute:  
 `module load pytorch`
 
 
 ## How to run the script on frontend node of Cirrus  
-To run the script in **training** mode, execute:  
+To run the script in **training** mode, execute:   
 `python rl_trader.py -m train`  
 
-For **testing** mode, execute:  
+For **testing** mode, execute:   
 `python rl_trader.py -m test`  
 
 
 ## How to run the script on backend node of Cirrus  
-To run on a **CPU** node, execute:
+To run on a **CPU** node, execute:  
 `sbatch dqn-pytorch-cpu.slurm`
 
-To run on a **GPU** node, execute:
+To run on a **GPU** node, execute:  
 `sbatch dqn-pytorch-gpu.slurm`
 
 
