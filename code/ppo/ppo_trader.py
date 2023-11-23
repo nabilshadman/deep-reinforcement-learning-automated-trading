@@ -3,7 +3,8 @@ import pandas as pd
 
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
+import torch.optim as optim
+from torch.distributions.categorical import Categorical
 
 from datetime import datetime
 import itertools
@@ -12,9 +13,7 @@ import re
 import os
 import pickle
 
-
 from sklearn.preprocessing import StandardScaler
-
 
 # Let's use AAPL (Apple), MSI (Motorola), SBUX (Starbucks)
 def get_data():
@@ -25,37 +24,6 @@ def get_data():
   # 2 = SBUX
   df = pd.read_csv('equities_historical_data.csv')
   return df.values
-
-
-
-### The experience replay memory ###
-class ReplayBuffer:
-  def __init__(self, obs_dim, act_dim, size):
-    self.obs1_buf = np.zeros([size, obs_dim], dtype=np.float32)
-    self.obs2_buf = np.zeros([size, obs_dim], dtype=np.float32)
-    self.acts_buf = np.zeros(size, dtype=np.uint8)
-    self.rews_buf = np.zeros(size, dtype=np.float32)
-    self.done_buf = np.zeros(size, dtype=np.uint8)
-    self.ptr, self.size, self.max_size = 0, 0, size
-
-  def store(self, obs, act, rew, next_obs, done):
-    self.obs1_buf[self.ptr] = obs
-    self.obs2_buf[self.ptr] = next_obs
-    self.acts_buf[self.ptr] = act
-    self.rews_buf[self.ptr] = rew
-    self.done_buf[self.ptr] = done
-    self.ptr = (self.ptr+1) % self.max_size
-    self.size = min(self.size+1, self.max_size)
-
-  def sample_batch(self, batch_size=32):
-    idxs = np.random.randint(0, self.size, size=batch_size)
-    return dict(s=self.obs1_buf[idxs],
-                s2=self.obs2_buf[idxs],
-                a=self.acts_buf[idxs],
-                r=self.rews_buf[idxs],
-                d=self.done_buf[idxs])
-
-
 
 
 def get_scaler(env):
@@ -75,70 +43,204 @@ def get_scaler(env):
   return scaler
 
 
-
-
 def maybe_make_dir(directory):
   if not os.path.exists(directory):
     os.makedirs(directory)
 
 
+class PPOMemory:
+    def __init__(self, batch_size):
+        self.states = []
+        self.probs = []
+        self.vals = []
+        self.actions = []
+        self.rewards = []
+        self.dones = []
+
+        self.batch_size = batch_size
+
+    def generate_batches(self):
+        n_states = len(self.states)
+        batch_start = np.arange(0, n_states, self.batch_size)
+        indices = np.arange(n_states, dtype=np.int64)
+        np.random.shuffle(indices)
+        batches = [indices[i:i+self.batch_size] for i in batch_start]
+
+        return np.array(self.states),\
+                np.array(self.actions),\
+                np.array(self.probs),\
+                np.array(self.vals),\
+                np.array(self.rewards),\
+                np.array(self.dones),\
+                batches
+
+    def store_memory(self, state, action, probs, vals, reward, done):
+        self.states.append(state)
+        self.actions.append(action)
+        self.probs.append(probs)
+        self.vals.append(vals)
+        self.rewards.append(reward)
+        self.dones.append(done)
+
+    def clear_memory(self):
+        self.states = []
+        self.probs = []
+        self.actions = []
+        self.rewards = []
+        self.dones = []
+        self.vals = []
 
 
-class MLP(nn.Module):
-  def __init__(self, n_inputs, n_action, n_hidden_layers=1, hidden_dim=32):
-    super(MLP, self).__init__()
+class ActorNetwork(nn.Module):
+    def __init__(self, n_actions, input_dims, alpha,
+            fc1_dims=256, fc2_dims=256, chkpt_dir='tmp/ppo'):
+        super(ActorNetwork, self).__init__()
 
-    M = n_inputs
-    self.layers = []
-    for _ in range(n_hidden_layers):
-      layer = nn.Linear(M, hidden_dim)
-      M = hidden_dim
-      self.layers.append(layer)
-      self.layers.append(nn.ReLU())
+        self.checkpoint_file = os.path.join(chkpt_dir, 'actor_torch_ppo')
+        self.actor = nn.Sequential(
+                nn.Linear(*input_dims, fc1_dims),
+                nn.ReLU(),
+                nn.Linear(fc1_dims, fc2_dims),
+                nn.ReLU(),
+                nn.Linear(fc2_dims, n_actions),
+                nn.Softmax(dim=-1)
+        )
 
-    # final layer
-    self.layers.append(nn.Linear(M, n_action))
-    self.layers = nn.Sequential(*self.layers)
+        self.optimizer = optim.Adam(self.parameters(), lr=alpha)
+        self.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+        self.to(self.device)
 
-  def forward(self, X):
-    return self.layers(X)
-
-  def save_weights(self, path):
-    torch.save(self.state_dict(), path)
-
-  def load_weights(self, path):
-    self.load_state_dict(torch.load(path))
-
-
-
-
-def predict(model, np_states):
-  with torch.no_grad():
-    inputs = torch.from_numpy(np_states.astype(np.float32))
-    output = model(inputs)
-    #print("output:", output)
-    return output.numpy()
-
-
-
-
-def train_one_step(model, criterion, optimizer, inputs, targets):
-  # convert to tensors
-  inputs = torch.from_numpy(inputs.astype(np.float32))
-  targets = torch.from_numpy(targets.astype(np.float32))
-
-  # zero the parameter gradients
-  optimizer.zero_grad()
-
-  # Forward pass
-  outputs = model(inputs)
-  loss = criterion(outputs, targets)
+    def forward(self, state):
+        dist = self.actor(state)
+        dist = Categorical(dist)
         
-  # Backward and optimize
-  loss.backward()
-  optimizer.step()
+        return dist
+
+    def save_checkpoint(self):
+        torch.save(self.state_dict(), self.checkpoint_file)
+
+    def load_checkpoint(self):
+        self.load_state_dict(torch.load(self.checkpoint_file))
 
 
+class CriticNetwork(nn.Module):
+    def __init__(self, input_dims, alpha, fc1_dims=256, fc2_dims=256,
+            chkpt_dir='tmp/ppo'):
+        super(CriticNetwork, self).__init__()
+
+        self.checkpoint_file = os.path.join(chkpt_dir, 'critic_torch_ppo')
+        self.critic = nn.Sequential(
+                nn.Linear(*input_dims, fc1_dims),
+                nn.ReLU(),
+                nn.Linear(fc1_dims, fc2_dims),
+                nn.ReLU(),
+                nn.Linear(fc2_dims, 1)
+        )
+
+        self.optimizer = optim.Adam(self.parameters(), lr=alpha)
+        self.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+        self.to(self.device)
+
+    def forward(self, state):
+        value = self.critic(state)
+
+        return value
+
+    def save_checkpoint(self):
+        torch.save(self.state_dict(), self.checkpoint_file)
+
+    def load_checkpoint(self):
+        self.load_state_dict(torch.load(self.checkpoint_file))
+
+
+class PPOAgent:
+    def __init__(self, n_actions, input_dims, gamma=0.99, alpha=0.0003, gae_lambda=0.95,
+            policy_clip=0.2, batch_size=64, n_epochs=10):
+        self.gamma = gamma
+        self.policy_clip = policy_clip
+        self.n_epochs = n_epochs
+        self.gae_lambda = gae_lambda
+
+        self.actor = ActorNetwork(n_actions, input_dims, alpha)
+        self.critic = CriticNetwork(input_dims, alpha)
+        self.memory = PPOMemory(batch_size)
+       
+    def remember(self, state, action, probs, vals, reward, done):
+        self.memory.store_memory(state, action, probs, vals, reward, done)
+
+    def save_models(self):
+        print('... saving models ...')
+        self.actor.save_checkpoint()
+        self.critic.save_checkpoint()
+
+    def load_models(self):
+        print('... loading models ...')
+        self.actor.load_checkpoint()
+        self.critic.load_checkpoint()
+
+    def choose_action(self, observation):
+        state = torch.tensor([observation], dtype=torch.float).to(self.actor.device)
+
+        dist = self.actor(state)
+        value = self.critic(state)
+        action = dist.sample()
+
+        probs = torch.squeeze(dist.log_prob(action)).item()
+        action = torch.squeeze(action).item()
+        value = torch.squeeze(value).item()
+
+        return action, probs, value
+
+    def learn(self):
+        for _ in range(self.n_epochs):
+            state_arr, action_arr, old_prob_arr, vals_arr,\
+            reward_arr, dones_arr, batches = \
+                    self.memory.generate_batches()
+
+            values = vals_arr
+            advantage = np.zeros(len(reward_arr), dtype=np.float32)
+
+            for t in range(len(reward_arr)-1):
+                discount = 1
+                a_t = 0
+                for k in range(t, len(reward_arr)-1):
+                    a_t += discount*(reward_arr[k] + self.gamma*values[k+1]*\
+                            (1-int(dones_arr[k])) - values[k])
+                    discount *= self.gamma*self.gae_lambda
+                advantage[t] = a_t
+            advantage = torch.tensor(advantage).to(self.actor.device)
+
+            values = torch.tensor(values).to(self.actor.device)
+            for batch in batches:
+                states = torch.tensor(state_arr[batch], dtype=torch.float).to(self.actor.device)
+                old_probs = torch.tensor(old_prob_arr[batch]).to(self.actor.device)
+                actions = torch.tensor(action_arr[batch]).to(self.actor.device)
+
+                dist = self.actor(states)
+                critic_value = self.critic(states)
+
+                critic_value = torch.squeeze(critic_value)
+
+                new_probs = dist.log_prob(actions)
+                prob_ratio = new_probs.exp() / old_probs.exp()
+                #prob_ratio = (new_probs - old_probs).exp()
+                weighted_probs = advantage[batch] * prob_ratio
+                weighted_clipped_probs = torch.clamp(prob_ratio, 1-self.policy_clip,
+                        1+self.policy_clip)*advantage[batch]
+                actor_loss = -torch.min(weighted_probs, weighted_clipped_probs).mean()
+
+                returns = advantage[batch] + values[batch]
+                critic_loss = (returns-critic_value)**2
+                critic_loss = critic_loss.mean()
+
+                total_loss = actor_loss + 0.5*critic_loss
+                self.actor.optimizer.zero_grad()
+                self.critic.optimizer.zero_grad()
+                total_loss.backward()
+                self.actor.optimizer.step()
+                self.critic.optimizer.step()
+
+        self.memory.clear_memory()               
 
 
 class MultiStockEnv:
@@ -281,83 +383,6 @@ class MultiStockEnv:
             can_buy = False
 
 
-
-
-class DQNAgent(object):
-  def __init__(self, state_size, action_size):
-    self.state_size = state_size
-    self.action_size = action_size
-    self.memory = ReplayBuffer(state_size, action_size, size=500)
-    self.gamma = 0.95  # discount rate
-    self.epsilon = 1.0  # exploration rate
-    self.epsilon_min = 0.01
-    self.epsilon_decay = 0.995
-    self.model = MLP(state_size, action_size)
-
-    # Loss and optimizer
-    self.criterion = nn.MSELoss()
-    self.optimizer = torch.optim.Adam(self.model.parameters())
-
-
-  def update_replay_memory(self, state, action, reward, next_state, done):
-    self.memory.store(state, action, reward, next_state, done)
-
-
-  def act(self, state):
-    if np.random.rand() <= self.epsilon:
-      return np.random.choice(self.action_size)
-    act_values = predict(self.model, state)
-    return np.argmax(act_values[0])  # returns action
-
-
-  def replay(self, batch_size=32):
-    # first check if replay buffer contains enough data
-    if self.memory.size < batch_size:
-      return
-
-    # sample a batch of data from the replay memory
-    minibatch = self.memory.sample_batch(batch_size)
-    states = minibatch['s']
-    actions = minibatch['a']
-    rewards = minibatch['r']
-    next_states = minibatch['s2']
-    done = minibatch['d']
-
-    # Calculate the target: Q(s',a)
-    target = rewards + (1 - done) * self.gamma * np.amax(predict(self.model, next_states), axis=1)
-
-    # With the PyTorch API, it is simplest to have the target be the 
-    # same shape as the predictions.
-    # However, we only need to update the network for the actions
-    # which were actually taken.
-    # We can accomplish this by setting the target to be equal to
-    # the prediction for all values.
-    # Then, only change the targets for the actions taken.
-    # Q(s,a)
-    target_full = predict(self.model, states)
-    target_full[np.arange(batch_size), actions] = target
-
-    # Run one training step
-    train_one_step(self.model, self.criterion, self.optimizer, states, target_full)
-
-    if self.epsilon > self.epsilon_min:
-      self.epsilon *= self.epsilon_decay
-
-
-  def load(self, name):
-    self.model.load_weights(name)
-
-
-  def save(self, name):
-    self.model.save_weights(name)
-
-
-  def print_model_summary(self):
-    print(self.model)
-
-
-
-
 def play_one_episode(agent, env, is_train):
   # note: after transforming states are already 1xD
   state = env.reset()
@@ -376,8 +401,6 @@ def play_one_episode(agent, env, is_train):
   return info['cur_val']
 
 
-
-
 if __name__ == '__main__':
 
   # log device info
@@ -393,7 +416,7 @@ if __name__ == '__main__':
       print('Allocated:', round(torch.cuda.memory_allocated(0)/1024**3,1), 'GB')
       print('Cached:   ', round(torch.cuda.memory_cached(0)/1024**3,1), 'GB')
 
-  
+
   # config
   models_folder = 'rl_trader_models'
   rewards_folder = 'rl_trader_rewards'
@@ -421,7 +444,7 @@ if __name__ == '__main__':
   env = MultiStockEnv(train_data, initial_investment)
   state_size = env.state_dim
   action_size = len(env.action_space)
-  agent = DQNAgent(state_size, action_size)
+  agent = PPOAgent(state_size, action_size)
   # print model summary
   agent.print_model_summary()
   scaler = get_scaler(env)
