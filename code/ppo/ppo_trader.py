@@ -242,6 +242,11 @@ class PPOAgent:
 
         self.memory.clear_memory()               
 
+    def print_model_summary(self):
+       print(self.actor)
+       print()
+       print(self.critic)
+
 
 class MultiStockEnv:
   """
@@ -390,7 +395,7 @@ def play_one_episode(agent, env, is_train):
   done = False
 
   while not done:
-    action = agent.act(state)
+    action = agent.choose_action(state)
     next_state, reward, done, info = env.step(action)
     next_state = scaler.transform([next_state])
     if is_train == 'train':
@@ -405,16 +410,16 @@ if __name__ == '__main__':
 
   # log device info
   # setting device on GPU if available, else CPU
-  device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-  print('Using device:', device)
-  print()
+  # device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+  # print('Using device:', device)
+  # print()
 
   # additional info when using cuda
-  if device.type == 'cuda':
-      print(torch.cuda.get_device_name(0))
-      print('Memory Usage:')
-      print('Allocated:', round(torch.cuda.memory_allocated(0)/1024**3,1), 'GB')
-      print('Cached:   ', round(torch.cuda.memory_cached(0)/1024**3,1), 'GB')
+  # if device.type == 'cuda':
+  #     print(torch.cuda.get_device_name(0))
+  #     print('Memory Usage:')
+  #     print('Allocated:', round(torch.cuda.memory_allocated(0)/1024**3,1), 'GB')
+  #     print('Cached:   ', round(torch.cuda.memory_cached(0)/1024**3,1), 'GB')
 
 
   # config
@@ -422,6 +427,7 @@ if __name__ == '__main__':
   rewards_folder = 'rl_trader_rewards'
   num_episodes = 100
   batch_size = 32
+  alpha = 0.0003
   initial_investment = 20000
 
 
@@ -442,9 +448,15 @@ if __name__ == '__main__':
   test_data = data[n_train:]
 
   env = MultiStockEnv(train_data, initial_investment)
-  state_size = env.state_dim
+  
   action_size = len(env.action_space)
-  agent = PPOAgent(state_size, action_size)
+  state_size = env.state_dim
+  input_dims= torch.Tensor([env.state_dim]).shape
+
+  agent = PPOAgent(n_actions=action_size, batch_size=batch_size, 
+                    alpha=alpha, n_epochs=num_episodes, 
+                    input_dims=input_dims)
+  
   # print model summary
   agent.print_model_summary()
   scaler = get_scaler(env)
@@ -462,7 +474,7 @@ if __name__ == '__main__':
 
     # make sure epsilon is not 1!
     # no need to run multiple episodes if epsilon = 0, it's deterministic
-    agent.epsilon = 0.01
+    # agent.epsilon = 0.01
 
     # load trained weights
     agent.load(f'{models_folder}/dqn.ckpt')
