@@ -496,15 +496,14 @@ if __name__ == '__main__':
     # load trained weights
     agent.load(f'{models_folder}/ppo.ckpt')
 
+
   # set some variables
-    learn_iters = 0
-    n_steps = 0
+  learn_iters = 0
+  n_steps = 0
 
   # play the game num_episodes times
   for e in range(num_episodes):
-    # set some variables
-    learn_iters = 0
-    n_steps = 0
+
     t0 = datetime.now()
     val = play_one_episode(agent, env, args.mode, n_steps, N, learn_iters)
     dt = datetime.now() - t0
