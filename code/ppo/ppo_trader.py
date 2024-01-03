@@ -15,6 +15,7 @@ import pickle
 
 from sklearn.preprocessing import StandardScaler
 
+
 # Let's use AAPL (Apple), MSI (Motorola), SBUX (Starbucks)
 def get_data():
   # returns a T x 3 list of stock prices
@@ -96,7 +97,7 @@ class ActorNetwork(nn.Module):
             fc1_dims=256, fc2_dims=256, chkpt_dir='tmp/ppo'):
         super(ActorNetwork, self).__init__()
 
-        self.checkpoint_file = os.path.join(chkpt_dir, 'actor_torch_ppo')
+        # self.checkpoint_file = os.path.join(chkpt_dir, 'actor_torch_ppo')
         self.actor = nn.Sequential(
                 nn.Linear(*input_dims, fc1_dims),
                 nn.ReLU(),
@@ -116,11 +117,17 @@ class ActorNetwork(nn.Module):
         
         return dist
 
-    def save_checkpoint(self):
-        torch.save(self.state_dict(), self.checkpoint_file)
+    # def save_checkpoint(self):
+    #     torch.save(self.state_dict(), self.checkpoint_file)
 
-    def load_checkpoint(self):
-        self.load_state_dict(torch.load(self.checkpoint_file))
+    # def load_checkpoint(self):
+    #     self.load_state_dict(torch.load(self.checkpoint_file))
+
+    def save_checkpoint(self, path):
+        torch.save(self.state_dict(), path)
+
+    def load_checkpoint(self, path):
+        self.load_state_dict(torch.load(path))
 
 
 class CriticNetwork(nn.Module):
@@ -128,7 +135,7 @@ class CriticNetwork(nn.Module):
             chkpt_dir='tmp/ppo'):
         super(CriticNetwork, self).__init__()
 
-        self.checkpoint_file = os.path.join(chkpt_dir, 'critic_torch_ppo')
+        # self.checkpoint_file = os.path.join(chkpt_dir, 'critic_torch_ppo')
         self.critic = nn.Sequential(
                 nn.Linear(*input_dims, fc1_dims),
                 nn.ReLU(),
@@ -146,11 +153,17 @@ class CriticNetwork(nn.Module):
 
         return value
 
-    def save_checkpoint(self):
-        torch.save(self.state_dict(), self.checkpoint_file)
+    # def save_checkpoint(self):
+    #     torch.save(self.state_dict(), self.checkpoint_file)
 
-    def load_checkpoint(self):
-        self.load_state_dict(torch.load(self.checkpoint_file))
+    # def load_checkpoint(self):
+    #     self.load_state_dict(torch.load(self.checkpoint_file))
+
+    def save_checkpoint(self, path):
+        torch.save(self.state_dict(), path)
+
+    def load_checkpoint(self, path):
+        self.load_state_dict(torch.load(path))
 
 
 class PPOAgent:
@@ -388,19 +401,24 @@ class MultiStockEnv:
             can_buy = False
 
 
-def play_one_episode(agent, env, is_train):
+def play_one_episode(agent, env, is_train, n_steps, N, learn_iters):
   # note: after transforming states are already 1xD
   state = env.reset()
   state = scaler.transform([state])
   done = False
+  score = 0
 
   while not done:
-    action = agent.choose_action(state)
+    action, prob, val = agent.choose_action(state)
     next_state, reward, done, info = env.step(action)
     next_state = scaler.transform([next_state])
+    n_steps += 1
+    score += reward
     if is_train == 'train':
-      agent.update_replay_memory(state, action, reward, next_state, done)
-      agent.replay(batch_size)
+      agent.remember(state, action, prob, val, reward, done)
+      if n_steps % N == 0:
+        agent.learn()
+        learn_iters += 1
     state = next_state
 
   return info['cur_val']
@@ -421,15 +439,14 @@ if __name__ == '__main__':
   #     print('Allocated:', round(torch.cuda.memory_allocated(0)/1024**3,1), 'GB')
   #     print('Cached:   ', round(torch.cuda.memory_cached(0)/1024**3,1), 'GB')
 
-
   # config
   models_folder = 'rl_trader_models'
   rewards_folder = 'rl_trader_rewards'
-  num_episodes = 100
+  N = 20
   batch_size = 32
+  num_episodes = 100
   alpha = 0.0003
   initial_investment = 20000
-
 
   parser = argparse.ArgumentParser()
   parser.add_argument('-m', '--mode', type=str, required=True,
@@ -477,20 +494,27 @@ if __name__ == '__main__':
     # agent.epsilon = 0.01
 
     # load trained weights
-    agent.load(f'{models_folder}/dqn.ckpt')
+    agent.load(f'{models_folder}/ppo.ckpt')
+
+  # set some variables
+    learn_iters = 0
+    n_steps = 0
 
   # play the game num_episodes times
   for e in range(num_episodes):
+    # set some variables
+    learn_iters = 0
+    n_steps = 0
     t0 = datetime.now()
-    val = play_one_episode(agent, env, args.mode)
+    val = play_one_episode(agent, env, args.mode, n_steps, N, learn_iters)
     dt = datetime.now() - t0
     print(f"episode: {e + 1}/{num_episodes}, episode end value: {val:.2f}, duration: {dt}")
     portfolio_value.append(val) # append episode end portfolio value
 
   # save the weights when we are done
   if args.mode == 'train':
-    # save the DQN
-    agent.save(f'{models_folder}/dqn.ckpt')
+    # save the PPO
+    agent.save_models(f'{models_folder}/ppo.ckpt')
 
     # save the scaler
     with open(f'{models_folder}/scaler.pkl', 'wb') as f:
