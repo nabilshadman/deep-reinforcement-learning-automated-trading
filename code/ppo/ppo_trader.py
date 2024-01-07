@@ -256,9 +256,7 @@ class PPOAgent:
         self.memory.clear_memory()               
 
     def print_model_summary(self):
-       print(self.actor)
-       print()
-       print(self.critic)
+       print(self.actor, "\n", "\n", self.critic, "\n")
 
 
 class MultiStockEnv:
@@ -468,7 +466,7 @@ if __name__ == '__main__':
   
   action_size = len(env.action_space)
   state_size = env.state_dim
-  input_dims= torch.Tensor([env.state_dim]).shape
+  input_dims= torch.tensor([env.state_dim], dtype=torch.int)
 
   agent = PPOAgent(n_actions=action_size, batch_size=batch_size, 
                     alpha=alpha, n_epochs=num_episodes, 

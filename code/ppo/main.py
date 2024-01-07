@@ -48,5 +48,3 @@ if __name__ == '__main__':
                 'time_steps', n_steps, 'learning_steps', learn_iters)
     x = [i+1 for i in range(len(score_history))]
     plot_learning_curve(x, score_history, figure_file)
-
-
