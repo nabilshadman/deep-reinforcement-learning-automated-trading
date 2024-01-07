@@ -94,10 +94,10 @@ class PPOMemory:
 
 class ActorNetwork(nn.Module):
     def __init__(self, n_actions, input_dims, alpha,
-            fc1_dims=256, fc2_dims=256, chkpt_dir='tmp/ppo'):
+            fc1_dims=256, fc2_dims=256, chkpt_dir='rl_trader_models'):
         super(ActorNetwork, self).__init__()
 
-        # self.checkpoint_file = os.path.join(chkpt_dir, 'actor_torch_ppo')
+        self.checkpoint_file = os.path.join(chkpt_dir, 'actor_torch_ppo')
         self.actor = nn.Sequential(
                 nn.Linear(*input_dims, fc1_dims),
                 nn.ReLU(),
@@ -117,25 +117,25 @@ class ActorNetwork(nn.Module):
         
         return dist
 
-    # def save_checkpoint(self):
-    #     torch.save(self.state_dict(), self.checkpoint_file)
+    def save_checkpoint(self):
+       torch.save(self.state_dict(), self.checkpoint_file)
 
-    # def load_checkpoint(self):
-    #     self.load_state_dict(torch.load(self.checkpoint_file))
+    def load_checkpoint(self):
+       self.load_state_dict(torch.load(self.checkpoint_file))
 
-    def save_checkpoint(self, path):
-        torch.save(self.state_dict(), path)
+    # def save_checkpoint(self, path):
+    #    torch.save(self.state_dict(), path)
 
-    def load_checkpoint(self, path):
-        self.load_state_dict(torch.load(path))
+    #def load_checkpoint(self, path):
+    #    self.load_state_dict(torch.load(path))
 
 
 class CriticNetwork(nn.Module):
     def __init__(self, input_dims, alpha, fc1_dims=256, fc2_dims=256,
-            chkpt_dir='tmp/ppo'):
+            chkpt_dir='rl_trader_models'):
         super(CriticNetwork, self).__init__()
 
-        # self.checkpoint_file = os.path.join(chkpt_dir, 'critic_torch_ppo')
+        self.checkpoint_file = os.path.join(chkpt_dir, 'critic_torch_ppo')
         self.critic = nn.Sequential(
                 nn.Linear(*input_dims, fc1_dims),
                 nn.ReLU(),
@@ -153,29 +153,31 @@ class CriticNetwork(nn.Module):
 
         return value
 
-    # def save_checkpoint(self):
-    #     torch.save(self.state_dict(), self.checkpoint_file)
+    def save_checkpoint(self):
+        torch.save(self.state_dict(), self.checkpoint_file)
 
-    # def load_checkpoint(self):
-    #     self.load_state_dict(torch.load(self.checkpoint_file))
+    def load_checkpoint(self):
+        self.load_state_dict(torch.load(self.checkpoint_file))
 
-    def save_checkpoint(self, path):
-        torch.save(self.state_dict(), path)
+    # def save_checkpoint(self, path):
+    #     torch.save(self.state_dict(), path)
 
-    def load_checkpoint(self, path):
-        self.load_state_dict(torch.load(path))
+    # def load_checkpoint(self, path):
+    #     self.load_state_dict(torch.load(path))
 
 
 class PPOAgent:
     def __init__(self, n_actions, input_dims, gamma=0.99, alpha=0.0003, gae_lambda=0.95,
-            policy_clip=0.2, batch_size=64, n_epochs=10):
+            policy_clip=0.2, batch_size=64, n_epochs=10, chkpt_dir='rl_trader_models'):
         self.gamma = gamma
         self.policy_clip = policy_clip
         self.n_epochs = n_epochs
         self.gae_lambda = gae_lambda
 
-        self.actor = ActorNetwork(n_actions, input_dims, alpha)
-        self.critic = CriticNetwork(input_dims, alpha)
+        self.actor = ActorNetwork(n_actions=n_actions, input_dims=input_dims, 
+                                  alpha=alpha, chkpt_dir=chkpt_dir)
+        self.critic = CriticNetwork(input_dims=input_dims, alpha=alpha, 
+                                    chkpt_dir=chkpt_dir)
         self.memory = PPOMemory(batch_size)
        
     def remember(self, state, action, probs, vals, reward, done):
@@ -442,7 +444,7 @@ if __name__ == '__main__':
   rewards_folder = 'rl_trader_rewards'
   N = 20
   batch_size = 32
-  num_episodes = 100
+  num_episodes = 10
   alpha = 0.0003
   initial_investment = 20000
 
@@ -466,11 +468,11 @@ if __name__ == '__main__':
   
   action_size = len(env.action_space)
   state_size = env.state_dim
-  input_dims= torch.tensor([env.state_dim], dtype=torch.int)
+  input_dims = torch.tensor([env.state_dim], dtype=torch.int)
 
   agent = PPOAgent(n_actions=action_size, batch_size=batch_size, 
                     alpha=alpha, n_epochs=num_episodes, 
-                    input_dims=input_dims)
+                    input_dims=input_dims, chkpt_dir=models_folder)
   
   # print model summary
   agent.print_model_summary()
@@ -492,7 +494,7 @@ if __name__ == '__main__':
     # agent.epsilon = 0.01
 
     # load trained weights
-    agent.load(f'{models_folder}/ppo.ckpt')
+    agent.load_models()
 
 
   # set some variables
@@ -511,7 +513,7 @@ if __name__ == '__main__':
   # save the weights when we are done
   if args.mode == 'train':
     # save the PPO
-    agent.save_models(f'{models_folder}/ppo.ckpt')
+    agent.save_models()
 
     # save the scaler
     with open(f'{models_folder}/scaler.pkl', 'wb') as f:
