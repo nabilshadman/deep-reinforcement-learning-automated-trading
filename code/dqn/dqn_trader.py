@@ -23,7 +23,7 @@ def get_data():
   # 0 = AAPL
   # 1 = MSI
   # 2 = SBUX
-  df = pd.read_csv('equities_historical_data')
+  df = pd.read_csv('equities_historical_data.csv')
   return df.values
 
 
@@ -397,7 +397,7 @@ if __name__ == '__main__':
   # config
   models_folder = 'rl_trader_models'
   rewards_folder = 'rl_trader_rewards'
-  num_episodes = 100
+  num_episodes = 200
   batch_size = 32
   initial_investment = 20000
 

@@ -9,22 +9,23 @@
 #SBATCH --cpus-per-task=36
 
 # Replace [budget code] below with your budget code (e.g. dc116-s1234567)
-#SBATCH --account=m22ol-s2134758
+#SBATCH --account=mdisspt-s2134758
 # We use the "standard" partition as we are running on CPU nodes
 #SBATCH --partition=standard
 # We use the "standard" QoS as our runtime is more than 20 mins 
 #SBATCH --qos=standard
 
 # Load required modules
-# module load pytorch
+module load pytorch
 
 # Load miniconda environment (if needed)
-source /work/m22ol/m22ol/t2134758/miniconda-init.sh
-conda activate pt
+#source /work/m22ol/m22ol/t2134758/miniconda-init.sh
+#conda activate pt
 
 # Change to the submission directory
 cd $SLURM_SUBMIT_DIR
 
 # Launch the parallel job
-python rl_trader_prof.py -m train
+python dqn_trader.py -m train
+python dqn_trader.py -m test
 
