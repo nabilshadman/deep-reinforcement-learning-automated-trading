@@ -278,13 +278,14 @@ class MultiStockEnv:
     - 1 = hold
     - 2 = buy
   """
-  def __init__(self, data, initial_investment=20000):
+  def __init__(self, data, initial_investment=20000, transaction_cost_rate=0.02):
     # data
     self.stock_price_history = data
     self.n_step, self.n_stock = self.stock_price_history.shape
 
     # instance attributes
     self.initial_investment = initial_investment
+    self.transaction_cost_rate = transaction_cost_rate
     self.cur_step = None
     self.stock_owned = None
     self.stock_price = None
@@ -386,17 +387,25 @@ class MultiStockEnv:
     if sell_index:
       # NOTE: to simplify the problem, when we sell, we will sell ALL shares of that stock
       for i in sell_index:
-        self.cash_in_hand += self.stock_price[i] * self.stock_owned[i]
-        self.stock_owned[i] = 0
+      #   self.cash_in_hand += self.stock_price[i] * self.stock_owned[i]
+      #   self.stock_owned[i] = 0
+         total_sell_value = self.stock_price[i] * self.stock_owned[i]
+         transaction_costs = total_sell_value * self.transaction_cost_rate
+         self.cash_in_hand += (total_sell_value - transaction_costs)
+         self.stock_owned[i] = 0
     if buy_index:
       # NOTE: when buying, we will loop through each stock we want to buy,
       #       and buy one share at a time until we run out of cash
       can_buy = True
       while can_buy:
         for i in buy_index:
-          if self.cash_in_hand > self.stock_price[i]:
-            self.stock_owned[i] += 1 # buy one share
-            self.cash_in_hand -= self.stock_price[i]
+          if self.cash_in_hand > (self.stock_price[i] 
+                                  + self.stock_price[i] 
+                                  * self.transaction_cost_rate):
+            # self.stock_owned[i] += 1 # buy one share
+            # self.cash_in_hand -= self.stock_price[i]
+            self.stock_owned[i] += 1
+            self.cash_in_hand -= (self.stock_price[i] + self.stock_price[i] * self.transaction_cost_rate)
           else:
             can_buy = False
 
@@ -444,9 +453,10 @@ if __name__ == '__main__':
   rewards_folder = 'rl_trader_rewards'
   N = 20
   batch_size = 32
-  num_episodes = 200
+  num_episodes = 30
   alpha = 0.0003
   initial_investment = 20000
+  transaction_cost_rate=0.02
 
   parser = argparse.ArgumentParser()
   parser.add_argument('-m', '--mode', type=str, required=True,
@@ -464,7 +474,7 @@ if __name__ == '__main__':
   train_data = data[:n_train]
   test_data = data[n_train:]
 
-  env = MultiStockEnv(train_data, initial_investment)
+  env = MultiStockEnv(train_data, initial_investment, transaction_cost_rate)
   
   action_size = len(env.action_space)
   state_size = env.state_dim
