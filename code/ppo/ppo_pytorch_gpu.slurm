@@ -20,5 +20,6 @@ module load pytorch
 cd $SLURM_SUBMIT_DIR
 
 # Launch the parallel job
-python ppo_trader.py -m train
-python ppo_trader.py -m test
+python ppo_trader_prof.py -m train
+python ppo_trader_prof.py -m test
+
