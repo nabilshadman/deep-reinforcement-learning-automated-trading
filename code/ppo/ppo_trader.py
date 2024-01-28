@@ -453,7 +453,7 @@ if __name__ == '__main__':
   rewards_folder = 'rl_trader_rewards'
   N = 20
   batch_size = 32
-  num_episodes = 30
+  num_episodes = 20
   alpha = 0.0003
   initial_investment = 20000
   transaction_cost_rate=0.02
