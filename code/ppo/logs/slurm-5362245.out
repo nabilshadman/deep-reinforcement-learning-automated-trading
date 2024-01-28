@@ -1,0 +1,88 @@
+Loading pytorch/1.13.1-gpu
+  Loading requirement: nvidia/cudnn/8.6.0-cuda-11.6 nvidia/tensorrt/8.4.3.1-u2
+    gcc/8.2.0 nvidia/nvhpc-nompi/22.2 openmpi/4.1.4-cuda-11.6 python/3.10.8-gpu
+    libsndfile/1.0.28
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=1, bias=True)
+  )
+) 
+
+episode: 1/20, episode end value: 135.56, duration: 0:00:07.722001
+episode: 2/20, episode end value: 701.92, duration: 0:00:02.720667
+episode: 3/20, episode end value: 17073.49, duration: 0:00:02.718815
+episode: 4/20, episode end value: 39940.88, duration: 0:00:02.703147
+episode: 5/20, episode end value: 39940.88, duration: 0:00:02.714841
+episode: 6/20, episode end value: 39940.88, duration: 0:00:02.707675
+episode: 7/20, episode end value: 39940.88, duration: 0:00:02.715129
+episode: 8/20, episode end value: 39940.88, duration: 0:00:02.712488
+episode: 9/20, episode end value: 39940.88, duration: 0:00:02.712577
+episode: 10/20, episode end value: 39940.88, duration: 0:00:02.724157
+episode: 11/20, episode end value: 39940.88, duration: 0:00:02.720724
+episode: 12/20, episode end value: 39940.88, duration: 0:00:02.719050
+episode: 13/20, episode end value: 39940.88, duration: 0:00:02.725697
+episode: 14/20, episode end value: 39940.88, duration: 0:00:02.717670
+episode: 15/20, episode end value: 39940.88, duration: 0:00:02.719483
+episode: 16/20, episode end value: 39940.88, duration: 0:00:02.712883
+episode: 17/20, episode end value: 39940.88, duration: 0:00:02.721693
+episode: 18/20, episode end value: 39940.88, duration: 0:00:02.723236
+episode: 19/20, episode end value: 39940.88, duration: 0:00:02.723590
+episode: 20/20, episode end value: 39940.88, duration: 0:00:02.720973
+... saving models ...
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=1, bias=True)
+  )
+) 
+
+... loading models ...
+episode: 1/20, episode end value: 18953.66, duration: 0:00:01.044453
+episode: 2/20, episode end value: 18953.66, duration: 0:00:00.560085
+episode: 3/20, episode end value: 18953.66, duration: 0:00:00.557300
+episode: 4/20, episode end value: 18953.66, duration: 0:00:00.559469
+episode: 5/20, episode end value: 18953.66, duration: 0:00:00.561125
+episode: 6/20, episode end value: 18953.66, duration: 0:00:00.556518
+episode: 7/20, episode end value: 18953.66, duration: 0:00:00.557537
+episode: 8/20, episode end value: 25742.36, duration: 0:00:00.556597
+episode: 9/20, episode end value: 18953.66, duration: 0:00:00.557180
+episode: 10/20, episode end value: 18953.66, duration: 0:00:00.558431
+episode: 11/20, episode end value: 18942.48, duration: 0:00:00.556706
+episode: 12/20, episode end value: 18953.66, duration: 0:00:00.558541
+episode: 13/20, episode end value: 18953.66, duration: 0:00:00.559150
+episode: 14/20, episode end value: 18953.66, duration: 0:00:00.559762
+episode: 15/20, episode end value: 18953.66, duration: 0:00:00.555253
+episode: 16/20, episode end value: 18953.66, duration: 0:00:00.557384
+episode: 17/20, episode end value: 18953.66, duration: 0:00:00.555254
+episode: 18/20, episode end value: 18953.66, duration: 0:00:00.558652
+episode: 19/20, episode end value: 18953.66, duration: 0:00:00.556790
+episode: 20/20, episode end value: 18953.66, duration: 0:00:00.561798
