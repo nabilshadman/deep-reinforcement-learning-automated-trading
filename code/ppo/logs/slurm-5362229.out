@@ -1,0 +1,108 @@
+Loading pytorch/1.13.1-gpu
+  Loading requirement: nvidia/cudnn/8.6.0-cuda-11.6 nvidia/tensorrt/8.4.3.1-u2
+    gcc/8.2.0 nvidia/nvhpc-nompi/22.2 openmpi/4.1.4-cuda-11.6 python/3.10.8-gpu
+    libsndfile/1.0.28
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=1, bias=True)
+  )
+) 
+
+episode: 1/30, episode end value: 140.70, duration: 0:00:11.444312
+episode: 2/30, episode end value: 27961.37, duration: 0:00:10.188200
+episode: 3/30, episode end value: 24808.72, duration: 0:00:10.476907
+episode: 4/30, episode end value: 20675.93, duration: 0:00:10.362087
+episode: 5/30, episode end value: 20721.94, duration: 0:00:10.528914
+episode: 6/30, episode end value: 27201.55, duration: 0:00:10.468265
+episode: 7/30, episode end value: 27253.39, duration: 0:00:10.579471
+episode: 8/30, episode end value: 27253.39, duration: 0:00:10.369050
+episode: 9/30, episode end value: 27253.39, duration: 0:00:10.553862
+episode: 10/30, episode end value: 27253.39, duration: 0:00:10.431270
+episode: 11/30, episode end value: 27253.39, duration: 0:00:10.350969
+episode: 12/30, episode end value: 27253.39, duration: 0:00:10.392797
+episode: 13/30, episode end value: 27253.39, duration: 0:00:10.436540
+episode: 14/30, episode end value: 27253.39, duration: 0:00:10.457688
+episode: 15/30, episode end value: 27253.39, duration: 0:00:10.577286
+episode: 16/30, episode end value: 27253.39, duration: 0:00:10.535051
+episode: 17/30, episode end value: 27253.39, duration: 0:00:10.498330
+episode: 18/30, episode end value: 20721.94, duration: 0:00:10.354299
+episode: 19/30, episode end value: 27253.39, duration: 0:00:10.463868
+episode: 20/30, episode end value: 27253.39, duration: 0:00:10.461600
+episode: 21/30, episode end value: 27253.39, duration: 0:00:10.599751
+episode: 22/30, episode end value: 27253.39, duration: 0:00:10.471295
+episode: 23/30, episode end value: 27253.39, duration: 0:00:10.458437
+episode: 24/30, episode end value: 25114.87, duration: 0:00:10.469613
+episode: 25/30, episode end value: 30402.30, duration: 0:00:10.388956
+episode: 26/30, episode end value: 27164.50, duration: 0:00:10.394081
+episode: 27/30, episode end value: 32231.27, duration: 0:00:10.410822
+episode: 28/30, episode end value: 30993.21, duration: 0:00:10.638779
+episode: 29/30, episode end value: 35007.08, duration: 0:00:10.483521
+episode: 30/30, episode end value: 32856.54, duration: 0:00:10.444749
+... saving models ...
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=1, bias=True)
+  )
+) 
+
+... loading models ...
+episode: 1/30, episode end value: 23351.10, duration: 0:00:00.537641
+episode: 2/30, episode end value: 18408.54, duration: 0:00:00.542383
+episode: 3/30, episode end value: 19376.75, duration: 0:00:00.547362
+episode: 4/30, episode end value: 15386.76, duration: 0:00:00.562539
+episode: 5/30, episode end value: 14250.63, duration: 0:00:00.564216
+episode: 6/30, episode end value: 22718.07, duration: 0:00:00.556276
+episode: 7/30, episode end value: 25747.46, duration: 0:00:00.555285
+episode: 8/30, episode end value: 24140.31, duration: 0:00:00.555608
+episode: 9/30, episode end value: 18375.70, duration: 0:00:00.557074
+episode: 10/30, episode end value: 22230.11, duration: 0:00:00.556442
+episode: 11/30, episode end value: 23236.53, duration: 0:00:00.556029
+episode: 12/30, episode end value: 12032.17, duration: 0:00:00.558451
+episode: 13/30, episode end value: 21301.73, duration: 0:00:00.557315
+episode: 14/30, episode end value: 24475.15, duration: 0:00:00.555980
+episode: 15/30, episode end value: 16159.73, duration: 0:00:00.557985
+episode: 16/30, episode end value: 27026.26, duration: 0:00:00.554548
+episode: 17/30, episode end value: 24340.35, duration: 0:00:00.554897
+episode: 18/30, episode end value: 22977.78, duration: 0:00:00.556307
+episode: 19/30, episode end value: 17471.26, duration: 0:00:00.557684
+episode: 20/30, episode end value: 25693.83, duration: 0:00:00.555469
+episode: 21/30, episode end value: 17832.37, duration: 0:00:00.557812
+episode: 22/30, episode end value: 23052.62, duration: 0:00:00.555249
+episode: 23/30, episode end value: 18842.09, duration: 0:00:00.557112
+episode: 24/30, episode end value: 15926.97, duration: 0:00:00.558371
+episode: 25/30, episode end value: 17596.64, duration: 0:00:00.557909
+episode: 26/30, episode end value: 18998.60, duration: 0:00:00.556680
+episode: 27/30, episode end value: 25127.23, duration: 0:00:00.556406
+episode: 28/30, episode end value: 15387.06, duration: 0:00:00.558649
+episode: 29/30, episode end value: 20786.43, duration: 0:00:00.557477
+episode: 30/30, episode end value: 21761.98, duration: 0:00:00.557046
