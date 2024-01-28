@@ -1,0 +1,108 @@
+$ py ppo_trader.py -m train
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=1, bias=True)
+  )
+)
+
+episode: 1/30, episode end value: 178.12, duration: 0:00:05.766916
+episode: 2/30, episode end value: 38289.65, duration: 0:00:07.301327
+episode: 3/30, episode end value: 39940.88, duration: 0:00:08.832159
+episode: 4/30, episode end value: 39940.88, duration: 0:00:09.024168
+episode: 5/30, episode end value: 39940.88, duration: 0:00:09.022976
+episode: 6/30, episode end value: 39940.88, duration: 0:00:09.136953
+episode: 7/30, episode end value: 39940.88, duration: 0:00:09.265316
+episode: 8/30, episode end value: 39940.88, duration: 0:00:09.334465
+episode: 9/30, episode end value: 39940.88, duration: 0:00:09.403096
+episode: 10/30, episode end value: 39940.88, duration: 0:00:09.516262
+episode: 11/30, episode end value: 39940.88, duration: 0:00:09.758219
+episode: 12/30, episode end value: 39940.88, duration: 0:00:09.663822
+episode: 13/30, episode end value: 2519.61, duration: 0:00:08.846697
+episode: 14/30, episode end value: 18062.81, duration: 0:00:08.574677
+episode: 15/30, episode end value: 20000.00, duration: 0:00:09.642850
+episode: 16/30, episode end value: 20000.00, duration: 0:00:10.128686
+episode: 17/30, episode end value: 20000.00, duration: 0:00:10.125018
+episode: 18/30, episode end value: 20000.00, duration: 0:00:09.964502
+episode: 19/30, episode end value: 20000.00, duration: 0:00:10.168423
+episode: 20/30, episode end value: 20000.00, duration: 0:00:09.927131
+episode: 21/30, episode end value: 20000.00, duration: 0:00:09.930812
+episode: 22/30, episode end value: 20000.00, duration: 0:00:10.216412
+episode: 23/30, episode end value: 20000.00, duration: 0:00:10.080000
+episode: 24/30, episode end value: 20000.00, duration: 0:00:10.139248
+episode: 25/30, episode end value: 20000.00, duration: 0:00:10.174717
+episode: 26/30, episode end value: 20000.00, duration: 0:00:10.177338
+episode: 27/30, episode end value: 20000.00, duration: 0:00:09.972717
+episode: 28/30, episode end value: 20000.00, duration: 0:00:10.077810
+episode: 29/30, episode end value: 20000.00, duration: 0:00:10.312234
+episode: 30/30, episode end value: 20000.00, duration: 0:00:10.243135
+... saving models ...
+
+
+$ py ppo_trader.py -m test
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=1, bias=True)
+  )
+)
+
+... loading models ...
+episode: 1/30, episode end value: 20000.00, duration: 0:00:00.683153
+episode: 2/30, episode end value: 20000.00, duration: 0:00:00.914308
+episode: 3/30, episode end value: 20000.00, duration: 0:00:00.618037
+episode: 4/30, episode end value: 20000.00, duration: 0:00:00.818682
+episode: 5/30, episode end value: 20000.00, duration: 0:00:00.616144
+episode: 6/30, episode end value: 20000.00, duration: 0:00:00.752391
+episode: 7/30, episode end value: 20000.00, duration: 0:00:00.695067
+episode: 8/30, episode end value: 20000.00, duration: 0:00:00.617935
+episode: 9/30, episode end value: 20000.00, duration: 0:00:00.531780
+episode: 10/30, episode end value: 20000.00, duration: 0:00:00.585381
+episode: 11/30, episode end value: 20000.00, duration: 0:00:00.582319
+episode: 12/30, episode end value: 20000.00, duration: 0:00:00.552348
+episode: 13/30, episode end value: 20000.00, duration: 0:00:00.585360
+episode: 14/30, episode end value: 20000.00, duration: 0:00:00.772437
+episode: 15/30, episode end value: 20000.00, duration: 0:00:00.623060
+episode: 16/30, episode end value: 20000.00, duration: 0:00:00.792667
+episode: 17/30, episode end value: 20000.00, duration: 0:00:00.831884
+episode: 18/30, episode end value: 20000.00, duration: 0:00:00.668317
+episode: 19/30, episode end value: 20000.00, duration: 0:00:00.693761
+episode: 20/30, episode end value: 20000.00, duration: 0:00:00.661036
+episode: 21/30, episode end value: 20000.00, duration: 0:00:00.641600
+episode: 22/30, episode end value: 20000.00, duration: 0:00:00.680676
+episode: 23/30, episode end value: 20000.00, duration: 0:00:00.743590
+episode: 24/30, episode end value: 20000.00, duration: 0:00:00.703811
+episode: 25/30, episode end value: 20000.00, duration: 0:00:00.683534
+episode: 26/30, episode end value: 20000.00, duration: 0:00:00.742731
+episode: 27/30, episode end value: 20000.00, duration: 0:00:00.781994
+episode: 28/30, episode end value: 20000.00, duration: 0:00:00.662128
+episode: 29/30, episode end value: 20000.00, duration: 0:00:00.675666
+episode: 30/30, episode end value: 20000.00, duration: 0:00:00.617772
