@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Slurm job options (name, compute nodes, job time)
-#SBATCH --job-name=dqn-pytorch-cpu
-#SBATCH --time=0:40:0
+#SBATCH --job-name=test-pytorch-cpu
+#SBATCH --time=0:10:0
 #SBATCH --exclusive
 #SBATCH --nodes=1
 #SBATCH --tasks-per-node=1

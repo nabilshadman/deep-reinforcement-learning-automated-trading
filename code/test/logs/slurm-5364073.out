@@ -1,0 +1,34 @@
+Loading pytorch/1.13.1-gpu
+  Loading requirement: nvidia/cudnn/8.6.0-cuda-11.6 nvidia/tensorrt/8.4.3.1-u2
+    gcc/8.2.0 nvidia/nvhpc-nompi/22.2 openmpi/4.1.4-cuda-11.6 python/3.10.8-gpu
+    libsndfile/1.0.28
+Action List:
+ [[0, 0, 0], [0, 0, 1], [0, 0, 2], [0, 1, 0], [0, 1, 1], [0, 1, 2], [0, 2, 0], [0, 2, 1], [0, 2, 2], [1, 0, 0], [1, 0, 1], [1, 0, 2], [1, 1, 0], [1, 1, 1], [1, 1, 2], [1, 2, 0], [1, 2, 1], [1, 2, 2], [2, 0, 0], [2, 0, 1], [2, 0, 2], [2, 1, 0], [2, 1, 1], [2, 1, 2], [2, 2, 0], [2, 2, 1], [2, 2, 2]] 
+
+Initial Observation:  [    0.         0.         0.        67.8542    60.3       28.185
+ 20000.    ]
+
+Action Taken:  26
+Reward Received :  -392.05
+Next State:  [125.     124.     124.      68.5614  60.9     28.07     5.4959]
+Completed:  False
+-------------------
+Cash:  5.5
+Total Value:  19607.95
+
+Action Taken:  13
+Reward Received :  -216.07
+Next State:  [125.     124.     124.      66.8428  60.83    28.13     5.4959]
+Completed:  False
+-------------------
+Cash:  5.5
+Total Value:  19391.89
+
+Action Taken:  0
+Reward Received :  -431.87
+Next State:  [    0.         0.         0.        66.7156    60.81      27.915
+ 18960.0189]
+Completed:  False
+-------------------
+Cash:  18960.02
+Total Value:  18960.02
