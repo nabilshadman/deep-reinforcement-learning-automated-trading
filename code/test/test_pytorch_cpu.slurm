@@ -26,5 +26,5 @@ module load pytorch
 cd $SLURM_SUBMIT_DIR
 
 # Launch the parallel job
-python test_ppo.py
+python test_dqn.py
 
