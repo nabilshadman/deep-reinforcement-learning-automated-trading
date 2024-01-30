@@ -1,0 +1,16 @@
+Loading pytorch/1.13.1-gpu
+  Loading requirement: nvidia/cudnn/8.6.0-cuda-11.6 nvidia/tensorrt/8.4.3.1-u2
+    gcc/8.2.0 nvidia/nvhpc-nompi/22.2 openmpi/4.1.4-cuda-11.6 python/3.10.8-gpu
+    libsndfile/1.0.28
+Observation:  [[-0.38135836 -0.39113843 -0.36241695 -0.97278965 -0.60125154 -1.62972816
+  10.84620834]]
+Number of Actions:  27
+Action Chosen:  22  --> Decisions: [2, 1, 1]
+Log Probability of Action:  -2.581343173980713
+Value of Action:  -0.12367517501115799
+
+Next Observation: [[ 8.97897074 -0.39113843 -0.36241695 -0.94305573 -0.43230549 -1.64649477
+  -0.18942485]]
+Reward: -390.79997999995976
+Done: False
+Info: {'cur_val': 19609.20002000004}
