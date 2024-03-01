@@ -4,7 +4,7 @@ import pandas as pd
 
 
 # define function to download equity prices from yfinance
-def download_equity_close_prices(tickers, start_date, end_date):
+def download_close_prices(tickers, start_date, end_date):
     equity_data = {}
     for ticker in tickers:
         try:
@@ -28,13 +28,13 @@ tickers = ["BA", "CAT", "CVX", "DIS", "GE", "HON", "IBM", "JNJ", "KO", "MMM",
 start_date = "1991-01-02"
 end_date = "2023-12-31"
 
-# download equity close prices
-equity_close_prices = download_equity_close_prices(tickers, start_date, end_date)
+# download close prices
+equity_close_prices = download_close_prices(tickers, start_date, end_date)
 
 # convert the dictionary into a DataFrame
 df = pd.DataFrame(equity_close_prices)
 
 # save the DataFrame to a CSV file
-df.to_csv('equities_historical_data.csv')
+df.to_csv('equities_close_prices_daily.csv')
 
-print("Equities prices saved to 'equities_historical_data.csv'")
+print("Close prices saved to 'equities_close_prices_daily.csv'")
