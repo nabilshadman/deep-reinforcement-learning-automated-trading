@@ -20,13 +20,15 @@ def download_close_prices(tickers, start_date, end_date):
 
 
 # list of tickers
-tickers = ["BA", "CAT", "CVX", "DIS", "GE", "HON", "IBM", "JNJ", "KO", "MMM",
-           "MRK", "PG", "XOM", "MCD", "AXP", "DD", "PFE", "WMT", "TRV", "INTC",
-           "JPM", "HP", "NKE", "AAPL", "HD", "AMGN", "VZ", "UNH", "MSFT", "CSCO"]
+# tickers = ["BA", "CAT", "CVX", "DIS", "GE", "HON", "IBM", "JNJ", "KO", "MMM",
+#            "MRK", "PG", "XOM", "MCD", "AXP", "DD", "PFE", "WMT", "TRV", "INTC",
+#            "JPM", "HP", "NKE", "AAPL", "HD", "AMGN", "VZ", "UNH", "MSFT", "CSCO"]
+
+tickers = ["AAPL", "JPM", "WMT"]
 
 # define start and end dates
-start_date = "1991-01-02"
-end_date = "2023-12-31"
+start_date = "2019-01-02"
+end_date = "2023-12-30"
 
 # download close prices
 equity_close_prices = download_close_prices(tickers, start_date, end_date)
