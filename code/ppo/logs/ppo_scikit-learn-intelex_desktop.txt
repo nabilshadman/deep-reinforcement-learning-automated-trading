@@ -1,0 +1,105 @@
+## WITHOUT scikit-learn-intelex ## 
+
+
+$ py ppo_trader.py -m train
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=1, bias=True)
+  )
+)
+
+episode: 1/10, episode end value: 198.52, duration: 0:00:02.466782
+episode: 2/10, episode end value: 66710.57, duration: 0:00:02.264219
+episode: 3/10, episode end value: 75486.56, duration: 0:00:02.517577
+episode: 4/10, episode end value: 75486.56, duration: 0:00:03.156821
+episode: 5/10, episode end value: 75486.56, duration: 0:00:03.320399
+episode: 6/10, episode end value: 75486.56, duration: 0:00:04.114421
+episode: 7/10, episode end value: 75486.56, duration: 0:00:03.813327
+episode: 8/10, episode end value: 75486.56, duration: 0:00:03.482374
+episode: 9/10, episode end value: 75486.56, duration: 0:00:03.491186
+episode: 10/10, episode end value: 75486.56, duration: 0:00:03.665633
+... saving models ...
+
+
+$ py ppo_trader.py -m test
+... loading models ...
+episode: 1/10, episode end value: 24738.02, duration: 0:00:00.591743
+episode: 2/10, episode end value: 26967.91, duration: 0:00:00.660591
+episode: 3/10, episode end value: 26967.91, duration: 0:00:00.626163
+episode: 4/10, episode end value: 23728.51, duration: 0:00:00.643301
+episode: 5/10, episode end value: 25144.78, duration: 0:00:00.610140
+episode: 6/10, episode end value: 19187.75, duration: 0:00:00.645600
+episode: 7/10, episode end value: 28210.04, duration: 0:00:00.636675
+episode: 8/10, episode end value: 26967.91, duration: 0:00:00.627404
+episode: 9/10, episode end value: 25877.26, duration: 0:00:00.622761
+episode: 10/10, episode end value: 23869.42, duration: 0:00:00.768789
+
+
+
+
+## WITH scikit-learn-intelex ## 
+
+
+$ py ppo_trader.py -m train
+Intel(R) Extension for Scikit-learn* enabled (https://github.com/intel/scikit-learn-intelex)
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=1, bias=True)
+  )
+)
+
+episode: 1/10, episode end value: 157.19, duration: 0:00:02.452763
+episode: 2/10, episode end value: 40580.37, duration: 0:00:02.523280
+episode: 3/10, episode end value: 31321.55, duration: 0:00:02.796047
+episode: 4/10, episode end value: 27797.66, duration: 0:00:03.813013
+episode: 5/10, episode end value: 28348.94, duration: 0:00:03.629639
+episode: 6/10, episode end value: 26581.69, duration: 0:00:03.644968
+episode: 7/10, episode end value: 20000.00, duration: 0:00:03.991823
+episode: 8/10, episode end value: 20000.00, duration: 0:00:04.318506
+episode: 9/10, episode end value: 22100.87, duration: 0:00:04.491255
+episode: 10/10, episode end value: 20000.00, duration: 0:00:03.626963
+... saving models ...
+
+
+$ py ppo_trader.py -m test
+... loading models ...
+episode: 1/10, episode end value: 20000.00, duration: 0:00:00.711526
+episode: 2/10, episode end value: 16726.32, duration: 0:00:00.640922
+episode: 3/10, episode end value: 20000.00, duration: 0:00:00.638288
+episode: 4/10, episode end value: 20000.00, duration: 0:00:00.713712
+episode: 5/10, episode end value: 20000.00, duration: 0:00:00.811092
+episode: 6/10, episode end value: 20000.00, duration: 0:00:00.692363
+episode: 7/10, episode end value: 20000.00, duration: 0:00:00.711046
+episode: 8/10, episode end value: 20000.00, duration: 0:00:00.629609
+episode: 9/10, episode end value: 20000.00, duration: 0:00:00.700569
+episode: 10/10, episode end value: 20000.00, duration: 0:00:00.975462

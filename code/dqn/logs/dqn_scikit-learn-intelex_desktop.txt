@@ -1,0 +1,77 @@
+## WITHOUT scikit-learn-intelex ## 
+
+
+$ py dqn_trader.py -m train
+Using device: cpu
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=27, bias=True)
+  )
+)
+episode: 1/10, episode end value: 1780.70, duration: 0:00:00.788102
+episode: 2/10, episode end value: 34373.97, duration: 0:00:00.864648
+episode: 3/10, episode end value: 31291.68, duration: 0:00:00.767839
+episode: 4/10, episode end value: 21469.95, duration: 0:00:00.751409
+episode: 5/10, episode end value: 25422.21, duration: 0:00:00.752409
+episode: 6/10, episode end value: 26528.50, duration: 0:00:00.738358
+episode: 7/10, episode end value: 27902.48, duration: 0:00:00.742041
+episode: 8/10, episode end value: 21903.90, duration: 0:00:00.753786
+episode: 9/10, episode end value: 22084.60, duration: 0:00:00.754948
+episode: 10/10, episode end value: 23820.36, duration: 0:00:00.755423
+
+
+$ py dqn_trader.py -m test
+episode: 1/10, episode end value: 23297.37, duration: 0:00:00.128920
+episode: 2/10, episode end value: 20148.64, duration: 0:00:00.135452
+episode: 3/10, episode end value: 18926.98, duration: 0:00:00.132804
+episode: 4/10, episode end value: 18843.35, duration: 0:00:00.133934
+episode: 5/10, episode end value: 22230.95, duration: 0:00:00.118762
+episode: 6/10, episode end value: 21033.59, duration: 0:00:00.132404
+episode: 7/10, episode end value: 21205.64, duration: 0:00:00.132765
+episode: 8/10, episode end value: 18196.81, duration: 0:00:00.135005
+episode: 9/10, episode end value: 16805.85, duration: 0:00:00.131319
+episode: 10/10, episode end value: 23682.09, duration: 0:00:00.134492
+
+
+
+
+## WITH scikit-learn-intelex ## 
+
+
+$ py dqn_trader.py -m train
+Intel(R) Extension for Scikit-learn* enabled (https://github.com/intel/scikit-learn-intelex)
+Using device: cpu
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=27, bias=True)
+  )
+)
+episode: 1/10, episode end value: 2410.75, duration: 0:00:00.845280
+episode: 2/10, episode end value: 26354.11, duration: 0:00:00.811843
+episode: 3/10, episode end value: 41463.10, duration: 0:00:00.737148
+episode: 4/10, episode end value: 45803.59, duration: 0:00:00.755078
+episode: 5/10, episode end value: 37170.07, duration: 0:00:00.753266
+episode: 6/10, episode end value: 21296.74, duration: 0:00:00.753771
+episode: 7/10, episode end value: 31721.78, duration: 0:00:00.743208
+episode: 8/10, episode end value: 40475.77, duration: 0:00:00.735544
+episode: 9/10, episode end value: 25173.96, duration: 0:00:00.770445
+episode: 10/10, episode end value: 25329.41, duration: 0:00:00.787354
+
+
+$ py dqn_trader.py -m test
+episode: 1/10, episode end value: 20813.29, duration: 0:00:00.141524
+episode: 2/10, episode end value: 22532.13, duration: 0:00:00.135487
+episode: 3/10, episode end value: 22337.30, duration: 0:00:00.132835
+episode: 4/10, episode end value: 19688.72, duration: 0:00:00.134936
+episode: 5/10, episode end value: 22195.31, duration: 0:00:00.140972
+episode: 6/10, episode end value: 20657.43, duration: 0:00:00.144908
+episode: 7/10, episode end value: 18531.97, duration: 0:00:00.136915
+episode: 8/10, episode end value: 23842.09, duration: 0:00:00.146595
+episode: 9/10, episode end value: 15984.67, duration: 0:00:00.131276
+episode: 10/10, episode end value: 25210.19, duration: 0:00:00.149643
