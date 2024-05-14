@@ -15,9 +15,9 @@ import pickle
 
 from sklearn.preprocessing import StandardScaler
 
-
+# import dlprof pytorch nvtx package
 import nvidia_dlprof_pytorch_nvtx
-nvidia_dlprof_pytorch_nvtx.init()
+nvidia_dlprof_pytorch_nvtx.init() # enable dlprof pytorch nvtx
 
 
 # Let's use AAPL (Apple), MSI (Motorola), SBUX (Starbucks)
@@ -379,15 +379,14 @@ def play_one_episode(agent, env, is_train):
   state = scaler.transform([state])
   done = False
 
-  with torch.autograd.profiler.emit_nvtx():
-    while not done:
-      action = agent.act(state)
-      next_state, reward, done, info = env.step(action)
-      next_state = scaler.transform([next_state])
-      if is_train == 'train':
-        agent.update_replay_memory(state, action, reward, next_state, done)
-        agent.replay(batch_size)
-      state = next_state
+  while not done:
+    action = agent.act(state)
+    next_state, reward, done, info = env.step(action)
+    next_state = scaler.transform([next_state])
+    if is_train == 'train':
+      agent.update_replay_memory(state, action, reward, next_state, done)
+      agent.replay(batch_size)
+    state = next_state
 
   return info['cur_val']
 
@@ -463,11 +462,13 @@ if __name__ == '__main__':
 
   # play the game num_episodes times
   for e in range(num_episodes):
-    t0 = datetime.now()
-    val = play_one_episode(agent, env, args.mode)
-    dt = datetime.now() - t0
-    print(f"episode: {e + 1}/{num_episodes}, episode end value: {val:.2f}, duration: {dt}")
-    portfolio_value.append(val) # append episode end portfolio value
+    # run training loop with pytorch nvtx context manager
+    with torch.autograd.profiler.emit_nvtx():
+      t0 = datetime.now()
+      val = play_one_episode(agent, env, args.mode)
+      dt = datetime.now() - t0
+      print(f"episode: {e + 1}/{num_episodes}, episode end value: {val:.2f}, duration: {dt}")
+      portfolio_value.append(val) # append episode end portfolio value
 
   # save the weights when we are done
   if args.mode == 'train':
