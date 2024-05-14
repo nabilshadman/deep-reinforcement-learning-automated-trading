@@ -4,7 +4,7 @@
 #SBATCH --partition=gpu
 #SBATCH --qos=gpu
 #SBATCH --gres=gpu:1
-#SBATCH --time=00:10:00
+#SBATCH --time=00:20:00
 
 # Replace [budget code] below with your project code (e.g. t01)
 #SBATCH --account=mdisspt-s2134758
@@ -23,4 +23,5 @@ conda activate env-pytorch-1.13.1-gpu
 cd $SLURM_SUBMIT_DIR
 
 # Launch the job
-dlprof --mode=pytorch python dqn_trader_dlprof.py -m train
+dlprof --mode=pytorch --delay=3 --reports=summary,detail,iteration,kernel,tensor --output_path=./dlprof_output python dqn_trader_dlprof.py -m train
+
