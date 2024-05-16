@@ -1,0 +1,39 @@
+Loading python/3.10.8-gpu
+  Loading requirement: nvidia/nvhpc-nompi/22.2 gcc/10.2.0
+    openmpi/4.1.6-cuda-11.6
+[DLProf-07:57:41] Creating Nsys Scheduler
+[DLProf-07:57:43] RUNNING: nsys profile -t cuda,nvtx -s none --show-output=true --force-overwrite=true --delay=3 --export=sqlite -o ./dlprof_output/nsys_profile python dqn_trader_dlprof.py -m train
+Collecting data...
+/work/mdisspt/mdisspt/n2134758/condaenvs/envs/env-pytorch-1.13.1-gpu/lib/python3.10/site-packages/torch/distributed/distributed_c10d.py:262: UserWarning: torch.distributed.reduce_op is deprecated, please use torch.distributed.ReduceOp instead
+  warnings.warn(
+/work/mdisspt/mdisspt/n2134758/condaenvs/envs/env-pytorch-1.13.1-gpu/lib/python3.10/site-packages/torch/cuda/memory.py:395: FutureWarning: torch.cuda.memory_cached has been renamed to torch.cuda.memory_reserved
+  warnings.warn(
+Initializing NVTX monkey patches
+Done with NVTX monkey patching
+Using device: cuda
+
+Tesla V100-SXM2-16GB
+Memory Usage:
+Allocated: 0.0 GB
+Cached:    0.0 GB
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=27, bias=True)
+  )
+)
+episode: 1/2, episode end value: 3580.59, duration: 0:01:21.024939
+episode: 2/2, episode end value: 31360.30, duration: 0:01:23.584286
+Processing events...
+Capturing symbol files...
+Saving temporary "/dev/shm/n2134758_5672113/nsys-report-f1d3-7ebf-3a94-7a55.qdstrm" file to disk...
+
+Creating final output files...
+Import error: The importation timed out.
+Skipping import of the QDSTRM file.
+Report file moved to "/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/./dlprof_output/nsys_profile.qdstrm"
+
+[DLProf-08:02:02] DLprof completed system call successfully
+[DLProf-08:02:03] Error Occurred:
+[DLProf-08:02:03] unable to open database file, file=<./dlprof_output/nsys_profile.sqlite>

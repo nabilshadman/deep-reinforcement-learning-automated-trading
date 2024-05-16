@@ -1,0 +1,46 @@
+Loading python/3.10.8-gpu
+  Loading requirement: nvidia/nvhpc-nompi/22.2 gcc/10.2.0
+    openmpi/4.1.6-cuda-11.6
+[DLProf-07:51:29] Creating Nsys Scheduler
+[DLProf-07:51:31] RUNNING: nsys profile -t cuda,nvtx -s none --show-output=true --force-overwrite=true --delay=3 --export=sqlite -o ./dlprof_output/nsys_profile python ppo_trader_dlprof.py -m train
+Collecting data...
+/work/mdisspt/mdisspt/n2134758/condaenvs/envs/env-pytorch-1.13.1-gpu/lib/python3.10/site-packages/torch/distributed/distributed_c10d.py:262: UserWarning: torch.distributed.reduce_op is deprecated, please use torch.distributed.ReduceOp instead
+  warnings.warn(
+Initializing NVTX monkey patches
+Done with NVTX monkey patching
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=1, bias=True)
+  )
+) 
+
+episode: 1/2, episode end value: 44.90, duration: 0:01:43.637567
+episode: 2/2, episode end value: 91.35, duration: 0:01:30.988683
+... saving models ...
+Processing events...
+Capturing symbol files...
+Saving temporary "/dev/shm/n2134758_5672085/nsys-report-f1b8-8477-0ac7-7715.qdstrm" file to disk...
+
+Creating final output files...
+Import error: The importation timed out.
+Skipping import of the QDSTRM file.
+Report file moved to "/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/ppo/./dlprof_output/nsys_profile.qdstrm"
+
+[DLProf-07:57:25] DLprof completed system call successfully
+[DLProf-07:57:25] Error Occurred:
+[DLProf-07:57:25] unable to open database file, file=<./dlprof_output/nsys_profile.sqlite>

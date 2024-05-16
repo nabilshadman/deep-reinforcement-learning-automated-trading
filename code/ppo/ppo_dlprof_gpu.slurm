@@ -23,4 +23,4 @@ conda activate env-pytorch-1.13.1-gpu
 cd $SLURM_SUBMIT_DIR
 
 # Launch the job
-dlprof --mode=pytorch --delay=3 --reports=summary,detail,iteration --output_path=./dlprof_output python ppo_trader_dlprof.py -m train
+dlprof --mode=pytorch --delay=3 --reports=summary,detail,iteration --output_path=./dlprof_output --force=true python ppo_trader_dlprof.py -m train
