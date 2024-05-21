@@ -29,5 +29,6 @@ conda activate env-pytorch-1.13.1-gpu
 cd $SLURM_SUBMIT_DIR
 
 # Launch the job
-dlprof --mode=simple --reports=summary python dqn_trader.py -m train
+# dlprof --mode=simple --reports=summary python dqn_trader.py -m train
+srun -n 1 nsys profile --delay=3 -o prof1 python dqn_trader.py -m train
 

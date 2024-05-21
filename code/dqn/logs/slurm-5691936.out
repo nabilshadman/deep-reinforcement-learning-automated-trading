@@ -1,0 +1,32 @@
+Loading python/3.10.8-gpu
+  Loading requirement: nvidia/nvhpc-nompi/22.2 gcc/10.2.0
+    openmpi/4.1.6-cuda-11.6
+Collecting data...
+Using device: cpu
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=27, bias=True)
+  )
+)
+episode: 1/10, episode end value: 3070.21, duration: 0:00:02.333997
+episode: 2/10, episode end value: 24854.83, duration: 0:00:00.796885
+episode: 3/10, episode end value: 38473.90, duration: 0:00:00.796701
+episode: 4/10, episode end value: 25273.64, duration: 0:00:00.797196
+episode: 5/10, episode end value: 30330.27, duration: 0:00:00.797554
+episode: 6/10, episode end value: 38761.90, duration: 0:00:00.796720
+episode: 7/10, episode end value: 30119.58, duration: 0:00:00.797017
+episode: 8/10, episode end value: 35929.39, duration: 0:00:00.796538
+episode: 9/10, episode end value: 36525.59, duration: 0:00:00.795517
+episode: 10/10, episode end value: 30834.47, duration: 0:00:00.798405
+Processing events...
+Capturing symbol files...
+Saving temporary "/dev/shm/n2134758_5691936/nsys-report-fb94-9009-6134-3292.qdstrm" file to disk...
+
+Creating final output files...
+Import error: The importation timed out.
+Skipping import of the QDSTRM file.
+Report file moved to "/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/prof1.qdstrm"
+

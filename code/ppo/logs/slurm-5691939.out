@@ -1,0 +1,37 @@
+Loading python/3.10.8-gpu
+  Loading requirement: nvidia/nvhpc-nompi/22.2 gcc/10.2.0
+    openmpi/4.1.6-cuda-11.6
+Collecting data...
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=1, bias=True)
+  )
+) 
+
+episode: 1/2, episode end value: 82.16, duration: 0:00:04.281940
+episode: 2/2, episode end value: 109.89, duration: 0:00:02.228798
+... saving models ...
+Processing events...
+Capturing symbol files...
+Saving temporary "/dev/shm/n2134758_5691939/nsys-report-495b-f1e2-e9a4-5d4b.qdstrm" file to disk...
+
+Creating final output files...
+Import error: The importation timed out.
+Skipping import of the QDSTRM file.
+Report file moved to "/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/ppo/prof1.qdstrm"
+

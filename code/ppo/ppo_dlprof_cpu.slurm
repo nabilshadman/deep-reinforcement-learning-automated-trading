@@ -1,13 +1,19 @@
 #!/bin/bash
-#
-#SBATCH --job-name=ppo-dlprof-gpu
-#SBATCH --partition=gpu
-#SBATCH --qos=gpu
-#SBATCH --gres=gpu:1
-#SBATCH --time=00:20:00
 
-# Replace [budget code] below with your project code (e.g. t01)
+# Slurm job options (name, compute nodes, job time)
+#SBATCH --job-name=ppo-nsys-cpu
+#SBATCH --time=0:20:0
+#SBATCH --exclusive
+#SBATCH --nodes=1
+#SBATCH --tasks-per-node=1
+#SBATCH --cpus-per-task=36
+
+# Replace [budget code] below with your budget code (e.g. dc116-s1234567)
 #SBATCH --account=mdisspt-s2134758
+# We use the "standard" partition as we are running on CPU nodes
+#SBATCH --partition=standard
+# We use the "standard" QoS as our runtime is more than 20 mins 
+#SBATCH --qos=standard
 
 # Load the required modules
 module load python/3.10.8-gpu
