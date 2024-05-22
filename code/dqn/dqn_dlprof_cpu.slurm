@@ -30,5 +30,6 @@ cd $SLURM_SUBMIT_DIR
 
 # Launch the job
 # dlprof --mode=simple --reports=summary python dqn_trader.py -m train
-srun -n 1 nsys profile --delay=3 -o prof1 python dqn_trader.py -m train
+# srun -n 1 nsys profile --delay=3 -o prof1 python dqn_trader.py -m train
+python dqn_trader_tensorboard.py -m train
 
