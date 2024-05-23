@@ -480,8 +480,8 @@ if __name__ == '__main__':
     print(f"episode: {e + 1}/{num_episodes}, episode end value: {val:.2f}, duration: {dt}")
     portfolio_value.append(val) # append episode end portfolio value
     # log to tensorBoard
-    writer.add_scalar('time', dt.total_seconds(), e)
-    writer.add_scalar('portfolio_value', val, e)
+    writer.add_scalar('Time (seconds)', dt.total_seconds(), e)
+    writer.add_scalar('Portfolio Value (USD)', val, e)
 
 
   # measure cpu memory usage
@@ -489,14 +489,14 @@ if __name__ == '__main__':
   memory_info = process.memory_info()
   memory_usage = memory_info.rss / (1024 ** 2)  # Convert to MB
   print(f"\nCPU Memory Usage: {memory_usage} MB")
-  writer.add_scalar('CPU Memory Usage', memory_usage)
+  writer.add_scalar('Used CPU Memory (MB)', memory_usage)
 
   # measure gpu utilisation and memory usage (if using gpu)
   if torch.cuda.is_available():
       handle = pynvml.nvmlDeviceGetHandleByIndex(0)  # assuming single gpu
       gpu_utilisation = pynvml.nvmlDeviceGetUtilizationRates(handle).gpu
       print(f"GPU Utilisation: {gpu_utilisation} %")
-      writer.add_scalar('GPU Utilisation', gpu_utilisation)
+      writer.add_scalar('GPU Utilisation (%)', gpu_utilisation)
       
       memory_info = pynvml.nvmlDeviceGetMemoryInfo(handle)
       total_memory = memory_info.total / (1024 ** 2)  # convert to MB
@@ -505,8 +505,8 @@ if __name__ == '__main__':
       print(f"Total GPU Memory: {total_memory} MB")
       print(f"Used GPU Memory: {used_memory} MB")
       
-      writer.add_scalar('Total GPU Memory', total_memory)
-      writer.add_scalar('Used GPU Memory', used_memory)
+      writer.add_scalar('Total GPU Memory (MB)', total_memory)
+      writer.add_scalar('Used GPU Memory (MB)', used_memory)
 
 
   # close nvml
@@ -514,6 +514,7 @@ if __name__ == '__main__':
 
   # close tensorboard writer
   writer.close()
+
 
   # save the weights when we are done
   if args.mode == 'train':

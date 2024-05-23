@@ -24,5 +24,5 @@ cd $SLURM_SUBMIT_DIR
 
 # Launch the job
 # dlprof --mode=pytorch --delay=3 --reports=summary,detail,iteration --output_path=./dlprof_output --force=true python ppo_trader_dlprof.py -m train
-srun -n 1 nsys profile --delay=3 -o prof1 python ppo_trader.py -m train
-
+# srun -n 1 nsys profile --delay=3 -o prof1 python ppo_trader.py -m train
+python ppo_trader_tensorboard.py -m train
