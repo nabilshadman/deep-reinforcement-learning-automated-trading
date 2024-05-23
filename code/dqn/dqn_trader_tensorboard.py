@@ -418,7 +418,7 @@ if __name__ == '__main__':
   writer = SummaryWriter(log_dir='tensorboard_runs')
   
   # initialise nvml
-  # pynvml.nvmlInit()
+  pynvml.nvmlInit()
 
 
   # config
@@ -510,7 +510,7 @@ if __name__ == '__main__':
 
 
   # close nvml
-  # pynvml.nvmlShutdown()
+  pynvml.nvmlShutdown()
 
   # close tensorboard writer
   writer.close()
