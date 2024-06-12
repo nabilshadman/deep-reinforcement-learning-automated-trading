@@ -8,7 +8,7 @@
 #SBATCH --gres=gpu:1
 
 # Replace [budget code] below with your project code (e.g. t01)
-#SBATCH --account=m22ol-s2134758
+#SBATCH --account=mdisspt-s2134758
 
 # Load the required modules
 module load gcc
