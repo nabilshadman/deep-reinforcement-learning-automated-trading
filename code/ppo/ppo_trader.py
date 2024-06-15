@@ -16,6 +16,10 @@ import pickle
 from sklearn.preprocessing import StandardScaler
 
 
+# Set up device
+device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+
+
 # Let's use AAPL (Apple), MSI (Motorola), SBUX (Starbucks)
 def get_data():
   # returns a T x 3 list of stock prices
@@ -29,7 +33,7 @@ def get_data():
 
 def get_scaler(env):
   # return scikit-learn scaler object to scale the states
-  # Note: you could also populate the replay buffer here
+  # note: you could also populate the replay buffer here
 
   states = []
   for _ in range(env.n_step):
@@ -311,14 +315,12 @@ class MultiStockEnv:
 
     self.reset()
 
-
   def reset(self):
     self.cur_step = 0
     self.stock_owned = np.zeros(self.n_stock)
     self.stock_price = self.stock_price_history[self.cur_step]
     self.cash_in_hand = self.initial_investment
     return self._get_obs()
-
 
   def step(self, action):
     assert action in self.action_space
@@ -348,7 +350,6 @@ class MultiStockEnv:
     # conform to the Gym API
     return self._get_obs(), reward, done, info
 
-
   def _get_obs(self):
     obs = np.empty(self.state_dim)
     obs[:self.n_stock] = self.stock_owned
@@ -356,11 +357,8 @@ class MultiStockEnv:
     obs[-1] = self.cash_in_hand
     return obs
     
-
-
   def _get_val(self):
     return self.stock_owned.dot(self.stock_price) + self.cash_in_hand
-
 
   def _trade(self, action):
     # index the action we want to perform
@@ -453,10 +451,10 @@ if __name__ == '__main__':
   rewards_folder = 'rl_trader_rewards'
   N = 20
   batch_size = 32
-  num_episodes = 2
+  num_episodes = 4
   alpha = 0.0003
   initial_investment = 20000
-  transaction_cost_rate=0.02
+  transaction_cost_rate = 0.02
 
   parser = argparse.ArgumentParser()
   parser.add_argument('-m', '--mode', type=str, required=True,
@@ -470,7 +468,6 @@ if __name__ == '__main__':
   n_timesteps, n_stocks = data.shape
 
   n_train = n_timesteps // 2
-
   train_data = data[:n_train]
   test_data = data[n_train:]
 
@@ -506,8 +503,7 @@ if __name__ == '__main__':
     # load trained weights
     agent.load_models()
 
-
-  # set some variables
+  # set counters for iterations and steps
   learn_iters = 0
   n_steps = 0
 
@@ -528,7 +524,6 @@ if __name__ == '__main__':
     # save the scaler
     with open(f'{models_folder}/scaler.pkl', 'wb') as f:
       pickle.dump(scaler, f)
-
 
   # save portfolio value for each episode
   np.save(f'{rewards_folder}/{args.mode}.npy', portfolio_value)

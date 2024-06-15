@@ -12,15 +12,8 @@ import re
 import os
 import pickle
 
+
 from sklearn.preprocessing import StandardScaler
-
-# import additional packages to log metrics
-# import psutil
-import pynvml
-
-
-# Set up device
-device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
 
 # Let's use AAPL (Apple), MSI (Motorola), SBUX (Starbucks)
@@ -107,9 +100,6 @@ class MLP(nn.Module):
     self.layers.append(nn.Linear(M, n_action))
     self.layers = nn.Sequential(*self.layers)
 
-    # Move the model to the device
-    self.to(device)
-
   def forward(self, X):
     return self.layers(X)
 
@@ -120,22 +110,22 @@ class MLP(nn.Module):
     self.load_state_dict(torch.load(path))
 
 
+
+
 def predict(model, np_states):
   with torch.no_grad():
-    # Ensure model is on the correct device
-    model.to(device)
-    # Convert numpy array to torch tensor and move it to the device
-    inputs = torch.from_numpy(np_states.astype(np.float32)).to(device) 
+    inputs = torch.from_numpy(np_states.astype(np.float32))
     output = model(inputs)
     #print("output:", output)
-    # Transfer predictions back to CPU for NumPy operations
-    return output.cpu().numpy()
+    return output.numpy()
+
+
 
 
 def train_one_step(model, criterion, optimizer, inputs, targets):
   # convert to tensors
-  inputs = torch.from_numpy(inputs.astype(np.float32)).to(device)
-  targets = torch.from_numpy(targets.astype(np.float32)).to(device)
+  inputs = torch.from_numpy(inputs.astype(np.float32))
+  targets = torch.from_numpy(targets.astype(np.float32))
 
   # zero the parameter gradients
   optimizer.zero_grad()
@@ -313,7 +303,7 @@ class DQNAgent(object):
     self.epsilon = 1.0  # exploration rate
     self.epsilon_min = 0.01
     self.epsilon_decay = 0.995
-    self.model = MLP(state_size, action_size).to(device) # initialize model and move it to device
+    self.model = MLP(state_size, action_size)
 
     # Loss and optimizer
     self.criterion = nn.MSELoss()
@@ -403,24 +393,22 @@ if __name__ == '__main__':
 
   # log device info
   # setting device on GPU if available, else CPU
-  # device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-  # print('Using device:', device)
-  # print()
+  device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+  print('Using device:', device)
+  print()
 
   # additional info when using cuda
-  # if device.type == 'cuda':
-  #     print(torch.cuda.get_device_name(0))
-  #     print('Memory Usage:')
-  #     print('Allocated:', round(torch.cuda.memory_allocated(0)/1024**3,1), 'GB')
-  #     print('Cached:   ', round(torch.cuda.memory_cached(0)/1024**3,1), 'GB')
+  if device.type == 'cuda':
+      print(torch.cuda.get_device_name(0))
+      print('Memory Usage:')
+      print('Allocated:', round(torch.cuda.memory_allocated(0)/1024**3,1), 'GB')
+      print('Cached:   ', round(torch.cuda.memory_cached(0)/1024**3,1), 'GB')
 
-  # initialise nvml
-  pynvml.nvmlInit()
-
+  
   # config
   models_folder = 'rl_trader_models'
   rewards_folder = 'rl_trader_rewards'
-  num_episodes = 2
+  num_episodes = 10
   batch_size = 32
   initial_investment = 20000
   transaction_cost_rate = 0.02
@@ -475,27 +463,6 @@ if __name__ == '__main__':
     dt = datetime.now() - t0
     print(f"episode: {e + 1}/{num_episodes}, episode end value: {val:.2f}, duration: {dt}")
     portfolio_value.append(val) # append episode end portfolio value
-
-  # measure gpu utilisation and memory usage (if using gpu)
-  if torch.cuda.is_available():
-      handle = pynvml.nvmlDeviceGetHandleByIndex(0)  # assuming single gpu
-      gpu_utilisation = pynvml.nvmlDeviceGetUtilizationRates(handle).gpu
-      print(f"GPU Utilisation: {gpu_utilisation} %")
-      # writer.add_scalar('GPU Utilisation (%)', gpu_utilisation)
-      
-      memory_info = pynvml.nvmlDeviceGetMemoryInfo(handle)
-      total_memory = memory_info.total / (1024 ** 2)  # convert to MB
-      used_memory = memory_info.used / (1024 ** 2)  # convert to MB
-      
-      print(f"Total GPU Memory: {total_memory} MB")
-      print(f"Used GPU Memory: {used_memory} MB")
-      
-      # writer.add_scalar('Total GPU Memory (MB)', total_memory)
-      # writer.add_scalar('Used GPU Memory (MB)', used_memory)
-
-
-  # close nvml
-  pynvml.nvmlShutdown()
 
   # save the weights when we are done
   if args.mode == 'train':
