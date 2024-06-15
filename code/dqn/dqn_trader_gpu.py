@@ -12,11 +12,15 @@ import re
 import os
 import pickle
 
-
 from sklearn.preprocessing import StandardScaler
 
+# import additional packages to log metrics
+# import psutil
+import pynvml
+
+
 # Set up device
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
 
 # Let's use AAPL (Apple), MSI (Motorola), SBUX (Starbucks)
@@ -410,11 +414,13 @@ if __name__ == '__main__':
   #     print('Allocated:', round(torch.cuda.memory_allocated(0)/1024**3,1), 'GB')
   #     print('Cached:   ', round(torch.cuda.memory_cached(0)/1024**3,1), 'GB')
 
-  
+  # initialise nvml
+  pynvml.nvmlInit()
+
   # config
   models_folder = 'rl_trader_models'
   rewards_folder = 'rl_trader_rewards'
-  num_episodes = 10
+  num_episodes = 2
   batch_size = 32
   initial_investment = 20000
   transaction_cost_rate = 0.02
@@ -469,6 +475,27 @@ if __name__ == '__main__':
     dt = datetime.now() - t0
     print(f"episode: {e + 1}/{num_episodes}, episode end value: {val:.2f}, duration: {dt}")
     portfolio_value.append(val) # append episode end portfolio value
+
+  # measure gpu utilisation and memory usage (if using gpu)
+  if torch.cuda.is_available():
+      handle = pynvml.nvmlDeviceGetHandleByIndex(0)  # assuming single gpu
+      gpu_utilisation = pynvml.nvmlDeviceGetUtilizationRates(handle).gpu
+      print(f"GPU Utilisation: {gpu_utilisation} %")
+      # writer.add_scalar('GPU Utilisation (%)', gpu_utilisation)
+      
+      memory_info = pynvml.nvmlDeviceGetMemoryInfo(handle)
+      total_memory = memory_info.total / (1024 ** 2)  # convert to MB
+      used_memory = memory_info.used / (1024 ** 2)  # convert to MB
+      
+      print(f"Total GPU Memory: {total_memory} MB")
+      print(f"Used GPU Memory: {used_memory} MB")
+      
+      # writer.add_scalar('Total GPU Memory (MB)', total_memory)
+      # writer.add_scalar('Used GPU Memory (MB)', used_memory)
+
+
+  # close nvml
+  pynvml.nvmlShutdown()
 
   # save the weights when we are done
   if args.mode == 'train':

@@ -1,24 +1,28 @@
 #!/bin/bash
 #
-#SBATCH --job-name=dqn-pytorch-gpu
+#SBATCH --job-name=dqn-gpu
 #SBATCH --partition=gpu
 #SBATCH --qos=gpu
 #SBATCH --gres=gpu:1
 #SBATCH --time=00:20:00
 
 # Replace [budget code] below with your project code (e.g. t01)
-#SBATCH --account=m22ol-s2134758
+#SBATCH --account=mdisspt-s2134758
 
 # Load the required modules
-# module load pytorch
+module load python/3.10.8-gpu
 
-# Load miniconda environment (if needed)
-source /work/m22ol/m22ol/t2134758/miniconda-init.sh
-conda activate pt
+# Load conda environment
+CONDA_ROOT=/work/mdisspt/mdisspt/n2134758/condaenvs
+export CONDARC=${CONDA_ROOT}/.condarc
+eval "$(conda shell.bash hook)"
+
+conda activate env-pytorch-1.13.1-gpu
 
 # Change to the submission directory
 cd $SLURM_SUBMIT_DIR
 
-# Launch the parallel job
-python rl_trader_prof.py -m train
-
+# Launch the job
+# dlprof --mode=pytorch --delay=3 --reports=summary,detail,iteration --output_path=./dlprof_output --force=true python dqn_trader_dlprof.py -m train
+# srun -n 1 nsys profile --delay=3 -o prof1 python dqn_trader.py -m train
+python dqn_trader_gpu.py -m train
