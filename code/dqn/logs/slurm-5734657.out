@@ -1,0 +1,15 @@
+Loading python/3.10.8-gpu
+  Loading requirement: nvidia/nvhpc-nompi/22.2 gcc/10.2.0
+    openmpi/4.1.6-cuda-11.6
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=27, bias=True)
+  )
+)
+episode: 1/2, episode end value: 2382.34, duration: 0:00:09.947817
+episode: 2/2, episode end value: 22714.66, duration: 0:00:01.085307
+GPU Utilisation: 12 %
+Total GPU Memory: 16384.0 MB
+Used GPU Memory: 1177.3125 MB
