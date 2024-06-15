@@ -1,0 +1,69 @@
+Loading python/3.10.8-gpu
+  Loading requirement: nvidia/nvhpc-nompi/22.2 gcc/10.2.0
+    openmpi/4.1.6-cuda-11.6
+
+ ==================== 
+
+PPO Trader - Training Mode
+
+ ==================== 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=1, bias=True)
+  )
+) 
+
+episode: 1/4, episode end value: 80.70, duration: 0:00:03.170115
+episode: 2/4, episode end value: 127.05, duration: 0:00:01.964583
+episode: 3/4, episode end value: 201.76, duration: 0:00:01.940417
+episode: 4/4, episode end value: 8278.89, duration: 0:00:02.009137
+... saving models ...
+
+ ==================== 
+
+PPO Trader - Testing Mode
+
+ ==================== 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=1, bias=True)
+  )
+) 
+
+... loading models ...
+episode: 1/4, episode end value: 4856.58, duration: 0:00:00.528401
+episode: 2/4, episode end value: 2982.12, duration: 0:00:00.544452
+episode: 3/4, episode end value: 1922.90, duration: 0:00:00.560353
+episode: 4/4, episode end value: 3854.73, duration: 0:00:00.584476
