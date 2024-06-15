@@ -461,6 +461,13 @@ if __name__ == '__main__':
                       help='either "train" or "test"')
   args = parser.parse_args()
 
+  # determine the mode string and formatting
+  mode_str = "Training Mode" if args.mode == "train" else "Testing Mode"
+  # print with visual separation
+  print("\n", "=" * 20, "\n")  # top separator
+  print(f"PPO Trader - {mode_str}")
+  print("\n", "=" * 20, "\n")  # bottom separator
+
   maybe_make_dir(models_folder)
   maybe_make_dir(rewards_folder)
 

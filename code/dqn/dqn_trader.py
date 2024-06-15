@@ -341,13 +341,15 @@ class DQNAgent(object):
       self.epsilon *= self.epsilon_decay
 
   def load(self, name):
+    print('... loading models ...')
     self.model.load_weights(name)
 
   def save(self, name):
+    print('... saving models ...')
     self.model.save_weights(name)
 
   def print_model_summary(self):
-    print(self.model)
+    print(self.model, "\n")
 
 
 def play_one_episode(agent, env, is_train):
@@ -395,6 +397,13 @@ if __name__ == '__main__':
   parser.add_argument('-m', '--mode', type=str, required=True,
                       help='either "train" or "test"')
   args = parser.parse_args()
+
+  # determine the mode string and formatting
+  mode_str = "Training Mode" if args.mode == "train" else "Testing Mode"
+  # print with visual separation
+  print("\n", "=" * 20, "\n")  # top separator
+  print(f"DQN Trader - {mode_str}")
+  print("\n", "=" * 20, "\n")  # bottom separator
 
   maybe_make_dir(models_folder)
   maybe_make_dir(rewards_folder)
