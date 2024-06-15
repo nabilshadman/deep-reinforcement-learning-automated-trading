@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#SBATCH --job-name=dqn-gpu
+#SBATCH --job-name=ppo-gpu
 #SBATCH --partition=gpu
 #SBATCH --qos=gpu
 #SBATCH --gres=gpu:1
@@ -23,6 +23,6 @@ conda activate env-pytorch-1.13.1-gpu
 cd $SLURM_SUBMIT_DIR
 
 # Launch the job
-# dlprof --mode=pytorch --delay=3 --reports=summary,detail,iteration --output_path=./dlprof_output --force=true python dqn_trader_dlprof.py -m train
-# srun -n 1 nsys profile --delay=3 -o prof1 python dqn_trader.py -m train
-python dqn_trader_gpu.py -m train
+# dlprof --mode=pytorch --delay=3 --reports=summary,detail,iteration --output_path=./dlprof_output --force=true python ppo_trader_dlprof.py -m train
+# srun -n 1 nsys profile --delay=3 -o prof1 python ppo_trader.py -m train
+python ppo_trader.py -m train

@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Slurm job options (name, compute nodes, job time)
-#SBATCH --job-name=dqn-pytorch-cpu
-#SBATCH --time=0:40:0
+#SBATCH --job-name=dqn-cpu
+#SBATCH --time=0:20:0
 #SBATCH --exclusive
 #SBATCH --nodes=1
 #SBATCH --tasks-per-node=1
@@ -15,17 +15,20 @@
 # We use the "standard" QoS as our runtime is more than 20 mins 
 #SBATCH --qos=standard
 
-# Load required modules
-module load pytorch
+# Load the required modules
+module load python/3.10.8-gpu
 
-# Load miniconda environment (if needed)
-#source /work/m22ol/m22ol/t2134758/miniconda-init.sh
-#conda activate pt
+# Load conda environment
+CONDA_ROOT=/work/mdisspt/mdisspt/n2134758/condaenvs
+export CONDARC=${CONDA_ROOT}/.condarc
+eval "$(conda shell.bash hook)"
+
+conda activate env-pytorch-1.13.1-gpu
 
 # Change to the submission directory
 cd $SLURM_SUBMIT_DIR
 
-# Launch the parallel job
+# Launch the job
+# dlprof --mode=pytorch --delay=3 --reports=summary,detail,iteration --output_path=./dlprof_output --force=true python dqn_trader_dlprof.py -m train
+# srun -n 1 nsys profile --delay=3 -o prof1 python dqn_trader.py -m train
 python dqn_trader.py -m train
-python dqn_trader.py -m test
-
