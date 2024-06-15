@@ -15,6 +15,9 @@ import pickle
 
 from sklearn.preprocessing import StandardScaler
 
+# Set up device
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
 
 # Let's use AAPL (Apple), MSI (Motorola), SBUX (Starbucks)
 def get_data():
@@ -23,7 +26,7 @@ def get_data():
   # 0 = AAPL
   # 1 = MSI
   # 2 = SBUX
-  df = pd.read_csv('equities_historical_data.csv')
+  df = pd.read_csv('equities_close_prices_daily.csv')
   return df.values
 
 
@@ -100,6 +103,9 @@ class MLP(nn.Module):
     self.layers.append(nn.Linear(M, n_action))
     self.layers = nn.Sequential(*self.layers)
 
+    # Move the model to the device
+    self.to(device)
+
   def forward(self, X):
     return self.layers(X)
 
@@ -110,28 +116,28 @@ class MLP(nn.Module):
     self.load_state_dict(torch.load(path))
 
 
-
-
 def predict(model, np_states):
   with torch.no_grad():
-    inputs = torch.from_numpy(np_states.astype(np.float32)).to(device) # transfer to gpu
-    output = model(inputs).cpu() # transfer to cpu
+    # Ensure model is on the correct device
+    model.to(device)
+    # Convert numpy array to torch tensor and move it to the device
+    inputs = torch.from_numpy(np_states.astype(np.float32)).to(device) 
+    output = model(inputs)
     #print("output:", output)
-    return output.numpy()
-
-
+    # Transfer predictions back to CPU for NumPy operations
+    return output.cpu().numpy()
 
 
 def train_one_step(model, criterion, optimizer, inputs, targets):
   # convert to tensors
-  inputs = torch.from_numpy(inputs.astype(np.float32)).to(device) # transfer to gpu
-  targets = torch.from_numpy(targets.astype(np.float32))
+  inputs = torch.from_numpy(inputs.astype(np.float32)).to(device)
+  targets = torch.from_numpy(targets.astype(np.float32)).to(device)
 
   # zero the parameter gradients
   optimizer.zero_grad()
 
   # Forward pass
-  outputs = model(inputs).cpu() # transfer to cpu
+  outputs = model(inputs)
   loss = criterion(outputs, targets)
         
   # Backward and optimize
@@ -158,13 +164,14 @@ class MultiStockEnv:
     - 1 = hold
     - 2 = buy
   """
-  def __init__(self, data, initial_investment=20000):
+  def __init__(self, data, initial_investment=20000, transaction_cost_rate=0.02):
     # data
     self.stock_price_history = data
     self.n_step, self.n_stock = self.stock_price_history.shape
 
     # instance attributes
     self.initial_investment = initial_investment
+    self.transaction_cost_rate = transaction_cost_rate
     self.cur_step = None
     self.stock_owned = None
     self.stock_price = None
@@ -266,7 +273,12 @@ class MultiStockEnv:
     if sell_index:
       # NOTE: to simplify the problem, when we sell, we will sell ALL shares of that stock
       for i in sell_index:
-        self.cash_in_hand += self.stock_price[i] * self.stock_owned[i]
+        # self.cash_in_hand += self.stock_price[i] * self.stock_owned[i]
+        # self.stock_owned[i] = 0
+        # Deduct transaction costs when selling
+        total_sell_value = self.stock_price[i] * self.stock_owned[i]
+        transaction_costs = total_sell_value * self.transaction_cost_rate
+        self.cash_in_hand += (total_sell_value - transaction_costs)
         self.stock_owned[i] = 0
     if buy_index:
       # NOTE: when buying, we will loop through each stock we want to buy,
@@ -274,9 +286,14 @@ class MultiStockEnv:
       can_buy = True
       while can_buy:
         for i in buy_index:
-          if self.cash_in_hand > self.stock_price[i]:
-            self.stock_owned[i] += 1 # buy one share
-            self.cash_in_hand -= self.stock_price[i]
+          if self.cash_in_hand > (self.stock_price[i] 
+                                  + self.stock_price[i] 
+                                  * self.transaction_cost_rate):
+            # self.stock_owned[i] += 1 # buy one share
+            # self.cash_in_hand -= self.stock_price[i]
+            # Deduct transaction costs when buying
+            self.stock_owned[i] += 1
+            self.cash_in_hand -= (self.stock_price[i] + self.stock_price[i] * self.transaction_cost_rate)
           else:
             can_buy = False
 
@@ -292,8 +309,7 @@ class DQNAgent(object):
     self.epsilon = 1.0  # exploration rate
     self.epsilon_min = 0.01
     self.epsilon_decay = 0.995
-    self.model = MLP(state_size, action_size)
-    self.model.to(device) # transfer to gpu
+    self.model = MLP(state_size, action_size).to(device) # initialize model and move it to device
 
     # Loss and optimizer
     self.criterion = nn.MSELoss()
@@ -383,24 +399,25 @@ if __name__ == '__main__':
 
   # log device info
   # setting device on GPU if available, else CPU
-  device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-  print('Using device:', device)
-  print()
+  # device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+  # print('Using device:', device)
+  # print()
 
   # additional info when using cuda
-  if device.type == 'cuda':
-      print(torch.cuda.get_device_name(0))
-      print('Memory Usage:')
-      print('Allocated:', round(torch.cuda.memory_allocated(0)/1024**3,1), 'GB')
-      print('Cached:   ', round(torch.cuda.memory_cached(0)/1024**3,1), 'GB')
+  # if device.type == 'cuda':
+  #     print(torch.cuda.get_device_name(0))
+  #     print('Memory Usage:')
+  #     print('Allocated:', round(torch.cuda.memory_allocated(0)/1024**3,1), 'GB')
+  #     print('Cached:   ', round(torch.cuda.memory_cached(0)/1024**3,1), 'GB')
 
   
   # config
   models_folder = 'rl_trader_models'
   rewards_folder = 'rl_trader_rewards'
-  num_episodes = 100
+  num_episodes = 10
   batch_size = 32
   initial_investment = 20000
+  transaction_cost_rate = 0.02
 
 
   parser = argparse.ArgumentParser()
@@ -419,7 +436,7 @@ if __name__ == '__main__':
   train_data = data[:n_train]
   test_data = data[n_train:]
 
-  env = MultiStockEnv(train_data, initial_investment)
+  env = MultiStockEnv(train_data, initial_investment, transaction_cost_rate)
   state_size = env.state_dim
   action_size = len(env.action_space)
   agent = DQNAgent(state_size, action_size)
