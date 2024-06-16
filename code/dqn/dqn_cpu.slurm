@@ -32,3 +32,5 @@ cd $SLURM_SUBMIT_DIR
 # dlprof --mode=pytorch --delay=3 --reports=summary,detail,iteration --output_path=./dlprof_output --force=true python dqn_trader_dlprof.py -m train
 # srun -n 1 nsys profile --delay=3 -o prof1 python dqn_trader.py -m train
 python dqn_trader.py -m train
+python dqn_trader.py -m test
+
