@@ -373,6 +373,11 @@ def play_one_episode(agent, env, is_train):
 
 if __name__ == '__main__':
 
+  # Start pynvml if using CUDA
+  if torch.cuda.is_available():
+    import pynvml
+    pynvml.nvmlInit()
+
   # Profiler Setup (Start)
   with profiler.profile(
         activities=[profiler.ProfilerActivity.CPU, profiler.ProfilerActivity.CUDA],
@@ -387,11 +392,6 @@ if __name__ == '__main__':
     #     print('Memory Usage:')
     #     print('Allocated:', round(torch.cuda.memory_allocated(0)/1024**3,1), 'GB')
     #     print('Cached:   ', round(torch.cuda.memory_cached(0)/1024**3,1), 'GB')
-
-    # Start pynvml if using CUDA
-    if torch.cuda.is_available():
-        import pynvml
-        pynvml.nvmlInit()
     
     # config
     models_folder = 'rl_trader_models'
@@ -486,7 +486,6 @@ if __name__ == '__main__':
       print(f"{key}: {value:.3f}")
 
   # Print GPU Utilization (if using CUDA) and shutdown pynvml
-  # measure gpu utilisation and memory usage (if using gpu)
   if torch.cuda.is_available():
       handle = pynvml.nvmlDeviceGetHandleByIndex(0)  # assuming single gpu
       gpu_utilisation = pynvml.nvmlDeviceGetUtilizationRates(handle).gpu
