@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Slurm job options (name, compute nodes, job time)
-#SBATCH --job-name=dqn-dlprof-cpu
+#SBATCH --job-name=dqn-prof-cpu
 #SBATCH --time=0:40:0
 #SBATCH --exclusive
 #SBATCH --nodes=1
@@ -31,5 +31,6 @@ cd $SLURM_SUBMIT_DIR
 # Launch the job
 # dlprof --mode=simple --reports=summary python dqn_trader.py -m train
 # srun -n 1 nsys profile --delay=3 -o prof1 python dqn_trader.py -m train
-python dqn_trader_tensorboard.py -m train
-
+# python dqn_trader_tensorboard.py -m train
+python dqn_trader_prof.py -m train
+python dqn_trader_prof.py -m test

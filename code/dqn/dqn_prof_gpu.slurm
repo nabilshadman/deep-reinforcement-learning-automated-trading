@@ -1,10 +1,10 @@
 #!/bin/bash
 #
-#SBATCH --job-name=dqn-nsys-gpu
+#SBATCH --job-name=dqn-prof-gpu
 #SBATCH --partition=gpu
 #SBATCH --qos=gpu
 #SBATCH --gres=gpu:1
-#SBATCH --time=00:20:00
+#SBATCH --time=00:40:00
 
 # Replace [budget code] below with your project code (e.g. t01)
 #SBATCH --account=mdisspt-s2134758
@@ -25,5 +25,6 @@ cd $SLURM_SUBMIT_DIR
 # Launch the job
 # dlprof --mode=pytorch --delay=3 --reports=summary,detail,iteration --output_path=./dlprof_output --force=true python dqn_trader_dlprof.py -m train
 # srun -n 1 nsys profile --delay=3 -o prof1 python dqn_trader.py -m train
-python dqn_trader_tensorboard.py -m train
-
+# python dqn_trader_tensorboard.py -m train
+python dqn_trader_prof.py -m train
+python dqn_trader_prof.py -m test
