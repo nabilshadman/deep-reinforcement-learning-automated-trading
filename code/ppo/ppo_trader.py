@@ -433,12 +433,6 @@ def play_one_episode(agent, env, is_train, n_steps, N, learn_iters):
 
 if __name__ == '__main__':
 
-  # log device info
-  # setting device on GPU if available, else CPU
-  # device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-  # print('Using device:', device)
-  # print()
-
   # additional info when using cuda
   # if device.type == 'cuda':
   #     print(torch.cuda.get_device_name(0))
@@ -467,6 +461,9 @@ if __name__ == '__main__':
   print("\n", "=" * 20, "\n")  # top separator
   print(f"PPO Trader - {mode_str}")
   print("\n", "=" * 20, "\n")  # bottom separator
+
+  # log device info
+  print('Using device:', device, "\n")
 
   maybe_make_dir(models_folder)
   maybe_make_dir(rewards_folder)
