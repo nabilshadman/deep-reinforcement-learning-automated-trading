@@ -1,0 +1,47 @@
+Loading python/3.10.8-gpu
+  Loading requirement: nvidia/nvhpc-nompi/22.2 gcc/10.2.0
+    openmpi/4.1.6-cuda-11.6
+
+ ==================== 
+
+DQN Trader - Training Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=27, bias=True)
+  )
+) 
+
+episode: 1/4, episode end value: 1418.36, duration: 0:00:09.532888
+episode: 2/4, episode end value: 29741.21, duration: 0:00:01.167224
+episode: 3/4, episode end value: 34479.48, duration: 0:00:01.166001
+episode: 4/4, episode end value: 39030.58, duration: 0:00:01.159652
+... saving models ...
+
+ ==================== 
+
+DQN Trader - Testing Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=27, bias=True)
+  )
+) 
+
+... loading models ...
+episode: 1/4, episode end value: 22058.38, duration: 0:00:00.783483
+episode: 2/4, episode end value: 18317.61, duration: 0:00:00.248171
+episode: 3/4, episode end value: 20035.21, duration: 0:00:00.244469
+episode: 4/4, episode end value: 22058.38, duration: 0:00:00.244748
