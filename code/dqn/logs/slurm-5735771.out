@@ -1,0 +1,107 @@
+Loading python/3.10.8-gpu
+  Loading requirement: nvidia/nvhpc-nompi/22.2 gcc/10.2.0
+    openmpi/4.1.6-cuda-11.6
+/work/mdisspt/mdisspt/n2134758/condaenvs/envs/env-pytorch-1.13.1-gpu/lib/python3.10/site-packages/torch/autograd/profiler.py:176: UserWarning: CUDA is not available, disabling CUDA profiling
+  warn("CUDA is not available, disabling CUDA profiling")
+STAGE:2024-06-16 12:17:36 957503:957503 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-06-16 12:17:45 957503:957503 ActivityProfilerController.cpp:300] Completed Stage: Collection
+ERROR:2024-06-16 12:18:43 957503:957503 CudaDeviceProperties.cpp:26] cudaGetDeviceCount failed with code 100
+STAGE:2024-06-16 12:18:46 957503:957503 output_json.cpp:417] Completed Stage: Post Processing
+
+ ==================== 
+
+DQN Trader - Training Mode
+
+ ==================== 
+
+Using device: cpu 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=27, bias=True)
+  )
+) 
+
+episode: 1/4, episode end value: 2739.23, duration: 0:00:02.593291
+episode: 2/4, episode end value: 24966.77, duration: 0:00:01.279724
+episode: 3/4, episode end value: 31169.83, duration: 0:00:01.284428
+episode: 4/4, episode end value: 34975.50, duration: 0:00:01.286286
+... saving models ...
+
+Performance Metrics:
+CPU Time (s): 0.000
+CUDA Time (s): 0.000
+CPU Memory Usage (MB): 204.911
+CUDA Memory Usage (MB): 0.000
+
+Detailed Profiler Table:
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg       CPU Mem  Self CPU Mem    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                           aten::linear         2.43%      96.823ms        33.30%        1.327s      68.280us      54.12 Mb       1.64 Mb         19428  
+                               Optimizer.step#Adam.step        14.84%     591.251ms        32.27%        1.286s     518.157us        -732 b     -22.14 Mb          2481  
+                                            aten::addmm        24.09%     959.929ms        27.21%        1.084s      55.804us      54.12 Mb      54.12 Mb         19428  
+    autograd::engine::evaluate_function: AddmmBackward0         1.17%      46.584ms         8.30%     330.507ms      66.608us       2.68 Mb     -17.81 Mb          4962  
+                                               aten::to         2.27%      90.296ms         7.56%     301.170ms       2.204us     203.60 Kb      37.21 Kb        136630  
+                                         aten::mse_loss         1.85%      73.768ms         6.74%     268.551ms     108.243us       8.18 Mb       2.69 Mb          2481  
+                                         aten::_to_copy         4.01%     159.702ms         6.11%     243.264ms       4.669us     203.52 Kb      37.61 Kb         52101  
+                                             aten::add_         2.87%     114.241ms         5.64%     224.560ms       5.658us    -583.37 Kb    -671.83 Kb         39692  
+                                                aten::t         2.69%     107.113ms         5.47%     217.835ms       5.920us           0 b           0 b         36795  
+                                         AddmmBackward0         1.01%      40.150ms         5.36%     213.519ms      43.031us      19.99 Mb           0 b          4962  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 3.984s
+
+/work/mdisspt/mdisspt/n2134758/condaenvs/envs/env-pytorch-1.13.1-gpu/lib/python3.10/site-packages/torch/autograd/profiler.py:176: UserWarning: CUDA is not available, disabling CUDA profiling
+  warn("CUDA is not available, disabling CUDA profiling")
+STAGE:2024-06-16 12:21:14 957811:957811 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-06-16 12:21:16 957811:957811 ActivityProfilerController.cpp:300] Completed Stage: Collection
+ERROR:2024-06-16 12:21:21 957811:957811 CudaDeviceProperties.cpp:26] cudaGetDeviceCount failed with code 100
+STAGE:2024-06-16 12:21:21 957811:957811 output_json.cpp:417] Completed Stage: Post Processing
+
+ ==================== 
+
+DQN Trader - Testing Mode
+
+ ==================== 
+
+Using device: cpu 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=27, bias=True)
+  )
+) 
+
+... loading models ...
+episode: 1/4, episode end value: 25296.07, duration: 0:00:00.257538
+episode: 2/4, episode end value: 18163.80, duration: 0:00:00.249341
+episode: 3/4, episode end value: 17319.83, duration: 0:00:00.244158
+episode: 4/4, episode end value: 18283.00, duration: 0:00:00.244827
+
+Performance Metrics:
+CPU Time (s): 0.000
+CUDA Time (s): 0.000
+CPU Memory Usage (MB): 0.869
+CUDA Memory Usage (MB): 0.000
+
+Detailed Profiler Table:
+-------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                       Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg       CPU Mem  Self CPU Mem    # of Calls  
+-------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                               aten::linear        10.04%      17.571ms        78.07%     136.667ms      27.443us     573.87 Kb       8.50 Kb          4980  
+                                aten::addmm        35.13%      61.507ms        48.86%      85.534ms      17.176us     573.87 Kb     573.87 Kb          4980  
+                                    aten::t         8.40%      14.704ms        19.81%      34.682ms       6.964us           0 b           0 b          4980  
+                            aten::transpose         7.81%      13.666ms        10.91%      19.100ms       3.835us           0 b           0 b          4980  
+                                aten::copy_         9.62%      16.847ms         9.62%      16.847ms       3.380us           0 b           0 b          4984  
+                                 aten::relu         3.04%       5.315ms         9.39%      16.442ms       6.603us     311.25 Kb           0 b          2490  
+                            aten::clamp_min         6.36%      11.127ms         6.36%      11.127ms       4.469us     311.25 Kb     311.25 Kb          2490  
+                               aten::detach         3.26%       5.701ms         6.12%      10.717ms       4.297us           0 b           0 b          2494  
+                               aten::expand         5.00%       8.755ms         5.01%       8.776ms       1.762us           0 b           0 b          4980  
+                           aten::as_strided         3.62%       6.339ms         3.62%       6.339ms       0.636us           0 b           0 b          9960  
+-------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 175.060ms
+
