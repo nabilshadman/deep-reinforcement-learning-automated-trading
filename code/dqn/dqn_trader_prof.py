@@ -4,6 +4,7 @@ import pandas as pd
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import torch.profiler as profiler
 
 from datetime import datetime
 import itertools
@@ -12,8 +13,11 @@ import re
 import os
 import pickle
 
-
 from sklearn.preprocessing import StandardScaler
+
+
+# Set up device
+device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
 
 # Let's use AAPL (Apple), MSI (Motorola), SBUX (Starbucks)
@@ -23,9 +27,8 @@ def get_data():
   # 0 = AAPL
   # 1 = MSI
   # 2 = SBUX
-  df = pd.read_csv('equities_historical_data.csv')
+  df = pd.read_csv('equities_close_prices_daily.csv')
   return df.values
-
 
 
 ### The experience replay memory ###
@@ -56,11 +59,9 @@ class ReplayBuffer:
                 d=self.done_buf[idxs])
 
 
-
-
 def get_scaler(env):
   # return scikit-learn scaler object to scale the states
-  # Note: you could also populate the replay buffer here
+  # note: you could also populate the replay buffer here
 
   states = []
   for _ in range(env.n_step):
@@ -75,13 +76,9 @@ def get_scaler(env):
   return scaler
 
 
-
-
 def maybe_make_dir(directory):
   if not os.path.exists(directory):
     os.makedirs(directory)
-
-
 
 
 class MLP(nn.Module):
@@ -100,6 +97,9 @@ class MLP(nn.Module):
     self.layers.append(nn.Linear(M, n_action))
     self.layers = nn.Sequential(*self.layers)
 
+    # move the model to the device
+    self.to(device)
+
   def forward(self, X):
     return self.layers(X)
 
@@ -110,35 +110,33 @@ class MLP(nn.Module):
     self.load_state_dict(torch.load(path))
 
 
-
-
 def predict(model, np_states):
   with torch.no_grad():
-    inputs = torch.from_numpy(np_states.astype(np.float32))
+    # ensure model is on the correct device
+    model.to(device)
+    # convert numpy array to torch tensor and move it to the device
+    inputs = torch.from_numpy(np_states.astype(np.float32)).to(device) 
     output = model(inputs)
     #print("output:", output)
-    return output.numpy()
-
-
+    # transfer predictions back to CPU for NumPy operations
+    return output.cpu().numpy()
 
 
 def train_one_step(model, criterion, optimizer, inputs, targets):
   # convert to tensors
-  inputs = torch.from_numpy(inputs.astype(np.float32))
-  targets = torch.from_numpy(targets.astype(np.float32))
+  inputs = torch.from_numpy(inputs.astype(np.float32)).to(device)
+  targets = torch.from_numpy(targets.astype(np.float32)).to(device)
 
   # zero the parameter gradients
   optimizer.zero_grad()
 
-  # Forward pass
+  # forward pass
   outputs = model(inputs)
   loss = criterion(outputs, targets)
         
-  # Backward and optimize
+  # backward and optimize
   loss.backward()
   optimizer.step()
-
-
 
 
 class MultiStockEnv:
@@ -158,13 +156,14 @@ class MultiStockEnv:
     - 1 = hold
     - 2 = buy
   """
-  def __init__(self, data, initial_investment=20000):
+  def __init__(self, data, initial_investment=20000, transaction_cost_rate=0.02):
     # data
     self.stock_price_history = data
     self.n_step, self.n_stock = self.stock_price_history.shape
 
     # instance attributes
     self.initial_investment = initial_investment
+    self.transaction_cost_rate = transaction_cost_rate
     self.cur_step = None
     self.stock_owned = None
     self.stock_price = None
@@ -190,14 +189,12 @@ class MultiStockEnv:
 
     self.reset()
 
-
   def reset(self):
     self.cur_step = 0
     self.stock_owned = np.zeros(self.n_stock)
     self.stock_price = self.stock_price_history[self.cur_step]
     self.cash_in_hand = self.initial_investment
     return self._get_obs()
-
 
   def step(self, action):
     assert action in self.action_space
@@ -227,19 +224,15 @@ class MultiStockEnv:
     # conform to the Gym API
     return self._get_obs(), reward, done, info
 
-
   def _get_obs(self):
     obs = np.empty(self.state_dim)
     obs[:self.n_stock] = self.stock_owned
     obs[self.n_stock:2*self.n_stock] = self.stock_price
     obs[-1] = self.cash_in_hand
     return obs
-    
-
-
+  
   def _get_val(self):
     return self.stock_owned.dot(self.stock_price) + self.cash_in_hand
-
 
   def _trade(self, action):
     # index the action we want to perform
@@ -266,7 +259,12 @@ class MultiStockEnv:
     if sell_index:
       # NOTE: to simplify the problem, when we sell, we will sell ALL shares of that stock
       for i in sell_index:
-        self.cash_in_hand += self.stock_price[i] * self.stock_owned[i]
+        # self.cash_in_hand += self.stock_price[i] * self.stock_owned[i]
+        # self.stock_owned[i] = 0
+        # deduct transaction costs when selling
+        total_sell_value = self.stock_price[i] * self.stock_owned[i]
+        transaction_costs = total_sell_value * self.transaction_cost_rate
+        self.cash_in_hand += (total_sell_value - transaction_costs)
         self.stock_owned[i] = 0
     if buy_index:
       # NOTE: when buying, we will loop through each stock we want to buy,
@@ -274,13 +272,16 @@ class MultiStockEnv:
       can_buy = True
       while can_buy:
         for i in buy_index:
-          if self.cash_in_hand > self.stock_price[i]:
-            self.stock_owned[i] += 1 # buy one share
-            self.cash_in_hand -= self.stock_price[i]
+          if self.cash_in_hand > (self.stock_price[i] 
+                                  + self.stock_price[i] 
+                                  * self.transaction_cost_rate):
+            # self.stock_owned[i] += 1 # buy one share
+            # self.cash_in_hand -= self.stock_price[i]
+            # deduct transaction costs when buying
+            self.stock_owned[i] += 1
+            self.cash_in_hand -= (self.stock_price[i] + self.stock_price[i] * self.transaction_cost_rate)
           else:
             can_buy = False
-
-
 
 
 class DQNAgent(object):
@@ -292,23 +293,20 @@ class DQNAgent(object):
     self.epsilon = 1.0  # exploration rate
     self.epsilon_min = 0.01
     self.epsilon_decay = 0.995
-    self.model = MLP(state_size, action_size)
+    self.model = MLP(state_size, action_size).to(device) # initialize model and move it to device
 
-    # Loss and optimizer
+    # loss and optimizer
     self.criterion = nn.MSELoss()
     self.optimizer = torch.optim.Adam(self.model.parameters())
 
-
   def update_replay_memory(self, state, action, reward, next_state, done):
     self.memory.store(state, action, reward, next_state, done)
-
 
   def act(self, state):
     if np.random.rand() <= self.epsilon:
       return np.random.choice(self.action_size)
     act_values = predict(self.model, state)
     return np.argmax(act_values[0])  # returns action
-
 
   def replay(self, batch_size=32):
     # first check if replay buffer contains enough data
@@ -323,7 +321,7 @@ class DQNAgent(object):
     next_states = minibatch['s2']
     done = minibatch['d']
 
-    # Calculate the target: Q(s',a)
+    # calculate the target: Q(s',a)
     target = rewards + (1 - done) * self.gamma * np.amax(predict(self.model, next_states), axis=1)
 
     # With the PyTorch API, it is simplest to have the target be the 
@@ -337,25 +335,22 @@ class DQNAgent(object):
     target_full = predict(self.model, states)
     target_full[np.arange(batch_size), actions] = target
 
-    # Run one training step
+    # run one training step
     train_one_step(self.model, self.criterion, self.optimizer, states, target_full)
 
     if self.epsilon > self.epsilon_min:
       self.epsilon *= self.epsilon_decay
 
-
   def load(self, name):
+    print('... loading models ...')
     self.model.load_weights(name)
 
-
   def save(self, name):
+    print('... saving models ...')
     self.model.save_weights(name)
 
-
   def print_model_summary(self):
-    print(self.model)
-
-
+    print(self.model, "\n")
 
 
 def play_one_episode(agent, env, is_train):
@@ -376,100 +371,131 @@ def play_one_episode(agent, env, is_train):
   return info['cur_val']
 
 
-
-
 if __name__ == '__main__':
 
-  with torch.profiler.profile(
-    activities=[
-        torch.profiler.ProfilerActivity.CPU,
-        torch.profiler.ProfilerActivity.CUDA,
-    ], profile_memory=True
-  ) as p:
-      # log device info
-      # setting device on GPU if available, else CPU
-      device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-      print('Using device:', device)
-      print()
+  # Profiler Setup (Start)
+  with profiler.profile(
+        activities=[profiler.ProfilerActivity.CPU, profiler.ProfilerActivity.CUDA],
+        profile_memory=True,  
+        record_shapes=True,
+        with_stack=False
+    ) as prof:
 
-      # additional info when using cuda
-      if device.type == 'cuda':
-          print(torch.cuda.get_device_name(0))
-          print('Memory Usage:')
-          print('Allocated:', round(torch.cuda.memory_allocated(0)/1024**3,1), 'GB')
-          print('Cached:   ', round(torch.cuda.memory_cached(0)/1024**3,1), 'GB')
+    # additional info when using cuda
+    # if device.type == 'cuda':
+    #     print(torch.cuda.get_device_name(0))
+    #     print('Memory Usage:')
+    #     print('Allocated:', round(torch.cuda.memory_allocated(0)/1024**3,1), 'GB')
+    #     print('Cached:   ', round(torch.cuda.memory_cached(0)/1024**3,1), 'GB')
 
-      
-      # config
-      models_folder = 'rl_trader_models'
-      rewards_folder = 'rl_trader_rewards'
-      num_episodes = 10
-      batch_size = 32
-      initial_investment = 20000
+    # Start pynvml if using CUDA
+    if torch.cuda.is_available():
+        import pynvml
+        pynvml.nvmlInit()
+    
+    # config
+    models_folder = 'rl_trader_models'
+    rewards_folder = 'rl_trader_rewards'
+    num_episodes = 4
+    batch_size = 32
+    initial_investment = 20000
+    transaction_cost_rate = 0.02
 
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-m', '--mode', type=str, required=True,
+                        help='either "train" or "test"')
+    args = parser.parse_args()
 
-      parser = argparse.ArgumentParser()
-      parser.add_argument('-m', '--mode', type=str, required=True,
-                          help='either "train" or "test"')
-      args = parser.parse_args()
+    # determine the mode string and formatting
+    mode_str = "Training Mode" if args.mode == "train" else "Testing Mode"
+    # print with visual separation
+    print("\n", "=" * 20, "\n")  # top separator
+    print(f"DQN Trader - {mode_str}")
+    print("\n", "=" * 20, "\n")  # bottom separator
 
-      maybe_make_dir(models_folder)
-      maybe_make_dir(rewards_folder)
+    # log device info
+    print('Using device:', device, "\n")
 
-      data = get_data()
-      n_timesteps, n_stocks = data.shape
+    maybe_make_dir(models_folder)
+    maybe_make_dir(rewards_folder)
 
-      n_train = n_timesteps // 2
+    data = get_data()
+    n_timesteps, n_stocks = data.shape
 
-      train_data = data[:n_train]
-      test_data = data[n_train:]
+    n_train = n_timesteps // 2
+    train_data = data[:n_train]
+    test_data = data[n_train:]
 
-      env = MultiStockEnv(train_data, initial_investment)
-      state_size = env.state_dim
-      action_size = len(env.action_space)
-      agent = DQNAgent(state_size, action_size)
-      # print model summary
-      agent.print_model_summary()
-      scaler = get_scaler(env)
+    env = MultiStockEnv(train_data, initial_investment, transaction_cost_rate)
+    state_size = env.state_dim
+    action_size = len(env.action_space)
+    agent = DQNAgent(state_size, action_size)
+    # print model summary
+    agent.print_model_summary()
+    scaler = get_scaler(env)
 
-      # store the final value of the portfolio (end of episode)
-      portfolio_value = []
+    # store the final value of the portfolio (end of episode)
+    portfolio_value = []
 
-      if args.mode == 'test':
-        # then load the previous scaler
-        with open(f'{models_folder}/scaler.pkl', 'rb') as f:
-          scaler = pickle.load(f)
+    if args.mode == 'test':
+      # then load the previous scaler
+      with open(f'{models_folder}/scaler.pkl', 'rb') as f:
+        scaler = pickle.load(f)
 
-        # remake the env with test data
-        env = MultiStockEnv(test_data, initial_investment)
+      # remake the env with test data
+      env = MultiStockEnv(test_data, initial_investment)
 
-        # make sure epsilon is not 1!
-        # no need to run multiple episodes if epsilon = 0, it's deterministic
-        agent.epsilon = 0.01
+      # make sure epsilon is not 1!
+      # no need to run multiple episodes if epsilon = 0, it's deterministic
+      agent.epsilon = 0.01
 
-        # load trained weights
-        agent.load(f'{models_folder}/dqn.ckpt')
+      # load trained weights
+      agent.load(f'{models_folder}/dqn.ckpt')
 
-      # play the game num_episodes times
-      for e in range(num_episodes):
-        t0 = datetime.now()
-        val = play_one_episode(agent, env, args.mode)
-        dt = datetime.now() - t0
-        print(f"episode: {e + 1}/{num_episodes}, episode end value: {val:.2f}, duration: {dt}")
-        portfolio_value.append(val) # append episode end portfolio value
+    # play the game num_episodes times
+    for e in range(num_episodes):
+      t0 = datetime.now()
+      val = play_one_episode(agent, env, args.mode)
+      dt = datetime.now() - t0
+      print(f"episode: {e + 1}/{num_episodes}, episode end value: {val:.2f}, duration: {dt}")
+      portfolio_value.append(val) # append episode end portfolio value
 
-      # save the weights when we are done
-      if args.mode == 'train':
-        # save the DQN
-        agent.save(f'{models_folder}/dqn.ckpt')
+    # save the weights when we are done
+    if args.mode == 'train':
+      # save the DQN
+      agent.save(f'{models_folder}/dqn.ckpt')
 
-        # save the scaler
-        with open(f'{models_folder}/scaler.pkl', 'wb') as f:
-          pickle.dump(scaler, f)
+      # save the scaler
+      with open(f'{models_folder}/scaler.pkl', 'wb') as f:
+        pickle.dump(scaler, f)
 
+  # Profiler Setup (End)
+  # Save the trace, naming it based on the mode
+  trace_filename = f"dqn_trace_{args.mode}.json"  
+  prof.export_chrome_trace(trace_filename)  # Change filename
+  
+  # Print Total Metrics
+  print("\nPerformance Metrics:")
+  metrics = {
+      "CPU Time (s)": prof.key_averages().total_average().cpu_time / 1_000_000,  
+      "CUDA Time (s)": prof.key_averages().total_average().cuda_time / 1_000_000,
+      "CPU Memory Usage (MB)": prof.key_averages().total_average().cpu_memory_usage / 1024**2,
+      "CUDA Memory Usage (MB)": prof.key_averages().total_average().cuda_memory_usage / 1024**2,
+  }
+  for key, value in metrics.items():
+      print(f"{key}: {value:.3f}")
 
-      # save portfolio value for each episode
-      np.save(f'{rewards_folder}/{args.mode}.npy', portfolio_value)
+  # Print GPU Utilization (if using CUDA) and shutdown pynvml
+  # measure gpu utilisation and memory usage (if using gpu)
+  if torch.cuda.is_available():
+      handle = pynvml.nvmlDeviceGetHandleByIndex(0)  # assuming single gpu
+      gpu_utilisation = pynvml.nvmlDeviceGetUtilizationRates(handle).gpu
+      print(f"GPU Utilisation: {gpu_utilisation} %")
+      pynvml.nvmlShutdown()  # Shutdown pynvml after use
+  
+  # Print Table of Profiler Results
+  print("\nDetailed Profiler Table:")
+  print(prof.key_averages().table(sort_by="cpu_time_total", row_limit=10))
 
-
-  print(p.key_averages().table(sort_by="cpu_time_total", row_limit=10))
+  # Save portfolio value for each episode
+  np.save(f'{rewards_folder}/{args.mode}.npy', portfolio_value)
