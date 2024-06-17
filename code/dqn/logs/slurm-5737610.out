@@ -1,0 +1,61 @@
+Loading python/3.10.8-gpu
+  Loading requirement: nvidia/nvhpc-nompi/22.2 gcc/10.2.0
+    openmpi/4.1.6-cuda-11.6
+
+ ==================== 
+
+DQN Trader - Training Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=27, bias=True)
+  )
+) 
+
+episode: 1/4, episode end value: 1754.57, duration: 0:00:08.831273
+episode: 2/4, episode end value: 28764.64, duration: 0:00:01.218076
+episode: 3/4, episode end value: 50384.41, duration: 0:00:01.226942
+episode: 4/4, episode end value: 72531.84, duration: 0:00:01.268820
+... saving models ...
+
+PyNVML Metrics:
+GPU Utilization: 10 %
+Total Memory: 16384.00 MB
+Free Memory: 15206.69 MB
+Used Memory: 1177.31 MB
+Power Usage: 59.79 W
+
+ ==================== 
+
+DQN Trader - Testing Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=27, bias=True)
+  )
+) 
+
+... loading models ...
+episode: 1/4, episode end value: 21978.02, duration: 0:00:00.708526
+episode: 2/4, episode end value: 21734.07, duration: 0:00:00.208208
+episode: 3/4, episode end value: 19949.88, duration: 0:00:00.203483
+episode: 4/4, episode end value: 26936.23, duration: 0:00:00.203013
+
+PyNVML Metrics:
+GPU Utilization: 5 %
+Total Memory: 16384.00 MB
+Free Memory: 15214.69 MB
+Used Memory: 1169.31 MB
+Power Usage: 59.75 W
