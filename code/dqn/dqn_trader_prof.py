@@ -15,7 +15,9 @@ import pickle
 from sklearn.preprocessing import StandardScaler
 
 import torch.profiler as profiler
-import pynvml
+
+if torch.cuda.is_available():
+  import pynvml
 
 
 # Set up device
@@ -376,7 +378,8 @@ def play_one_episode(agent, env, is_train):
 if __name__ == '__main__':
 
   # Start pynvml if using CUDA
-  pynvml.nvmlInit()
+  if torch.cuda.is_available():
+    pynvml.nvmlInit()
 
   # Profiler Setup (Start)
   with profiler.profile(

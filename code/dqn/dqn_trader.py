@@ -14,7 +14,8 @@ import pickle
 
 from sklearn.preprocessing import StandardScaler
 
-import pynvml
+if torch.cuda.is_available():
+  import pynvml
 
 # Set up device
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
@@ -374,7 +375,8 @@ def play_one_episode(agent, env, is_train):
 if __name__ == '__main__':
 
   # Start pynvml if using CUDA
-  pynvml.nvmlInit()
+  if torch.cuda.is_available():
+    pynvml.nvmlInit()
 
   # additional info when using cuda
   # if device.type == 'cuda':
