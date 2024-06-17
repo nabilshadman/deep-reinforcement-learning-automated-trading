@@ -4,7 +4,6 @@ import pandas as pd
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import torch.profiler as profiler
 
 from datetime import datetime
 import itertools
@@ -14,9 +13,8 @@ import os
 import pickle
 
 from sklearn.preprocessing import StandardScaler
-
-if torch.cuda.is_available():
-  import pynvml
+import torch.profiler as profiler
+import pynvml
 
 
 # Set up device
@@ -377,8 +375,7 @@ def play_one_episode(agent, env, is_train):
 if __name__ == '__main__':
 
   # Start pynvml if using CUDA
-  if torch.cuda.is_available():
-    pynvml.nvmlInit()
+  pynvml.nvmlInit()
 
   # Profiler Setup (Start)
   with profiler.profile(
@@ -473,23 +470,23 @@ if __name__ == '__main__':
 
   # Profiler Setup (End)
   # Save the trace, naming it based on the mode
-  trace_filename = f"dqn_trace_{args.mode}.json"  
-  prof.export_chrome_trace(trace_filename)  # Change filename
+  # trace_filename = f"dqn_trace_{args.mode}.json"  
+  # prof.export_chrome_trace(trace_filename)  # Change filename
   
+  # Print Table of Profiler Results
+  print("\nDetailed Profiler Table:")
+  print(prof.key_averages().table(sort_by="cpu_time_total", row_limit=10))
+
   # Print Total Metrics
   print("\nPerformance Metrics:")
   metrics = {
-      "CPU Time (s)": prof.key_averages().total_average().cpu_time,  
-      "CUDA Time (s)": prof.key_averages().total_average().cuda_time,
+      "CPU Time Total (s)": prof.key_averages().total_average().cpu_time_total / 1e6,  
+      "CUDA Time Total (s)": prof.key_averages().total_average().cuda_time_total / 1e6,
       "CPU Memory Usage (MB)": prof.key_averages().total_average().cpu_memory_usage / 1024**2,
       "CUDA Memory Usage (MB)": prof.key_averages().total_average().cuda_memory_usage / 1024**2,
   }
   for key, value in metrics.items():
       print(f"{key}: {value:.3f}")
-
-  # Print Table of Profiler Results
-  print("\nDetailed Profiler Table:")
-  print(prof.key_averages().table(sort_by="cpu_time_total", row_limit=10))
 
   # Print GPU Utilization (if using CUDA) and shutdown pynvml
   if torch.cuda.is_available():
