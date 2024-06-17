@@ -488,13 +488,19 @@ if __name__ == '__main__':
   for key, value in metrics.items():
       print(f"{key}: {value:.3f}")
 
-  # Print GPU Utilization (if using CUDA) and shutdown pynvml
+  # Print PyNVML Metrics (if using CUDA) and shutdown pynvml
   if torch.cuda.is_available():
-      print("\nPyNVML Metrics:")
-      handle = pynvml.nvmlDeviceGetHandleByIndex(0)  # assuming single gpu
-      gpu_utilisation = pynvml.nvmlDeviceGetUtilizationRates(handle).gpu
-      print(f"GPU Utilisation: {gpu_utilisation} %")
-      pynvml.nvmlShutdown()  # Shutdown pynvml after use
-  
+    print("\nPyNVML Metrics:")
+    handle = pynvml.nvmlDeviceGetHandleByIndex(0)  # assuming single GPU
+    gpu_utilization = pynvml.nvmlDeviceGetUtilizationRates(handle).gpu # GPU Utilization
+    print(f"GPU Utilization: {gpu_utilization} %")
+    mem_info = pynvml.nvmlDeviceGetMemoryInfo(handle) # Memory Information
+    print(f"Total Memory: {mem_info.total / (1024 ** 2):.2f} MB")
+    print(f"Free Memory: {mem_info.free / (1024 ** 2):.2f} MB")
+    print(f"Used Memory: {mem_info.used / (1024 ** 2):.2f} MB")
+    power_usage = pynvml.nvmlDeviceGetPowerUsage(handle) # Power Usage
+    print(f"Power Usage: {power_usage / 1000:.2f} W")
+    pynvml.nvmlShutdown()  # Shutdown pynvml after use
+
   # Save portfolio value for each episode
   np.save(f'{rewards_folder}/{args.mode}.npy', portfolio_value)
