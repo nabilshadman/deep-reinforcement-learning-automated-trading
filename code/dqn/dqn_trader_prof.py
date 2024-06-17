@@ -377,7 +377,7 @@ def play_one_episode(agent, env, is_train):
 
 if __name__ == '__main__':
 
-  # Start pynvml if using CUDA
+  # start pynvml if using cuda
   if torch.cuda.is_available():
     pynvml.nvmlInit()
 
@@ -492,19 +492,19 @@ if __name__ == '__main__':
   for key, value in metrics.items():
       print(f"{key}: {value:.3f}")
 
-  # Print PyNVML Metrics (if using CUDA) and shutdown pynvml
+  # print pynvml metrics (if using cuda) and shutdown pynvml
   if torch.cuda.is_available():
     print("\nPyNVML Metrics:")
-    handle = pynvml.nvmlDeviceGetHandleByIndex(0)  # assuming single GPU
-    gpu_utilization = pynvml.nvmlDeviceGetUtilizationRates(handle).gpu # GPU Utilization
+    handle = pynvml.nvmlDeviceGetHandleByIndex(0)  # assuming single gpu
+    gpu_utilization = pynvml.nvmlDeviceGetUtilizationRates(handle).gpu # gpu utilisation
     print(f"GPU Utilization: {gpu_utilization} %")
-    mem_info = pynvml.nvmlDeviceGetMemoryInfo(handle) # Memory Information
+    mem_info = pynvml.nvmlDeviceGetMemoryInfo(handle) # memory information
     print(f"Total Memory: {mem_info.total / (1024 ** 2):.2f} MB")
     print(f"Free Memory: {mem_info.free / (1024 ** 2):.2f} MB")
     print(f"Used Memory: {mem_info.used / (1024 ** 2):.2f} MB")
-    power_usage = pynvml.nvmlDeviceGetPowerUsage(handle) # Power Usage
+    power_usage = pynvml.nvmlDeviceGetPowerUsage(handle) # power Usage
     print(f"Power Usage: {power_usage / 1000:.2f} W")
-    pynvml.nvmlShutdown()  # Shutdown pynvml after use
+    pynvml.nvmlShutdown()  # shutdown pynvml after use
 
-  # Save portfolio value for each episode
+  # save portfolio value for each episode
   np.save(f'{rewards_folder}/{args.mode}.npy', portfolio_value)
