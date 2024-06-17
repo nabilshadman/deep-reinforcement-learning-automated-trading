@@ -473,8 +473,8 @@ if __name__ == '__main__':
 
   # Profiler Setup (End)
   # Save the trace, naming it based on the mode
-  # trace_filename = f"dqn_trace_{args.mode}.json"  
-  # prof.export_chrome_trace(trace_filename)  # Change filename
+  trace_filename = f"dqn_trace_{args.mode}.json"  
+  prof.export_chrome_trace(trace_filename)  # Change filename
   
   # Print Total Metrics
   print("\nPerformance Metrics:")
