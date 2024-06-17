@@ -15,6 +15,9 @@ import pickle
 
 from sklearn.preprocessing import StandardScaler
 
+if torch.cuda.is_available():
+  import pynvml
+
 
 # Set up device
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
@@ -375,7 +378,6 @@ if __name__ == '__main__':
 
   # Start pynvml if using CUDA
   if torch.cuda.is_available():
-    import pynvml
     pynvml.nvmlInit()
 
   # Profiler Setup (Start)
@@ -471,30 +473,31 @@ if __name__ == '__main__':
 
   # Profiler Setup (End)
   # Save the trace, naming it based on the mode
-  trace_filename = f"dqn_trace_{args.mode}.json"  
-  prof.export_chrome_trace(trace_filename)  # Change filename
+  # trace_filename = f"dqn_trace_{args.mode}.json"  
+  # prof.export_chrome_trace(trace_filename)  # Change filename
   
   # Print Total Metrics
   print("\nPerformance Metrics:")
   metrics = {
-      "CPU Time (s)": prof.key_averages().total_average().cpu_time / 1_000_000,  
-      "CUDA Time (s)": prof.key_averages().total_average().cuda_time / 1_000_000,
+      "CPU Time (s)": prof.key_averages().total_average().cpu_time,  
+      "CUDA Time (s)": prof.key_averages().total_average().cuda_time,
       "CPU Memory Usage (MB)": prof.key_averages().total_average().cpu_memory_usage / 1024**2,
       "CUDA Memory Usage (MB)": prof.key_averages().total_average().cuda_memory_usage / 1024**2,
   }
   for key, value in metrics.items():
       print(f"{key}: {value:.3f}")
 
+  # Print Table of Profiler Results
+  print("\nDetailed Profiler Table:")
+  print(prof.key_averages().table(sort_by="cpu_time_total", row_limit=10))
+
   # Print GPU Utilization (if using CUDA) and shutdown pynvml
   if torch.cuda.is_available():
+      print("\nPyNVML Metrics:")
       handle = pynvml.nvmlDeviceGetHandleByIndex(0)  # assuming single gpu
       gpu_utilisation = pynvml.nvmlDeviceGetUtilizationRates(handle).gpu
       print(f"GPU Utilisation: {gpu_utilisation} %")
       pynvml.nvmlShutdown()  # Shutdown pynvml after use
   
-  # Print Table of Profiler Results
-  print("\nDetailed Profiler Table:")
-  print(prof.key_averages().table(sort_by="cpu_time_total", row_limit=10))
-
   # Save portfolio value for each episode
   np.save(f'{rewards_folder}/{args.mode}.npy', portfolio_value)
