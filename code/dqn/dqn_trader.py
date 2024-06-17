@@ -14,6 +14,7 @@ import pickle
 
 from sklearn.preprocessing import StandardScaler
 
+import pynvml
 
 # Set up device
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
@@ -372,6 +373,9 @@ def play_one_episode(agent, env, is_train):
 
 if __name__ == '__main__':
 
+  # Start pynvml if using CUDA
+  pynvml.nvmlInit()
+
   # additional info when using cuda
   # if device.type == 'cuda':
   #     print(torch.cuda.get_device_name(0))
@@ -454,6 +458,20 @@ if __name__ == '__main__':
     # save the scaler
     with open(f'{models_folder}/scaler.pkl', 'wb') as f:
       pickle.dump(scaler, f)
+
+  # Print PyNVML Metrics (if using CUDA) and shutdown pynvml
+  if torch.cuda.is_available():
+    print("\nPyNVML Metrics:")
+    handle = pynvml.nvmlDeviceGetHandleByIndex(0)  # assuming single GPU
+    gpu_utilization = pynvml.nvmlDeviceGetUtilizationRates(handle).gpu # GPU Utilization
+    print(f"GPU Utilization: {gpu_utilization} %")
+    mem_info = pynvml.nvmlDeviceGetMemoryInfo(handle) # Memory Information
+    print(f"Total Memory: {mem_info.total / (1024 ** 2):.2f} MB")
+    print(f"Free Memory: {mem_info.free / (1024 ** 2):.2f} MB")
+    print(f"Used Memory: {mem_info.used / (1024 ** 2):.2f} MB")
+    power_usage = pynvml.nvmlDeviceGetPowerUsage(handle) # Power Usage
+    print(f"Power Usage: {power_usage / 1000:.2f} W")
+    pynvml.nvmlShutdown()  # Shutdown pynvml after use
 
   # save portfolio value for each episode
   np.save(f'{rewards_folder}/{args.mode}.npy', portfolio_value)
