@@ -1,0 +1,137 @@
+Loading python/3.10.8-gpu
+  Loading requirement: nvidia/nvhpc-nompi/22.2 gcc/10.2.0
+    openmpi/4.1.6-cuda-11.6
+/work/mdisspt/mdisspt/n2134758/condaenvs/envs/env-pytorch-1.13.1-gpu/lib/python3.10/site-packages/torch/autograd/profiler.py:176: UserWarning: CUDA is not available, disabling CUDA profiling
+  warn("CUDA is not available, disabling CUDA profiling")
+STAGE:2024-06-19 11:39:18 2998270:2998270 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-06-19 11:39:26 2998270:2998270 ActivityProfilerController.cpp:300] Completed Stage: Collection
+ERROR:2024-06-19 11:39:48 2998270:2998270 CudaDeviceProperties.cpp:26] cudaGetDeviceCount failed with code 100
+STAGE:2024-06-19 11:39:49 2998270:2998270 output_json.cpp:417] Completed Stage: Post Processing
+
+ ==================== 
+
+PPO Trader - Training Mode
+
+ ==================== 
+
+Using device: cpu 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=1, bias=True)
+  )
+) 
+
+episode: 1/2, episode end value: 89.21, duration: 0:00:03.948560
+episode: 2/2, episode end value: 126.48, duration: 0:00:01.952256
+... saving models ...
+
+Detailed Profiler Table:
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg       CPU Mem  Self CPU Mem    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                           aten::linear         2.38%     109.262ms        30.56%        1.404s     169.542us      15.06 Mb     108.85 Kb          8280  
+                                            aten::addmm        24.12%        1.108s        25.90%        1.190s     143.701us      15.06 Mb      15.06 Mb          8280  
+                               Optimizer.step#Adam.step         3.06%     140.785ms        17.33%     796.069ms       3.210ms       1.09 Mb    -135.22 Mb           248  
+    autograd::engine::evaluate_function: AddmmBackward0         0.26%      11.844ms        10.89%     500.428ms     672.618us      67.32 Mb     -10.02 Mb           744  
+                                         AddmmBackward0         0.27%      12.483ms        10.36%     476.140ms     639.973us      76.84 Mb           0 b           744  
+                                               aten::mm         9.78%     449.348ms         9.78%     449.349ms     362.378us      76.84 Mb      76.84 Mb          1240  
+                                              aten::div         7.17%     329.583ms         7.74%     355.374ms      86.487us      70.94 Mb      70.54 Mb          4109  
+                                               aten::to         1.44%      66.126ms         6.31%     290.043ms      12.287us     935.95 Kb      52.06 Kb         23605  
+                                         aten::_to_copy         2.64%     121.421ms         5.01%     230.244ms      14.793us     930.48 Kb      15.02 Kb         15564  
+                                             aten::sqrt         3.95%     181.651ms         3.95%     181.651ms     122.077us      67.58 Mb      67.58 Mb          1488  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 4.594s
+
+
+PyTorch Profiler Metrics:
+CPU Time Total (s): 8.951
+CUDA Time Total (s): 0.000
+CPU Memory Usage (MB): 319.597
+CUDA Memory Usage (MB): 0.000
+
+psutil Metrics:
+CPU Memory Usage: 2481.191 MB
+Number of Threads: 24
+/work/mdisspt/mdisspt/n2134758/condaenvs/envs/env-pytorch-1.13.1-gpu/lib/python3.10/site-packages/torch/autograd/profiler.py:176: UserWarning: CUDA is not available, disabling CUDA profiling
+  warn("CUDA is not available, disabling CUDA profiling")
+STAGE:2024-06-19 11:40:44 3011620:3011620 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-06-19 11:40:46 3011620:3011620 ActivityProfilerController.cpp:300] Completed Stage: Collection
+ERROR:2024-06-19 11:40:59 3011620:3011620 CudaDeviceProperties.cpp:26] cudaGetDeviceCount failed with code 100
+STAGE:2024-06-19 11:40:59 3011620:3011620 output_json.cpp:417] Completed Stage: Post Processing
+
+ ==================== 
+
+PPO Trader - Testing Mode
+
+ ==================== 
+
+Using device: cpu 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=1, bias=True)
+  )
+) 
+
+... loading models ...
+episode: 1/2, episode end value: 112.35, duration: 0:00:00.695826
+episode: 2/2, episode end value: 144.17, duration: 0:00:00.723024
+
+Detailed Profiler Table:
+-------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                       Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg       CPU Mem  Self CPU Mem    # of Calls  
+-------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                               aten::linear         4.55%      31.137ms        39.89%     273.148ms      36.246us       5.04 Mb     197.84 Kb          7536  
+                                aten::addmm        23.95%     163.993ms        28.25%     193.454ms      25.671us       5.04 Mb       5.04 Mb          7536  
+                                    aten::t         5.04%      34.535ms         8.40%      57.542ms       7.636us           0 b           0 b          7536  
+                                 aten::relu         3.77%      25.785ms         7.39%      50.596ms      10.071us       4.91 Mb           0 b          5024  
+                                   aten::to         1.49%      10.214ms         7.38%      50.547ms       4.462us      49.06 Kb       4.74 Kb         11329  
+                             aten::_to_copy         3.38%      23.174ms         6.40%      43.853ms       8.729us      49.06 Kb       4.87 Kb          5024  
+                                aten::copy_         5.23%      35.816ms         5.23%      35.816ms       2.374us         364 b         364 b         15084  
+                                  aten::all         3.39%      23.198ms         4.96%      33.936ms       9.006us       3.68 Kb       3.68 Kb          3768  
+                                   aten::ge         2.30%      15.736ms         4.33%      29.662ms      11.808us      39.34 Kb      34.04 Kb          2512  
+                            aten::clamp_min         3.62%      24.811ms         3.62%      24.811ms       4.938us       4.91 Mb       4.91 Mb          5024  
+-------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 684.779ms
+
+
+PyTorch Profiler Metrics:
+CPU Time Total (s): 1.167
+CUDA Time Total (s): 0.000
+CPU Memory Usage (MB): 10.848
+CUDA Memory Usage (MB): 0.000
+
+psutil Metrics:
+CPU Memory Usage: 1253.711 MB
+Number of Threads: 24
