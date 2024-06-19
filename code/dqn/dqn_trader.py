@@ -14,6 +14,7 @@ import pickle
 
 from sklearn.preprocessing import StandardScaler
 
+import psutil
 if torch.cuda.is_available():
   import pynvml
 
@@ -387,9 +388,9 @@ if __name__ == '__main__':
   #     print('Cached:   ', round(torch.cuda.memory_cached(0)/1024**3,1), 'GB')
 
   # config
-  models_folder = 'rl_trader_models'
-  rewards_folder = 'rl_trader_rewards'
-  num_episodes = 4
+  models_folder = 'dqn_trader_models'
+  rewards_folder = 'dqn_trader_rewards'
+  num_episodes = 2
   batch_size = 32
   initial_investment = 20000
   transaction_cost_rate = 0.02
@@ -462,18 +463,31 @@ if __name__ == '__main__':
     with open(f'{models_folder}/scaler.pkl', 'wb') as f:
       pickle.dump(scaler, f)
 
+  # measure cpu metrics with psutil
+  process = psutil.Process(os.getpid())
+  memory_info = process.memory_info()
+  memory_usage = memory_info.rss / (1024 ** 2)  # convert to mb
+  num_threads = process.num_threads()
+
+  # print cpu metrics
+  print("\npsutil Metrics:")
+  print(f"CPU Memory Usage: {memory_usage:.3f} MB")
+  print(f"Number of Threads: {num_threads}")
+
   # print pynvml metrics (if using cuda) and shutdown pynvml
   if torch.cuda.is_available():
+
     print("\nPyNVML Metrics:")
     handle = pynvml.nvmlDeviceGetHandleByIndex(0)  # assuming single gpu
-    gpu_utilization = pynvml.nvmlDeviceGetUtilizationRates(handle).gpu # gpu utilization
-    print(f"GPU Utilization: {gpu_utilization} %")
     mem_info = pynvml.nvmlDeviceGetMemoryInfo(handle) # memory information
-    print(f"Total Memory: {mem_info.total / (1024 ** 2):.2f} MB")
-    print(f"Free Memory: {mem_info.free / (1024 ** 2):.2f} MB")
-    print(f"Used Memory: {mem_info.used / (1024 ** 2):.2f} MB")
+    gpu_utilization = pynvml.nvmlDeviceGetUtilizationRates(handle).gpu # gpu utilisation
     power_usage = pynvml.nvmlDeviceGetPowerUsage(handle) # power usage
+
+    print(f"GPU Memory Total: {mem_info.total / (1024 ** 2):.2f} MB")
+    print(f"GPU Memory Usage: {mem_info.used / (1024 ** 2):.2f} MB")
+    print(f"GPU Utilisation: {gpu_utilization} %")
     print(f"Power Usage: {power_usage / 1000:.2f} W")
+
     pynvml.nvmlShutdown()  # shutdown pynvml after use
 
   # save portfolio value for each episode
