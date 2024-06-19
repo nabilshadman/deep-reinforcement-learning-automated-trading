@@ -15,6 +15,15 @@ import pickle
 
 from sklearn.preprocessing import StandardScaler
 
+import psutil
+if torch.cuda.is_available():
+  import pynvml
+import torch.profiler as profiler
+
+
+# Set up device
+device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+
 
 # Let's use AAPL (Apple), MSI (Motorola), SBUX (Starbucks)
 def get_data():
@@ -23,13 +32,13 @@ def get_data():
   # 0 = AAPL
   # 1 = MSI
   # 2 = SBUX
-  df = pd.read_csv('equities_historical_data.csv')
+  df = pd.read_csv('equities_close_prices_daily.csv')
   return df.values
 
 
 def get_scaler(env):
   # return scikit-learn scaler object to scale the states
-  # Note: you could also populate the replay buffer here
+  # note: you could also populate the replay buffer here
 
   states = []
   for _ in range(env.n_step):
@@ -311,14 +320,12 @@ class MultiStockEnv:
 
     self.reset()
 
-
   def reset(self):
     self.cur_step = 0
     self.stock_owned = np.zeros(self.n_stock)
     self.stock_price = self.stock_price_history[self.cur_step]
     self.cash_in_hand = self.initial_investment
     return self._get_obs()
-
 
   def step(self, action):
     assert action in self.action_space
@@ -348,7 +355,6 @@ class MultiStockEnv:
     # conform to the Gym API
     return self._get_obs(), reward, done, info
 
-
   def _get_obs(self):
     obs = np.empty(self.state_dim)
     obs[:self.n_stock] = self.stock_owned
@@ -356,11 +362,8 @@ class MultiStockEnv:
     obs[-1] = self.cash_in_hand
     return obs
     
-
-
   def _get_val(self):
     return self.stock_owned.dot(self.stock_price) + self.cash_in_hand
-
 
   def _trade(self, action):
     # index the action we want to perform
@@ -434,108 +437,161 @@ def play_one_episode(agent, env, is_train, n_steps, N, learn_iters):
 
 
 if __name__ == '__main__':
-    with torch.profiler.profile(
-        activities=[
-            torch.profiler.ProfilerActivity.CPU,
-            torch.profiler.ProfilerActivity.CUDA,
-        ], profile_memory=True
-    ) as p:
-       # log device info
-       # setting device on GPU if available, else CPU
-       # device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-       # print('Using device:', device)
-       # print()
-      
-        # additional info when using cuda
-        # if device.type == 'cuda':
-        #     print(torch.cuda.get_device_name(0))
-        #     print('Memory Usage:')
-        #     print('Allocated:', round(torch.cuda.memory_allocated(0)/1024**3,1), 'GB')
-        #     print('Cached:   ', round(torch.cuda.memory_cached(0)/1024**3,1), 'GB')
 
-        # config
-        models_folder = 'rl_trader_models'
-        rewards_folder = 'rl_trader_rewards'
-        N = 20
-        batch_size = 32
-        num_episodes = 2
-        alpha = 0.0003
-        initial_investment = 20000
-        transaction_cost_rate=0.02
+  # start pynvml if using cuda
+  if torch.cuda.is_available():
+    pynvml.nvmlInit()
 
-        parser = argparse.ArgumentParser()
-        parser.add_argument('-m', '--mode', type=str, required=True,
-                            help='either "train" or "test"')
-        args = parser.parse_args()
+  # Profiler Setup (Start)
+  with profiler.profile(
+        activities=[profiler.ProfilerActivity.CPU, profiler.ProfilerActivity.CUDA],
+        profile_memory=True,  
+        record_shapes=True,
+        with_stack=False
+    ) as prof:
 
-        maybe_make_dir(models_folder)
-        maybe_make_dir(rewards_folder)
+    # additional info when using cuda
+    # if device.type == 'cuda':
+    #     print(torch.cuda.get_device_name(0))
+    #     print('Memory Usage:')
+    #     print('Allocated:', round(torch.cuda.memory_allocated(0)/1024**3,1), 'GB')
+    #     print('Cached:   ', round(torch.cuda.memory_cached(0)/1024**3,1), 'GB')
 
-        data = get_data()
-        n_timesteps, n_stocks = data.shape
+    # config
+    models_folder = 'ppo_trader_models'
+    rewards_folder = 'ppo_trader_rewards'
+    N = 20
+    batch_size = 32
+    num_episodes = 2
+    alpha = 0.0003
+    initial_investment = 20000
+    transaction_cost_rate = 0.02
 
-        n_train = n_timesteps // 2
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-m', '--mode', type=str, required=True,
+                        help='either "train" or "test"')
+    args = parser.parse_args()
 
-        train_data = data[:n_train]
-        test_data = data[n_train:]
+    # determine the mode string and formatting
+    mode_str = "Training Mode" if args.mode == "train" else "Testing Mode"
+    # print with visual separation
+    print("\n", "=" * 20, "\n")  # top separator
+    print(f"PPO Trader - {mode_str}")
+    print("\n", "=" * 20, "\n")  # bottom separator
 
-        env = MultiStockEnv(train_data, initial_investment, transaction_cost_rate)
+    # log device info
+    print('Using device:', device, "\n")
 
-        action_size = len(env.action_space)
-        state_size = env.state_dim
-        input_dims = torch.tensor([env.state_dim], dtype=torch.int)
+    maybe_make_dir(models_folder)
+    maybe_make_dir(rewards_folder)
 
-        agent = PPOAgent(n_actions=action_size, batch_size=batch_size, 
-                        alpha=alpha, n_epochs=num_episodes, 
-                        input_dims=input_dims, chkpt_dir=models_folder)
+    data = get_data()
+    n_timesteps, n_stocks = data.shape
 
-        # print model summary
-        agent.print_model_summary()
-        scaler = get_scaler(env)
+    n_train = n_timesteps // 2
+    train_data = data[:n_train]
+    test_data = data[n_train:]
 
-        # store the final value of the portfolio (end of episode)
-        portfolio_value = []
+    env = MultiStockEnv(train_data, initial_investment, transaction_cost_rate)
+    
+    action_size = len(env.action_space)
+    state_size = env.state_dim
+    input_dims = torch.tensor([env.state_dim], dtype=torch.int)
 
-        if args.mode == 'test':
-            # then load the previous scaler
-            with open(f'{models_folder}/scaler.pkl', 'rb') as f:
-                scaler = pickle.load(f)
+    agent = PPOAgent(n_actions=action_size, batch_size=batch_size, 
+                      alpha=alpha, n_epochs=num_episodes, 
+                      input_dims=input_dims, chkpt_dir=models_folder)
+    
+    # print model summary
+    agent.print_model_summary()
+    scaler = get_scaler(env)
 
-            # remake the env with test data
-            env = MultiStockEnv(test_data, initial_investment)
+    # store the final value of the portfolio (end of episode)
+    portfolio_value = []
 
-            # make sure epsilon is not 1!
-            # no need to run multiple episodes if epsilon = 0, it's deterministic
-            # agent.epsilon = 0.01
+    if args.mode == 'test':
+      # then load the previous scaler
+      with open(f'{models_folder}/scaler.pkl', 'rb') as f:
+        scaler = pickle.load(f)
 
-            # load trained weights
-            agent.load_models()
+      # remake the env with test data
+      env = MultiStockEnv(test_data, initial_investment)
 
+      # make sure epsilon is not 1!
+      # no need to run multiple episodes if epsilon = 0, it's deterministic
+      # agent.epsilon = 0.01
 
-        # set some variables
-        learn_iters = 0
-        n_steps = 0
+      # load trained weights
+      agent.load_models()
 
-        # play the game num_episodes times
-        for e in range(num_episodes):
+    # set counters for iterations and steps
+    learn_iters = 0
+    n_steps = 0
 
-            t0 = datetime.now()
-            val = play_one_episode(agent, env, args.mode, n_steps, N, learn_iters)
-            dt = datetime.now() - t0
-            print(f"episode: {e + 1}/{num_episodes}, episode end value: {val:.2f}, duration: {dt}")
-            portfolio_value.append(val) # append episode end portfolio value
+    # play the game num_episodes times
+    for e in range(num_episodes):
 
-        # save the weights when we are done
-        if args.mode == 'train':
-            # save the PPO
-            agent.save_models()
+      t0 = datetime.now()
+      val = play_one_episode(agent, env, args.mode, n_steps, N, learn_iters)
+      dt = datetime.now() - t0
+      print(f"episode: {e + 1}/{num_episodes}, episode end value: {val:.2f}, duration: {dt}")
+      portfolio_value.append(val) # append episode end portfolio value
 
-            # save the scaler
-            with open(f'{models_folder}/scaler.pkl', 'wb') as f:
-                pickle.dump(scaler, f)
+    # save the weights when we are done
+    if args.mode == 'train':
+      # save the PPO
+      agent.save_models()
 
+      # save the scaler
+      with open(f'{models_folder}/scaler.pkl', 'wb') as f:
+        pickle.dump(scaler, f)
 
-        # save portfolio value for each episode
-        np.save(f'{rewards_folder}/{args.mode}.npy', portfolio_value)
+  # Profiler Setup (End)
+  # Save the trace, naming it based on the mode
+  trace_filename = f"ppo_trace_{args.mode}.json"  
+  prof.export_chrome_trace(trace_filename)  # Change filename
+  
+  # Print Table of Profiler Results
+  print("\nDetailed Profiler Table:")
+  print(prof.key_averages().table(sort_by="cpu_time_total", row_limit=10))
 
-print(p.key_averages().table(sort_by="cpu_time_total", row_limit=10))
+  # Print Total Metrics
+  print("\nPyTorch Profiler Metrics:")
+  metrics = {
+      "CPU Time Total (s)": prof.key_averages().total_average().cpu_time_total / 1e6,  
+      "CUDA Time Total (s)": prof.key_averages().total_average().cuda_time_total / 1e6,
+      "CPU Memory Usage (MB)": prof.key_averages().total_average().cpu_memory_usage / 1024**2,
+      "CUDA Memory Usage (MB)": prof.key_averages().total_average().cuda_memory_usage / 1024**2,
+  }
+  for key, value in metrics.items():
+      print(f"{key}: {value:.3f}")
+
+  # measure cpu metrics with psutil
+  process = psutil.Process(os.getpid())
+  memory_info = process.memory_info()
+  memory_usage = memory_info.rss / (1024 ** 2)  # convert to mb
+  num_threads = process.num_threads()
+
+  # print cpu metrics
+  print("\npsutil Metrics:")
+  print(f"CPU Memory Usage: {memory_usage:.3f} MB")
+  print(f"Number of Threads: {num_threads}")
+
+  # print pynvml metrics (if using cuda) and shutdown pynvml
+  if torch.cuda.is_available():
+
+    print("\nPyNVML Metrics:")
+    handle = pynvml.nvmlDeviceGetHandleByIndex(0)  # assuming single gpu
+    mem_info = pynvml.nvmlDeviceGetMemoryInfo(handle) # memory information
+    gpu_utilization = pynvml.nvmlDeviceGetUtilizationRates(handle).gpu # gpu utilisation
+    power_usage = pynvml.nvmlDeviceGetPowerUsage(handle) # power usage
+
+    print(f"GPU Memory Total: {mem_info.total / (1024 ** 2):.2f} MB")
+    print(f"GPU Memory Usage: {mem_info.used / (1024 ** 2):.2f} MB")
+    print(f"GPU Utilisation: {gpu_utilization} %")
+    print(f"Power Usage: {power_usage / 1000:.2f} W")
+
+    pynvml.nvmlShutdown()  # shutdown pynvml after use
+
+  # save portfolio value for each episode
+  np.save(f'{rewards_folder}/{args.mode}.npy', portfolio_value)

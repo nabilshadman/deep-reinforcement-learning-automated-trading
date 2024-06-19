@@ -15,6 +15,10 @@ import pickle
 
 from sklearn.preprocessing import StandardScaler
 
+import psutil
+if torch.cuda.is_available():
+  import pynvml
+
 
 # Set up device
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
@@ -433,6 +437,10 @@ def play_one_episode(agent, env, is_train, n_steps, N, learn_iters):
 
 if __name__ == '__main__':
 
+  # start pynvml if using cuda
+  if torch.cuda.is_available():
+    pynvml.nvmlInit()
+
   # additional info when using cuda
   # if device.type == 'cuda':
   #     print(torch.cuda.get_device_name(0))
@@ -441,11 +449,11 @@ if __name__ == '__main__':
   #     print('Cached:   ', round(torch.cuda.memory_cached(0)/1024**3,1), 'GB')
 
   # config
-  models_folder = 'rl_trader_models'
-  rewards_folder = 'rl_trader_rewards'
+  models_folder = 'ppo_trader_models'
+  rewards_folder = 'ppo_trader_rewards'
   N = 20
   batch_size = 32
-  num_episodes = 4
+  num_episodes = 2
   alpha = 0.0003
   initial_investment = 20000
   transaction_cost_rate = 0.02
@@ -528,6 +536,33 @@ if __name__ == '__main__':
     # save the scaler
     with open(f'{models_folder}/scaler.pkl', 'wb') as f:
       pickle.dump(scaler, f)
+
+  # measure cpu metrics with psutil
+  process = psutil.Process(os.getpid())
+  memory_info = process.memory_info()
+  memory_usage = memory_info.rss / (1024 ** 2)  # convert to mb
+  num_threads = process.num_threads()
+
+  # print cpu metrics
+  print("\npsutil Metrics:")
+  print(f"CPU Memory Usage: {memory_usage:.3f} MB")
+  print(f"Number of Threads: {num_threads}")
+
+  # print pynvml metrics (if using cuda) and shutdown pynvml
+  if torch.cuda.is_available():
+
+    print("\nPyNVML Metrics:")
+    handle = pynvml.nvmlDeviceGetHandleByIndex(0)  # assuming single gpu
+    mem_info = pynvml.nvmlDeviceGetMemoryInfo(handle) # memory information
+    gpu_utilization = pynvml.nvmlDeviceGetUtilizationRates(handle).gpu # gpu utilisation
+    power_usage = pynvml.nvmlDeviceGetPowerUsage(handle) # power usage
+
+    print(f"GPU Memory Total: {mem_info.total / (1024 ** 2):.2f} MB")
+    print(f"GPU Memory Usage: {mem_info.used / (1024 ** 2):.2f} MB")
+    print(f"GPU Utilisation: {gpu_utilization} %")
+    print(f"Power Usage: {power_usage / 1000:.2f} W")
+
+    pynvml.nvmlShutdown()  # shutdown pynvml after use
 
   # save portfolio value for each episode
   np.save(f'{rewards_folder}/{args.mode}.npy', portfolio_value)

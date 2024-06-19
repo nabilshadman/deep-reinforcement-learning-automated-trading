@@ -1,3 +1,3 @@
 #!/bin/bash
-rm -r rl_trader_models
-rm -r rl_trader_rewards
+rm -r ppo_trader_models
+rm -r ppo_trader_rewards
