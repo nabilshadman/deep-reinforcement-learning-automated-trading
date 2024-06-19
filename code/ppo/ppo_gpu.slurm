@@ -27,4 +27,3 @@ cd $SLURM_SUBMIT_DIR
 # srun -n 1 nsys profile --delay=3 -o prof1 python ppo_trader.py -m train
 python ppo_trader.py -m train
 python ppo_trader.py -m test
-

@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Slurm job options (name, compute nodes, job time)
-#SBATCH --job-name=ppo-nsys-cpu
-#SBATCH --time=0:20:0
+#SBATCH --job-name=ppo-prof-cpu
+#SBATCH --time=0:40:0
 #SBATCH --exclusive
 #SBATCH --nodes=1
 #SBATCH --tasks-per-node=1
@@ -29,6 +29,8 @@ conda activate env-pytorch-1.13.1-gpu
 cd $SLURM_SUBMIT_DIR
 
 # Launch the job
-# dlprof --mode=pytorch --delay=3 --reports=summary,detail,iteration --output_path=./dlprof_output --force=true python ppo_trader_dlprof.py -m train
-srun -n 1 nsys profile --delay=3 -o prof1 python ppo_trader.py -m train
-
+# dlprof --mode=simple --reports=summary python ppo_trader.py -m train
+# srun -n 1 nsys profile --delay=3 -o prof1 python ppo_trader.py -m train
+# python ppo_trader_tensorboard.py -m train
+python ppo_trader_prof.py -m train
+python ppo_trader_prof.py -m test
