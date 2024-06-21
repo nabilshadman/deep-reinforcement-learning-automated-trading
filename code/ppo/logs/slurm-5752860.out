@@ -1,0 +1,89 @@
+Loading python/3.10.8-gpu
+  Loading requirement: nvidia/nvhpc-nompi/22.2 gcc/10.2.0
+    openmpi/4.1.6-cuda-11.6
+
+ ==================== 
+
+PPO Trader - Training Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=1, bias=True)
+  )
+) 
+
+episode: 1/2, episode end value: 106.18, duration: 0:00:05.493402
+episode: 2/2, episode end value: 72.28, duration: 0:00:00.805677
+... saving models ...
+
+psutil Metrics:
+CPU Memory Usage: 1943.875 MB
+Number of Threads: 5
+
+PyNVML Metrics:
+GPU Memory Total: 16384.00 MB
+GPU Memory Usage: 1179.31 MB
+GPU Utilisation: 15 %
+Power Usage: 58.23 W
+
+ ==================== 
+
+PPO Trader - Testing Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=1, bias=True)
+  )
+) 
+
+... loading models ...
+episode: 1/2, episode end value: 74.69, duration: 0:00:01.092262
+episode: 2/2, episode end value: 93.01, duration: 0:00:00.597978
+
+psutil Metrics:
+CPU Memory Usage: 1936.602 MB
+Number of Threads: 4
+
+PyNVML Metrics:
+GPU Memory Total: 16384.00 MB
+GPU Memory Usage: 1169.31 MB
+GPU Utilisation: 11 %
+Power Usage: 58.23 W
