@@ -1,0 +1,145 @@
+Loading python/3.10.8-gpu
+  Loading requirement: nvidia/nvhpc-nompi/22.2 gcc/10.2.0
+    openmpi/4.1.6-cuda-11.6
+STAGE:2024-06-21 11:16:19 4110581:4110581 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-06-21 11:16:40 4110581:4110581 ActivityProfilerController.cpp:300] Completed Stage: Collection
+STAGE:2024-06-21 11:17:05 4110581:4110581 output_json.cpp:417] Completed Stage: Post Processing
+
+ ==================== 
+
+PPO Trader - Training Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=1, bias=True)
+  )
+) 
+
+episode: 1/2, episode end value: 83.19, duration: 0:00:09.479893
+episode: 2/2, episode end value: 104.69, duration: 0:00:01.371334
+... saving models ...
+
+Detailed Profiler Table:
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg     Self CUDA   Self CUDA %    CUDA total  CUDA time avg       CPU Mem  Self CPU Mem      CUDA Mem  Self CUDA Mem    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                               aten::to         0.18%      34.711ms        47.25%        8.917s     765.225us       0.000us         0.00%       4.833ms       0.415us     176.66 Kb      15.68 Kb       2.02 Mb       1.00 Kb         11653  
+                                         aten::_to_copy         0.25%      48.016ms        47.08%        8.885s       1.482ms       0.000us         0.00%       4.759ms       0.794us     176.66 Kb      31.93 Kb       2.06 Mb      -7.00 Kb          5996  
+                                    aten::empty_strided         0.19%      36.532ms        46.10%        8.700s       1.416ms       0.000us         0.00%       0.000us       0.000us     141.45 Kb     141.45 Kb       3.22 Mb       3.22 Mb          6144  
+                                  cudaStreamIsCapturing        45.82%        8.648s        45.82%        8.648s       5.743ms     461.000us         0.20%     461.000us       0.306us           0 b           0 b           0 b           0 b          1506  
+                                           aten::linear         0.44%      83.273ms        39.17%        7.394s     892.963us       0.000us         0.00%      48.815ms       5.896us           0 b           0 b      16.25 Mb     143.50 Kb          8280  
+                                            aten::addmm         1.91%     360.766ms        38.36%        7.241s     874.481us      42.232ms        17.96%      49.962ms       6.034us           0 b           0 b      16.25 Mb      -6.72 Gb          8280  
+                                               cudaFree        35.81%        6.758s        35.81%        6.758s        2.253s       4.000us         0.00%       4.000us       1.333us           0 b           0 b           0 b           0 b             3  
+                                       cudaLaunchKernel         1.99%     375.663ms         1.99%     375.663ms       5.276us      21.597ms         9.18%      21.597ms       0.303us        -312 b        -312 b           0 b           0 b         71208  
+                               Optimizer.step#Adam.step         0.43%      81.227ms         1.62%     304.840ms       1.229ms       0.000us         0.00%      33.680ms     135.806us        -944 b     -33.00 Kb       1.09 Mb    -135.38 Mb           248  
+                                             aten::relu         0.23%      42.779ms         1.03%     193.666ms      35.084us       0.000us         0.00%      14.815ms       2.684us           0 b           0 b      14.66 Mb           0 b          5520  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 18.874s
+Self CUDA time total: 235.178ms
+
+
+PyTorch Profiler Metrics:
+CPU Time Total (s): 61.726
+CUDA Time Total (s): 0.768
+CPU Memory Usage (MB): 0.380
+CUDA Memory Usage (MB): 7251.802
+
+psutil Metrics:
+CPU Memory Usage: 4542.555 MB
+Number of Threads: 8
+
+PyNVML Metrics:
+GPU Memory Total: 16384.00 MB
+GPU Memory Usage: 1187.31 MB
+GPU Utilisation: 0 %
+Power Usage: 58.35 W
+STAGE:2024-06-21 11:18:03 4110788:4110788 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-06-21 11:18:08 4110788:4110788 ActivityProfilerController.cpp:300] Completed Stage: Collection
+STAGE:2024-06-21 11:18:24 4110788:4110788 output_json.cpp:417] Completed Stage: Post Processing
+
+ ==================== 
+
+PPO Trader - Testing Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=256, out_features=1, bias=True)
+  )
+) 
+
+... loading models ...
+episode: 1/2, episode end value: 59.66, duration: 0:00:01.792537
+episode: 2/2, episode end value: 60.37, duration: 0:00:01.167333
+
+Detailed Profiler Table:
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg     Self CUDA   Self CUDA %    CUDA total  CUDA time avg       CPU Mem  Self CPU Mem      CUDA Mem  Self CUDA Mem    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                               aten::to         0.31%      11.053ms        41.29%        1.485s     196.467us       0.000us         0.00%       1.865ms       0.247us      34.34 Kb       6.10 Kb       1.16 Mb      44.50 Kb          7561  
+                                         aten::_to_copy         0.48%      17.179ms        41.17%        1.481s     584.020us       0.000us         0.00%       1.991ms       0.785us      34.34 Kb       2.73 Kb       1.16 Mb           0 b          2536  
+                                    aten::empty_strided         0.46%      16.391ms        39.72%        1.429s     563.520us       0.000us         0.00%       0.000us       0.000us      31.61 Kb      31.61 Kb       1.16 Mb       1.16 Mb          2536  
+                                  cudaStreamIsCapturing        39.30%        1.414s        39.30%        1.414s       1.125ms     325.000us         0.24%     325.000us       0.259us           0 b           0 b           0 b           0 b          1257  
+                                           aten::linear         0.91%      32.870ms        29.90%        1.076s     142.757us       0.000us         0.00%      41.220ms       5.470us           0 b           0 b       6.13 Mb      32.00 Kb          7536  
+                                            aten::addmm         6.08%     218.653ms        27.20%     978.595ms     129.856us      35.454ms        25.94%      41.441ms       5.499us           0 b           0 b       6.13 Mb      -6.13 Gb          7536  
+                                               cudaFree        17.43%     627.199ms        17.43%     627.199ms     313.599ms       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b             2  
+                                       cudaLaunchKernel         8.12%     292.272ms         8.12%     292.272ms       7.052us      11.038ms         8.08%      11.038ms       0.266us           0 b           0 b           0 b           0 b         41448  
+                                        cudaMemcpyAsync         4.20%     150.948ms         4.20%     150.948ms      13.311us       3.018ms         2.21%       3.018ms       0.266us           0 b           0 b           0 b           0 b         11340  
+                                             aten::item         0.25%       8.853ms         3.69%     132.822ms      21.137us       0.000us         0.00%       9.588ms       1.526us           0 b           0 b           0 b           0 b          6284  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 3.598s
+Self CUDA time total: 136.665ms
+
+
+PyTorch Profiler Metrics:
+CPU Time Total (s): 10.630
+CUDA Time Total (s): 0.406
+CPU Memory Usage (MB): 0.064
+CUDA Memory Usage (MB): 6298.076
+
+psutil Metrics:
+CPU Memory Usage: 3914.496 MB
+Number of Threads: 7
+
+PyNVML Metrics:
+GPU Memory Total: 16384.00 MB
+GPU Memory Usage: 1177.31 MB
+GPU Utilisation: 0 %
+Power Usage: 58.31 W
