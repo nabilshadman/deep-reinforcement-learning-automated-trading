@@ -1,0 +1,119 @@
+Loading python/3.10.8-gpu
+  Loading requirement: nvidia/nvhpc-nompi/22.2 gcc/10.2.0
+    openmpi/4.1.6-cuda-11.6
+STAGE:2024-06-21 13:21:43 265678:265678 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-06-21 13:22:07 265678:265678 ActivityProfilerController.cpp:300] Completed Stage: Collection
+STAGE:2024-06-21 13:22:40 265678:265678 output_json.cpp:417] Completed Stage: Post Processing
+
+ ==================== 
+
+DQN Trader - Training Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=27, bias=True)
+  )
+) 
+
+episode: 1/2, episode end value: 1863.40, duration: 0:00:09.583107
+episode: 2/2, episode end value: 29370.23, duration: 0:00:01.890870
+... saving models ...
+
+Detailed Profiler Table:
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg     Self CUDA   Self CUDA %    CUDA total  CUDA time avg       CPU Mem  Self CPU Mem      CUDA Mem  Self CUDA Mem    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                               aten::to         0.23%      48.529ms        53.05%       11.085s     241.814us       0.000us         0.00%      15.368ms       0.335us       8.20 Mb     474.57 Kb       8.29 Mb      71.00 Kb         45843  
+                                         aten::_to_copy         0.43%      90.684ms        52.85%       11.044s     769.493us       0.000us         0.00%      15.534ms       1.082us       8.20 Mb       1.19 Mb       8.29 Mb           0 b         14352  
+                                    aten::empty_strided         0.60%     126.344ms        50.90%       10.636s     682.463us       0.000us         0.00%       0.000us       0.000us       7.01 Mb       7.01 Mb       8.90 Mb       8.90 Mb         15585  
+                                  cudaStreamIsCapturing        50.22%       10.493s        50.22%       10.493s       8.559ms     415.000us         0.16%     415.000us       0.338us           0 b           0 b           0 b           0 b          1226  
+                                           aten::linear         0.41%      86.253ms        35.71%        7.462s     789.769us       0.000us         0.00%      63.596ms       6.731us           0 b           0 b      27.94 Mb     215.50 Kb          9448  
+                                            aten::addmm         1.57%     329.027ms        34.90%        7.292s     771.797us      54.534ms        21.37%      64.136ms       6.788us           0 b           0 b      27.94 Mb      -9.20 Gb          9448  
+                                               cudaFree        32.74%        6.841s        32.74%        6.841s        2.280s       3.000us         0.00%       3.000us       1.000us           0 b           0 b           0 b           0 b             3  
+                               Optimizer.step#Adam.step         1.50%     312.599ms         4.66%     973.254ms     794.493us       0.000us         0.00%     111.508ms      91.027us      -4.77 Kb    -145.09 Kb      11.00 Kb     -13.16 Mb          1225  
+                                       cudaLaunchKernel         2.06%     431.378ms         2.06%     431.378ms       5.478us      27.197ms        10.66%      27.286ms       0.347us           0 b           0 b      -1.00 Mb      -1.00 Mb         78745  
+                                            aten::copy_         0.83%     172.830ms         1.56%     326.285ms      22.728us       9.532ms         3.73%      15.766ms       1.098us           0 b           0 b           0 b           0 b         14356  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 20.896s
+Self CUDA time total: 255.223ms
+
+
+PyTorch Profiler Metrics:
+CPU Time Total (s): 70.789
+CUDA Time Total (s): 0.976
+CPU Memory Usage (MB): 15.512
+CUDA Memory Usage (MB): 9572.830
+
+psutil Metrics:
+CPU Memory Usage: 5017.227 MB
+Number of Threads: 8
+
+PyNVML Metrics:
+GPU Memory Total: 16384.00 MB
+GPU Memory Usage: 1185.31 MB
+GPU Utilisation: 0 %
+Power Usage: 62.01 W
+STAGE:2024-06-21 13:23:54 265863:265863 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-06-21 13:23:57 265863:265863 ActivityProfilerController.cpp:300] Completed Stage: Collection
+STAGE:2024-06-21 13:24:00 265863:265863 output_json.cpp:417] Completed Stage: Post Processing
+
+ ==================== 
+
+DQN Trader - Testing Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=27, bias=True)
+  )
+) 
+
+... loading models ...
+episode: 1/2, episode end value: 20581.85, duration: 0:00:00.943537
+episode: 2/2, episode end value: 17790.30, duration: 0:00:00.301684
+
+Detailed Profiler Table:
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg     Self CUDA   Self CUDA %    CUDA total  CUDA time avg       CPU Mem  Self CPU Mem      CUDA Mem  Self CUDA Mem    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                               aten::to         0.25%       5.910ms        65.69%        1.528s     174.968us       0.000us         0.00%       3.719ms       0.426us     131.41 Kb       7.80 Kb     628.50 Kb       4.00 Kb          8734  
+                                         aten::_to_copy         0.65%      15.227ms        65.52%        1.524s     609.662us       0.000us         0.00%       3.811ms       1.524us     131.41 Kb      31.11 Kb     628.50 Kb           0 b          2500  
+                                    aten::empty_strided         0.58%      13.582ms        62.36%        1.451s     580.234us       0.000us         0.00%       0.000us       0.000us     100.30 Kb     100.30 Kb     628.50 Kb     628.50 Kb          2500  
+                                  cudaStreamIsCapturing        61.77%        1.437s        61.77%        1.437s        1.437s       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b             1  
+                                           aten::linear         0.37%       8.702ms        32.65%     759.469ms     304.763us       0.000us         0.00%      17.141ms       6.878us           0 b           0 b       1.22 Mb       2.50 Kb          2492  
+                                            aten::addmm         2.41%      56.158ms        31.63%     735.706ms     295.227us      15.134ms        73.17%      17.175ms       6.892us           0 b           0 b       1.22 Mb      -2.43 Gb          2492  
+                                               cudaFree        27.40%     637.451ms        27.40%     637.451ms     318.726ms       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b             2  
+                                            aten::copy_         0.75%      17.380ms         2.55%      59.265ms      23.630us       2.516ms        12.16%       3.885ms       1.549us           0 b           0 b           0 b           0 b          2508  
+                                       cudaLaunchKernel         1.62%      37.737ms         1.62%      37.737ms       6.057us       1.706ms         8.25%       1.706ms       0.274us           0 b           0 b      -7.00 Mb      -7.00 Mb          6230  
+                                        cudaMemcpyAsync         1.46%      33.892ms         1.46%      33.892ms      13.535us     685.000us         3.31%     685.000us       0.274us           0 b           0 b           0 b           0 b          2504  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 2.326s
+Self CUDA time total: 20.683ms
+
+
+PyTorch Profiler Metrics:
+CPU Time Total (s): 8.307
+CUDA Time Total (s): 0.077
+CPU Memory Usage (MB): 0.226
+CUDA Memory Usage (MB): 2488.058
+
+psutil Metrics:
+CPU Memory Usage: 2977.539 MB
+Number of Threads: 7
+
+PyNVML Metrics:
+GPU Memory Total: 16384.00 MB
+GPU Memory Usage: 1177.31 MB
+GPU Utilisation: 0 %
+Power Usage: 61.60 W
