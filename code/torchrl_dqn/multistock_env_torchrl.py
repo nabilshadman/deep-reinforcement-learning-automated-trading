@@ -5,20 +5,29 @@ from torchrl.envs import EnvBase
 from torchrl.data import CompositeSpec, UnboundedContinuousTensorSpec, DiscreteTensorSpec, BoundedTensorSpec
 from tensordict import TensorDict
 
-def get_data():
-    # This function loads stock prices from a CSV file and returns it as a NumPy array
-    df = pd.read_csv('equities_close_prices_daily.csv')
-    return df.values
+
+# def get_data():
+#     # This function loads stock prices from a CSV file and returns it as a NumPy array
+#     df = pd.read_csv('equities_close_prices_daily.csv')
+#     return df.values
+
 
 class MultiStockEnvTorch(EnvBase):
     def __init__(self, data, initial_investment=20000, transaction_cost_rate=0.02):
         super().__init__()
         self.stock_price_history = data
         self.n_step, self.n_stock = self.stock_price_history.shape
+
         self.initial_investment = initial_investment
         self.transaction_cost_rate = transaction_cost_rate
+        self.cur_step = 0
+        self.stock_owned = np.zeros(self.n_stock)
+        self.stock_price = self.stock_price_history[self.cur_step]
+        self.cash_in_hand = self.initial_investment
+
         self.action_space = 3 ** self.n_stock
         self.state_dim = self.n_stock * 2 + 1
+
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         self.set_seed(42)
 
@@ -102,25 +111,26 @@ class MultiStockEnvTorch(EnvBase):
             done=done_spec
         )
 
-if __name__ == '__main__':
-    data = get_data()
-    env = MultiStockEnvTorch(data[:data.shape[0]//2])  # Create the environment
-    env.set_seed(42)  # Set the seed to 42 for reproducibility
 
-    # Print the device being used
-    print(f"Using device: {env.device}")
+# if __name__ == '__main__':
+#     data = get_data()
+#     env = MultiStockEnvTorch(data[:data.shape[0]//2])  # Create the environment
+#     env.set_seed(42)  # Set the seed to 42 for reproducibility
 
-    # Reset and get initial state
-    tensordict = env.reset()
-    print("Initial Observation:", tensordict.get('observation'))
+#     # Print the device being used
+#     print(f"Using device: {env.device}")
 
-    # Take a random action
-    # action = torch.randint(0, env.action_space, (1,), device=env.device)
-    action = torch.tensor([26], device=env.device)
-    tensordict = TensorDict({'action': action}, batch_size=[])
-    tensordict = env.step(tensordict)
+#     # Reset and get initial state
+#     tensordict = env.reset()
+#     print("Initial Observation:", tensordict.get('observation'))
 
-    print("Next Observation:", tensordict.get('observation'))
-    print("Reward:", tensordict.get('reward'))
-    print("Done:", tensordict.get('done'))
-    print("Info (Current Value):", tensordict.get('cur_val'))
+#     # Take a random action
+#     # action = torch.randint(0, env.action_space, (1,), device=env.device)
+#     action = torch.tensor([26], device=env.device)
+#     tensordict = TensorDict({'action': action}, batch_size=[])
+#     tensordict = env.step(tensordict)
+
+#     print("Next Observation:", tensordict.get('observation'))
+#     print("Reward:", tensordict.get('reward'))
+#     print("Done:", tensordict.get('done'))
+#     print("Info (Current Value):", tensordict.get('cur_val'))
