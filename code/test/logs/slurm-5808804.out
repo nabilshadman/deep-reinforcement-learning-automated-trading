@@ -1,0 +1,14 @@
+Loading python/3.10.8-gpu
+  Loading requirement: nvidia/nvhpc-nompi/22.2 gcc/10.2.0
+    openmpi/4.1.6-cuda-11.6
+/work/mdisspt/mdisspt/n2134758/condaenvs/envs/env-pytorch-1.13.1-gpu/lib/python3.10/site-packages/torch/cuda/__init__.py:497: UserWarning: Can't initialize NVML
+  warnings.warn("Can't initialize NVML")
+/work/mdisspt/mdisspt/n2134758/condaenvs/envs/env-pytorch-1.13.1-gpu/lib/python3.10/site-packages/torchrl/data/replay_buffers/samplers.py:37: UserWarning: Failed to import torchrl C++ binaries. Some modules (eg, prioritized replay buffers) may not work with your installation. If you installed TorchRL from PyPI, please report the bug on TorchRL github. If you installed TorchRL locally and/or in development mode, check that you have all the required compiling packages.
+  warnings.warn(EXTENSION_WARNING)
+Using device: cpu
+Initial Observation: tensor([    0.0000,     0.0000,     0.0000,    39.4800,    99.3100,    31.1133,
+        20000.0000])
+Next Observation: tensor([120.0000, 120.0000, 119.0000,  35.5475,  97.1100,  30.9533,   5.6063])
+Reward: tensor([-392.0469])
+Done: tensor([False])
+Info (Current Value): tensor(19607.9531)
