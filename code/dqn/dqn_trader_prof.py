@@ -6,6 +6,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 from datetime import datetime
+import time
 import itertools
 import argparse
 import re
@@ -377,6 +378,9 @@ def play_one_episode(agent, env, is_train):
 
 if __name__ == '__main__':
 
+  # Record start time
+  start_time = time.time()  
+
   # start pynvml if using cuda
   if torch.cuda.is_available():
     pynvml.nvmlInit()
@@ -521,3 +525,8 @@ if __name__ == '__main__':
 
   # save portfolio value for each episode
   np.save(f'{rewards_folder}/{args.mode}.npy', portfolio_value)
+
+  # After all processing is done, calculate and print total execution time
+  end_time = time.time()
+  total_time = end_time - start_time
+  print(f"\nTotal execution time: {total_time:.2f} seconds")
