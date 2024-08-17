@@ -186,6 +186,7 @@ class MultiStockEnv:
     # 0 = sell
     # 1 = hold
     # 2 = buy
+    # self.action_list = np.array(list(itertools.product([0, 1, 2], repeat=self.n_stock)))
     self.action_list = list(map(list, itertools.product([0, 1, 2], repeat=self.n_stock)))
 
     # calculate size of state
@@ -247,6 +248,7 @@ class MultiStockEnv:
     # buy first stock
     # hold second stock
     # sell third stock
+    # action_vec = self.action_list[action, :]
     action_vec = self.action_list[action]
 
     # determine which stocks to buy or sell
@@ -394,7 +396,7 @@ if __name__ == '__main__':
   # config
   models_folder = 'dqn_trader_models'
   rewards_folder = 'dqn_trader_rewards'
-  num_episodes = 2
+  num_episodes = 20
   batch_size = 32
   initial_investment = 20000
   transaction_cost_rate = 0.02
