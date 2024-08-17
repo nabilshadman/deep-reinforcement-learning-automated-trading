@@ -103,7 +103,7 @@ class PPOMemory:
 
 class ActorNetwork(nn.Module):
     def __init__(self, n_actions, input_dims, alpha,
-            fc1_dims=256, fc2_dims=256, chkpt_dir='rl_trader_models'):
+            fc1_dims=32, fc2_dims=32, chkpt_dir='rl_trader_models'):
         super(ActorNetwork, self).__init__()
 
         self.checkpoint_file = os.path.join(chkpt_dir, 'actor_torch_ppo')
@@ -140,7 +140,7 @@ class ActorNetwork(nn.Module):
 
 
 class CriticNetwork(nn.Module):
-    def __init__(self, input_dims, alpha, fc1_dims=256, fc2_dims=256,
+    def __init__(self, input_dims, alpha, fc1_dims=32, fc2_dims=32,
             chkpt_dir='rl_trader_models'):
         super(CriticNetwork, self).__init__()
 
@@ -459,7 +459,7 @@ if __name__ == '__main__':
   rewards_folder = 'ppo_trader_rewards'
   N = 20
   batch_size = 32
-  num_episodes = 2
+  num_episodes = 10
   alpha = 0.0003
   initial_investment = 20000
   transaction_cost_rate = 0.02
