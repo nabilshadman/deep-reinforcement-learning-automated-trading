@@ -291,7 +291,7 @@ class MultiStockEnv:
 
 
 class DQNAgent(object):
-  def __init__(self, state_size, action_size):
+  def __init__(self, state_size, action_size, alpha=0.0003):
     self.state_size = state_size
     self.action_size = action_size
     self.memory = ReplayBuffer(state_size, action_size, size=500)
@@ -303,7 +303,7 @@ class DQNAgent(object):
 
     # loss and optimizer
     self.criterion = nn.MSELoss()
-    self.optimizer = torch.optim.Adam(self.model.parameters())
+    self.optimizer = torch.optim.Adam(self.model.parameters(), lr=alpha)
 
   def update_replay_memory(self, state, action, reward, next_state, done):
     self.memory.store(state, action, reward, next_state, done)
@@ -396,7 +396,8 @@ if __name__ == '__main__':
   # config
   models_folder = 'dqn_trader_models'
   rewards_folder = 'dqn_trader_rewards'
-  num_episodes = 20
+  num_episodes = 2
+  alpha = 0.0003
   batch_size = 32
   initial_investment = 20000
   transaction_cost_rate = 0.02
@@ -429,7 +430,7 @@ if __name__ == '__main__':
   env = MultiStockEnv(train_data, initial_investment, transaction_cost_rate)
   state_size = env.state_dim
   action_size = len(env.action_space)
-  agent = DQNAgent(state_size, action_size)
+  agent = DQNAgent(state_size, action_size, alpha)
   # print model summary
   agent.print_model_summary()
   scaler = get_scaler(env)
