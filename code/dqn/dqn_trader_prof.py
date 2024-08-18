@@ -541,6 +541,11 @@ if __name__ == '__main__':
   # save portfolio value for each episode
   np.save(f'{rewards_folder}/{args.mode}.npy', portfolio_value)
 
+  # Print key statistics of the portfolio values
+  print(f"\nMedian portfolio value (USD): {np.median(portfolio_value):.2f}")
+  print(f"Minimum portfolio value (USD): {np.min(portfolio_value):.2f}")
+  print(f"Maximum portfolio value (USD): {np.max(portfolio_value):.2f}")
+
   # After all processing is done, calculate and print total execution time
   end_time = time.time()
   total_time = end_time - start_time
