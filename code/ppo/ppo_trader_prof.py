@@ -452,7 +452,7 @@ if __name__ == '__main__':
   start_time = time.time()  
 
   # Set the seed for reproducibility
-  seed = random.randint(0, 100000)
+  seed = 42 # random.randint(0, 100000)
   set_seeds(seed)  # You can choose any integer as the seed
 
   # start pynvml if using cuda
@@ -565,9 +565,9 @@ if __name__ == '__main__':
 
   # Profiler Setup (End)
   # Save the trace, naming it based on the mode
-  # trace_filename = f"ppo_trace_{args.mode}.json"  
-  # prof.export_chrome_trace(trace_filename)  # Change filename
-  
+  trace_filename = f"ppo_trace_{args.mode}.json"  
+  prof.export_chrome_trace(trace_filename)  # Change filename
+
   # Print Table of Profiler Results
   print("\nDetailed Profiler Table:")
   print(prof.key_averages().table(sort_by="cpu_time_total", row_limit=10))
@@ -578,7 +578,7 @@ if __name__ == '__main__':
       "CPU Time Total (s)": prof.key_averages().total_average().cpu_time_total / 1e6,  
       "CUDA Time Total (s)": prof.key_averages().total_average().cuda_time_total / 1e6,
       "CPU Memory Usage (MB)": prof.key_averages().total_average().cpu_memory_usage / 1024**2,
-      "CUDA Memory Usage (MB)": prof.key_averages().total_average().cuda_memory_usage / 1024**2,
+      "CUDA Memory Usage (MB)": prof.key_averages().total_average().cuda_memory_usage / 1024**2
   }
   for key, value in metrics.items():
       print(f"{key}: {value:.3f}")
