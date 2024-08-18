@@ -492,7 +492,7 @@ if __name__ == '__main__':
 
   # print cpu metrics
   print("\npsutil Metrics:")
-  print(f"CPU Memory Usage: {memory_usage:.3f} MB")
+  print(f"CPU Memory Usage (MB): {memory_usage:.3f}")
   print(f"Number of Threads: {num_threads}")
 
   # print pynvml metrics (if using cuda) and shutdown pynvml
@@ -504,10 +504,10 @@ if __name__ == '__main__':
     gpu_utilization = pynvml.nvmlDeviceGetUtilizationRates(handle).gpu # gpu utilisation
     power_usage = pynvml.nvmlDeviceGetPowerUsage(handle) # power usage
 
-    print(f"GPU Memory Total: {mem_info.total / (1024 ** 2):.2f} MB")
-    print(f"GPU Memory Usage: {mem_info.used / (1024 ** 2):.2f} MB")
-    print(f"GPU Utilisation: {gpu_utilization} %")
-    print(f"Power Usage: {power_usage / 1000:.2f} W")
+    print(f"GPU Memory Total (MB): {mem_info.total / (1024 ** 2):.2f}")
+    print(f"GPU Memory Usage (MB): {mem_info.used / (1024 ** 2):.2f}")
+    print(f"GPU Utilisation (%): {gpu_utilization}")
+    print(f"Power Usage (W): {power_usage / 1000:.2f}")
 
     pynvml.nvmlShutdown()  # shutdown pynvml after use
 
@@ -517,4 +517,4 @@ if __name__ == '__main__':
   # After all processing is done, calculate and print total execution time
   end_time = time.time()
   total_time = end_time - start_time
-  print(f"\nTotal execution time (seconds): {total_time:.2f}")
+  print(f"\nTotal execution time (seconds): {total_time:.3f}")
