@@ -1,3 +1,4 @@
+import random
 import numpy as np
 import pandas as pd
 
@@ -23,6 +24,14 @@ import torch.profiler as profiler
 
 # Set up device
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+
+
+def set_seeds(seed=42):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
+    torch.backends.cudnn.deterministic = True
 
 
 # Let's use AAPL (Apple), MSI (Motorola), SBUX (Starbucks)
@@ -380,6 +389,10 @@ if __name__ == '__main__':
 
   # Record start time
   start_time = time.time()  
+
+  # Set the seed for reproducibility
+  seed = random.randint(0, 100000)
+  set_seeds(seed)  # You can choose any integer as the seed
 
   # start pynvml if using cuda
   if torch.cuda.is_available():

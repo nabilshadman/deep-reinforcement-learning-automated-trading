@@ -1,3 +1,4 @@
+import random
 import numpy as np
 import pandas as pd
 
@@ -24,6 +25,14 @@ import torch.profiler as profiler
 
 # Set up device
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+
+
+def set_seeds(seed=42):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
+    torch.backends.cudnn.deterministic = True
 
 
 # Let's use AAPL (Apple), MSI (Motorola), SBUX (Starbucks)
@@ -104,7 +113,7 @@ class PPOMemory:
 
 class ActorNetwork(nn.Module):
     def __init__(self, n_actions, input_dims, alpha,
-            fc1_dims=32, fc2_dims=32, chkpt_dir='rl_trader_models'):
+            fc1_dims=32, fc2_dims=32, chkpt_dir='ppo_trader_models'):
         super(ActorNetwork, self).__init__()
 
         self.checkpoint_file = os.path.join(chkpt_dir, 'actor_torch_ppo')
@@ -142,7 +151,7 @@ class ActorNetwork(nn.Module):
 
 class CriticNetwork(nn.Module):
     def __init__(self, input_dims, alpha, fc1_dims=32, fc2_dims=32,
-            chkpt_dir='rl_trader_models'):
+            chkpt_dir='ppo_trader_models'):
         super(CriticNetwork, self).__init__()
 
         self.checkpoint_file = os.path.join(chkpt_dir, 'critic_torch_ppo')
@@ -178,7 +187,7 @@ class CriticNetwork(nn.Module):
 
 class PPOAgent:
     def __init__(self, n_actions, input_dims, gamma=0.99, alpha=0.0003, gae_lambda=0.95,
-            policy_clip=0.2, batch_size=64, n_epochs=10, chkpt_dir='rl_trader_models'):
+            policy_clip=0.2, batch_size=64, n_epochs=10, chkpt_dir='ppo_trader_models'):
         self.gamma = gamma
         self.policy_clip = policy_clip
         self.n_epochs = n_epochs
@@ -441,6 +450,10 @@ if __name__ == '__main__':
 
   # Record start time
   start_time = time.time()  
+
+  # Set the seed for reproducibility
+  seed = random.randint(0, 100000)
+  set_seeds(seed)  # You can choose any integer as the seed
 
   # start pynvml if using cuda
   if torch.cuda.is_available():
