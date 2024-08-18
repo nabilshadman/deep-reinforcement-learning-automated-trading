@@ -186,8 +186,8 @@ class CriticNetwork(nn.Module):
 
 
 class PPOAgent:
-    def __init__(self, n_actions, input_dims, gamma=0.99, alpha=0.0003, gae_lambda=0.95,
-            policy_clip=0.2, batch_size=64, n_epochs=10, chkpt_dir='ppo_trader_models'):
+    def __init__(self, n_actions, input_dims, gamma=0.95, alpha=0.0003, gae_lambda=0.95,
+            policy_clip=0.2, batch_size=32, n_epochs=10, chkpt_dir='ppo_trader_models'):
         self.gamma = gamma
         self.policy_clip = policy_clip
         self.n_epochs = n_epochs
