@@ -540,11 +540,11 @@ if __name__ == '__main__':
 
   # play the game num_episodes times
   for e in range(num_episodes):
-
     t0 = datetime.now()
     val = play_one_episode(agent, env, args.mode, n_steps, N, learn_iters)
     dt = datetime.now() - t0
-    print(f"episode: {e + 1}/{num_episodes}, episode end value: {val:.2f}, duration: {dt}")
+    print(f"episode: {e + 1}/{num_episodes}, episode end value (USD): {val:.2f}, "
+            f"duration (seconds): {dt.total_seconds()}")
     portfolio_value.append(val) # append episode end portfolio value
 
   # save the weights when we are done
@@ -589,4 +589,4 @@ if __name__ == '__main__':
   # After all processing is done, calculate and print total execution time
   end_time = time.time()
   total_time = end_time - start_time
-  print(f"\nTotal execution time: {total_time:.2f} seconds")
+  print(f"\nTotal execution time (seconds): {total_time:.2f}")
