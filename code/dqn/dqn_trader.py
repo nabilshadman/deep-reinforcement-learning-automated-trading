@@ -304,7 +304,7 @@ class DQNAgent(object):
     self.state_size = state_size
     self.action_size = action_size
     self.memory = ReplayBuffer(state_size, action_size, size=500)
-    self.gamma = 0.95  # discount rate
+    self.gamma = 0.99  # discount rate
     self.epsilon = 1.0  # exploration rate
     self.epsilon_min = 0.01
     self.epsilon_decay = 0.995
