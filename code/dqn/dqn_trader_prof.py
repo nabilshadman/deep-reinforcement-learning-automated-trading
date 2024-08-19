@@ -47,13 +47,14 @@ def get_data():
 
 ### The experience replay memory ###
 class ReplayBuffer:
-  def __init__(self, obs_dim, act_dim, size):
+  def __init__(self, obs_dim, act_dim, size, batch_size):
     self.obs1_buf = np.zeros([size, obs_dim], dtype=np.float32)
     self.obs2_buf = np.zeros([size, obs_dim], dtype=np.float32)
     self.acts_buf = np.zeros(size, dtype=np.uint8)
     self.rews_buf = np.zeros(size, dtype=np.float32)
     self.done_buf = np.zeros(size, dtype=np.uint8)
     self.ptr, self.size, self.max_size = 0, 0, size
+    self.batch_size = batch_size
 
   def store(self, obs, act, rew, next_obs, done):
     self.obs1_buf[self.ptr] = obs
@@ -64,8 +65,8 @@ class ReplayBuffer:
     self.ptr = (self.ptr+1) % self.max_size
     self.size = min(self.size+1, self.max_size)
 
-  def sample_batch(self, batch_size=32):
-    idxs = np.random.randint(0, self.size, size=batch_size)
+  def sample_batch(self):
+    idxs = np.random.randint(0, self.size, size=self.batch_size)
     return dict(s=self.obs1_buf[idxs],
                 s2=self.obs2_buf[idxs],
                 a=self.acts_buf[idxs],
@@ -299,11 +300,13 @@ class MultiStockEnv:
 
 
 class DQNAgent(object):
-  def __init__(self, state_size, action_size, gamma=0.99, epsilon=1.0, epsilon_min=0.01, 
-               epsilon_decay=0.995, alpha=0.0003):
+  def __init__(self, state_size, action_size, batch_size=32, buffer_size=500, gamma=0.99, 
+               epsilon=1.0, epsilon_min=0.01, epsilon_decay=0.995, alpha=0.0003):
     self.state_size = state_size
     self.action_size = action_size
-    self.memory = ReplayBuffer(state_size, action_size, size=500)
+    self.batch_size = batch_size
+    self.memory = ReplayBuffer(obs_dim=state_size, act_dim=action_size, 
+                               size=buffer_size, batch_size=batch_size)
     self.gamma = gamma  # discount rate
     self.epsilon = epsilon  # exploration rate
     self.epsilon_min = epsilon_min
@@ -323,13 +326,13 @@ class DQNAgent(object):
     act_values = predict(self.model, state)
     return np.argmax(act_values[0])  # returns action
 
-  def replay(self, batch_size=32):
+  def replay(self):
     # first check if replay buffer contains enough data
-    if self.memory.size < batch_size:
+    if self.memory.size < self.batch_size:
       return
 
     # sample a batch of data from the replay memory
-    minibatch = self.memory.sample_batch(batch_size)
+    minibatch = self.memory.sample_batch()
     states = minibatch['s']
     actions = minibatch['a']
     rewards = minibatch['r']
@@ -348,7 +351,7 @@ class DQNAgent(object):
     # Then, only change the targets for the actions taken.
     # Q(s,a)
     target_full = predict(self.model, states)
-    target_full[np.arange(batch_size), actions] = target
+    target_full[np.arange(self.batch_size), actions] = target
 
     # run one training step
     train_one_step(self.model, self.criterion, self.optimizer, states, target_full)
@@ -380,7 +383,7 @@ def play_one_episode(agent, env, is_train):
     next_state = scaler.transform([next_state])
     if is_train == 'train':
       agent.update_replay_memory(state, action, reward, next_state, done)
-      agent.replay(batch_size)
+      agent.replay()
     state = next_state
 
   return info['cur_val']
@@ -420,8 +423,9 @@ if __name__ == '__main__':
     num_episodes = 2
     initial_investment = 20000
     transaction_cost_rate = 0.02
-    batch_size = 32
 
+    batch_size = 32
+    buffer_size = 500
     gamma = 0.99
     epsilon = 1.0
     epsilon_min = 0.01
@@ -456,9 +460,10 @@ if __name__ == '__main__':
     env = MultiStockEnv(train_data, initial_investment, transaction_cost_rate)
     state_size = env.state_dim
     action_size = len(env.action_space)
-    agent = DQNAgent(state_size=state_size, action_size=action_size, gamma=gamma, 
-                     epsilon=epsilon, epsilon_min=epsilon_min, epsilon_decay=epsilon_decay, 
-                     alpha=alpha)
+    agent = DQNAgent(state_size=state_size, action_size=action_size, 
+                    batch_size=batch_size, buffer_size=buffer_size, 
+                    gamma=gamma, epsilon=epsilon, epsilon_min=epsilon_min, 
+                    epsilon_decay=epsilon_decay, alpha=alpha)
 
     # print model summary
     agent.print_model_summary()
@@ -502,12 +507,12 @@ if __name__ == '__main__':
 
   # Profiler Setup (End)
   # Save the trace, naming it based on the mode
-  # trace_filename = f"dqn_trace_{args.mode}.json"  
-  # prof.export_chrome_trace(trace_filename)  # Change filename
+  trace_filename = f"dqn_trace_{args.mode}.json"  
+  prof.export_chrome_trace(trace_filename)  # Change filename
   
   # Print Table of Profiler Results
-  # print("\nDetailed Profiler Table:")
-  # print(prof.key_averages().table(sort_by="cpu_time_total", row_limit=10))
+  print("\nDetailed Profiler Table:")
+  print(prof.key_averages().table(sort_by="cpu_time_total", row_limit=10))
 
   # Print Total Metrics
   print("\nPyTorch Profiler Metrics:")

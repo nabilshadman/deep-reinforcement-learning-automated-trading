@@ -480,8 +480,8 @@ if __name__ == '__main__':
     num_episodes = 2
     initial_investment = 20000
     transaction_cost_rate = 0.02
+    
     batch_size = 32
-
     N = 20
     num_epochs = 4
     alpha = 0.0003
