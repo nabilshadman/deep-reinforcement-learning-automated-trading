@@ -300,14 +300,15 @@ class MultiStockEnv:
 
 
 class DQNAgent(object):
-  def __init__(self, state_size, action_size, alpha=0.0003):
+  def __init__(self, state_size, action_size, gamma=0.99, epsilon=1.0, epsilon_min=0.01, 
+               epsilon_decay=0.995, alpha=0.0003):
     self.state_size = state_size
     self.action_size = action_size
     self.memory = ReplayBuffer(state_size, action_size, size=500)
-    self.gamma = 0.99  # discount rate
-    self.epsilon = 1.0  # exploration rate
-    self.epsilon_min = 0.01
-    self.epsilon_decay = 0.995
+    self.gamma = gamma  # discount rate
+    self.epsilon = epsilon  # exploration rate
+    self.epsilon_min = epsilon_min
+    self.epsilon_decay = epsilon_decay
     self.model = MLP(state_size, action_size).to(device) # initialize model and move it to device
 
     # loss and optimizer
@@ -410,10 +411,15 @@ if __name__ == '__main__':
   models_folder = 'dqn_trader_models'
   rewards_folder = 'dqn_trader_rewards'
   num_episodes = 2
-  alpha = 0.0003
-  batch_size = 32
   initial_investment = 20000
   transaction_cost_rate = 0.02
+  batch_size = 32
+
+  gamma = 0.99
+  epsilon = 1.0
+  epsilon_min = 0.01
+  epsilon_decay = 0.995
+  alpha = 0.0003
 
   parser = argparse.ArgumentParser()
   parser.add_argument('-m', '--mode', type=str, required=True,
@@ -443,7 +449,10 @@ if __name__ == '__main__':
   env = MultiStockEnv(train_data, initial_investment, transaction_cost_rate)
   state_size = env.state_dim
   action_size = len(env.action_space)
-  agent = DQNAgent(state_size, action_size, alpha)
+  agent = DQNAgent(state_size=state_size, action_size=action_size, gamma=gamma, 
+                   epsilon=epsilon, epsilon_min=epsilon_min, epsilon_decay=epsilon_decay, 
+                   alpha=alpha)
+
   # print model summary
   agent.print_model_summary()
   scaler = get_scaler(env)

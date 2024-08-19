@@ -477,13 +477,14 @@ if __name__ == '__main__':
     # config
     models_folder = 'ppo_trader_models'
     rewards_folder = 'ppo_trader_rewards'
-    N = 20
-    batch_size = 32
     num_episodes = 2
-    num_epochs = 4
-    alpha = 0.0003
     initial_investment = 20000
     transaction_cost_rate = 0.02
+    batch_size = 32
+
+    N = 20
+    num_epochs = 4
+    alpha = 0.0003
 
     parser = argparse.ArgumentParser()
     parser.add_argument('-m', '--mode', type=str, required=True,
