@@ -417,13 +417,14 @@ if __name__ == '__main__':
     #     print('Allocated:', round(torch.cuda.memory_allocated(0)/1024**3,1), 'GB')
     #     print('Cached:   ', round(torch.cuda.memory_cached(0)/1024**3,1), 'GB')
     
-    # config
+    # Configuration for the trading environment and simulation
     models_folder = 'dqn_trader_models'
     rewards_folder = 'dqn_trader_rewards'
     num_episodes = 2
     initial_investment = 20000
     transaction_cost_rate = 0.02
 
+    # Hyperparameters for the DQN (Deep Q-Network) agent
     batch_size = 32
     buffer_size = 500
     gamma = 0.99

@@ -467,13 +467,14 @@ if __name__ == '__main__':
   #     print('Allocated:', round(torch.cuda.memory_allocated(0)/1024**3,1), 'GB')
   #     print('Cached:   ', round(torch.cuda.memory_cached(0)/1024**3,1), 'GB')
 
-  # config
+  # Configuration for the trading environment and simulation
   models_folder = 'ppo_trader_models'
   rewards_folder = 'ppo_trader_rewards'
   num_episodes = 2
   initial_investment = 20000
   transaction_cost_rate = 0.02
 
+  # Hyperparameters for the PPO (Proximal Policy Optimization) agent
   N = 20  # Number of steps between each learning update
   gamma = 0.99  # Discount factor
   alpha = 0.0003  # Learning rate
