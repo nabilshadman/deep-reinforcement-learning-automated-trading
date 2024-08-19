@@ -473,11 +473,14 @@ if __name__ == '__main__':
   num_episodes = 2
   initial_investment = 20000
   transaction_cost_rate = 0.02
-  
-  batch_size = 32
-  N = 20
-  num_epochs = 4
-  alpha = 0.0003
+
+  N = 20  # Number of steps between each learning update
+  gamma = 0.99  # Discount factor
+  alpha = 0.0003  # Learning rate
+  gae_lambda = 0.95  # GAE lambda parameter
+  policy_clip = 0.2  # Clipping parameter
+  batch_size = 32  # Batch size for training
+  n_epochs = 4  # Number of epochs to train on each batch of data
 
   parser = argparse.ArgumentParser()
   parser.add_argument('-m', '--mode', type=str, required=True,
@@ -509,11 +512,13 @@ if __name__ == '__main__':
   action_size = len(env.action_space)
   state_size = env.state_dim
   input_dims = torch.tensor([env.state_dim], dtype=torch.int)
-
-  agent = PPOAgent(n_actions=action_size, batch_size=batch_size, 
-                    alpha=alpha, n_epochs=num_epochs, 
-                    input_dims=input_dims, chkpt_dir=models_folder)
   
+  agent = PPOAgent(
+     n_actions=action_size, input_dims=input_dims, gamma=gamma,
+     alpha=alpha, gae_lambda=gae_lambda, policy_clip=policy_clip,
+     batch_size=batch_size, n_epochs=n_epochs, chkpt_dir=models_folder
+     )
+
   # print model summary
   agent.print_model_summary()
   scaler = get_scaler(env)
