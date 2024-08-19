@@ -186,7 +186,7 @@ class CriticNetwork(nn.Module):
 
 class PPOAgent:
     def __init__(self, n_actions, input_dims, gamma=0.95, alpha=0.0003, gae_lambda=0.95,
-            policy_clip=0.2, batch_size=32, n_epochs=10, chkpt_dir='ppo_trader_models'):
+            policy_clip=0.2, batch_size=32, n_epochs=4, chkpt_dir='ppo_trader_models'):
         self.gamma = gamma
         self.policy_clip = policy_clip
         self.n_epochs = n_epochs
@@ -473,6 +473,7 @@ if __name__ == '__main__':
   N = 20
   batch_size = 32
   num_episodes = 2
+  num_epochs = 4
   alpha = 0.0003
   initial_investment = 20000
   transaction_cost_rate = 0.02
@@ -509,7 +510,7 @@ if __name__ == '__main__':
   input_dims = torch.tensor([env.state_dim], dtype=torch.int)
 
   agent = PPOAgent(n_actions=action_size, batch_size=batch_size, 
-                    alpha=alpha, n_epochs=num_episodes, 
+                    alpha=alpha, n_epochs=num_epochs, 
                     input_dims=input_dims, chkpt_dir=models_folder)
   
   # print model summary
