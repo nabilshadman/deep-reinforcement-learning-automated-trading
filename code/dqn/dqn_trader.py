@@ -506,23 +506,23 @@ if __name__ == '__main__':
   num_threads = process.num_threads()
 
   # print cpu metrics
-  print("\npsutil Metrics:")
-  print(f"CPU Memory Usage (MB): {memory_usage:.3f}")
-  print(f"Number of Threads: {num_threads}")
+  print("\npsutil metrics:")
+  print(f"CPU memory usage (MB): {memory_usage:.3f}")
+  print(f"Number of threads: {num_threads}")
 
   # print pynvml metrics (if using cuda) and shutdown pynvml
   if torch.cuda.is_available():
 
-    print("\nPyNVML Metrics:")
+    print("\nPyNVML metrics:")
     handle = pynvml.nvmlDeviceGetHandleByIndex(0)  # assuming single gpu
     mem_info = pynvml.nvmlDeviceGetMemoryInfo(handle) # memory information
     gpu_utilization = pynvml.nvmlDeviceGetUtilizationRates(handle).gpu # gpu utilisation
     power_usage = pynvml.nvmlDeviceGetPowerUsage(handle) # power usage
 
-    print(f"GPU Memory Total (MB): {mem_info.total / (1024 ** 2):.2f}")
-    print(f"GPU Memory Usage (MB): {mem_info.used / (1024 ** 2):.2f}")
-    print(f"GPU Utilisation (%): {gpu_utilization}")
-    print(f"Power Usage (W): {power_usage / 1000:.2f}")
+    print(f"GPU memory total (MB): {mem_info.total / (1024 ** 2):.2f}")
+    print(f"GPU memory usage (MB): {mem_info.used / (1024 ** 2):.2f}")
+    print(f"GPU utilisation (%): {gpu_utilization}")
+    print(f"Power usage (W): {power_usage / 1000:.2f}")
 
     pynvml.nvmlShutdown()  # shutdown pynvml after use
 
@@ -530,7 +530,8 @@ if __name__ == '__main__':
   np.save(f'{rewards_folder}/{args.mode}.npy', portfolio_value)
 
   # Print key statistics of the portfolio values
-  print(f"\nMedian portfolio value (USD): {np.median(portfolio_value):.2f}")
+  print("\nPortfolio key statistics:")
+  print(f"Median portfolio value (USD): {np.median(portfolio_value):.2f}")
   print(f"Minimum portfolio value (USD): {np.min(portfolio_value):.2f}")
   print(f"Maximum portfolio value (USD): {np.max(portfolio_value):.2f}")
 
