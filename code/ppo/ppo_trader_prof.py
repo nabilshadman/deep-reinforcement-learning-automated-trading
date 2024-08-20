@@ -482,7 +482,7 @@ if __name__ == '__main__':
     transaction_cost_rate = 0.02
     
     # Hyperparameters for the PPO (Proximal Policy Optimization) agent
-    N = 20  # Number of steps between each learning update
+    N = 128  # Number of steps between each learning update
     gamma = 0.99  # Discount factor
     alpha = 0.0003  # Learning rate
     gae_lambda = 0.95  # GAE lambda parameter
