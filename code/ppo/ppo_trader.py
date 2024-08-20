@@ -524,6 +524,23 @@ if __name__ == '__main__':
   agent.print_model_summary()
   scaler = get_scaler(env)
 
+  # Report all hyperparameters
+  print("\nHyperparameters:")
+  print(f"Mode: {args.mode}")
+  print(f"Number of episodes: {num_episodes}")
+  print(f"Number of stocks: {env.n_stock}")
+  print(f"Initial investment ($): {initial_investment}")
+  print(f"Transaction cost rate: {transaction_cost_rate}")
+  print(f"Steps between learning updates (N) (training): {N}")
+  print(f"Discount factor (gamma): {gamma}")
+  print(f"Learning rate (alpha) (training): {alpha}")
+  print(f"GAE lambda: {gae_lambda}")
+  print(f"Policy clip (training): {policy_clip}")
+  print(f"Batch size (training): {batch_size}")
+  print(f"Number of epochs (training): {n_epochs}")
+  print(f"Random seed: {seed}")
+  print("\n")
+
   # store the final value of the portfolio (end of episode)
   portfolio_value = []
 
