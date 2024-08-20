@@ -471,7 +471,7 @@ if __name__ == '__main__':
   models_folder = 'ppo_trader_models'
   rewards_folder = 'ppo_trader_rewards'
   num_episodes = 2
-  initial_investment = 20000
+  initial_investment = 100_000
   transaction_cost_rate = 0.02
 
   # Hyperparameters for the PPO (Proximal Policy Optimization) agent
