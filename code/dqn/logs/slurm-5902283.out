@@ -1,0 +1,163 @@
+Loading python/3.10.8-gpu
+  Loading requirement: nvidia/nvhpc-nompi/22.2 gcc/10.2.0
+    openmpi/4.1.6-cuda-11.6
+/work/mdisspt/mdisspt/n2134758/condaenvs/envs/env-pytorch-1.13.1-gpu/lib/python3.10/site-packages/torch/autograd/profiler.py:176: UserWarning: CUDA is not available, disabling CUDA profiling
+  warn("CUDA is not available, disabling CUDA profiling")
+STAGE:2024-08-21 11:26:06 4145945:4145945 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-21 11:26:13 4145945:4145945 ActivityProfilerController.cpp:300] Completed Stage: Collection
+ERROR:2024-08-21 11:27:02 4145945:4145945 CudaDeviceProperties.cpp:26] cudaGetDeviceCount failed with code 100
+STAGE:2024-08-21 11:27:04 4145945:4145945 output_json.cpp:417] Completed Stage: Post Processing
+
+ ==================== 
+
+DQN Trader - Training Mode
+
+ ==================== 
+
+Using device: cpu 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: train
+Number of episodes: 2
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Batch size: 32
+Replay buffer size: 500
+Discount factor (gamma): 0.99
+Initial epsilon (training): 1.0
+Minimum epsilon (training): 0.01
+Epsilon decay rate (training): 0.995
+Learning rate (alpha) (training): 0.0003
+Random seed: 42
+
+
+episode: 1/2, episode end value (USD): 5075.41, duration (seconds): 3.016693
+episode: 2/2, episode end value (USD): 113864.20, duration (seconds): 1.838715
+... saving models ...
+
+Detailed Profiler Table:
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg       CPU Mem  Self CPU Mem    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                           aten::linear         2.91%      92.944ms        34.83%        1.111s      65.101us      49.59 Mb       2.15 Mb         17061  
+                               Optimizer.step#Adam.step        14.18%     452.300ms        33.36%        1.064s     721.255us      11.47 Kb     -25.03 Mb          1475  
+                                            aten::addmm        24.61%     784.859ms        28.36%     904.361ms      53.008us      49.59 Mb      49.59 Mb         17061  
+    autograd::engine::evaluate_function: AddmmBackward0         1.24%      39.464ms         7.52%     239.840ms      54.201us       7.53 Mb     -16.37 Mb          4425  
+                                               aten::to         2.50%      79.704ms         7.37%     235.048ms       2.101us     178.09 Kb      40.66 Kb        111861  
+                                         aten::_to_copy         4.44%     141.502ms         5.91%     188.435ms       4.121us     179.02 Kb      47.76 Kb         45725  
+                                                aten::t         3.02%      96.225ms         5.59%     178.103ms       5.351us           0 b           0 b         33286  
+                                             aten::add_         2.59%      82.578ms         5.33%     169.923ms       4.801us      -1.03 Mb      -1.11 Mb         35394  
+                                         aten::mse_loss         1.38%      43.889ms         5.10%     162.541ms     110.197us       4.86 Mb    1002.96 Kb          1475  
+                                             aten::sqrt         4.74%     151.193ms         4.74%     151.193ms      17.084us      12.40 Mb      12.40 Mb          8850  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 3.189s
+
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 6.490
+CUDA Time Total (seconds): 0.000
+CPU Memory Usage (MB): 199.123
+CUDA Memory Usage (MB): 0.000
+
+psutil metrics:
+CPU memory usage (MB): 3868.602
+Number of threads: 4
+
+Portfolio key statistics:
+Median portfolio value (USD): 59469.80
+Minimum portfolio value (USD): 5075.41
+Maximum portfolio value (USD): 113864.20
+
+Total execution time (seconds): 166.261
+/work/mdisspt/mdisspt/n2134758/condaenvs/envs/env-pytorch-1.13.1-gpu/lib/python3.10/site-packages/torch/autograd/profiler.py:176: UserWarning: CUDA is not available, disabling CUDA profiling
+  warn("CUDA is not available, disabling CUDA profiling")
+STAGE:2024-08-21 11:29:25 4146344:4146344 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-21 11:29:26 4146344:4146344 ActivityProfilerController.cpp:300] Completed Stage: Collection
+ERROR:2024-08-21 11:29:31 4146344:4146344 CudaDeviceProperties.cpp:26] cudaGetDeviceCount failed with code 100
+STAGE:2024-08-21 11:29:31 4146344:4146344 output_json.cpp:417] Completed Stage: Post Processing
+
+ ==================== 
+
+DQN Trader - Testing Mode
+
+ ==================== 
+
+Using device: cpu 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: test
+Number of episodes: 2
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Batch size: 32
+Replay buffer size: 500
+Discount factor (gamma): 0.99
+Initial epsilon (training): 1.0
+Minimum epsilon (training): 0.01
+Epsilon decay rate (training): 0.995
+Learning rate (alpha) (training): 0.0003
+Random seed: 42
+
+
+... loading models ...
+episode: 1/2, episode end value (USD): 130788.65, duration (seconds): 0.364103
+episode: 2/2, episode end value (USD): 117841.57, duration (seconds): 0.348956
+
+Detailed Profiler Table:
+-------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                       Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg       CPU Mem  Self CPU Mem    # of Calls  
+-------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                               aten::linear         9.96%      17.203ms        67.11%     115.946ms      25.783us     532.85 Kb      23.83 Kb          4497  
+                                aten::addmm        30.95%      53.464ms        42.72%      73.804ms      16.412us     532.85 Kb     532.74 Kb          4497  
+                                aten::copy_        20.78%      35.904ms        20.78%      35.904ms       7.973us           0 b           0 b          4503  
+                                    aten::t         6.75%      11.653ms        15.91%      27.481ms       6.111us           0 b           0 b          4497  
+                                 aten::relu         3.50%       6.052ms         9.65%      16.674ms       5.562us     374.75 Kb       5.12 Kb          2998  
+                            aten::transpose         6.45%      11.145ms         8.68%      15.001ms       3.336us           0 b           0 b          4497  
+                            aten::clamp_min         6.23%      10.770ms         6.23%      10.770ms       3.592us     374.75 Kb     374.75 Kb          2998  
+                               aten::expand         4.51%       7.794ms         4.59%       7.930ms       1.763us         108 b         108 b          4497  
+                               aten::detach         1.91%       3.301ms         3.89%       6.729ms       4.471us           0 b           0 b          1505  
+                           aten::as_strided         2.80%       4.836ms         2.80%       4.836ms       0.538us           0 b           0 b          8994  
+-------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 172.765ms
+
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 0.326
+CUDA Time Total (seconds): 0.000
+CPU Memory Usage (MB): 0.895
+CUDA Memory Usage (MB): 0.000
+
+psutil metrics:
+CPU memory usage (MB): 640.723
+Number of threads: 4
+
+Portfolio key statistics:
+Median portfolio value (USD): 124315.11
+Minimum portfolio value (USD): 117841.57
+Maximum portfolio value (USD): 130788.65
+
+Total execution time (seconds): 15.513

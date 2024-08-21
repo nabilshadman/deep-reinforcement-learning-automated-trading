@@ -1,0 +1,185 @@
+Loading python/3.10.8-gpu
+  Loading requirement: nvidia/nvhpc-nompi/22.2 gcc/10.2.0
+    openmpi/4.1.6-cuda-11.6
+/work/mdisspt/mdisspt/n2134758/condaenvs/envs/env-pytorch-1.13.1-gpu/lib/python3.10/site-packages/torch/autograd/profiler.py:176: UserWarning: CUDA is not available, disabling CUDA profiling
+  warn("CUDA is not available, disabling CUDA profiling")
+STAGE:2024-08-21 11:31:10 4146642:4146642 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-21 11:31:17 4146642:4146642 ActivityProfilerController.cpp:300] Completed Stage: Collection
+ERROR:2024-08-21 11:31:44 4146642:4146642 CudaDeviceProperties.cpp:26] cudaGetDeviceCount failed with code 100
+STAGE:2024-08-21 11:31:45 4146642:4146642 output_json.cpp:417] Completed Stage: Post Processing
+
+ ==================== 
+
+PPO Trader - Training Mode
+
+ ==================== 
+
+Using device: cpu 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=1, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: train
+Number of episodes: 2
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Steps between learning updates (N) (training): 128
+Discount factor (gamma): 0.99
+Learning rate (alpha) (training): 0.0003
+GAE lambda: 0.95
+Policy clip (training): 0.2
+Batch size (training): 32
+Number of epochs (training): 4
+Random seed: 42
+
+
+episode: 1/2, episode end value (USD): 47.79, duration (seconds): 3.293668
+episode: 2/2, episode end value (USD): 160.21, duration (seconds): 1.42201
+... saving models ...
+
+Detailed Profiler Table:
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg       CPU Mem  Self CPU Mem    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                           aten::linear         2.21%      71.658ms        33.20%        1.079s     106.868us       4.21 Mb      38.68 Kb         10092  
+                                            aten::addmm        26.75%     869.039ms        28.73%     933.295ms      92.479us       4.21 Mb       4.21 Mb         10092  
+                               Optimizer.step#Adam.step         3.36%     109.230ms         8.49%     275.813ms     783.560us      26.39 Kb      -4.82 Mb           352  
+                                               aten::to         1.99%      64.608ms         7.65%     248.578ms       8.161us       2.46 Mb      86.14 Kb         30459  
+                                         aten::_to_copy         3.43%     111.423ms         6.05%     196.467ms       9.486us       2.54 Mb     194.83 Kb         20712  
+                                              aten::log         3.89%     126.421ms         3.89%     126.421ms      75.161us     746.51 Kb     746.51 Kb          1682  
+                                              aten::sum         2.54%      82.361ms         3.47%     112.616ms      21.978us     728.11 Kb     728.11 Kb          5124  
+                                             aten::relu         1.26%      40.877ms         3.32%     107.899ms      16.037us       3.46 Mb           0 b          6728  
+                                            aten::copy_         3.14%     102.122ms         3.14%     102.122ms       3.004us      30.54 Kb      30.54 Kb         33992  
+                                              aten::abs         1.59%      51.618ms         2.82%      91.680ms      27.253us      55.30 Kb      27.65 Kb          3364  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 3.248s
+
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 5.892
+CUDA Time Total (seconds): 0.000
+CPU Memory Usage (MB): 160.324
+CUDA Memory Usage (MB): 0.000
+
+psutil metrics:
+CPU memory usage (MB): 2267.289
+Number of threads: 4
+
+Portfolio key statistics:
+Median portfolio value (USD): 104.00
+Minimum portfolio value (USD): 47.79
+Maximum portfolio value (USD): 160.21
+
+Total execution time (seconds): 90.927
+/work/mdisspt/mdisspt/n2134758/condaenvs/envs/env-pytorch-1.13.1-gpu/lib/python3.10/site-packages/torch/autograd/profiler.py:176: UserWarning: CUDA is not available, disabling CUDA profiling
+  warn("CUDA is not available, disabling CUDA profiling")
+STAGE:2024-08-21 11:33:07 4146865:4146865 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-21 11:33:09 4146865:4146865 ActivityProfilerController.cpp:300] Completed Stage: Collection
+ERROR:2024-08-21 11:33:25 4146865:4146865 CudaDeviceProperties.cpp:26] cudaGetDeviceCount failed with code 100
+STAGE:2024-08-21 11:33:26 4146865:4146865 output_json.cpp:417] Completed Stage: Post Processing
+
+ ==================== 
+
+PPO Trader - Testing Mode
+
+ ==================== 
+
+Using device: cpu 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=1, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: test
+Number of episodes: 2
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Steps between learning updates (N) (training): 128
+Discount factor (gamma): 0.99
+Learning rate (alpha) (training): 0.0003
+GAE lambda: 0.95
+Policy clip (training): 0.2
+Batch size (training): 32
+Number of epochs (training): 4
+Random seed: 42
+
+
+... loading models ...
+episode: 1/2, episode end value (USD): 81.91, duration (seconds): 0.796324
+episode: 2/2, episode end value (USD): 128.20, duration (seconds): 0.780574
+
+Detailed Profiler Table:
+-------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                       Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg       CPU Mem  Self CPU Mem    # of Calls  
+-------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                               aten::linear         4.56%      33.437ms        32.89%     241.051ms      26.641us     918.94 Kb      52.55 Kb          9048  
+                                aten::addmm        16.12%     118.171ms        20.54%     150.500ms      16.634us     918.94 Kb     918.94 Kb          9048  
+                                    aten::t         5.55%      40.649ms         8.98%      65.847ms       7.278us           0 b           0 b          9048  
+                                aten::copy_         8.48%      62.167ms         8.48%      62.167ms       3.433us         560 b         560 b         18108  
+                                   aten::to         1.39%      10.182ms         7.74%      56.689ms       4.169us      58.91 Kb       4.00 Kb         13597  
+                             aten::_to_copy         3.48%      25.479ms         6.72%      49.255ms       8.166us      58.91 Kb       3.59 Kb          6032  
+                                 aten::relu         3.84%      28.176ms         6.42%      47.021ms       7.795us     754.00 Kb           0 b          6032  
+                                  aten::all         3.43%      25.117ms         5.12%      37.545ms       8.299us       4.42 Kb       4.40 Kb          4524  
+                                   aten::ge         2.52%      18.446ms         4.59%      33.658ms      11.160us      45.36 Kb      39.11 Kb          3016  
+                                  aten::sum         3.60%      26.362ms         3.60%      26.374ms       8.745us      11.78 Kb      11.78 Kb          3016  
+-------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 732.888ms
+
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 1.201
+CUDA Time Total (seconds): 0.000
+CPU Memory Usage (MB): 2.041
+CUDA Memory Usage (MB): 0.000
+
+psutil metrics:
+CPU memory usage (MB): 1446.445
+Number of threads: 4
+
+Portfolio key statistics:
+Median portfolio value (USD): 105.05
+Minimum portfolio value (USD): 81.91
+Maximum portfolio value (USD): 128.20
+
+Total execution time (seconds): 47.393
