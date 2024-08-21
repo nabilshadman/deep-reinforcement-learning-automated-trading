@@ -35,13 +35,13 @@ def set_seeds(seed=42):
 
 
 # Let's use AAPL (Apple), MSI (Motorola), SBUX (Starbucks)
-def get_data():
+def get_data(data_file):
   # returns a T x 3 list of stock prices
   # each row is a different stock
   # 0 = AAPL
   # 1 = MSI
   # 2 = SBUX
-  df = pd.read_csv('equities_close_prices_daily.csv')
+  df = pd.read_csv(data_file)
   return df.values
 
 
@@ -468,6 +468,7 @@ if __name__ == '__main__':
   #     print('Cached:   ', round(torch.cuda.memory_cached(0)/1024**3,1), 'GB')
 
   # Configuration for the trading environment and simulation
+  data_file = 'equities_daily_close_2018_2023.csv'
   models_folder = 'ppo_trader_models'
   rewards_folder = 'ppo_trader_rewards'
   num_episodes = 2
@@ -501,7 +502,7 @@ if __name__ == '__main__':
   maybe_make_dir(models_folder)
   maybe_make_dir(rewards_folder)
 
-  data = get_data()
+  data = get_data(data_file)
   n_timesteps, n_stocks = data.shape
 
   n_train = n_timesteps // 2

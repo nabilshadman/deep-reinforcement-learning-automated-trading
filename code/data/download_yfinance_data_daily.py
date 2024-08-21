@@ -27,7 +27,7 @@ def download_close_prices(tickers, start_date, end_date):
 tickers = ["AAPL", "JPM", "WMT"]
 
 # define start and end dates
-start_date = "2019-01-02"
+start_date = "2018-01-02"
 end_date = "2023-12-30"
 
 # download close prices
