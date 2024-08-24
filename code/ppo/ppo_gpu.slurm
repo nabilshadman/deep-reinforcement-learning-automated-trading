@@ -4,7 +4,7 @@
 #SBATCH --partition=gpu
 #SBATCH --qos=gpu
 #SBATCH --gres=gpu:1
-#SBATCH --time=00:20:00
+#SBATCH --time=00:40:00
 
 # Replace [budget code] below with your project code (e.g. t01)
 #SBATCH --account=mdisspt-s2134758
@@ -25,5 +25,24 @@ cd $SLURM_SUBMIT_DIR
 # Launch the job
 # dlprof --mode=pytorch --delay=3 --reports=summary,detail,iteration --output_path=./dlprof_output --force=true python ppo_trader_dlprof.py -m train
 # srun -n 1 nsys profile --delay=3 -o prof1 python ppo_trader.py -m train
-python ppo_trader.py -m train
-python ppo_trader.py -m test
+# Run the job 3 times
+for run in {1..3}
+do
+    echo "Starting Run $run"
+    echo
+
+    python ppo_trader.py -m train
+    python ppo_trader.py -m test
+    
+    echo
+    echo "Finished Run $run"
+    echo
+    
+    # Clean folders
+    source clean.sh
+    
+    echo "Cleaned folders after Run $run"
+    echo
+    echo "------------------------"
+    echo
+done

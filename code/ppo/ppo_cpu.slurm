@@ -2,7 +2,7 @@
 
 # Slurm job options (name, compute nodes, job time)
 #SBATCH --job-name=ppo-cpu
-#SBATCH --time=0:20:0
+#SBATCH --time=0:40:0
 #SBATCH --exclusive
 #SBATCH --nodes=1
 #SBATCH --tasks-per-node=1
@@ -31,5 +31,24 @@ cd $SLURM_SUBMIT_DIR
 # Launch the job
 # dlprof --mode=pytorch --delay=3 --reports=summary,detail,iteration --output_path=./dlprof_output --force=true python ppo_trader_dlprof.py -m train
 # srun -n 1 nsys profile --delay=3 -o prof1 python ppo_trader.py -m train
-python ppo_trader.py -m train
-python ppo_trader.py -m test
+# Run the job 3 times
+for run in {1..3}
+do
+    echo "Starting Run $run"
+    echo
+
+    python ppo_trader.py -m train
+    python ppo_trader.py -m test
+    
+    echo
+    echo "Finished Run $run"
+    echo
+    
+    # Clean folders
+    source clean.sh
+    
+    echo "Cleaned folders after Run $run"
+    echo
+    echo "------------------------"
+    echo
+done
