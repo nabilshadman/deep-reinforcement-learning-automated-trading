@@ -16,9 +16,9 @@ import pickle
 
 from sklearn.preprocessing import StandardScaler
 
-import psutil
-if torch.cuda.is_available():
-  import pynvml
+# import psutil
+# if torch.cuda.is_available():
+#   import pynvml
 
 
 # Set up device
@@ -29,8 +29,8 @@ def set_seeds(seed=42):
     random.seed(seed)
     np.random.seed(seed)
     torch.manual_seed(seed)
-    torch.cuda.manual_seed(seed)
-    torch.backends.cudnn.deterministic = True
+    # torch.cuda.manual_seed(seed)
+    # torch.backends.cudnn.deterministic = True
 
 
 # Let's use AAPL (Apple), MSI (Motorola), SBUX (Starbucks)
@@ -399,9 +399,9 @@ if __name__ == '__main__':
   seed = random.randint(0, 100000)
   set_seeds(seed)  # You can choose any integer as the seed
 
-  # start pynvml if using cuda
-  if torch.cuda.is_available():
-    pynvml.nvmlInit()
+  # # start pynvml if using cuda
+  # if torch.cuda.is_available():
+  #   pynvml.nvmlInit()
 
   # additional info when using cuda
   # if device.type == 'cuda':
@@ -414,7 +414,7 @@ if __name__ == '__main__':
   data_file = 'equities_daily_close_2018_2023.csv'
   models_folder = 'dqn_trader_models'
   rewards_folder = 'dqn_trader_rewards'
-  num_episodes = 2
+  num_episodes = 100
   initial_investment = 100_000
   transaction_cost_rate = 0.02
 
@@ -517,32 +517,32 @@ if __name__ == '__main__':
     with open(f'{models_folder}/scaler.pkl', 'wb') as f:
       pickle.dump(scaler, f)
 
-  # measure cpu metrics with psutil
-  process = psutil.Process(os.getpid())
-  memory_info = process.memory_info()
-  memory_usage = memory_info.rss / (1024 ** 2)  # convert to mb
-  num_threads = process.num_threads()
+  # # measure cpu metrics with psutil
+  # process = psutil.Process(os.getpid())
+  # memory_info = process.memory_info()
+  # memory_usage = memory_info.rss / (1024 ** 2)  # convert to mb
+  # num_threads = process.num_threads()
 
-  # print cpu metrics
-  print("\npsutil metrics:")
-  print(f"CPU memory usage (MB): {memory_usage:.3f}")
-  print(f"Number of threads: {num_threads}")
+  # # print cpu metrics
+  # print("\npsutil metrics:")
+  # print(f"CPU memory usage (MB): {memory_usage:.3f}")
+  # print(f"Number of threads: {num_threads}")
 
-  # print pynvml metrics (if using cuda) and shutdown pynvml
-  if torch.cuda.is_available():
+  # # print pynvml metrics (if using cuda) and shutdown pynvml
+  # if torch.cuda.is_available():
 
-    print("\nPyNVML metrics:")
-    handle = pynvml.nvmlDeviceGetHandleByIndex(0)  # assuming single gpu
-    mem_info = pynvml.nvmlDeviceGetMemoryInfo(handle) # memory information
-    gpu_utilization = pynvml.nvmlDeviceGetUtilizationRates(handle).gpu # gpu utilisation
-    power_usage = pynvml.nvmlDeviceGetPowerUsage(handle) # power usage
+  #   print("\nPyNVML metrics:")
+  #   handle = pynvml.nvmlDeviceGetHandleByIndex(0)  # assuming single gpu
+  #   mem_info = pynvml.nvmlDeviceGetMemoryInfo(handle) # memory information
+  #   gpu_utilization = pynvml.nvmlDeviceGetUtilizationRates(handle).gpu # gpu utilisation
+  #   power_usage = pynvml.nvmlDeviceGetPowerUsage(handle) # power usage
 
-    print(f"GPU memory total (MB): {mem_info.total / (1024 ** 2):.2f}")
-    print(f"GPU memory usage (MB): {mem_info.used / (1024 ** 2):.2f}")
-    print(f"GPU utilisation (%): {gpu_utilization}")
-    print(f"Power usage (W): {power_usage / 1000:.2f}")
+  #   print(f"GPU memory total (MB): {mem_info.total / (1024 ** 2):.2f}")
+  #   print(f"GPU memory usage (MB): {mem_info.used / (1024 ** 2):.2f}")
+  #   print(f"GPU utilisation (%): {gpu_utilization}")
+  #   print(f"Power usage (W): {power_usage / 1000:.2f}")
 
-    pynvml.nvmlShutdown()  # shutdown pynvml after use
+  #   pynvml.nvmlShutdown()  # shutdown pynvml after use
 
   # save portfolio value for each episode
   np.save(f'{rewards_folder}/{args.mode}.npy', portfolio_value)
