@@ -1,0 +1,471 @@
+Loading python/3.10.8-gpu
+  Loading requirement: nvidia/nvhpc-nompi/22.2 gcc/10.2.0
+    openmpi/4.1.6-cuda-11.6
+Starting Run 1
+
+STAGE:2024-08-24 12:06:06 3056239:3056239 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-24 12:06:33 3056239:3056239 ActivityProfilerController.cpp:300] Completed Stage: Collection
+
+ ==================== 
+
+PPO Trader - Training Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=1, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: train
+Number of episodes: 10
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Steps between learning updates (N) (training): 128
+Discount factor (gamma): 0.99
+Learning rate (alpha) (training): 0.0003
+GAE lambda: 0.95
+Policy clip (training): 0.2
+Batch size (training): 32
+Number of epochs (training): 4
+Random seed: 9593
+
+
+episode: 1/10, episode end value (USD): 85.15, duration (seconds): 2.931671
+episode: 2/10, episode end value (USD): 53.37, duration (seconds): 2.065352
+episode: 3/10, episode end value (USD): 95.97, duration (seconds): 2.061169
+episode: 4/10, episode end value (USD): 76.30, duration (seconds): 2.068954
+episode: 5/10, episode end value (USD): 78.81, duration (seconds): 2.059578
+episode: 6/10, episode end value (USD): 81.62, duration (seconds): 2.068444
+episode: 7/10, episode end value (USD): 89.56, duration (seconds): 2.056482
+episode: 8/10, episode end value (USD): 153.20, duration (seconds): 2.060745
+episode: 9/10, episode end value (USD): 83.99, duration (seconds): 2.068996
+episode: 10/10, episode end value (USD): 53.10, duration (seconds): 2.049298
+... saving models ...
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 35.697
+CUDA Time Total (seconds): 5.350
+CPU Memory Usage (MB): 3.926
+CUDA Memory Usage (MB): 43283.793
+
+Portfolio key statistics:
+Median portfolio value (USD): 82.80
+Minimum portfolio value (USD): 53.10
+Maximum portfolio value (USD): 153.20
+
+Total execution time (seconds): 425.538
+STAGE:2024-08-24 12:13:59 3056700:3056700 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-24 12:14:16 3056700:3056700 ActivityProfilerController.cpp:300] Completed Stage: Collection
+
+ ==================== 
+
+PPO Trader - Testing Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=1, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: test
+Number of episodes: 10
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Steps between learning updates (N) (training): 128
+Discount factor (gamma): 0.99
+Learning rate (alpha) (training): 0.0003
+GAE lambda: 0.95
+Policy clip (training): 0.2
+Batch size (training): 32
+Number of epochs (training): 4
+Random seed: 84940
+
+
+... loading models ...
+episode: 1/10, episode end value (USD): 89.85, duration (seconds): 1.809045
+episode: 2/10, episode end value (USD): 83.80, duration (seconds): 1.161179
+episode: 3/10, episode end value (USD): 110.37, duration (seconds): 1.154731
+episode: 4/10, episode end value (USD): 103.12, duration (seconds): 1.157994
+episode: 5/10, episode end value (USD): 109.19, duration (seconds): 1.172954
+episode: 6/10, episode end value (USD): 94.62, duration (seconds): 1.166714
+episode: 7/10, episode end value (USD): 92.21, duration (seconds): 1.171668
+episode: 8/10, episode end value (USD): 92.98, duration (seconds): 1.167784
+episode: 9/10, episode end value (USD): 85.08, duration (seconds): 1.172714
+episode: 10/10, episode end value (USD): 100.64, duration (seconds): 1.168737
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 22.673
+CUDA Time Total (seconds): 2.732
+CPU Memory Usage (MB): 0.353
+CUDA Memory Usage (MB): 37701.884
+
+Portfolio key statistics:
+Median portfolio value (USD): 93.80
+Minimum portfolio value (USD): 83.80
+Maximum portfolio value (USD): 110.37
+
+Total execution time (seconds): 246.768
+
+Finished Run 1
+
+/var/spool/slurm/job5911918/slurm_script: line 42: clean.sh: No such file or directory
+Cleaned folders after Run 1
+
+------------------------
+
+Starting Run 2
+
+STAGE:2024-08-24 12:18:35 3057104:3057104 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-24 12:19:02 3057104:3057104 ActivityProfilerController.cpp:300] Completed Stage: Collection
+
+ ==================== 
+
+PPO Trader - Training Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=1, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: train
+Number of episodes: 10
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Steps between learning updates (N) (training): 128
+Discount factor (gamma): 0.99
+Learning rate (alpha) (training): 0.0003
+GAE lambda: 0.95
+Policy clip (training): 0.2
+Batch size (training): 32
+Number of epochs (training): 4
+Random seed: 6364
+
+
+episode: 1/10, episode end value (USD): 78.59, duration (seconds): 2.525078
+episode: 2/10, episode end value (USD): 67.42, duration (seconds): 2.012597
+episode: 3/10, episode end value (USD): 63.73, duration (seconds): 2.00308
+episode: 4/10, episode end value (USD): 135.50, duration (seconds): 2.002527
+episode: 5/10, episode end value (USD): 76.39, duration (seconds): 2.015883
+episode: 6/10, episode end value (USD): 115.45, duration (seconds): 2.013777
+episode: 7/10, episode end value (USD): 96.06, duration (seconds): 2.03227
+episode: 8/10, episode end value (USD): 121.11, duration (seconds): 2.01384
+episode: 9/10, episode end value (USD): 112.01, duration (seconds): 2.005403
+episode: 10/10, episode end value (USD): 77.07, duration (seconds): 2.010329
+... saving models ...
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 34.272
+CUDA Time Total (seconds): 5.383
+CPU Memory Usage (MB): 3.975
+CUDA Memory Usage (MB): 43213.284
+
+Portfolio key statistics:
+Median portfolio value (USD): 87.33
+Minimum portfolio value (USD): 63.73
+Maximum portfolio value (USD): 135.50
+
+Total execution time (seconds): 418.306
+STAGE:2024-08-24 12:26:16 3057526:3057526 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-24 12:26:32 3057526:3057526 ActivityProfilerController.cpp:300] Completed Stage: Collection
+
+ ==================== 
+
+PPO Trader - Testing Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=1, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: test
+Number of episodes: 10
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Steps between learning updates (N) (training): 128
+Discount factor (gamma): 0.99
+Learning rate (alpha) (training): 0.0003
+GAE lambda: 0.95
+Policy clip (training): 0.2
+Batch size (training): 32
+Number of epochs (training): 4
+Random seed: 93535
+
+
+... loading models ...
+episode: 1/10, episode end value (USD): 159.15, duration (seconds): 1.815131
+episode: 2/10, episode end value (USD): 77.22, duration (seconds): 1.169046
+episode: 3/10, episode end value (USD): 109.21, duration (seconds): 1.161486
+episode: 4/10, episode end value (USD): 95.16, duration (seconds): 1.163691
+episode: 5/10, episode end value (USD): 107.40, duration (seconds): 1.164113
+episode: 6/10, episode end value (USD): 98.61, duration (seconds): 1.168436
+episode: 7/10, episode end value (USD): 127.83, duration (seconds): 1.167136
+episode: 8/10, episode end value (USD): 92.87, duration (seconds): 1.160798
+episode: 9/10, episode end value (USD): 119.90, duration (seconds): 1.165958
+episode: 10/10, episode end value (USD): 90.67, duration (seconds): 1.164161
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 22.845
+CUDA Time Total (seconds): 2.672
+CPU Memory Usage (MB): 0.237
+CUDA Memory Usage (MB): 49863.579
+
+Portfolio key statistics:
+Median portfolio value (USD): 103.01
+Minimum portfolio value (USD): 77.22
+Maximum portfolio value (USD): 159.15
+
+Total execution time (seconds): 245.267
+
+Finished Run 2
+
+/var/spool/slurm/job5911918/slurm_script: line 42: clean.sh: No such file or directory
+Cleaned folders after Run 2
+
+------------------------
+
+Starting Run 3
+
+STAGE:2024-08-24 12:30:50 3057876:3057876 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-24 12:31:17 3057876:3057876 ActivityProfilerController.cpp:300] Completed Stage: Collection
+
+ ==================== 
+
+PPO Trader - Training Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=1, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: train
+Number of episodes: 10
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Steps between learning updates (N) (training): 128
+Discount factor (gamma): 0.99
+Learning rate (alpha) (training): 0.0003
+GAE lambda: 0.95
+Policy clip (training): 0.2
+Batch size (training): 32
+Number of epochs (training): 4
+Random seed: 99068
+
+
+episode: 1/10, episode end value (USD): 65.37, duration (seconds): 2.522077
+episode: 2/10, episode end value (USD): 87.30, duration (seconds): 2.037712
+episode: 3/10, episode end value (USD): 66.30, duration (seconds): 2.032443
+episode: 4/10, episode end value (USD): 118.53, duration (seconds): 2.038687
+episode: 5/10, episode end value (USD): 76.46, duration (seconds): 2.03692
+episode: 6/10, episode end value (USD): 104.06, duration (seconds): 2.047925
+episode: 7/10, episode end value (USD): 77.29, duration (seconds): 2.039
+episode: 8/10, episode end value (USD): 118.70, duration (seconds): 2.030628
+episode: 9/10, episode end value (USD): 118.98, duration (seconds): 2.038291
+episode: 10/10, episode end value (USD): 90.54, duration (seconds): 2.04598
+... saving models ...
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 34.747
+CUDA Time Total (seconds): 5.342
+CPU Memory Usage (MB): 3.925
+CUDA Memory Usage (MB): 42999.390
+
+Portfolio key statistics:
+Median portfolio value (USD): 88.92
+Minimum portfolio value (USD): 65.37
+Maximum portfolio value (USD): 118.98
+
+Total execution time (seconds): 415.634
+STAGE:2024-08-24 12:38:28 3058390:3058390 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-24 12:38:44 3058390:3058390 ActivityProfilerController.cpp:300] Completed Stage: Collection
+
+ ==================== 
+
+PPO Trader - Testing Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=1, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: test
+Number of episodes: 10
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Steps between learning updates (N) (training): 128
+Discount factor (gamma): 0.99
+Learning rate (alpha) (training): 0.0003
+GAE lambda: 0.95
+Policy clip (training): 0.2
+Batch size (training): 32
+Number of epochs (training): 4
+Random seed: 66953
+
+
+... loading models ...
+episode: 1/10, episode end value (USD): 94.36, duration (seconds): 1.817464
+episode: 2/10, episode end value (USD): 121.91, duration (seconds): 1.171285
+episode: 3/10, episode end value (USD): 131.55, duration (seconds): 1.1737
+episode: 4/10, episode end value (USD): 196.12, duration (seconds): 1.176019
+episode: 5/10, episode end value (USD): 138.52, duration (seconds): 1.178081
+episode: 6/10, episode end value (USD): 110.90, duration (seconds): 1.176005
+episode: 7/10, episode end value (USD): 99.49, duration (seconds): 1.173549
+episode: 8/10, episode end value (USD): 123.92, duration (seconds): 1.175872
+episode: 9/10, episode end value (USD): 102.47, duration (seconds): 1.174933
+episode: 10/10, episode end value (USD): 97.85, duration (seconds): 1.174833
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 22.992
+CUDA Time Total (seconds): 2.703
+CPU Memory Usage (MB): 0.349
+CUDA Memory Usage (MB): 36886.917
+
+Portfolio key statistics:
+Median portfolio value (USD): 116.41
+Minimum portfolio value (USD): 94.36
+Maximum portfolio value (USD): 196.12
+
+Total execution time (seconds): 252.303
+
+Finished Run 3
+
+/var/spool/slurm/job5911918/slurm_script: line 42: clean.sh: No such file or directory
+Cleaned folders after Run 3
+
+------------------------
+

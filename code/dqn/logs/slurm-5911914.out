@@ -1,0 +1,414 @@
+Loading python/3.10.8-gpu
+  Loading requirement: nvidia/nvhpc-nompi/22.2 gcc/10.2.0
+    openmpi/4.1.6-cuda-11.6
+Starting Run 1
+
+/work/mdisspt/mdisspt/n2134758/condaenvs/envs/env-pytorch-1.13.1-gpu/lib/python3.10/site-packages/torch/autograd/profiler.py:176: UserWarning: CUDA is not available, disabling CUDA profiling
+  warn("CUDA is not available, disabling CUDA profiling")
+STAGE:2024-08-24 11:49:44 3162119:3162119 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-24 11:50:19 3162119:3162119 ActivityProfilerController.cpp:300] Completed Stage: Collection
+
+ ==================== 
+
+DQN Trader - Training Mode
+
+ ==================== 
+
+Using device: cpu 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: train
+Number of episodes: 10
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Batch size: 32
+Replay buffer size: 500
+Discount factor (gamma): 0.99
+Initial epsilon (training): 1.0
+Minimum epsilon (training): 0.01
+Epsilon decay rate (training): 0.995
+Learning rate (alpha) (training): 0.0003
+Random seed: 45016
+
+
+episode: 1/10, episode end value (USD): 6964.55, duration (seconds): 3.69742
+episode: 2/10, episode end value (USD): 103629.11, duration (seconds): 2.114454
+episode: 3/10, episode end value (USD): 70620.44, duration (seconds): 2.111881
+episode: 4/10, episode end value (USD): 240708.31, duration (seconds): 2.111689
+episode: 5/10, episode end value (USD): 110439.48, duration (seconds): 2.116837
+episode: 6/10, episode end value (USD): 110464.61, duration (seconds): 2.115573
+episode: 7/10, episode end value (USD): 206908.01, duration (seconds): 2.12029
+episode: 8/10, episode end value (USD): 100930.98, duration (seconds): 2.112077
+episode: 9/10, episode end value (USD): 92303.13, duration (seconds): 2.120867
+episode: 10/10, episode end value (USD): 143130.95, duration (seconds): 2.116571
+... saving models ...
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 26.855
+CUDA Time Total (seconds): 0.000
+CPU Memory Usage (MB): 1013.704
+CUDA Memory Usage (MB): 0.000
+
+Portfolio key statistics:
+Median portfolio value (USD): 107034.29
+Minimum portfolio value (USD): 6964.55
+Maximum portfolio value (USD): 240708.31
+
+Total execution time (seconds): 719.312
+/work/mdisspt/mdisspt/n2134758/condaenvs/envs/env-pytorch-1.13.1-gpu/lib/python3.10/site-packages/torch/autograd/profiler.py:176: UserWarning: CUDA is not available, disabling CUDA profiling
+  warn("CUDA is not available, disabling CUDA profiling")
+STAGE:2024-08-24 12:02:46 3162843:3162843 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-24 12:02:51 3162843:3162843 ActivityProfilerController.cpp:300] Completed Stage: Collection
+
+ ==================== 
+
+DQN Trader - Testing Mode
+
+ ==================== 
+
+Using device: cpu 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: test
+Number of episodes: 10
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Batch size: 32
+Replay buffer size: 500
+Discount factor (gamma): 0.99
+Initial epsilon (training): 1.0
+Minimum epsilon (training): 0.01
+Epsilon decay rate (training): 0.995
+Learning rate (alpha) (training): 0.0003
+Random seed: 44500
+
+
+... loading models ...
+episode: 1/10, episode end value (USD): 123691.59, duration (seconds): 0.350118
+episode: 2/10, episode end value (USD): 110270.96, duration (seconds): 0.343535
+episode: 3/10, episode end value (USD): 125217.59, duration (seconds): 0.34154
+episode: 4/10, episode end value (USD): 83225.08, duration (seconds): 0.34086
+episode: 5/10, episode end value (USD): 105887.62, duration (seconds): 0.34027
+episode: 6/10, episode end value (USD): 117478.12, duration (seconds): 0.34126
+episode: 7/10, episode end value (USD): 118116.85, duration (seconds): 0.338807
+episode: 8/10, episode end value (USD): 111613.08, duration (seconds): 0.341078
+episode: 9/10, episode end value (USD): 118831.90, duration (seconds): 0.342897
+episode: 10/10, episode end value (USD): 103135.13, duration (seconds): 0.338562
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 1.386
+CUDA Time Total (seconds): 0.000
+CPU Memory Usage (MB): 4.432
+CUDA Memory Usage (MB): 0.000
+
+Portfolio key statistics:
+Median portfolio value (USD): 114545.60
+Minimum portfolio value (USD): 83225.08
+Maximum portfolio value (USD): 125217.59
+
+Total execution time (seconds): 66.091
+
+Finished Run 1
+
+Cleaned folders after Run 1
+
+------------------------
+
+Starting Run 2
+
+/work/mdisspt/mdisspt/n2134758/condaenvs/envs/env-pytorch-1.13.1-gpu/lib/python3.10/site-packages/torch/autograd/profiler.py:176: UserWarning: CUDA is not available, disabling CUDA profiling
+  warn("CUDA is not available, disabling CUDA profiling")
+STAGE:2024-08-24 12:04:08 3163024:3163024 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-24 12:04:38 3163024:3163024 ActivityProfilerController.cpp:300] Completed Stage: Collection
+
+ ==================== 
+
+DQN Trader - Training Mode
+
+ ==================== 
+
+Using device: cpu 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: train
+Number of episodes: 10
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Batch size: 32
+Replay buffer size: 500
+Discount factor (gamma): 0.99
+Initial epsilon (training): 1.0
+Minimum epsilon (training): 0.01
+Epsilon decay rate (training): 0.995
+Learning rate (alpha) (training): 0.0003
+Random seed: 56563
+
+
+episode: 1/10, episode end value (USD): 19083.75, duration (seconds): 1.839774
+episode: 2/10, episode end value (USD): 142911.98, duration (seconds): 1.92665
+episode: 3/10, episode end value (USD): 250940.22, duration (seconds): 1.888951
+episode: 4/10, episode end value (USD): 262856.34, duration (seconds): 1.895525
+episode: 5/10, episode end value (USD): 109971.03, duration (seconds): 1.890048
+episode: 6/10, episode end value (USD): 113413.45, duration (seconds): 1.881855
+episode: 7/10, episode end value (USD): 136378.26, duration (seconds): 1.89185
+episode: 8/10, episode end value (USD): 197644.42, duration (seconds): 1.89456
+episode: 9/10, episode end value (USD): 105521.09, duration (seconds): 1.881815
+episode: 10/10, episode end value (USD): 149585.76, duration (seconds): 1.884983
+... saving models ...
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 20.779
+CUDA Time Total (seconds): 0.000
+CPU Memory Usage (MB): 1013.900
+CUDA Memory Usage (MB): 0.000
+
+Portfolio key statistics:
+Median portfolio value (USD): 139645.12
+Minimum portfolio value (USD): 19083.75
+Maximum portfolio value (USD): 262856.34
+
+Total execution time (seconds): 657.706
+/work/mdisspt/mdisspt/n2134758/condaenvs/envs/env-pytorch-1.13.1-gpu/lib/python3.10/site-packages/torch/autograd/profiler.py:176: UserWarning: CUDA is not available, disabling CUDA profiling
+  warn("CUDA is not available, disabling CUDA profiling")
+STAGE:2024-08-24 12:16:04 3163659:3163659 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-24 12:16:09 3163659:3163659 ActivityProfilerController.cpp:300] Completed Stage: Collection
+
+ ==================== 
+
+DQN Trader - Testing Mode
+
+ ==================== 
+
+Using device: cpu 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: test
+Number of episodes: 10
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Batch size: 32
+Replay buffer size: 500
+Discount factor (gamma): 0.99
+Initial epsilon (training): 1.0
+Minimum epsilon (training): 0.01
+Epsilon decay rate (training): 0.995
+Learning rate (alpha) (training): 0.0003
+Random seed: 41912
+
+
+... loading models ...
+episode: 1/10, episode end value (USD): 131220.70, duration (seconds): 0.352635
+episode: 2/10, episode end value (USD): 101672.57, duration (seconds): 0.341059
+episode: 3/10, episode end value (USD): 125027.38, duration (seconds): 0.336573
+episode: 4/10, episode end value (USD): 127144.88, duration (seconds): 0.339358
+episode: 5/10, episode end value (USD): 132050.69, duration (seconds): 0.339841
+episode: 6/10, episode end value (USD): 110556.53, duration (seconds): 0.337016
+episode: 7/10, episode end value (USD): 147603.71, duration (seconds): 0.344248
+episode: 8/10, episode end value (USD): 140936.32, duration (seconds): 0.341737
+episode: 9/10, episode end value (USD): 111274.53, duration (seconds): 0.341515
+episode: 10/10, episode end value (USD): 115814.00, duration (seconds): 0.343238
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 1.356
+CUDA Time Total (seconds): 0.000
+CPU Memory Usage (MB): 4.428
+CUDA Memory Usage (MB): 0.000
+
+Portfolio key statistics:
+Median portfolio value (USD): 126086.13
+Minimum portfolio value (USD): 101672.57
+Maximum portfolio value (USD): 147603.71
+
+Total execution time (seconds): 64.346
+
+Finished Run 2
+
+Cleaned folders after Run 2
+
+------------------------
+
+Starting Run 3
+
+/work/mdisspt/mdisspt/n2134758/condaenvs/envs/env-pytorch-1.13.1-gpu/lib/python3.10/site-packages/torch/autograd/profiler.py:176: UserWarning: CUDA is not available, disabling CUDA profiling
+  warn("CUDA is not available, disabling CUDA profiling")
+STAGE:2024-08-24 12:17:21 3163881:3163881 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-24 12:17:54 3163881:3163881 ActivityProfilerController.cpp:300] Completed Stage: Collection
+
+ ==================== 
+
+DQN Trader - Training Mode
+
+ ==================== 
+
+Using device: cpu 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: train
+Number of episodes: 10
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Batch size: 32
+Replay buffer size: 500
+Discount factor (gamma): 0.99
+Initial epsilon (training): 1.0
+Minimum epsilon (training): 0.01
+Epsilon decay rate (training): 0.995
+Learning rate (alpha) (training): 0.0003
+Random seed: 92686
+
+
+episode: 1/10, episode end value (USD): 5059.22, duration (seconds): 2.046056
+episode: 2/10, episode end value (USD): 119713.23, duration (seconds): 2.125408
+episode: 3/10, episode end value (USD): 136249.17, duration (seconds): 2.118088
+episode: 4/10, episode end value (USD): 107693.41, duration (seconds): 2.127758
+episode: 5/10, episode end value (USD): 93970.99, duration (seconds): 2.129348
+episode: 6/10, episode end value (USD): 81518.49, duration (seconds): 2.112491
+episode: 7/10, episode end value (USD): 103175.54, duration (seconds): 2.120425
+episode: 8/10, episode end value (USD): 89065.88, duration (seconds): 2.11473
+episode: 9/10, episode end value (USD): 109915.15, duration (seconds): 2.117005
+episode: 10/10, episode end value (USD): 94015.41, duration (seconds): 2.119846
+... saving models ...
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 23.268
+CUDA Time Total (seconds): 0.000
+CPU Memory Usage (MB): 1016.559
+CUDA Memory Usage (MB): 0.000
+
+Portfolio key statistics:
+Median portfolio value (USD): 98595.47
+Minimum portfolio value (USD): 5059.22
+Maximum portfolio value (USD): 136249.17
+
+Total execution time (seconds): 718.379
+/work/mdisspt/mdisspt/n2134758/condaenvs/envs/env-pytorch-1.13.1-gpu/lib/python3.10/site-packages/torch/autograd/profiler.py:176: UserWarning: CUDA is not available, disabling CUDA profiling
+  warn("CUDA is not available, disabling CUDA profiling")
+STAGE:2024-08-24 12:30:18 3164558:3164558 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-24 12:30:23 3164558:3164558 ActivityProfilerController.cpp:300] Completed Stage: Collection
+
+ ==================== 
+
+DQN Trader - Testing Mode
+
+ ==================== 
+
+Using device: cpu 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: test
+Number of episodes: 10
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Batch size: 32
+Replay buffer size: 500
+Discount factor (gamma): 0.99
+Initial epsilon (training): 1.0
+Minimum epsilon (training): 0.01
+Epsilon decay rate (training): 0.995
+Learning rate (alpha) (training): 0.0003
+Random seed: 20
+
+
+... loading models ...
+episode: 1/10, episode end value (USD): 97086.30, duration (seconds): 0.335989
+episode: 2/10, episode end value (USD): 108256.42, duration (seconds): 0.327987
+episode: 3/10, episode end value (USD): 104002.04, duration (seconds): 0.328118
+episode: 4/10, episode end value (USD): 106336.68, duration (seconds): 0.326723
+episode: 5/10, episode end value (USD): 111028.86, duration (seconds): 0.326417
+episode: 6/10, episode end value (USD): 85292.36, duration (seconds): 0.325672
+episode: 7/10, episode end value (USD): 92318.31, duration (seconds): 0.326745
+episode: 8/10, episode end value (USD): 96572.66, duration (seconds): 0.325383
+episode: 9/10, episode end value (USD): 101434.17, duration (seconds): 0.325483
+episode: 10/10, episode end value (USD): 103051.87, duration (seconds): 0.326922
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 1.326
+CUDA Time Total (seconds): 0.000
+CPU Memory Usage (MB): 4.429
+CUDA Memory Usage (MB): 0.000
+
+Portfolio key statistics:
+Median portfolio value (USD): 102243.02
+Minimum portfolio value (USD): 85292.36
+Maximum portfolio value (USD): 111028.86
+
+Total execution time (seconds): 61.441
+
+Finished Run 3
+
+Cleaned folders after Run 3
+
+------------------------
+
