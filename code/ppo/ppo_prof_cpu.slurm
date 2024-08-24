@@ -2,7 +2,7 @@
 
 # Slurm job options (name, compute nodes, job time)
 #SBATCH --job-name=ppo-prof-cpu
-#SBATCH --time=0:40:0
+#SBATCH --time=02:00:00
 #SBATCH --exclusive
 #SBATCH --nodes=1
 #SBATCH --tasks-per-node=1
