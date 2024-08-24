@@ -4,7 +4,7 @@
 #SBATCH --partition=gpu
 #SBATCH --qos=gpu
 #SBATCH --gres=gpu:1
-#SBATCH --time=00:40:00
+#SBATCH --time=02:00:00
 
 # Replace [budget code] below with your project code (e.g. t01)
 #SBATCH --account=mdisspt-s2134758
