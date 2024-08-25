@@ -1,0 +1,234 @@
+Loading python/3.10.8-gpu
+  Loading requirement: nvidia/nvhpc-nompi/22.2 gcc/10.2.0
+    openmpi/4.1.6-cuda-11.6
+Starting Run 1
+
+/work/mdisspt/mdisspt/n2134758/condaenvs/envs/env-pytorch-1.13.1-gpu/lib/python3.10/site-packages/torch/autograd/profiler.py:176: UserWarning: CUDA is not available, disabling CUDA profiling
+  warn("CUDA is not available, disabling CUDA profiling")
+STAGE:2024-08-25 10:00:17 3290036:3290036 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-25 10:00:43 3290036:3290036 ActivityProfilerController.cpp:300] Completed Stage: Collection
+
+ ==================== 
+
+PPO Trader - Training Mode
+
+ ==================== 
+
+Using device: cpu 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=1, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: train
+Number of episodes: 10
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Steps between learning updates (N) (training): 128
+Discount factor (gamma): 0.99
+Learning rate (alpha) (training): 0.0003
+GAE lambda: 0.95
+Policy clip (training): 0.2
+Batch size (training): 32
+Number of epochs (training): 4
+Random seed: 4159
+
+
+episode: 1/10, episode end value (USD): 76.01, duration (seconds): 3.963049
+episode: 2/10, episode end value (USD): 116.70, duration (seconds): 1.544689
+episode: 3/10, episode end value (USD): 74.39, duration (seconds): 1.587077
+episode: 4/10, episode end value (USD): 133.55, duration (seconds): 1.54987
+episode: 5/10, episode end value (USD): 76.82, duration (seconds): 1.55087
+episode: 6/10, episode end value (USD): 79.82, duration (seconds): 1.547364
+episode: 7/10, episode end value (USD): 114.75, duration (seconds): 1.546806
+episode: 8/10, episode end value (USD): 76.39, duration (seconds): 1.552506
+episode: 9/10, episode end value (USD): 60.55, duration (seconds): 1.553172
+episode: 10/10, episode end value (USD): 88.91, duration (seconds): 1.543757
+... saving models ...
+
+Top 10 CPU operations by CPU time:
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg       CPU Mem  Self CPU Mem    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                           aten::linear         2.67%     253.112ms        24.98%        2.368s      46.579us      22.14 Mb     239.84 Kb         50844  
+                                            aten::addmm        15.85%        1.502s        18.14%        1.720s      33.822us      22.14 Mb      22.14 Mb         50844  
+                               Optimizer.step#Adam.step         6.08%     576.248ms        13.18%        1.250s     661.926us      20.39 Kb     -25.86 Mb          1888  
+                                               aten::to         2.24%     212.787ms         9.30%     881.327ms       5.568us      13.07 Mb      51.01 Kb        158275  
+                                         aten::_to_copy         4.46%     422.947ms         7.70%     730.349ms       6.708us      13.75 Mb       1.25 Mb        108872  
+                                                aten::t         2.88%     272.616ms         4.98%     471.710ms       6.587us           0 b           0 b         71612  
+                                            aten::copy_         3.81%     361.658ms         3.81%     361.658ms       2.058us     141.32 Kb     141.32 Kb        175720  
+                                             aten::relu         1.97%     187.242ms         3.66%     346.689ms      10.228us      18.16 Mb           0 b         33896  
+                                              aten::div         2.40%     227.752ms         3.58%     339.662ms      11.583us      64.05 Mb      56.49 Mb         29325  
+                                              aten::sum         2.78%     263.379ms         3.17%     300.859ms      11.401us       3.48 Mb       3.48 Mb         26388  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 9.481s
+
+
+Top 10 CPU operations by CPU memory usage:
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg       CPU Mem  Self CPU Mem    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                        GatherBackward0         0.05%       4.830ms         0.99%      94.332ms      99.928us      96.84 Mb       2.85 Mb           944  
+                                  aten::gather_backward         0.04%       3.337ms         0.97%      91.706ms      97.146us      96.84 Mb           0 b           944  
+                                        aten::new_zeros         0.07%       6.203ms         0.71%      67.766ms      71.786us      96.84 Mb      -6.97 Mb           944  
+                                        aten::new_empty         0.03%       2.852ms         0.12%      10.968ms      11.619us      96.42 Mb      14.63 Mb           944  
+autograd::engine::evaluate_function: GatherBackward0...         0.03%       2.848ms         1.05%      99.887ms     105.812us      93.25 Mb      -6.43 Mb           944  
+                                            aten::empty         1.27%     120.222ms         1.27%     120.222ms       3.355us      90.23 Mb      90.23 Mb         35831  
+                                              aten::div         2.40%     227.752ms         3.58%     339.662ms      11.583us      64.05 Mb      56.49 Mb         29325  
+                                              aten::mul         0.78%      74.134ms         1.12%     106.437ms      11.275us      35.58 Mb      34.59 Mb          9440  
+                                         AddmmBackward0         0.43%      40.425ms         1.94%     183.994ms      32.485us      26.70 Mb           0 b          5664  
+                                               aten::mm         1.03%      97.654ms         1.03%      97.761ms      10.356us      26.70 Mb      25.95 Mb          9440  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 9.481s
+
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 17.394
+CUDA Time Total (seconds): 0.000
+CPU Memory Usage (MB): 849.266
+CUDA Memory Usage (MB): 0.000
+
+Portfolio key statistics:
+Median portfolio value (USD): 78.32
+Minimum portfolio value (USD): 60.55
+Maximum portfolio value (USD): 133.55
+
+Total execution time (seconds): 513.387
+/work/mdisspt/mdisspt/n2134758/condaenvs/envs/env-pytorch-1.13.1-gpu/lib/python3.10/site-packages/torch/autograd/profiler.py:176: UserWarning: CUDA is not available, disabling CUDA profiling
+  warn("CUDA is not available, disabling CUDA profiling")
+STAGE:2024-08-25 10:09:30 3290593:3290593 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-25 10:09:42 3290593:3290593 ActivityProfilerController.cpp:300] Completed Stage: Collection
+
+ ==================== 
+
+PPO Trader - Testing Mode
+
+ ==================== 
+
+Using device: cpu 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=1, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: test
+Number of episodes: 10
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Steps between learning updates (N) (training): 128
+Discount factor (gamma): 0.99
+Learning rate (alpha) (training): 0.0003
+GAE lambda: 0.95
+Policy clip (training): 0.2
+Batch size (training): 32
+Number of epochs (training): 4
+Random seed: 16532
+
+
+... loading models ...
+episode: 1/10, episode end value (USD): 117.35, duration (seconds): 0.881957
+episode: 2/10, episode end value (USD): 64.45, duration (seconds): 0.861975
+episode: 3/10, episode end value (USD): 107.58, duration (seconds): 0.86372
+episode: 4/10, episode end value (USD): 111.04, duration (seconds): 0.859055
+episode: 5/10, episode end value (USD): 96.84, duration (seconds): 0.860905
+episode: 6/10, episode end value (USD): 101.68, duration (seconds): 0.868005
+episode: 7/10, episode end value (USD): 142.72, duration (seconds): 0.866434
+episode: 8/10, episode end value (USD): 107.20, duration (seconds): 0.866682
+episode: 9/10, episode end value (USD): 126.15, duration (seconds): 0.861084
+episode: 10/10, episode end value (USD): 86.95, duration (seconds): 0.864737
+
+Top 10 CPU operations by CPU time:
+-------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                       Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg       CPU Mem  Self CPU Mem    # of Calls  
+-------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                               aten::linear         4.56%     170.755ms        34.09%        1.276s      28.204us       4.49 Mb     217.18 Kb         45240  
+                                aten::addmm        16.38%     613.316ms        21.01%     786.328ms      17.381us       4.49 Mb       4.49 Mb         45240  
+                                    aten::t         5.88%     220.162ms         9.55%     357.622ms       7.905us           0 b           0 b         45240  
+                                   aten::to         1.58%      59.221ms         8.38%     313.631ms       4.620us     294.53 Kb      19.65 Kb         67885  
+                             aten::_to_copy         3.77%     141.175ms         7.23%     270.697ms       8.975us     294.53 Kb      28.06 Kb         30160  
+                                 aten::relu         3.91%     146.325ms         6.72%     251.644ms       8.344us       3.68 Mb           0 b         30160  
+                                aten::copy_         5.86%     219.424ms         5.86%     219.424ms       2.425us       2.73 Kb       2.73 Kb         90492  
+                                  aten::all         3.76%     140.915ms         5.65%     211.424ms       9.347us      22.09 Kb      22.07 Kb         22620  
+                                   aten::ge         2.60%      97.447ms         4.89%     183.128ms      12.144us     232.64 Kb     200.57 Kb         15080  
+                                  aten::sum         3.91%     146.470ms         3.93%     147.300ms       9.768us      58.91 Kb      58.91 Kb         15080  
+-------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 3.743s
+
+
+Top 10 CPU operations by CPU memory usage:
+-------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                       Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg       CPU Mem  Self CPU Mem    # of Calls  
+-------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                               aten::linear         4.56%     170.755ms        34.09%        1.276s      28.204us       4.49 Mb     217.18 Kb         45240  
+                                aten::addmm        16.38%     613.316ms        21.01%     786.328ms      17.381us       4.49 Mb       4.49 Mb         45240  
+                                 aten::relu         3.91%     146.325ms         6.72%     251.644ms       8.344us       3.68 Mb           0 b         30160  
+                            aten::clamp_min         2.81%     105.319ms         2.81%     105.319ms       3.492us       3.68 Mb       3.68 Mb         30160  
+                              aten::softmax         0.46%      17.092ms         1.66%      62.166ms       8.245us     795.23 Kb      35.86 Kb          7540  
+                             aten::_softmax         1.26%      47.283ms         1.26%      47.283ms       6.271us     795.23 Kb     795.23 Kb          7540  
+                                  aten::div         1.42%      53.086ms         1.42%      53.086ms       7.041us     795.23 Kb     795.23 Kb          7540  
+                                aten::clamp         2.19%      82.019ms         2.19%      82.138ms      10.894us     795.23 Kb     795.23 Kb          7540  
+                                  aten::log         1.41%      52.766ms         1.41%      52.766ms       6.998us     795.23 Kb     795.23 Kb          7540  
+                                aten::empty         0.67%      25.002ms         0.67%      25.002ms       1.104us     526.23 Kb     526.23 Kb         22645  
+-------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 3.743s
+
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 6.297
+CUDA Time Total (seconds): 0.000
+CPU Memory Usage (MB): 10.177
+CUDA Memory Usage (MB): 0.000
+
+Portfolio key statistics:
+Median portfolio value (USD): 107.39
+Minimum portfolio value (USD): 64.45
+Maximum portfolio value (USD): 142.72
+
+Total execution time (seconds): 284.849
+
+Finished Run 1
+
+Cleaned folders after Run 1
+
+------------------------
+

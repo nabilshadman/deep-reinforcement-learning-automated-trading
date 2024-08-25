@@ -1,0 +1,288 @@
+Loading python/3.10.8-gpu
+  Loading requirement: nvidia/nvhpc-nompi/22.2 gcc/10.2.0
+    openmpi/4.1.6-cuda-11.6
+Starting Run 1
+
+STAGE:2024-08-25 09:50:36 3692302:3692302 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-25 09:51:14 3692302:3692302 ActivityProfilerController.cpp:300] Completed Stage: Collection
+
+ ==================== 
+
+DQN Trader - Training Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: train
+Number of episodes: 10
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Batch size: 32
+Replay buffer size: 500
+Discount factor (gamma): 0.99
+Initial epsilon (training): 1.0
+Minimum epsilon (training): 0.01
+Epsilon decay rate (training): 0.995
+Learning rate (alpha) (training): 0.0003
+Random seed: 74271
+
+
+episode: 1/10, episode end value (USD): 9017.21, duration (seconds): 3.278722
+episode: 2/10, episode end value (USD): 122481.54, duration (seconds): 2.773486
+episode: 3/10, episode end value (USD): 86453.49, duration (seconds): 2.775147
+episode: 4/10, episode end value (USD): 84518.35, duration (seconds): 2.77832
+episode: 5/10, episode end value (USD): 103268.64, duration (seconds): 2.772429
+episode: 6/10, episode end value (USD): 90879.74, duration (seconds): 2.777225
+episode: 7/10, episode end value (USD): 295835.72, duration (seconds): 2.775443
+episode: 8/10, episode end value (USD): 93198.35, duration (seconds): 2.760924
+episode: 9/10, episode end value (USD): 136393.40, duration (seconds): 2.776735
+episode: 10/10, episode end value (USD): 250218.02, duration (seconds): 2.77456
+... saving models ...
+
+Top 10 CPU operations by CPU time:
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg     Self CUDA   Self CUDA %    CUDA total  CUDA time avg       CPU Mem  Self CPU Mem      CUDA Mem  Self CUDA Mem    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                               Optimizer.step#Adam.step        11.26%        2.324s        32.12%        6.632s     884.437us       0.000us         0.00%        1.016s     135.434us     -29.27 Kb    -884.99 Kb      20.00 Kb    -146.46 Mb          7499  
+                                           aten::linear         1.59%     327.782ms        20.83%        4.301s      48.205us       0.000us         0.00%     597.932ms       6.701us           0 b           0 b     263.27 Mb       4.72 Mb         89229  
+                                       cudaLaunchKernel        18.26%        3.771s        18.26%        3.771s       5.145us     254.291ms        10.96%     256.032ms       0.349us           0 b           0 b       5.25 Mb       5.25 Mb        732878  
+                                               aten::to         0.80%     165.144ms        18.26%        3.770s       9.576us       0.000us         0.00%      98.908ms       0.251us      50.35 Mb       1.22 Mb      51.15 Mb       1.55 Mb        393658  
+                                         aten::_to_copy         2.32%     478.906ms        17.60%        3.634s      34.780us       0.000us         0.00%      99.276ms       0.950us      50.35 Mb       8.52 Mb      51.15 Mb           0 b        104486  
+                                            aten::addmm         8.96%        1.849s        17.03%        3.516s      39.399us     516.821ms        22.27%     609.090ms       6.826us           0 b           0 b     263.27 Mb     -86.88 Gb         89229  
+                                    aten::empty_strided         2.01%     415.186ms         8.81%        1.818s      16.233us       0.000us         0.00%       0.000us       0.000us      41.83 Mb      41.83 Mb      54.83 Mb      54.83 Mb        111997  
+    autograd::engine::evaluate_function: AddmmBackward0         1.22%     251.444ms         8.75%        1.808s      80.348us       0.000us         0.00%     410.183ms      18.233us           0 b           0 b      47.60 Mb     -84.22 Mb         22497  
+                                             aten::add_         4.19%     864.507ms         8.74%        1.804s      10.022us     294.899ms        12.70%     342.227ms       1.902us     -17.17 Kb    -204.92 Kb           0 b           0 b        179970  
+                                  cudaStreamIsCapturing         6.84%        1.411s         6.84%        1.411s     188.187us       2.636ms         0.11%       2.636ms       0.351us           0 b           0 b           0 b           0 b          7500  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 20.647s
+Self CUDA time total: 2.321s
+
+
+Top 10 CPU operations by CPU memory usage:
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg     Self CUDA   Self CUDA %    CUDA total  CUDA time avg       CPU Mem  Self CPU Mem      CUDA Mem  Self CUDA Mem    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                               aten::to         0.80%     165.144ms        18.26%        3.770s       9.576us       0.000us         0.00%      98.908ms       0.251us      50.35 Mb       1.22 Mb      51.15 Mb       1.55 Mb        393658  
+                                         aten::_to_copy         2.32%     478.906ms        17.60%        3.634s      34.780us       0.000us         0.00%      99.276ms       0.950us      50.35 Mb       8.52 Mb      51.15 Mb           0 b        104486  
+                                    aten::empty_strided         2.01%     415.186ms         8.81%        1.818s      16.233us       0.000us         0.00%       0.000us       0.000us      41.83 Mb      41.83 Mb      54.83 Mb      54.83 Mb        111997  
+                                            aten::empty         2.00%     411.978ms         2.00%     411.978ms       3.069us       0.000us         0.00%       0.000us       0.000us       1.66 Mb       1.66 Mb      87.19 Gb      87.19 Gb        134248  
+                                            aten::zeros         0.24%      49.084ms         0.42%      85.859ms       5.725us       0.000us         0.00%       0.000us       0.000us      58.59 Kb       2.06 Kb           0 b           0 b         14998  
+                                             aten::mul_         2.28%     471.538ms         4.46%     919.961ms      10.223us     185.499ms         7.99%     216.780ms       2.409us      11.89 Kb      11.89 Kb           0 b           0 b         89988  
+                                            aten::copy_         2.00%     413.032ms         6.75%        1.394s      13.338us      59.955ms         2.58%     101.108ms       0.968us          48 b          48 b           0 b           0 b        104492  
+                                           aten::detach         0.21%      44.245ms         0.43%      87.822ms       3.945us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b         22262  
+                                                 detach         0.22%      46.161ms         0.22%      46.161ms       2.074us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b         22262  
+                                         aten::uniform_         0.02%       4.079ms         0.02%       4.079ms     679.833us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b             6  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 20.647s
+Self CUDA time total: 2.321s
+
+
+Top 10 CUDA operations by CUDA time:
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg     Self CUDA   Self CUDA %    CUDA total  CUDA time avg       CPU Mem  Self CPU Mem      CUDA Mem  Self CUDA Mem    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                               Optimizer.step#Adam.step        11.26%        2.324s        32.12%        6.632s     884.437us       0.000us         0.00%        1.016s     135.434us     -29.27 Kb    -884.99 Kb      20.00 Kb    -146.46 Mb          7499  
+                                            aten::addmm         8.96%        1.849s        17.03%        3.516s      39.399us     516.821ms        22.27%     609.090ms       6.826us           0 b           0 b     263.27 Mb     -86.88 Gb         89229  
+                                           aten::linear         1.59%     327.782ms        20.83%        4.301s      48.205us       0.000us         0.00%     597.932ms       6.701us           0 b           0 b     263.27 Mb       4.72 Mb         89229  
+    autograd::engine::evaluate_function: AddmmBackward0         1.22%     251.444ms         8.75%        1.808s      80.348us       0.000us         0.00%     410.183ms      18.233us           0 b           0 b      47.60 Mb     -84.22 Mb         22497  
+                                  volta_sgemm_32x128_tn         0.00%       0.000us         0.00%       0.000us       0.000us     384.580ms        16.57%     384.580ms       5.698us           0 b           0 b           0 b           0 b         67491  
+                                             aten::add_         4.19%     864.507ms         8.74%        1.804s      10.022us     294.899ms        12.70%     342.227ms       1.902us     -17.17 Kb    -204.92 Kb           0 b           0 b        179970  
+                                         AddmmBackward0         0.93%     192.352ms         5.48%        1.131s      50.268us       0.000us         0.00%     268.604ms      11.940us           0 b           0 b     120.83 Mb           0 b         22497  
+                                               aten::mm         2.44%     503.082ms         3.46%     714.167ms      19.047us     232.329ms        10.01%     268.604ms       7.164us           0 b           0 b     120.83 Mb     120.83 Mb         37495  
+                                       cudaLaunchKernel        18.26%        3.771s        18.26%        3.771s       5.145us     254.291ms        10.96%     256.032ms       0.349us           0 b           0 b       5.25 Mb       5.25 Mb        732878  
+                                             aten::mul_         2.28%     471.538ms         4.46%     919.961ms      10.223us     185.499ms         7.99%     216.780ms       2.409us      11.89 Kb      11.89 Kb           0 b           0 b         89988  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 20.647s
+Self CUDA time total: 2.321s
+
+
+Top 10 CUDA operations by CUDA memory usage:
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg     Self CUDA   Self CUDA %    CUDA total  CUDA time avg       CPU Mem  Self CPU Mem      CUDA Mem  Self CUDA Mem    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                            aten::empty         2.00%     411.978ms         2.00%     411.978ms       3.069us       0.000us         0.00%       0.000us       0.000us       1.66 Mb       1.66 Mb      87.19 Gb      87.19 Gb        134248  
+                                           aten::linear         1.59%     327.782ms        20.83%        4.301s      48.205us       0.000us         0.00%     597.932ms       6.701us           0 b           0 b     263.27 Mb       4.72 Mb         89229  
+                                            aten::addmm         8.96%        1.849s        17.03%        3.516s      39.399us     516.821ms        22.27%     609.090ms       6.826us           0 b           0 b     263.27 Mb     -86.88 Gb         89229  
+                                             aten::relu         1.17%     242.386ms         5.33%        1.101s      18.513us       0.000us         0.00%     175.158ms       2.945us           0 b           0 b     182.83 Mb         512 b         59486  
+                                        aten::clamp_min         2.53%     522.033ms         4.16%     858.873ms      14.438us     154.511ms         6.66%     175.160ms       2.945us           0 b           0 b     182.83 Mb     182.24 Mb         59486  
+                                         AddmmBackward0         0.93%     192.352ms         5.48%        1.131s      50.268us       0.000us         0.00%     268.604ms      11.940us           0 b           0 b     120.83 Mb           0 b         22497  
+                                               aten::mm         2.44%     503.082ms         3.46%     714.167ms      19.047us     232.329ms        10.01%     268.604ms       7.164us           0 b           0 b     120.83 Mb     120.83 Mb         37495  
+                                             aten::sqrt         1.74%     358.311ms         2.68%     552.724ms      12.284us     134.393ms         5.79%     150.074ms       3.335us           0 b           0 b      73.23 Mb      69.31 Mb         44994  
+                                              aten::div         1.79%     368.883ms         2.73%     562.888ms      12.510us      92.987ms         4.01%     108.555ms       2.413us        -640 b        -640 b      73.23 Mb      68.56 Mb         44994  
+                               aten::threshold_backward         0.64%     131.717ms         1.01%     207.652ms      13.845us      45.035ms         1.94%      50.182ms       3.346us           0 b           0 b      58.59 Mb      58.53 Mb         14998  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 20.647s
+Self CUDA time total: 2.321s
+
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 51.863
+CUDA Time Total (seconds): 8.809
+CPU Memory Usage (MB): 93.997
+CUDA Memory Usage (MB): 90408.639
+
+Portfolio key statistics:
+Median portfolio value (USD): 98233.49
+Minimum portfolio value (USD): 9017.21
+Maximum portfolio value (USD): 295835.72
+
+Total execution time (seconds): 1054.644
+STAGE:2024-08-25 10:09:16 3693410:3693410 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-25 10:09:24 3693410:3693410 ActivityProfilerController.cpp:300] Completed Stage: Collection
+
+ ==================== 
+
+DQN Trader - Testing Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: test
+Number of episodes: 10
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Batch size: 32
+Replay buffer size: 500
+Discount factor (gamma): 0.99
+Initial epsilon (training): 1.0
+Minimum epsilon (training): 0.01
+Epsilon decay rate (training): 0.995
+Learning rate (alpha) (training): 0.0003
+Random seed: 88887
+
+
+... loading models ...
+episode: 1/10, episode end value (USD): 119415.22, duration (seconds): 1.048876
+episode: 2/10, episode end value (USD): 145820.64, duration (seconds): 0.41261
+episode: 3/10, episode end value (USD): 111949.03, duration (seconds): 0.413788
+episode: 4/10, episode end value (USD): 104450.67, duration (seconds): 0.41772
+episode: 5/10, episode end value (USD): 144085.06, duration (seconds): 0.411216
+episode: 6/10, episode end value (USD): 121122.38, duration (seconds): 0.417529
+episode: 7/10, episode end value (USD): 105679.07, duration (seconds): 0.416587
+episode: 8/10, episode end value (USD): 151061.96, duration (seconds): 0.412379
+episode: 9/10, episode end value (USD): 104683.60, duration (seconds): 0.411263
+episode: 10/10, episode end value (USD): 102105.83, duration (seconds): 0.413435
+
+Top 10 CPU operations by CPU time:
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg     Self CUDA   Self CUDA %    CUDA total  CUDA time avg       CPU Mem  Self CPU Mem      CUDA Mem  Self CUDA Mem    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                               aten::to         0.54%      20.965ms        50.68%        1.964s      29.226us       0.000us         0.00%      23.651ms       0.352us     787.22 Kb       5.80 Kb       3.65 Mb      18.00 Kb         67194  
+                                         aten::_to_copy         2.23%      86.441ms        50.12%        1.942s     129.990us       0.000us         0.00%      23.524ms       1.575us     787.22 Kb     186.79 Kb       3.65 Mb           0 b         14940  
+                                           aten::linear         2.13%      82.411ms        41.21%        1.597s      71.319us       0.000us         0.00%     155.083ms       6.926us           0 b           0 b      10.93 Mb     126.00 Kb         22392  
+                                    aten::empty_strided         2.11%      81.851ms        38.60%        1.496s     100.133us       0.000us         0.00%       0.000us       0.000us     600.43 Kb     600.43 Kb       3.65 Mb       3.65 Mb         14940  
+                                  cudaStreamIsCapturing        36.49%        1.414s        36.49%        1.414s        1.414s       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b             1  
+                                            aten::addmm        11.12%     430.952ms        36.28%        1.406s      62.786us     135.902ms        70.94%     156.873ms       7.006us           0 b           0 b      10.93 Mb     -21.61 Gb         22392  
+                                               cudaFree        16.27%     630.289ms        16.27%     630.289ms     315.144ms       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b             2  
+                                            aten::copy_         2.58%      99.981ms         9.40%     364.078ms      24.350us      14.958ms         7.81%      23.836ms       1.594us           0 b           0 b           0 b           0 b         14952  
+                                       cudaLaunchKernel         8.87%     343.622ms         8.87%     343.622ms       5.755us      17.766ms         9.27%      17.766ms       0.298us           0 b           0 b    -250.00 Mb    -250.00 Mb         59712  
+                                             aten::relu         1.26%      48.954ms         6.79%     263.140ms      17.627us       0.000us         0.00%      45.145ms       3.024us           0 b           0 b       7.29 Mb           0 b         14928  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 3.875s
+Self CUDA time total: 191.565ms
+
+
+Top 10 CPU operations by CPU memory usage:
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg     Self CUDA   Self CUDA %    CUDA total  CUDA time avg       CPU Mem  Self CPU Mem      CUDA Mem  Self CUDA Mem    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                               aten::to         0.54%      20.965ms        50.68%        1.964s      29.226us       0.000us         0.00%      23.651ms       0.352us     787.22 Kb       5.80 Kb       3.65 Mb      18.00 Kb         67194  
+                                         aten::_to_copy         2.23%      86.441ms        50.12%        1.942s     129.990us       0.000us         0.00%      23.524ms       1.575us     787.22 Kb     186.79 Kb       3.65 Mb           0 b         14940  
+                                    aten::empty_strided         2.11%      81.851ms        38.60%        1.496s     100.133us       0.000us         0.00%       0.000us       0.000us     600.43 Kb     600.43 Kb       3.65 Mb       3.65 Mb         14940  
+                                            aten::empty         1.87%      72.322ms         1.87%      72.322ms       3.226us       0.000us         0.00%       0.000us       0.000us       8.48 Kb       8.48 Kb      21.87 Gb      21.87 Gb         22420  
+                                           aten::detach         0.33%      12.880ms         0.68%      26.413ms       3.536us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b          7470  
+                                                 detach         0.41%      15.816ms         0.41%      15.816ms       2.117us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b          7470  
+                                         aten::uniform_         0.10%       3.922ms         0.10%       3.922ms     653.667us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b             6  
+                                     cudaGetDeviceCount         0.02%     701.000us         0.02%     701.000us     701.000us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b             1  
+                                cudaGetDeviceProperties         0.00%     169.000us         0.00%     169.000us     169.000us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b             1  
+                                  cudaStreamIsCapturing        36.49%        1.414s        36.49%        1.414s        1.414s       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b             1  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 3.875s
+Self CUDA time total: 191.565ms
+
+
+Top 10 CUDA operations by CUDA time:
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg     Self CUDA   Self CUDA %    CUDA total  CUDA time avg       CPU Mem  Self CPU Mem      CUDA Mem  Self CUDA Mem    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                            aten::addmm        11.12%     430.952ms        36.28%        1.406s      62.786us     135.902ms        70.94%     156.873ms       7.006us           0 b           0 b      10.93 Mb     -21.61 Gb         22392  
+                                           aten::linear         2.13%      82.411ms        41.21%        1.597s      71.319us       0.000us         0.00%     155.083ms       6.926us           0 b           0 b      10.93 Mb     126.00 Kb         22392  
+void dot_kernel<float, 128, 0, cublasDotParams<cubla...         0.00%       0.000us         0.00%       0.000us       0.000us      68.636ms        35.83%      68.636ms       3.065us           0 b           0 b           0 b           0 b         22392  
+void reduce_1Block_kernel<float, 128, 7, cublasGemvT...         0.00%       0.000us         0.00%       0.000us       0.000us      67.266ms        35.11%      67.266ms       3.004us           0 b           0 b           0 b           0 b         22392  
+                                             aten::relu         1.26%      48.954ms         6.79%     263.140ms      17.627us       0.000us         0.00%      45.145ms       3.024us           0 b           0 b       7.29 Mb           0 b         14928  
+                                        aten::clamp_min         3.42%     132.427ms         5.53%     214.186ms      14.348us      40.705ms        21.25%      45.145ms       3.024us           0 b           0 b       7.29 Mb       7.29 Mb         14928  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us      40.705ms        21.25%      40.705ms       2.727us           0 b           0 b           0 b           0 b         14928  
+                                            aten::copy_         2.58%      99.981ms         9.40%     364.078ms      24.350us      14.958ms         7.81%      23.836ms       1.594us           0 b           0 b           0 b           0 b         14952  
+                                               aten::to         0.54%      20.965ms        50.68%        1.964s      29.226us       0.000us         0.00%      23.651ms       0.352us     787.22 Kb       5.80 Kb       3.65 Mb      18.00 Kb         67194  
+                                         aten::_to_copy         2.23%      86.441ms        50.12%        1.942s     129.990us       0.000us         0.00%      23.524ms       1.575us     787.22 Kb     186.79 Kb       3.65 Mb           0 b         14940  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 3.875s
+Self CUDA time total: 191.565ms
+
+
+Top 10 CUDA operations by CUDA memory usage:
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg     Self CUDA   Self CUDA %    CUDA total  CUDA time avg       CPU Mem  Self CPU Mem      CUDA Mem  Self CUDA Mem    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                            aten::empty         1.87%      72.322ms         1.87%      72.322ms       3.226us       0.000us         0.00%       0.000us       0.000us       8.48 Kb       8.48 Kb      21.87 Gb      21.87 Gb         22420  
+                                           aten::linear         2.13%      82.411ms        41.21%        1.597s      71.319us       0.000us         0.00%     155.083ms       6.926us           0 b           0 b      10.93 Mb     126.00 Kb         22392  
+                                            aten::addmm        11.12%     430.952ms        36.28%        1.406s      62.786us     135.902ms        70.94%     156.873ms       7.006us           0 b           0 b      10.93 Mb     -21.61 Gb         22392  
+                                             aten::relu         1.26%      48.954ms         6.79%     263.140ms      17.627us       0.000us         0.00%      45.145ms       3.024us           0 b           0 b       7.29 Mb           0 b         14928  
+                                        aten::clamp_min         3.42%     132.427ms         5.53%     214.186ms      14.348us      40.705ms        21.25%      45.145ms       3.024us           0 b           0 b       7.29 Mb       7.29 Mb         14928  
+                                               aten::to         0.54%      20.965ms        50.68%        1.964s      29.226us       0.000us         0.00%      23.651ms       0.352us     787.22 Kb       5.80 Kb       3.65 Mb      18.00 Kb         67194  
+                                         aten::_to_copy         2.23%      86.441ms        50.12%        1.942s     129.990us       0.000us         0.00%      23.524ms       1.575us     787.22 Kb     186.79 Kb       3.65 Mb           0 b         14940  
+                                    aten::empty_strided         2.11%      81.851ms        38.60%        1.496s     100.133us       0.000us         0.00%       0.000us       0.000us     600.43 Kb     600.43 Kb       3.65 Mb       3.65 Mb         14940  
+                                           aten::detach         0.33%      12.880ms         0.68%      26.413ms       3.536us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b          7470  
+                                                 detach         0.41%      15.816ms         0.41%      15.816ms       2.117us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b          7470  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 3.875s
+Self CUDA time total: 191.565ms
+
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 12.228
+CUDA Time Total (seconds): 0.699
+CPU Memory Usage (MB): 1.355
+CUDA Memory Usage (MB): 22167.541
+
+Portfolio key statistics:
+Median portfolio value (USD): 115682.13
+Minimum portfolio value (USD): 102105.83
+Maximum portfolio value (USD): 151061.96
+
+Total execution time (seconds): 119.483
+
+Finished Run 1
+
+Cleaned folders after Run 1
+
+------------------------
+
