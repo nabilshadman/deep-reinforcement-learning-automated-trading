@@ -1,0 +1,480 @@
+Loading python/3.10.8-gpu
+  Loading requirement: nvidia/nvhpc-nompi/22.2 gcc/10.2.0
+    openmpi/4.1.6-cuda-11.6
+Starting Run 1
+
+/work/mdisspt/mdisspt/n2134758/condaenvs/envs/env-pytorch-1.13.1-gpu/lib/python3.10/site-packages/torch/autograd/profiler.py:176: UserWarning: CUDA is not available, disabling CUDA profiling
+  warn("CUDA is not available, disabling CUDA profiling")
+STAGE:2024-08-24 11:51:34 1268413:1268413 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-24 11:51:57 1268413:1268413 ActivityProfilerController.cpp:300] Completed Stage: Collection
+
+ ==================== 
+
+PPO Trader - Training Mode
+
+ ==================== 
+
+Using device: cpu 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=1, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: train
+Number of episodes: 10
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Steps between learning updates (N) (training): 128
+Discount factor (gamma): 0.99
+Learning rate (alpha) (training): 0.0003
+GAE lambda: 0.95
+Policy clip (training): 0.2
+Batch size (training): 32
+Number of epochs (training): 4
+Random seed: 61844
+
+
+episode: 1/10, episode end value (USD): 47.62, duration (seconds): 2.22622
+episode: 2/10, episode end value (USD): 68.05, duration (seconds): 1.535359
+episode: 3/10, episode end value (USD): 127.90, duration (seconds): 1.545766
+episode: 4/10, episode end value (USD): 120.65, duration (seconds): 1.515527
+episode: 5/10, episode end value (USD): 64.85, duration (seconds): 1.531272
+episode: 6/10, episode end value (USD): 68.78, duration (seconds): 1.529508
+episode: 7/10, episode end value (USD): 60.95, duration (seconds): 1.524294
+episode: 8/10, episode end value (USD): 80.90, duration (seconds): 1.522103
+episode: 9/10, episode end value (USD): 79.24, duration (seconds): 1.625156
+episode: 10/10, episode end value (USD): 117.74, duration (seconds): 1.530095
+... saving models ...
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 13.881
+CUDA Time Total (seconds): 0.000
+CPU Memory Usage (MB): 846.442
+CUDA Memory Usage (MB): 0.000
+
+Portfolio key statistics:
+Median portfolio value (USD): 74.01
+Minimum portfolio value (USD): 47.62
+Maximum portfolio value (USD): 127.90
+
+Total execution time (seconds): 395.244
+/work/mdisspt/mdisspt/n2134758/condaenvs/envs/env-pytorch-1.13.1-gpu/lib/python3.10/site-packages/torch/autograd/profiler.py:176: UserWarning: CUDA is not available, disabling CUDA profiling
+  warn("CUDA is not available, disabling CUDA profiling")
+STAGE:2024-08-24 11:58:51 1268844:1268844 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-24 11:59:02 1268844:1268844 ActivityProfilerController.cpp:300] Completed Stage: Collection
+
+ ==================== 
+
+PPO Trader - Testing Mode
+
+ ==================== 
+
+Using device: cpu 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=1, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: test
+Number of episodes: 10
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Steps between learning updates (N) (training): 128
+Discount factor (gamma): 0.99
+Learning rate (alpha) (training): 0.0003
+GAE lambda: 0.95
+Policy clip (training): 0.2
+Batch size (training): 32
+Number of epochs (training): 4
+Random seed: 81859
+
+
+... loading models ...
+episode: 1/10, episode end value (USD): 92.10, duration (seconds): 0.761186
+episode: 2/10, episode end value (USD): 120.94, duration (seconds): 0.745677
+episode: 3/10, episode end value (USD): 160.57, duration (seconds): 0.745472
+episode: 4/10, episode end value (USD): 81.61, duration (seconds): 0.747227
+episode: 5/10, episode end value (USD): 119.10, duration (seconds): 0.743967
+episode: 6/10, episode end value (USD): 161.01, duration (seconds): 0.746758
+episode: 7/10, episode end value (USD): 73.05, duration (seconds): 0.743338
+episode: 8/10, episode end value (USD): 96.59, duration (seconds): 0.750012
+episode: 9/10, episode end value (USD): 128.58, duration (seconds): 0.746381
+episode: 10/10, episode end value (USD): 148.04, duration (seconds): 0.753979
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 5.465
+CUDA Time Total (seconds): 0.000
+CPU Memory Usage (MB): 10.089
+CUDA Memory Usage (MB): 0.000
+
+Portfolio key statistics:
+Median portfolio value (USD): 120.02
+Minimum portfolio value (USD): 73.05
+Maximum portfolio value (USD): 161.01
+
+Total execution time (seconds): 200.684
+
+Finished Run 1
+
+Cleaned folders after Run 1
+
+------------------------
+
+Starting Run 2
+
+/work/mdisspt/mdisspt/n2134758/condaenvs/envs/env-pytorch-1.13.1-gpu/lib/python3.10/site-packages/torch/autograd/profiler.py:176: UserWarning: CUDA is not available, disabling CUDA profiling
+  warn("CUDA is not available, disabling CUDA profiling")
+STAGE:2024-08-24 12:02:36 1269148:1269148 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-24 12:02:56 1269148:1269148 ActivityProfilerController.cpp:300] Completed Stage: Collection
+
+ ==================== 
+
+PPO Trader - Training Mode
+
+ ==================== 
+
+Using device: cpu 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=1, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: train
+Number of episodes: 10
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Steps between learning updates (N) (training): 128
+Discount factor (gamma): 0.99
+Learning rate (alpha) (training): 0.0003
+GAE lambda: 0.95
+Policy clip (training): 0.2
+Batch size (training): 32
+Number of epochs (training): 4
+Random seed: 90431
+
+
+episode: 1/10, episode end value (USD): 115.67, duration (seconds): 1.277872
+episode: 2/10, episode end value (USD): 87.99, duration (seconds): 1.39764
+episode: 3/10, episode end value (USD): 60.57, duration (seconds): 1.404775
+episode: 4/10, episode end value (USD): 71.99, duration (seconds): 1.396121
+episode: 5/10, episode end value (USD): 67.56, duration (seconds): 1.404463
+episode: 6/10, episode end value (USD): 209.69, duration (seconds): 1.3983
+episode: 7/10, episode end value (USD): 66.29, duration (seconds): 1.394558
+episode: 8/10, episode end value (USD): 92.75, duration (seconds): 1.392957
+episode: 9/10, episode end value (USD): 82.84, duration (seconds): 1.393562
+episode: 10/10, episode end value (USD): 47.83, duration (seconds): 1.389247
+... saving models ...
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 11.439
+CUDA Time Total (seconds): 0.000
+CPU Memory Usage (MB): 853.118
+CUDA Memory Usage (MB): 0.000
+
+Portfolio key statistics:
+Median portfolio value (USD): 77.41
+Minimum portfolio value (USD): 47.83
+Maximum portfolio value (USD): 209.69
+
+Total execution time (seconds): 356.050
+/work/mdisspt/mdisspt/n2134758/condaenvs/envs/env-pytorch-1.13.1-gpu/lib/python3.10/site-packages/torch/autograd/profiler.py:176: UserWarning: CUDA is not available, disabling CUDA profiling
+  warn("CUDA is not available, disabling CUDA profiling")
+STAGE:2024-08-24 12:09:05 1269536:1269536 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-24 12:09:16 1269536:1269536 ActivityProfilerController.cpp:300] Completed Stage: Collection
+
+ ==================== 
+
+PPO Trader - Testing Mode
+
+ ==================== 
+
+Using device: cpu 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=1, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: test
+Number of episodes: 10
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Steps between learning updates (N) (training): 128
+Discount factor (gamma): 0.99
+Learning rate (alpha) (training): 0.0003
+GAE lambda: 0.95
+Policy clip (training): 0.2
+Batch size (training): 32
+Number of epochs (training): 4
+Random seed: 77431
+
+
+... loading models ...
+episode: 1/10, episode end value (USD): 125.27, duration (seconds): 0.761395
+episode: 2/10, episode end value (USD): 94.30, duration (seconds): 0.757841
+episode: 3/10, episode end value (USD): 98.44, duration (seconds): 0.755344
+episode: 4/10, episode end value (USD): 93.74, duration (seconds): 0.754551
+episode: 5/10, episode end value (USD): 84.03, duration (seconds): 0.777904
+episode: 6/10, episode end value (USD): 94.14, duration (seconds): 0.801729
+episode: 7/10, episode end value (USD): 93.60, duration (seconds): 0.760942
+episode: 8/10, episode end value (USD): 92.58, duration (seconds): 0.761195
+episode: 9/10, episode end value (USD): 113.58, duration (seconds): 0.759871
+episode: 10/10, episode end value (USD): 72.54, duration (seconds): 0.755618
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 5.483
+CUDA Time Total (seconds): 0.000
+CPU Memory Usage (MB): 10.102
+CUDA Memory Usage (MB): 0.000
+
+Portfolio key statistics:
+Median portfolio value (USD): 93.94
+Minimum portfolio value (USD): 72.54
+Maximum portfolio value (USD): 125.27
+
+Total execution time (seconds): 194.784
+
+Finished Run 2
+
+Cleaned folders after Run 2
+
+------------------------
+
+Starting Run 3
+
+/work/mdisspt/mdisspt/n2134758/condaenvs/envs/env-pytorch-1.13.1-gpu/lib/python3.10/site-packages/torch/autograd/profiler.py:176: UserWarning: CUDA is not available, disabling CUDA profiling
+  warn("CUDA is not available, disabling CUDA profiling")
+STAGE:2024-08-24 12:12:43 1269842:1269842 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-24 12:13:03 1269842:1269842 ActivityProfilerController.cpp:300] Completed Stage: Collection
+
+ ==================== 
+
+PPO Trader - Training Mode
+
+ ==================== 
+
+Using device: cpu 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=1, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: train
+Number of episodes: 10
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Steps between learning updates (N) (training): 128
+Discount factor (gamma): 0.99
+Learning rate (alpha) (training): 0.0003
+GAE lambda: 0.95
+Policy clip (training): 0.2
+Batch size (training): 32
+Number of epochs (training): 4
+Random seed: 32319
+
+
+episode: 1/10, episode end value (USD): 50.55, duration (seconds): 1.320088
+episode: 2/10, episode end value (USD): 54.09, duration (seconds): 1.440556
+episode: 3/10, episode end value (USD): 49.00, duration (seconds): 1.447916
+episode: 4/10, episode end value (USD): 53.61, duration (seconds): 1.437946
+episode: 5/10, episode end value (USD): 81.06, duration (seconds): 1.442236
+episode: 6/10, episode end value (USD): 144.99, duration (seconds): 1.448403
+episode: 7/10, episode end value (USD): 53.09, duration (seconds): 1.440402
+episode: 8/10, episode end value (USD): 80.95, duration (seconds): 1.434614
+episode: 9/10, episode end value (USD): 78.06, duration (seconds): 1.431975
+episode: 10/10, episode end value (USD): 148.13, duration (seconds): 1.446759
+... saving models ...
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 11.903
+CUDA Time Total (seconds): 0.000
+CPU Memory Usage (MB): 854.691
+CUDA Memory Usage (MB): 0.000
+
+Portfolio key statistics:
+Median portfolio value (USD): 66.07
+Minimum portfolio value (USD): 49.00
+Maximum portfolio value (USD): 148.13
+
+Total execution time (seconds): 366.809
+/work/mdisspt/mdisspt/n2134758/condaenvs/envs/env-pytorch-1.13.1-gpu/lib/python3.10/site-packages/torch/autograd/profiler.py:176: UserWarning: CUDA is not available, disabling CUDA profiling
+  warn("CUDA is not available, disabling CUDA profiling")
+STAGE:2024-08-24 12:19:24 1270269:1270269 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-24 12:19:38 1270269:1270269 ActivityProfilerController.cpp:300] Completed Stage: Collection
+
+ ==================== 
+
+PPO Trader - Testing Mode
+
+ ==================== 
+
+Using device: cpu 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=1, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: test
+Number of episodes: 10
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Steps between learning updates (N) (training): 128
+Discount factor (gamma): 0.99
+Learning rate (alpha) (training): 0.0003
+GAE lambda: 0.95
+Policy clip (training): 0.2
+Batch size (training): 32
+Number of epochs (training): 4
+Random seed: 82228
+
+
+... loading models ...
+episode: 1/10, episode end value (USD): 138.90, duration (seconds): 1.078346
+episode: 2/10, episode end value (USD): 101.76, duration (seconds): 1.078637
+episode: 3/10, episode end value (USD): 112.28, duration (seconds): 1.068385
+episode: 4/10, episode end value (USD): 142.62, duration (seconds): 1.06686
+episode: 5/10, episode end value (USD): 101.67, duration (seconds): 1.067227
+episode: 6/10, episode end value (USD): 152.94, duration (seconds): 1.076766
+episode: 7/10, episode end value (USD): 100.97, duration (seconds): 1.067688
+episode: 8/10, episode end value (USD): 106.85, duration (seconds): 1.068304
+episode: 9/10, episode end value (USD): 93.35, duration (seconds): 1.071551
+episode: 10/10, episode end value (USD): 96.80, duration (seconds): 1.068162
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 8.366
+CUDA Time Total (seconds): 0.000
+CPU Memory Usage (MB): 10.421
+CUDA Memory Usage (MB): 0.000
+
+Portfolio key statistics:
+Median portfolio value (USD): 104.31
+Minimum portfolio value (USD): 93.35
+Maximum portfolio value (USD): 152.94
+
+Total execution time (seconds): 222.838
+
+Finished Run 3
+
+Cleaned folders after Run 3
+
+------------------------
+

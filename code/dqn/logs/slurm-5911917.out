@@ -1,0 +1,405 @@
+Loading python/3.10.8-gpu
+  Loading requirement: nvidia/nvhpc-nompi/22.2 gcc/10.2.0
+    openmpi/4.1.6-cuda-11.6
+Starting Run 1
+
+STAGE:2024-08-24 12:03:21 3055932:3055932 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-24 12:04:15 3055932:3055932 ActivityProfilerController.cpp:300] Completed Stage: Collection
+
+ ==================== 
+
+DQN Trader - Training Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: train
+Number of episodes: 10
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Batch size: 32
+Replay buffer size: 500
+Discount factor (gamma): 0.99
+Initial epsilon (training): 1.0
+Minimum epsilon (training): 0.01
+Epsilon decay rate (training): 0.995
+Learning rate (alpha) (training): 0.0003
+Random seed: 75361
+
+
+episode: 1/10, episode end value (USD): 18520.97, duration (seconds): 10.269073
+episode: 2/10, episode end value (USD): 195460.54, duration (seconds): 2.736742
+episode: 3/10, episode end value (USD): 273312.11, duration (seconds): 2.733962
+episode: 4/10, episode end value (USD): 168454.12, duration (seconds): 2.739476
+episode: 5/10, episode end value (USD): 113688.82, duration (seconds): 2.74912
+episode: 6/10, episode end value (USD): 261605.58, duration (seconds): 2.747221
+episode: 7/10, episode end value (USD): 307099.21, duration (seconds): 2.788802
+episode: 8/10, episode end value (USD): 279774.95, duration (seconds): 2.790048
+episode: 9/10, episode end value (USD): 131544.33, duration (seconds): 2.786456
+episode: 10/10, episode end value (USD): 120840.38, duration (seconds): 2.785664
+... saving models ...
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 106.811
+CUDA Time Total (seconds): 9.011
+CPU Memory Usage (MB): 93.421
+CUDA Memory Usage (MB): 89162.993
+
+Portfolio key statistics:
+Median portfolio value (USD): 181957.33
+Minimum portfolio value (USD): 18520.97
+Maximum portfolio value (USD): 307099.21
+
+Total execution time (seconds): 711.368
+STAGE:2024-08-24 12:16:21 3056898:3056898 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-24 12:16:28 3056898:3056898 ActivityProfilerController.cpp:300] Completed Stage: Collection
+
+ ==================== 
+
+DQN Trader - Testing Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: test
+Number of episodes: 10
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Batch size: 32
+Replay buffer size: 500
+Discount factor (gamma): 0.99
+Initial epsilon (training): 1.0
+Minimum epsilon (training): 0.01
+Epsilon decay rate (training): 0.995
+Learning rate (alpha) (training): 0.0003
+Random seed: 10728
+
+
+... loading models ...
+episode: 1/10, episode end value (USD): 125473.33, duration (seconds): 1.058775
+episode: 2/10, episode end value (USD): 101466.13, duration (seconds): 0.429273
+episode: 3/10, episode end value (USD): 97380.89, duration (seconds): 0.429301
+episode: 4/10, episode end value (USD): 116706.05, duration (seconds): 0.426794
+episode: 5/10, episode end value (USD): 122909.76, duration (seconds): 0.426195
+episode: 6/10, episode end value (USD): 142209.16, duration (seconds): 0.427808
+episode: 7/10, episode end value (USD): 135181.48, duration (seconds): 0.428639
+episode: 8/10, episode end value (USD): 161597.67, duration (seconds): 0.425893
+episode: 9/10, episode end value (USD): 106089.57, duration (seconds): 0.427111
+episode: 10/10, episode end value (USD): 134726.85, duration (seconds): 0.431776
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 12.452
+CUDA Time Total (seconds): 0.680
+CPU Memory Usage (MB): 1.271
+CUDA Memory Usage (MB): 22366.562
+
+Portfolio key statistics:
+Median portfolio value (USD): 124191.55
+Minimum portfolio value (USD): 97380.89
+Maximum portfolio value (USD): 161597.67
+
+Total execution time (seconds): 78.226
+
+Finished Run 1
+
+/var/spool/slurm/job5911917/slurm_script: line 42: clean.sh: No such file or directory
+Cleaned folders after Run 1
+
+------------------------
+
+Starting Run 2
+
+STAGE:2024-08-24 12:17:54 3057007:3057007 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-24 12:18:32 3057007:3057007 ActivityProfilerController.cpp:300] Completed Stage: Collection
+
+ ==================== 
+
+DQN Trader - Training Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: train
+Number of episodes: 10
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Batch size: 32
+Replay buffer size: 500
+Discount factor (gamma): 0.99
+Initial epsilon (training): 1.0
+Minimum epsilon (training): 0.01
+Epsilon decay rate (training): 0.995
+Learning rate (alpha) (training): 0.0003
+Random seed: 51718
+
+
+episode: 1/10, episode end value (USD): 11844.83, duration (seconds): 3.40711
+episode: 2/10, episode end value (USD): 296193.69, duration (seconds): 2.867757
+episode: 3/10, episode end value (USD): 110821.87, duration (seconds): 2.803429
+episode: 4/10, episode end value (USD): 314028.89, duration (seconds): 2.838618
+episode: 5/10, episode end value (USD): 316283.69, duration (seconds): 2.852482
+episode: 6/10, episode end value (USD): 207546.91, duration (seconds): 2.859342
+episode: 7/10, episode end value (USD): 143076.32, duration (seconds): 2.857281
+episode: 8/10, episode end value (USD): 157819.09, duration (seconds): 2.8557
+episode: 9/10, episode end value (USD): 237392.01, duration (seconds): 2.846687
+episode: 10/10, episode end value (USD): 178840.36, duration (seconds): 2.860371
+... saving models ...
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 53.496
+CUDA Time Total (seconds): 8.946
+CPU Memory Usage (MB): 95.204
+CUDA Memory Usage (MB): 90345.819
+
+Portfolio key statistics:
+Median portfolio value (USD): 193193.63
+Minimum portfolio value (USD): 11844.83
+Maximum portfolio value (USD): 316283.69
+
+Total execution time (seconds): 703.283
+STAGE:2024-08-24 12:30:44 3057826:3057826 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-24 12:30:52 3057826:3057826 ActivityProfilerController.cpp:300] Completed Stage: Collection
+
+ ==================== 
+
+DQN Trader - Testing Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: test
+Number of episodes: 10
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Batch size: 32
+Replay buffer size: 500
+Discount factor (gamma): 0.99
+Initial epsilon (training): 1.0
+Minimum epsilon (training): 0.01
+Epsilon decay rate (training): 0.995
+Learning rate (alpha) (training): 0.0003
+Random seed: 73211
+
+
+... loading models ...
+episode: 1/10, episode end value (USD): 102011.60, duration (seconds): 1.128741
+episode: 2/10, episode end value (USD): 115731.88, duration (seconds): 0.481344
+episode: 3/10, episode end value (USD): 114163.60, duration (seconds): 0.475024
+episode: 4/10, episode end value (USD): 100420.86, duration (seconds): 0.477696
+episode: 5/10, episode end value (USD): 93124.77, duration (seconds): 0.470354
+episode: 6/10, episode end value (USD): 109727.16, duration (seconds): 0.4543
+episode: 7/10, episode end value (USD): 77072.42, duration (seconds): 0.48047
+episode: 8/10, episode end value (USD): 92033.61, duration (seconds): 0.475592
+episode: 9/10, episode end value (USD): 97635.88, duration (seconds): 0.427392
+episode: 10/10, episode end value (USD): 99654.38, duration (seconds): 0.416753
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 13.077
+CUDA Time Total (seconds): 0.679
+CPU Memory Usage (MB): 1.373
+CUDA Memory Usage (MB): 22383.572
+
+Portfolio key statistics:
+Median portfolio value (USD): 100037.62
+Minimum portfolio value (USD): 77072.42
+Maximum portfolio value (USD): 115731.88
+
+Total execution time (seconds): 78.048
+
+Finished Run 2
+
+/var/spool/slurm/job5911917/slurm_script: line 42: clean.sh: No such file or directory
+Cleaned folders after Run 2
+
+------------------------
+
+Starting Run 3
+
+STAGE:2024-08-24 12:32:16 3058027:3058027 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-24 12:32:54 3058027:3058027 ActivityProfilerController.cpp:300] Completed Stage: Collection
+
+ ==================== 
+
+DQN Trader - Training Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: train
+Number of episodes: 10
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Batch size: 32
+Replay buffer size: 500
+Discount factor (gamma): 0.99
+Initial epsilon (training): 1.0
+Minimum epsilon (training): 0.01
+Epsilon decay rate (training): 0.995
+Learning rate (alpha) (training): 0.0003
+Random seed: 73529
+
+
+episode: 1/10, episode end value (USD): 9768.09, duration (seconds): 3.270481
+episode: 2/10, episode end value (USD): 80173.38, duration (seconds): 2.772678
+episode: 3/10, episode end value (USD): 129160.40, duration (seconds): 2.769553
+episode: 4/10, episode end value (USD): 116474.17, duration (seconds): 2.768713
+episode: 5/10, episode end value (USD): 113085.60, duration (seconds): 2.769967
+episode: 6/10, episode end value (USD): 210941.39, duration (seconds): 2.775928
+episode: 7/10, episode end value (USD): 113304.13, duration (seconds): 2.769254
+episode: 8/10, episode end value (USD): 208898.32, duration (seconds): 2.772919
+episode: 9/10, episode end value (USD): 231465.74, duration (seconds): 2.775525
+episode: 10/10, episode end value (USD): 118650.27, duration (seconds): 2.778192
+... saving models ...
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 52.105
+CUDA Time Total (seconds): 9.008
+CPU Memory Usage (MB): 94.029
+CUDA Memory Usage (MB): 89527.074
+
+Portfolio key statistics:
+Median portfolio value (USD): 117562.22
+Minimum portfolio value (USD): 9768.09
+Maximum portfolio value (USD): 231465.74
+
+Total execution time (seconds): 688.766
+STAGE:2024-08-24 12:44:57 3058775:3058775 ActivityProfilerController.cpp:294] Completed Stage: Warm Up
+STAGE:2024-08-24 12:45:04 3058775:3058775 ActivityProfilerController.cpp:300] Completed Stage: Collection
+
+ ==================== 
+
+DQN Trader - Testing Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: test
+Number of episodes: 10
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Batch size: 32
+Replay buffer size: 500
+Discount factor (gamma): 0.99
+Initial epsilon (training): 1.0
+Minimum epsilon (training): 0.01
+Epsilon decay rate (training): 0.995
+Learning rate (alpha) (training): 0.0003
+Random seed: 45970
+
+
+... loading models ...
+episode: 1/10, episode end value (USD): 109419.83, duration (seconds): 1.064869
+episode: 2/10, episode end value (USD): 116483.33, duration (seconds): 0.411515
+episode: 3/10, episode end value (USD): 117419.16, duration (seconds): 0.409705
+episode: 4/10, episode end value (USD): 137834.97, duration (seconds): 0.41253
+episode: 5/10, episode end value (USD): 138100.03, duration (seconds): 0.4103
+episode: 6/10, episode end value (USD): 107385.75, duration (seconds): 0.412143
+episode: 7/10, episode end value (USD): 119234.46, duration (seconds): 0.412411
+episode: 8/10, episode end value (USD): 134215.05, duration (seconds): 0.412494
+episode: 9/10, episode end value (USD): 105942.66, duration (seconds): 0.412957
+episode: 10/10, episode end value (USD): 97128.21, duration (seconds): 0.412735
+
+PyTorch Profiler Metrics:
+CPU Time Total (seconds): 12.265
+CUDA Time Total (seconds): 0.666
+CPU Memory Usage (MB): 1.376
+CUDA Memory Usage (MB): 21846.544
+
+Portfolio key statistics:
+Median portfolio value (USD): 116951.24
+Minimum portfolio value (USD): 97128.21
+Maximum portfolio value (USD): 138100.03
+
+Total execution time (seconds): 78.026
+
+Finished Run 3
+
+/var/spool/slurm/job5911917/slurm_script: line 42: clean.sh: No such file or directory
+Cleaned folders after Run 3
+
+------------------------
+
