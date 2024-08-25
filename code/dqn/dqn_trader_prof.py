@@ -533,6 +533,17 @@ if __name__ == '__main__':
   # print("\nDetailed Profiler Table:")
   # print(prof.key_averages().table(sort_by="cpu_time_total", row_limit=10))
 
+  # Print top 10 CPU memory consuming operations
+  print("\nTop 10 CPU Memory Consuming Operations:")
+  print(prof.key_averages().table(sort_by="cpu_memory_usage", rows=10))
+
+  # Print top 10 CUDA memory consuming operations
+  if torch.cuda.is_available():
+      print("\nTop 10 CUDA Memory Consuming Operations:")
+      print(prof.key_averages().table(sort_by="cuda_memory_usage", rows=10))
+  else:
+      print("\nCUDA is not available. Skipping CUDA memory analysis.")
+
   # Print Total Metrics
   print("\nPyTorch Profiler Metrics:")
   metrics = {

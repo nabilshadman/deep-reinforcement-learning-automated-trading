@@ -32,7 +32,7 @@ cd $SLURM_SUBMIT_DIR
 # dlprof --mode=simple --reports=summary python ppo_trader.py -m train
 # srun -n 1 nsys profile --delay=3 -o prof1 python ppo_trader.py -m train
 # python ppo_trader_tensorboard.py -m train
-for run in {1..3}
+for run in {1..1}
 do
     echo "Starting Run $run"
     echo
