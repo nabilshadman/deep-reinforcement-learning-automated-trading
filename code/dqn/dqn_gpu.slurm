@@ -54,7 +54,7 @@ nvidia-smi --loop=5 --filename=smi-${SLURM_JOBID}.txt &
 NVSMI_PID=$!
 
 # Run your application
-python dqn_trader.py -m train
+python dqn_trader.py -m test
 
 # Stop the nvidia-smi process after the job is complete
 kill $NVSMI_PID
