@@ -52,4 +52,4 @@ cd $SLURM_SUBMIT_DIR
 #     echo "------------------------"
 #     echo
 # done
-python ppo_trader.py -m train
+python ppo_trader.py -m test

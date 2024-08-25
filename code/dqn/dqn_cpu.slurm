@@ -52,4 +52,4 @@ cd $SLURM_SUBMIT_DIR
 #     echo "------------------------"
 #     echo
 # done
-python dqn_trader.py -m train
+python dqn_trader.py -m test
