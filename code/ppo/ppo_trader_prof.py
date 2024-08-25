@@ -598,16 +598,23 @@ if __name__ == '__main__':
   # print("\nDetailed Profiler Table:")
   # print(prof.key_averages().table(sort_by="cpu_time_total", row_limit=10))
 
-    # Print top 10 CPU memory consuming operations
-    print("\nTop 10 CPU Memory Consuming Operations:")
-    print(prof.key_averages().table(sort_by="cpu_memory_usage", rows=10))
+  # Print the top 10 CPU operations by CPU time
+  print("\nTop 10 CPU operations by CPU time:")
+  print(prof.key_averages().table(sort_by="cpu_time_total", row_limit=10))
 
-    # Print top 10 CUDA memory consuming operations
-    if torch.cuda.is_available():
-        print("\nTop 10 CUDA Memory Consuming Operations:")
-        print(prof.key_averages().table(sort_by="cuda_memory_usage", rows=10))
-    else:
-        print("\nCUDA is not available. Skipping CUDA memory analysis.")
+  # Print the top 10 CPU operations by CPU memory usage
+  print("\nTop 10 CPU operations by CPU memory usage:")
+  print(prof.key_averages().table(sort_by="cpu_memory_usage", row_limit=10))
+
+  # If CUDA is available, print CUDA-related profiling results
+  if torch.cuda.is_available():
+      # Print the top 10 CUDA operations by CUDA time
+      print("\nTop 10 CUDA operations by CUDA time:")
+      print(prof.key_averages().table(sort_by="cuda_time_total", row_limit=10))
+
+      # Print the top 10 CUDA operations by CUDA memory usage
+      print("\nTop 10 CUDA operations by CUDA memory usage:")
+      print(prof.key_averages().table(sort_by="cuda_memory_usage", row_limit=10))
 
   # Print Total Metrics
   print("\nPyTorch Profiler Metrics:")
