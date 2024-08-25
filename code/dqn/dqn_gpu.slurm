@@ -46,4 +46,15 @@ cd $SLURM_SUBMIT_DIR
 #     echo "------------------------"
 #     echo
 # done
+
+# Start collecting GPU energy data in the background
+nvidia-smi --loop=5 --filename=smi-${SLURM_JOBID}.txt &
+
+# Capture the PID of the nvidia-smi process
+NVSMI_PID=$!
+
+# Run your application
 python dqn_trader.py -m train
+
+# Stop the nvidia-smi process after the job is complete
+kill $NVSMI_PID
