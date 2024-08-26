@@ -1,0 +1,16 @@
+# Configuration for the trading environment and simulation
+data_file: "equities_daily_close_2018_2023.csv"
+models_folder: "dqn_trader_models"
+rewards_folder: "dqn_trader_rewards"
+num_episodes: 100
+initial_investment: 100000
+transaction_cost_rate: 0.02
+
+# Hyperparameters for the DQN (Deep Q-Network) agent
+batch_size: 32
+buffer_size: 500
+gamma: 0.99
+epsilon: 1.0
+epsilon_min: 0.01
+epsilon_decay: 0.995
+alpha: 0.0003

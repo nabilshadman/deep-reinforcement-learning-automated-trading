@@ -1,4 +1,5 @@
 import random
+import yaml
 import numpy as np
 import pandas as pd
 
@@ -31,6 +32,13 @@ def set_seeds(seed=42):
     torch.manual_seed(seed)
     # torch.cuda.manual_seed(seed)
     # torch.backends.cudnn.deterministic = True
+
+
+# Function to load configuration from a YAML file
+def load_config(config_file='config.yaml'):
+    with open(config_file, 'r') as f:
+        config = yaml.safe_load(f)
+    return config
 
 
 # Let's use AAPL (Apple), MSI (Motorola), SBUX (Starbucks)
@@ -410,23 +418,26 @@ if __name__ == '__main__':
   #     print('Allocated:', round(torch.cuda.memory_allocated(0)/1024**3,1), 'GB')
   #     print('Cached:   ', round(torch.cuda.memory_cached(0)/1024**3,1), 'GB')
 
+  # Load configuration
+  config = load_config('config.yaml')
+
   # Configuration for the trading environment and simulation
-  data_file = 'equities_daily_close_2018_2023.csv'
-  models_folder = 'dqn_trader_models'
-  rewards_folder = 'dqn_trader_rewards'
-  num_episodes = 100
-  initial_investment = 100_000
-  transaction_cost_rate = 0.02
+  data_file = config['data_file']
+  models_folder = config['models_folder']
+  rewards_folder = config['rewards_folder']
+  num_episodes = config['num_episodes']
+  initial_investment = config['initial_investment']
+  transaction_cost_rate = config['transaction_cost_rate']
 
   # Hyperparameters for the DQN (Deep Q-Network) agent
-  batch_size = 32
-  buffer_size = 500
-  gamma = 0.99
-  epsilon = 1.0
-  epsilon_min = 0.01
-  epsilon_decay = 0.995
-  alpha = 0.0003
-
+  batch_size = config['batch_size']
+  buffer_size = config['buffer_size']
+  gamma = config['gamma']
+  epsilon = config['epsilon']
+  epsilon_min = config['epsilon_min']
+  epsilon_decay = config['epsilon_decay']
+  alpha = config['alpha']
+  
   parser = argparse.ArgumentParser()
   parser.add_argument('-m', '--mode', type=str, required=True,
                       help='either "train" or "test"')
