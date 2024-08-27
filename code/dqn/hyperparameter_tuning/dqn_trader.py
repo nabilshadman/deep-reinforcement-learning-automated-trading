@@ -35,7 +35,7 @@ def set_seeds(seed=42):
 
 
 # Function to load configuration from a YAML file
-def load_config(config_file='config.yaml'):
+def load_config(config_file):
     with open(config_file, 'r') as f:
         config = yaml.safe_load(f)
     return config
@@ -418,8 +418,16 @@ if __name__ == '__main__':
   #     print('Allocated:', round(torch.cuda.memory_allocated(0)/1024**3,1), 'GB')
   #     print('Cached:   ', round(torch.cuda.memory_cached(0)/1024**3,1), 'GB')
 
+  # Adding command-line arguments
+  parser = argparse.ArgumentParser()
+  parser.add_argument('-m', '--mode', type=str, required=True,
+                      help='either "train" or "test"')
+  parser.add_argument('-c', '--config', type=str, required=True,
+                        help='Path to the configuration file (YAML)')
+  args = parser.parse_args()
+
   # Load configuration
-  config = load_config('config.yaml')
+  config = load_config(args.config)
 
   # Configuration for the trading environment and simulation
   data_file = config['data_file']
@@ -438,11 +446,6 @@ if __name__ == '__main__':
   epsilon_decay = config['epsilon_decay']
   alpha = config['alpha']
   
-  parser = argparse.ArgumentParser()
-  parser.add_argument('-m', '--mode', type=str, required=True,
-                      help='either "train" or "test"')
-  args = parser.parse_args()
-
   # determine the mode string and formatting
   mode_str = "Training Mode" if args.mode == "train" else "Testing Mode"
   # print with visual separation
