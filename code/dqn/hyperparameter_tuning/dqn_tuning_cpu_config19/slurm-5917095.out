@@ -1,0 +1,660 @@
+Loading python/3.10.8-gpu
+  Loading requirement: nvidia/nvhpc-nompi/22.2 gcc/10.2.0
+    openmpi/4.1.6-cuda-11.6
+Starting Run 1
+
+
+ ==================== 
+
+DQN Trader - Training Mode
+
+ ==================== 
+
+Using device: cpu 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: train
+Number of episodes: 60
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Batch size: 32
+Replay buffer size: 500
+Discount factor (gamma): 0.9
+Initial epsilon (training): 1.0
+Minimum epsilon (training): 0.01
+Epsilon decay rate (training): 0.99
+Learning rate (alpha) (training): 0.001
+Random seed: 71588
+
+
+episode: 1/60, episode end value (USD): 35261.23, duration (seconds): 1.658664
+episode: 2/60, episode end value (USD): 122402.75, duration (seconds): 1.281971
+episode: 3/60, episode end value (USD): 122083.38, duration (seconds): 1.280095
+episode: 4/60, episode end value (USD): 235096.00, duration (seconds): 1.276912
+episode: 5/60, episode end value (USD): 95109.26, duration (seconds): 1.281643
+episode: 6/60, episode end value (USD): 92470.19, duration (seconds): 1.279251
+episode: 7/60, episode end value (USD): 102071.62, duration (seconds): 1.290232
+episode: 8/60, episode end value (USD): 208281.56, duration (seconds): 1.285428
+episode: 9/60, episode end value (USD): 297023.54, duration (seconds): 1.285321
+episode: 10/60, episode end value (USD): 181776.09, duration (seconds): 1.284978
+episode: 11/60, episode end value (USD): 106397.21, duration (seconds): 1.287863
+episode: 12/60, episode end value (USD): 117686.34, duration (seconds): 1.289458
+episode: 13/60, episode end value (USD): 250936.55, duration (seconds): 1.282291
+episode: 14/60, episode end value (USD): 143148.16, duration (seconds): 1.297809
+episode: 15/60, episode end value (USD): 328448.60, duration (seconds): 1.286109
+episode: 16/60, episode end value (USD): 163426.90, duration (seconds): 1.284537
+episode: 17/60, episode end value (USD): 90575.14, duration (seconds): 1.308055
+episode: 18/60, episode end value (USD): 273818.62, duration (seconds): 1.286311
+episode: 19/60, episode end value (USD): 248453.86, duration (seconds): 1.287343
+episode: 20/60, episode end value (USD): 110735.35, duration (seconds): 1.28833
+episode: 21/60, episode end value (USD): 172219.30, duration (seconds): 1.280251
+episode: 22/60, episode end value (USD): 215179.19, duration (seconds): 1.282667
+episode: 23/60, episode end value (USD): 112180.78, duration (seconds): 1.281085
+episode: 24/60, episode end value (USD): 134834.38, duration (seconds): 1.285181
+episode: 25/60, episode end value (USD): 167381.32, duration (seconds): 1.333439
+episode: 26/60, episode end value (USD): 253702.53, duration (seconds): 1.276623
+episode: 27/60, episode end value (USD): 122257.89, duration (seconds): 1.275201
+episode: 28/60, episode end value (USD): 144419.38, duration (seconds): 1.276877
+episode: 29/60, episode end value (USD): 193941.42, duration (seconds): 1.274912
+episode: 30/60, episode end value (USD): 123339.65, duration (seconds): 1.281271
+episode: 31/60, episode end value (USD): 163964.96, duration (seconds): 1.282123
+episode: 32/60, episode end value (USD): 220738.87, duration (seconds): 1.283235
+episode: 33/60, episode end value (USD): 138923.43, duration (seconds): 1.275831
+episode: 34/60, episode end value (USD): 97532.94, duration (seconds): 1.276334
+episode: 35/60, episode end value (USD): 92624.45, duration (seconds): 1.275282
+episode: 36/60, episode end value (USD): 126037.88, duration (seconds): 1.274642
+episode: 37/60, episode end value (USD): 185775.48, duration (seconds): 1.277208
+episode: 38/60, episode end value (USD): 128623.32, duration (seconds): 1.272413
+episode: 39/60, episode end value (USD): 179103.96, duration (seconds): 1.278425
+episode: 40/60, episode end value (USD): 161170.79, duration (seconds): 1.275779
+episode: 41/60, episode end value (USD): 112176.96, duration (seconds): 1.271465
+episode: 42/60, episode end value (USD): 123271.66, duration (seconds): 1.27005
+episode: 43/60, episode end value (USD): 124325.78, duration (seconds): 1.267545
+episode: 44/60, episode end value (USD): 146226.21, duration (seconds): 1.271069
+episode: 45/60, episode end value (USD): 104425.71, duration (seconds): 1.270848
+episode: 46/60, episode end value (USD): 259811.32, duration (seconds): 1.265158
+episode: 47/60, episode end value (USD): 263575.19, duration (seconds): 1.264702
+episode: 48/60, episode end value (USD): 237571.55, duration (seconds): 1.266379
+episode: 49/60, episode end value (USD): 204936.32, duration (seconds): 1.271924
+episode: 50/60, episode end value (USD): 196034.94, duration (seconds): 1.268082
+episode: 51/60, episode end value (USD): 271147.11, duration (seconds): 1.262229
+episode: 52/60, episode end value (USD): 271682.74, duration (seconds): 1.255858
+episode: 53/60, episode end value (USD): 170330.34, duration (seconds): 1.256876
+episode: 54/60, episode end value (USD): 117135.38, duration (seconds): 1.259011
+episode: 55/60, episode end value (USD): 307012.62, duration (seconds): 1.256131
+episode: 56/60, episode end value (USD): 153544.52, duration (seconds): 1.259947
+episode: 57/60, episode end value (USD): 101608.91, duration (seconds): 1.260978
+episode: 58/60, episode end value (USD): 307019.52, duration (seconds): 1.255266
+episode: 59/60, episode end value (USD): 270966.17, duration (seconds): 1.263243
+episode: 60/60, episode end value (USD): 86437.04, duration (seconds): 1.260185
+... saving models ...
+
+Portfolio key statistics:
+Median portfolio value (USD): 157357.66
+Minimum portfolio value (USD): 35261.23
+Maximum portfolio value (USD): 328448.60
+Median portfolio value of last 30 episodes (USD): 162567.88
+
+Total execution time (seconds): 77.254
+
+ ==================== 
+
+DQN Trader - Testing Mode
+
+ ==================== 
+
+Using device: cpu 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: test
+Number of episodes: 60
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Batch size: 32
+Replay buffer size: 500
+Discount factor (gamma): 0.9
+Initial epsilon (training): 1.0
+Minimum epsilon (training): 0.01
+Epsilon decay rate (training): 0.99
+Learning rate (alpha) (training): 0.001
+Random seed: 40645
+
+
+... loading models ...
+episode: 1/60, episode end value (USD): 115168.41, duration (seconds): 0.260214
+episode: 2/60, episode end value (USD): 117275.72, duration (seconds): 0.25148
+episode: 3/60, episode end value (USD): 114684.32, duration (seconds): 0.249227
+episode: 4/60, episode end value (USD): 106904.95, duration (seconds): 0.250832
+episode: 5/60, episode end value (USD): 99336.90, duration (seconds): 0.24815
+episode: 6/60, episode end value (USD): 109175.30, duration (seconds): 0.243542
+episode: 7/60, episode end value (USD): 116580.19, duration (seconds): 0.245238
+episode: 8/60, episode end value (USD): 114821.96, duration (seconds): 0.249292
+episode: 9/60, episode end value (USD): 116075.10, duration (seconds): 0.246051
+episode: 10/60, episode end value (USD): 95985.57, duration (seconds): 0.247034
+episode: 11/60, episode end value (USD): 138049.27, duration (seconds): 0.247055
+episode: 12/60, episode end value (USD): 115172.90, duration (seconds): 0.246558
+episode: 13/60, episode end value (USD): 120070.20, duration (seconds): 0.247442
+episode: 14/60, episode end value (USD): 118387.18, duration (seconds): 0.247282
+episode: 15/60, episode end value (USD): 126625.25, duration (seconds): 0.246558
+episode: 16/60, episode end value (USD): 114851.68, duration (seconds): 0.248687
+episode: 17/60, episode end value (USD): 141572.26, duration (seconds): 0.244887
+episode: 18/60, episode end value (USD): 100457.90, duration (seconds): 0.250851
+episode: 19/60, episode end value (USD): 88241.41, duration (seconds): 0.248162
+episode: 20/60, episode end value (USD): 107855.75, duration (seconds): 0.248257
+episode: 21/60, episode end value (USD): 91295.01, duration (seconds): 0.248022
+episode: 22/60, episode end value (USD): 107024.71, duration (seconds): 0.245414
+episode: 23/60, episode end value (USD): 126076.42, duration (seconds): 0.246385
+episode: 24/60, episode end value (USD): 73168.40, duration (seconds): 0.249183
+episode: 25/60, episode end value (USD): 122103.06, duration (seconds): 0.247618
+episode: 26/60, episode end value (USD): 114877.56, duration (seconds): 0.246402
+episode: 27/60, episode end value (USD): 115739.32, duration (seconds): 0.247897
+episode: 28/60, episode end value (USD): 116625.14, duration (seconds): 0.247058
+episode: 29/60, episode end value (USD): 118790.48, duration (seconds): 0.248482
+episode: 30/60, episode end value (USD): 104297.36, duration (seconds): 0.24538
+episode: 31/60, episode end value (USD): 98401.67, duration (seconds): 0.258778
+episode: 32/60, episode end value (USD): 100906.75, duration (seconds): 0.248187
+episode: 33/60, episode end value (USD): 116275.82, duration (seconds): 0.246422
+episode: 34/60, episode end value (USD): 108727.86, duration (seconds): 0.24433
+episode: 35/60, episode end value (USD): 114994.22, duration (seconds): 0.245485
+episode: 36/60, episode end value (USD): 112725.37, duration (seconds): 0.247492
+episode: 37/60, episode end value (USD): 120243.41, duration (seconds): 0.246211
+episode: 38/60, episode end value (USD): 101115.85, duration (seconds): 0.245598
+episode: 39/60, episode end value (USD): 149138.65, duration (seconds): 0.245085
+episode: 40/60, episode end value (USD): 95199.98, duration (seconds): 0.288597
+episode: 41/60, episode end value (USD): 121230.73, duration (seconds): 0.251437
+episode: 42/60, episode end value (USD): 123656.59, duration (seconds): 0.24752
+episode: 43/60, episode end value (USD): 89204.38, duration (seconds): 0.246945
+episode: 44/60, episode end value (USD): 106460.27, duration (seconds): 0.252521
+episode: 45/60, episode end value (USD): 103581.04, duration (seconds): 0.246674
+episode: 46/60, episode end value (USD): 114787.75, duration (seconds): 0.247955
+episode: 47/60, episode end value (USD): 130125.90, duration (seconds): 0.246574
+episode: 48/60, episode end value (USD): 130276.88, duration (seconds): 0.24878
+episode: 49/60, episode end value (USD): 97353.24, duration (seconds): 0.248142
+episode: 50/60, episode end value (USD): 147550.26, duration (seconds): 0.245179
+episode: 51/60, episode end value (USD): 135852.23, duration (seconds): 0.246718
+episode: 52/60, episode end value (USD): 113984.19, duration (seconds): 0.245871
+episode: 53/60, episode end value (USD): 129590.77, duration (seconds): 0.244321
+episode: 54/60, episode end value (USD): 124763.93, duration (seconds): 0.247569
+episode: 55/60, episode end value (USD): 118677.91, duration (seconds): 0.246214
+episode: 56/60, episode end value (USD): 121050.19, duration (seconds): 0.244934
+episode: 57/60, episode end value (USD): 106846.98, duration (seconds): 0.245954
+episode: 58/60, episode end value (USD): 143907.30, duration (seconds): 0.244587
+episode: 59/60, episode end value (USD): 124139.25, duration (seconds): 0.249762
+episode: 60/60, episode end value (USD): 105214.15, duration (seconds): 0.248981
+
+Portfolio key statistics:
+Median portfolio value (USD): 115081.32
+Minimum portfolio value (USD): 73168.40
+Maximum portfolio value (USD): 149138.65
+Median portfolio value of last 30 episodes (USD): 115635.02
+
+Total execution time (seconds): 15.016
+
+Finished Run 1
+
+Cleaned folders after Run 1
+
+------------------------
+
+Starting Run 2
+
+
+ ==================== 
+
+DQN Trader - Training Mode
+
+ ==================== 
+
+Using device: cpu 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: train
+Number of episodes: 60
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Batch size: 32
+Replay buffer size: 500
+Discount factor (gamma): 0.9
+Initial epsilon (training): 1.0
+Minimum epsilon (training): 0.01
+Epsilon decay rate (training): 0.99
+Learning rate (alpha) (training): 0.001
+Random seed: 45232
+
+
+episode: 1/60, episode end value (USD): 26189.24, duration (seconds): 1.247211
+episode: 2/60, episode end value (USD): 109802.66, duration (seconds): 1.258105
+episode: 3/60, episode end value (USD): 155271.62, duration (seconds): 1.262494
+episode: 4/60, episode end value (USD): 119579.50, duration (seconds): 1.259945
+episode: 5/60, episode end value (USD): 110555.44, duration (seconds): 1.258927
+episode: 6/60, episode end value (USD): 134024.55, duration (seconds): 1.257817
+episode: 7/60, episode end value (USD): 191465.09, duration (seconds): 1.264695
+episode: 8/60, episode end value (USD): 189320.05, duration (seconds): 1.262165
+episode: 9/60, episode end value (USD): 162899.24, duration (seconds): 1.260679
+episode: 10/60, episode end value (USD): 98527.30, duration (seconds): 1.257458
+episode: 11/60, episode end value (USD): 122281.85, duration (seconds): 1.262365
+episode: 12/60, episode end value (USD): 195269.91, duration (seconds): 1.261464
+episode: 13/60, episode end value (USD): 232896.54, duration (seconds): 1.26583
+episode: 14/60, episode end value (USD): 284391.94, duration (seconds): 1.266569
+episode: 15/60, episode end value (USD): 153406.94, duration (seconds): 1.259415
+episode: 16/60, episode end value (USD): 197768.24, duration (seconds): 1.265692
+episode: 17/60, episode end value (USD): 217599.54, duration (seconds): 1.259079
+episode: 18/60, episode end value (USD): 199776.79, duration (seconds): 1.265367
+episode: 19/60, episode end value (USD): 227289.36, duration (seconds): 1.260729
+episode: 20/60, episode end value (USD): 135399.76, duration (seconds): 1.256251
+episode: 21/60, episode end value (USD): 222352.23, duration (seconds): 1.263957
+episode: 22/60, episode end value (USD): 145948.54, duration (seconds): 1.259788
+episode: 23/60, episode end value (USD): 153163.90, duration (seconds): 1.256766
+episode: 24/60, episode end value (USD): 111995.60, duration (seconds): 1.258686
+episode: 25/60, episode end value (USD): 102789.71, duration (seconds): 1.266382
+episode: 26/60, episode end value (USD): 151530.05, duration (seconds): 1.261972
+episode: 27/60, episode end value (USD): 107075.44, duration (seconds): 1.26302
+episode: 28/60, episode end value (USD): 154775.14, duration (seconds): 1.261348
+episode: 29/60, episode end value (USD): 283545.60, duration (seconds): 1.259283
+episode: 30/60, episode end value (USD): 196797.84, duration (seconds): 1.262625
+episode: 31/60, episode end value (USD): 251580.67, duration (seconds): 1.265018
+episode: 32/60, episode end value (USD): 254018.50, duration (seconds): 1.263775
+episode: 33/60, episode end value (USD): 294172.57, duration (seconds): 1.253077
+episode: 34/60, episode end value (USD): 283529.36, duration (seconds): 1.25817
+episode: 35/60, episode end value (USD): 90080.40, duration (seconds): 1.258888
+episode: 36/60, episode end value (USD): 143194.54, duration (seconds): 1.261096
+episode: 37/60, episode end value (USD): 220437.52, duration (seconds): 1.268589
+episode: 38/60, episode end value (USD): 275225.30, duration (seconds): 1.300194
+episode: 39/60, episode end value (USD): 231687.53, duration (seconds): 1.265624
+episode: 40/60, episode end value (USD): 268662.06, duration (seconds): 1.257319
+episode: 41/60, episode end value (USD): 190017.15, duration (seconds): 1.253972
+episode: 42/60, episode end value (USD): 135703.46, duration (seconds): 1.256552
+episode: 43/60, episode end value (USD): 155426.03, duration (seconds): 1.257362
+episode: 44/60, episode end value (USD): 99103.40, duration (seconds): 1.253694
+episode: 45/60, episode end value (USD): 294611.22, duration (seconds): 1.256788
+episode: 46/60, episode end value (USD): 145784.57, duration (seconds): 1.253607
+episode: 47/60, episode end value (USD): 99714.42, duration (seconds): 1.258105
+episode: 48/60, episode end value (USD): 92894.85, duration (seconds): 1.257754
+episode: 49/60, episode end value (USD): 307099.21, duration (seconds): 1.242723
+episode: 50/60, episode end value (USD): 229572.62, duration (seconds): 1.251042
+episode: 51/60, episode end value (USD): 108292.07, duration (seconds): 1.24967
+episode: 52/60, episode end value (USD): 154856.89, duration (seconds): 1.251702
+episode: 53/60, episode end value (USD): 177608.80, duration (seconds): 1.248592
+episode: 54/60, episode end value (USD): 312559.42, duration (seconds): 1.245949
+episode: 55/60, episode end value (USD): 231474.73, duration (seconds): 1.24711
+episode: 56/60, episode end value (USD): 307099.21, duration (seconds): 1.244331
+episode: 57/60, episode end value (USD): 220222.19, duration (seconds): 1.249287
+episode: 58/60, episode end value (USD): 258007.20, duration (seconds): 1.248858
+episode: 59/60, episode end value (USD): 236652.59, duration (seconds): 1.248833
+episode: 60/60, episode end value (USD): 300004.64, duration (seconds): 1.244589
+... saving models ...
+
+Portfolio key statistics:
+Median portfolio value (USD): 189668.60
+Minimum portfolio value (USD): 26189.24
+Maximum portfolio value (USD): 312559.42
+Median portfolio value of last 30 episodes (USD): 230523.67
+
+Total execution time (seconds): 75.610
+
+ ==================== 
+
+DQN Trader - Testing Mode
+
+ ==================== 
+
+Using device: cpu 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: test
+Number of episodes: 60
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Batch size: 32
+Replay buffer size: 500
+Discount factor (gamma): 0.9
+Initial epsilon (training): 1.0
+Minimum epsilon (training): 0.01
+Epsilon decay rate (training): 0.99
+Learning rate (alpha) (training): 0.001
+Random seed: 77788
+
+
+... loading models ...
+episode: 1/60, episode end value (USD): 136801.77, duration (seconds): 0.293222
+episode: 2/60, episode end value (USD): 124806.34, duration (seconds): 0.285687
+episode: 3/60, episode end value (USD): 111952.44, duration (seconds): 0.281401
+episode: 4/60, episode end value (USD): 122696.97, duration (seconds): 0.276106
+episode: 5/60, episode end value (USD): 111013.91, duration (seconds): 0.277379
+episode: 6/60, episode end value (USD): 106505.63, duration (seconds): 0.280495
+episode: 7/60, episode end value (USD): 137147.49, duration (seconds): 0.281644
+episode: 8/60, episode end value (USD): 133772.61, duration (seconds): 0.275192
+episode: 9/60, episode end value (USD): 149579.18, duration (seconds): 0.278815
+episode: 10/60, episode end value (USD): 151612.95, duration (seconds): 0.279131
+episode: 11/60, episode end value (USD): 119875.32, duration (seconds): 0.278341
+episode: 12/60, episode end value (USD): 142200.69, duration (seconds): 0.27316
+episode: 13/60, episode end value (USD): 131907.58, duration (seconds): 0.277281
+episode: 14/60, episode end value (USD): 137015.24, duration (seconds): 0.276683
+episode: 15/60, episode end value (USD): 147763.48, duration (seconds): 0.277383
+episode: 16/60, episode end value (USD): 93359.71, duration (seconds): 0.27675
+episode: 17/60, episode end value (USD): 91491.81, duration (seconds): 0.278176
+episode: 18/60, episode end value (USD): 123738.13, duration (seconds): 0.276855
+episode: 19/60, episode end value (USD): 90761.93, duration (seconds): 0.27515
+episode: 20/60, episode end value (USD): 108334.61, duration (seconds): 0.278206
+episode: 21/60, episode end value (USD): 122554.32, duration (seconds): 0.277666
+episode: 22/60, episode end value (USD): 130109.17, duration (seconds): 0.274862
+episode: 23/60, episode end value (USD): 142207.17, duration (seconds): 0.273729
+episode: 24/60, episode end value (USD): 138325.93, duration (seconds): 0.279121
+episode: 25/60, episode end value (USD): 97879.00, duration (seconds): 0.277192
+episode: 26/60, episode end value (USD): 132850.71, duration (seconds): 0.276643
+episode: 27/60, episode end value (USD): 124274.60, duration (seconds): 0.275997
+episode: 28/60, episode end value (USD): 113895.16, duration (seconds): 0.279428
+episode: 29/60, episode end value (USD): 131862.23, duration (seconds): 0.279815
+episode: 30/60, episode end value (USD): 142206.01, duration (seconds): 0.274185
+episode: 31/60, episode end value (USD): 139005.71, duration (seconds): 0.279118
+episode: 32/60, episode end value (USD): 142209.15, duration (seconds): 0.274665
+episode: 33/60, episode end value (USD): 104359.80, duration (seconds): 0.280387
+episode: 34/60, episode end value (USD): 122478.12, duration (seconds): 0.275427
+episode: 35/60, episode end value (USD): 142058.05, duration (seconds): 0.277229
+episode: 36/60, episode end value (USD): 158381.02, duration (seconds): 0.277075
+episode: 37/60, episode end value (USD): 107430.69, duration (seconds): 0.278358
+episode: 38/60, episode end value (USD): 114494.12, duration (seconds): 0.280732
+episode: 39/60, episode end value (USD): 124262.77, duration (seconds): 0.281154
+episode: 40/60, episode end value (USD): 109583.74, duration (seconds): 0.28004
+episode: 41/60, episode end value (USD): 152279.87, duration (seconds): 0.275414
+episode: 42/60, episode end value (USD): 144766.18, duration (seconds): 0.279567
+episode: 43/60, episode end value (USD): 133408.61, duration (seconds): 0.276977
+episode: 44/60, episode end value (USD): 136670.24, duration (seconds): 0.278536
+episode: 45/60, episode end value (USD): 137478.04, duration (seconds): 0.27392
+episode: 46/60, episode end value (USD): 109069.91, duration (seconds): 0.279892
+episode: 47/60, episode end value (USD): 134851.65, duration (seconds): 0.275989
+episode: 48/60, episode end value (USD): 142666.55, duration (seconds): 0.275248
+episode: 49/60, episode end value (USD): 151080.24, duration (seconds): 0.277607
+episode: 50/60, episode end value (USD): 131645.68, duration (seconds): 0.279104
+episode: 51/60, episode end value (USD): 130400.31, duration (seconds): 0.276537
+episode: 52/60, episode end value (USD): 117766.63, duration (seconds): 0.274534
+episode: 53/60, episode end value (USD): 131504.67, duration (seconds): 0.278808
+episode: 54/60, episode end value (USD): 108803.88, duration (seconds): 0.278142
+episode: 55/60, episode end value (USD): 109623.68, duration (seconds): 0.279775
+episode: 56/60, episode end value (USD): 142203.74, duration (seconds): 0.27224
+episode: 57/60, episode end value (USD): 116801.23, duration (seconds): 0.278351
+episode: 58/60, episode end value (USD): 107091.73, duration (seconds): 0.278827
+episode: 59/60, episode end value (USD): 131222.15, duration (seconds): 0.279348
+episode: 60/60, episode end value (USD): 102934.04, duration (seconds): 0.277691
+
+Portfolio key statistics:
+Median portfolio value (USD): 130811.23
+Minimum portfolio value (USD): 90761.93
+Maximum portfolio value (USD): 158381.02
+Median portfolio value of last 30 episodes (USD): 131363.41
+
+Total execution time (seconds): 16.807
+
+Finished Run 2
+
+Cleaned folders after Run 2
+
+------------------------
+
+Starting Run 3
+
+
+ ==================== 
+
+DQN Trader - Training Mode
+
+ ==================== 
+
+Using device: cpu 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: train
+Number of episodes: 60
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Batch size: 32
+Replay buffer size: 500
+Discount factor (gamma): 0.9
+Initial epsilon (training): 1.0
+Minimum epsilon (training): 0.01
+Epsilon decay rate (training): 0.99
+Learning rate (alpha) (training): 0.001
+Random seed: 36692
+
+
+episode: 1/60, episode end value (USD): 34144.59, duration (seconds): 1.371338
+episode: 2/60, episode end value (USD): 141081.30, duration (seconds): 1.371921
+episode: 3/60, episode end value (USD): 163342.90, duration (seconds): 1.370884
+episode: 4/60, episode end value (USD): 126638.79, duration (seconds): 1.37413
+episode: 5/60, episode end value (USD): 109323.39, duration (seconds): 1.372662
+episode: 6/60, episode end value (USD): 125970.92, duration (seconds): 1.366352
+episode: 7/60, episode end value (USD): 136749.49, duration (seconds): 1.372906
+episode: 8/60, episode end value (USD): 104776.33, duration (seconds): 1.367308
+episode: 9/60, episode end value (USD): 153629.64, duration (seconds): 1.370573
+episode: 10/60, episode end value (USD): 175957.83, duration (seconds): 1.376987
+episode: 11/60, episode end value (USD): 144057.55, duration (seconds): 1.360866
+episode: 12/60, episode end value (USD): 133547.62, duration (seconds): 1.368407
+episode: 13/60, episode end value (USD): 254676.42, duration (seconds): 1.370942
+episode: 14/60, episode end value (USD): 187924.53, duration (seconds): 1.362931
+episode: 15/60, episode end value (USD): 142866.96, duration (seconds): 1.362326
+episode: 16/60, episode end value (USD): 134166.98, duration (seconds): 1.368033
+episode: 17/60, episode end value (USD): 148318.95, duration (seconds): 1.366504
+episode: 18/60, episode end value (USD): 142246.65, duration (seconds): 1.364712
+episode: 19/60, episode end value (USD): 309041.51, duration (seconds): 1.367439
+episode: 20/60, episode end value (USD): 247809.90, duration (seconds): 1.366017
+episode: 21/60, episode end value (USD): 124938.98, duration (seconds): 1.366487
+episode: 22/60, episode end value (USD): 168393.42, duration (seconds): 1.376271
+episode: 23/60, episode end value (USD): 142246.65, duration (seconds): 1.361106
+episode: 24/60, episode end value (USD): 201938.52, duration (seconds): 1.371604
+episode: 25/60, episode end value (USD): 113065.06, duration (seconds): 1.363598
+episode: 26/60, episode end value (USD): 135643.50, duration (seconds): 1.397283
+episode: 27/60, episode end value (USD): 151353.42, duration (seconds): 1.373277
+episode: 28/60, episode end value (USD): 102527.03, duration (seconds): 1.361172
+episode: 29/60, episode end value (USD): 115376.77, duration (seconds): 1.361283
+episode: 30/60, episode end value (USD): 220169.45, duration (seconds): 1.378595
+episode: 31/60, episode end value (USD): 313465.42, duration (seconds): 1.367942
+episode: 32/60, episode end value (USD): 269606.48, duration (seconds): 1.362481
+episode: 33/60, episode end value (USD): 205579.14, duration (seconds): 1.369064
+episode: 34/60, episode end value (USD): 305345.67, duration (seconds): 1.359241
+episode: 35/60, episode end value (USD): 107391.05, duration (seconds): 1.371831
+episode: 36/60, episode end value (USD): 268564.85, duration (seconds): 1.370993
+episode: 37/60, episode end value (USD): 95663.19, duration (seconds): 1.356069
+episode: 38/60, episode end value (USD): 104978.69, duration (seconds): 1.362097
+episode: 39/60, episode end value (USD): 219838.89, duration (seconds): 1.357659
+episode: 40/60, episode end value (USD): 296330.27, duration (seconds): 1.358814
+episode: 41/60, episode end value (USD): 127697.67, duration (seconds): 1.360053
+episode: 42/60, episode end value (USD): 129640.22, duration (seconds): 1.365829
+episode: 43/60, episode end value (USD): 110884.57, duration (seconds): 1.357091
+episode: 44/60, episode end value (USD): 288011.55, duration (seconds): 1.349461
+episode: 45/60, episode end value (USD): 92934.32, duration (seconds): 1.355292
+episode: 46/60, episode end value (USD): 166793.71, duration (seconds): 1.352659
+episode: 47/60, episode end value (USD): 183982.82, duration (seconds): 1.368239
+episode: 48/60, episode end value (USD): 260718.28, duration (seconds): 1.355729
+episode: 49/60, episode end value (USD): 142309.06, duration (seconds): 1.351828
+episode: 50/60, episode end value (USD): 131996.94, duration (seconds): 1.350695
+episode: 51/60, episode end value (USD): 192214.57, duration (seconds): 1.347182
+episode: 52/60, episode end value (USD): 116312.47, duration (seconds): 1.345887
+episode: 53/60, episode end value (USD): 112186.02, duration (seconds): 1.338807
+episode: 54/60, episode end value (USD): 90976.36, duration (seconds): 1.356118
+episode: 55/60, episode end value (USD): 173091.98, duration (seconds): 1.342543
+episode: 56/60, episode end value (USD): 112457.80, duration (seconds): 1.334088
+episode: 57/60, episode end value (USD): 221343.32, duration (seconds): 1.348876
+episode: 58/60, episode end value (USD): 130574.21, duration (seconds): 1.340249
+episode: 59/60, episode end value (USD): 216102.69, duration (seconds): 1.34568
+episode: 60/60, episode end value (USD): 148099.96, duration (seconds): 1.346666
+... saving models ...
+
+Portfolio key statistics:
+Median portfolio value (USD): 142588.01
+Minimum portfolio value (USD): 34144.59
+Maximum portfolio value (USD): 313465.42
+Median portfolio value of last 30 episodes (USD): 157446.84
+
+Total execution time (seconds): 81.863
+
+ ==================== 
+
+DQN Trader - Testing Mode
+
+ ==================== 
+
+Using device: cpu 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=7, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=27, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: test
+Number of episodes: 60
+Number of stocks: 3
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Batch size: 32
+Replay buffer size: 500
+Discount factor (gamma): 0.9
+Initial epsilon (training): 1.0
+Minimum epsilon (training): 0.01
+Epsilon decay rate (training): 0.99
+Learning rate (alpha) (training): 0.001
+Random seed: 19990
+
+
+... loading models ...
+episode: 1/60, episode end value (USD): 94403.97, duration (seconds): 0.263784
+episode: 2/60, episode end value (USD): 94492.95, duration (seconds): 0.252232
+episode: 3/60, episode end value (USD): 106667.30, duration (seconds): 0.252651
+episode: 4/60, episode end value (USD): 127051.08, duration (seconds): 0.249726
+episode: 5/60, episode end value (USD): 99209.95, duration (seconds): 0.251492
+episode: 6/60, episode end value (USD): 94842.93, duration (seconds): 0.250546
+episode: 7/60, episode end value (USD): 104020.16, duration (seconds): 0.253922
+episode: 8/60, episode end value (USD): 120663.31, duration (seconds): 0.249318
+episode: 9/60, episode end value (USD): 142173.63, duration (seconds): 0.250066
+episode: 10/60, episode end value (USD): 104262.54, duration (seconds): 0.254629
+episode: 11/60, episode end value (USD): 100414.26, duration (seconds): 0.252447
+episode: 12/60, episode end value (USD): 106657.20, duration (seconds): 0.250816
+episode: 13/60, episode end value (USD): 101600.27, duration (seconds): 0.250136
+episode: 14/60, episode end value (USD): 104484.48, duration (seconds): 0.249867
+episode: 15/60, episode end value (USD): 70138.25, duration (seconds): 0.251789
+episode: 16/60, episode end value (USD): 126917.38, duration (seconds): 0.248458
+episode: 17/60, episode end value (USD): 98928.68, duration (seconds): 0.251184
+episode: 18/60, episode end value (USD): 70800.43, duration (seconds): 0.25202
+episode: 19/60, episode end value (USD): 98139.67, duration (seconds): 0.24861
+episode: 20/60, episode end value (USD): 93085.22, duration (seconds): 0.25141
+episode: 21/60, episode end value (USD): 122032.21, duration (seconds): 0.250152
+episode: 22/60, episode end value (USD): 130489.25, duration (seconds): 0.251208
+episode: 23/60, episode end value (USD): 95049.27, duration (seconds): 0.249938
+episode: 24/60, episode end value (USD): 116038.64, duration (seconds): 0.249336
+episode: 25/60, episode end value (USD): 92184.27, duration (seconds): 0.251955
+episode: 26/60, episode end value (USD): 116209.50, duration (seconds): 0.25101
+episode: 27/60, episode end value (USD): 106317.40, duration (seconds): 0.250135
+episode: 28/60, episode end value (USD): 118812.55, duration (seconds): 0.25039
+episode: 29/60, episode end value (USD): 134492.98, duration (seconds): 0.251473
+episode: 30/60, episode end value (USD): 104236.45, duration (seconds): 0.251017
+episode: 31/60, episode end value (USD): 83291.58, duration (seconds): 0.254109
+episode: 32/60, episode end value (USD): 103076.60, duration (seconds): 0.253528
+episode: 33/60, episode end value (USD): 73627.06, duration (seconds): 0.250858
+episode: 34/60, episode end value (USD): 116505.16, duration (seconds): 0.251107
+episode: 35/60, episode end value (USD): 99397.93, duration (seconds): 0.250831
+episode: 36/60, episode end value (USD): 112964.11, duration (seconds): 0.250021
+episode: 37/60, episode end value (USD): 123080.52, duration (seconds): 0.250899
+episode: 38/60, episode end value (USD): 116464.36, duration (seconds): 0.251578
+episode: 39/60, episode end value (USD): 120942.36, duration (seconds): 0.249184
+episode: 40/60, episode end value (USD): 89386.19, duration (seconds): 0.25083
+episode: 41/60, episode end value (USD): 109161.64, duration (seconds): 0.249882
+episode: 42/60, episode end value (USD): 91353.77, duration (seconds): 0.248745
+episode: 43/60, episode end value (USD): 121756.93, duration (seconds): 0.249717
+episode: 44/60, episode end value (USD): 97820.13, duration (seconds): 0.252469
+episode: 45/60, episode end value (USD): 96005.96, duration (seconds): 0.249385
+episode: 46/60, episode end value (USD): 125252.45, duration (seconds): 0.249974
+episode: 47/60, episode end value (USD): 106566.47, duration (seconds): 0.249795
+episode: 48/60, episode end value (USD): 114345.26, duration (seconds): 0.250071
+episode: 49/60, episode end value (USD): 124957.93, duration (seconds): 0.25041
+episode: 50/60, episode end value (USD): 86729.82, duration (seconds): 0.252286
+episode: 51/60, episode end value (USD): 116311.58, duration (seconds): 0.248335
+episode: 52/60, episode end value (USD): 102213.05, duration (seconds): 0.247631
+episode: 53/60, episode end value (USD): 115965.65, duration (seconds): 0.249894
+episode: 54/60, episode end value (USD): 101237.55, duration (seconds): 0.251138
+episode: 55/60, episode end value (USD): 106677.28, duration (seconds): 0.251532
+episode: 56/60, episode end value (USD): 116856.31, duration (seconds): 0.250446
+episode: 57/60, episode end value (USD): 99498.49, duration (seconds): 0.249056
+episode: 58/60, episode end value (USD): 123036.01, duration (seconds): 0.249008
+episode: 59/60, episode end value (USD): 127596.83, duration (seconds): 0.247406
+episode: 60/60, episode end value (USD): 99566.10, duration (seconds): 0.250152
+
+Portfolio key statistics:
+Median portfolio value (USD): 105400.94
+Minimum portfolio value (USD): 70138.25
+Maximum portfolio value (USD): 142173.63
+Median portfolio value of last 30 episodes (USD): 107919.46
+
+Total execution time (seconds): 15.172
+
+Finished Run 3
+
+Cleaned folders after Run 3
+
+------------------------
+
