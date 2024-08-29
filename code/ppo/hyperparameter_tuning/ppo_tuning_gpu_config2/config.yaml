@@ -1,0 +1,19 @@
+# Configuration for the trading environment and simulation
+data_file: "equities_daily_close_2018_2023.csv"  # CSV file containing stock data
+models_folder: "ppo_trader_models"  # Folder to save model checkpoints
+rewards_folder: "ppo_trader_rewards"  # Folder to save rewards
+num_episodes: 60  # Number of episodes to train/test
+initial_investment: 100000  # Initial investment in USD
+transaction_cost_rate: 0.02  # Transaction cost rate
+
+# Hyperparameters for the PPO (Proximal Policy Optimization) agent
+N: 128  # Number of steps between each learning update
+gamma: 0.99  # Discount factor
+gae_lambda: 0.95  # GAE lambda parameter
+batch_size: 32  # Batch size for training
+
+# Configuration 2
+# Hyperparameters to be tuned
+alpha: 0.0001  # Learning rate
+n_epochs: 4  # Number of epochs to train on each batch of data
+policy_clip: 0.2  # Clipping parameter
