@@ -567,6 +567,14 @@ if __name__ == '__main__':
   print(f"Minimum portfolio value (USD): {np.min(portfolio_value):.2f}")
   print(f"Maximum portfolio value (USD): {np.max(portfolio_value):.2f}")
 
+  # Calculate and print the median portfolio value of the last 30 episodes
+  if len(portfolio_value) >= 30:
+      last_30_portfolio_values = portfolio_value[-30:]
+      median_last_30 = np.median(last_30_portfolio_values)
+      print(f"Median portfolio value of last 30 episodes (USD): {median_last_30:.2f}")
+  else:
+      print("Not enough episodes to calculate median portfolio value of last 30 episodes.")
+
   # After all processing is done, calculate and print total execution time
   end_time = time.time()
   total_time = end_time - start_time
