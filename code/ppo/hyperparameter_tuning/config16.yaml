@@ -12,7 +12,8 @@ gamma: 0.99  # Discount factor
 gae_lambda: 0.95  # GAE lambda parameter
 batch_size: 32  # Batch size for training
 
+# Configuration 16
 # Hyperparameters to be tuned
 alpha: 0.0003  # Learning rate
-n_epochs: 4  # Number of epochs to train on each batch of data
-policy_clip: 0.2  # Clipping parameter
+n_epochs: 16  # Number of epochs to train on each batch of data
+policy_clip: 0.1  # Clipping parameter
