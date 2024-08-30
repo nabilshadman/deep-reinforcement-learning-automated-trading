@@ -1,0 +1,121 @@
+Loading python/3.10.8-gpu
+  Loading requirement: nvidia/nvhpc-nompi/22.2 gcc/10.2.0
+    openmpi/4.1.6-cuda-11.6
+
+ ==================== 
+
+PPO Trader - Training Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=21, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=59049, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=21, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=1, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: train
+Number of episodes: 4
+Number of stocks: 10
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Steps between learning updates (N) (training): 128
+Discount factor (gamma): 0.99
+Learning rate (alpha) (training): 0.0003
+GAE lambda: 0.95
+Policy clip (training): 0.2
+Batch size (training): 32
+Number of epochs (training): 4
+Random seed: 66454
+
+
+episode: 1/4, episode end value (USD): 31.23, duration (seconds): 10.415156
+episode: 2/4, episode end value (USD): 29.51, duration (seconds): 1.479528
+episode: 3/4, episode end value (USD): 33.32, duration (seconds): 1.481598
+episode: 4/4, episode end value (USD): 37.91, duration (seconds): 1.471568
+... saving models ...
+
+Portfolio key statistics:
+Median portfolio value (USD): 32.27
+Minimum portfolio value (USD): 29.51
+Maximum portfolio value (USD): 37.91
+
+Total execution time (seconds): 24.353
+
+ ==================== 
+
+PPO Trader - Testing Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=21, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=59049, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=21, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=1, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: test
+Number of episodes: 4
+Number of stocks: 10
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Steps between learning updates (N) (training): 128
+Discount factor (gamma): 0.99
+Learning rate (alpha) (training): 0.0003
+GAE lambda: 0.95
+Policy clip (training): 0.2
+Batch size (training): 32
+Number of epochs (training): 4
+Random seed: 69664
+
+
+... loading models ...
+episode: 1/4, episode end value (USD): 54.81, duration (seconds): 1.396353
+episode: 2/4, episode end value (USD): 59.07, duration (seconds): 0.843538
+episode: 3/4, episode end value (USD): 53.31, duration (seconds): 0.837024
+episode: 4/4, episode end value (USD): 54.27, duration (seconds): 0.837331
+
+Portfolio key statistics:
+Median portfolio value (USD): 54.54
+Minimum portfolio value (USD): 53.31
+Maximum portfolio value (USD): 59.07
+
+Total execution time (seconds): 5.516

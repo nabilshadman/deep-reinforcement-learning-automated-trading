@@ -1,0 +1,1324 @@
+Loading python/3.10.8-gpu
+  Loading requirement: nvidia/nvhpc-nompi/22.2 gcc/10.2.0
+    openmpi/4.1.6-cuda-11.6
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 52273 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 5374 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 18649 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 26476 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 19598 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 50708 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 20905 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 56148 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 27789 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 34200 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 36079 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 10351 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 34750 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 37338 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 6378 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 52380 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 45810 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 45214 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 2664 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 14878 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 22317 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 25016 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 32112 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 22533 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 4628 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 10138 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 45339 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 32363 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 26296 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 1154 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 1071 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 23882 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 52053 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 20105 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 7914 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 30226 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 41017 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 52091 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 33460 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 13031 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 51826 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 45162 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 4799 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 45261 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 41250 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 11864 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 39281 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 41285 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 57482 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 14758 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 25732 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 48149 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 33285 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 14540 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 23696 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 48240 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 44749 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 22448 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 24342 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 52303 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 2878 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 15540 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 54590 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 27263 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 38951 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 5869 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 9039 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 48227 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 51689 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 15653 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 51072 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 56432 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 33780 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 5741 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 22569 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 37599 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 52341 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 51531 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 31672 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 2451 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 26092 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 31456 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 50683 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 31524 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 34149 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 42195 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 23779 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 12825 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 57624 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 41463 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 50695 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 25298 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 52929 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 7006 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 23686 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 47839 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 29030 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 35854 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 37581 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 4496 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 29193 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 36357 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 41366 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 22103 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 26361 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 47043 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 50379 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 18721 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 47810 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 19422 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 53285 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 5250 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 38955 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 22498 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 34765 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 9896 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 1826 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 41228 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 22398 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 4543 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 9421 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 38325 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 4873 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 57469 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 638 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 33252 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 50757 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 53923 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 48620 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 11058 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 44974 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 15715 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 13466 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 1478 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 56035 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 55972 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 55552 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 50057 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 29554 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 9249 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 18110 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 3440 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 20036 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 53529 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 32305 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 11386 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 12532 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 17752 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 9120 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 48561 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 49602 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 51886 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 1730 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 57695 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 19217 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 24799 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 47468 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 39291 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 47437 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 27784 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 47945 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 4064 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 15225 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 9837 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 29065 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 21848 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 31046 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 13736 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 35193 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 13752 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 30487 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 1699 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 31347 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 27011 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 19794 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 42643 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 17319 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 34330 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 36842 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 41485 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 55706 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 48495 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 25001 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 47736 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 1248 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 20077 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 4938 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 26348 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 42236 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 49016 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 49475 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 23964 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 36848 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 43738 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 40104 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 12592 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 600 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 3127 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 20719 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 3132 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 5087 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 18788 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 3073 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 50721 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 15956 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 18817 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 50530 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 10094 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 11103 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 11698 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 14574 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 55349 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 27776 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 1808 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 34449 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 29690 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 23829 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 42183 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 14415 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 855 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 43869 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 14775 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 33758 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 22964 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 42164 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 18287 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 15313 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 8471 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 1778 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 54796 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 55632 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 9797 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 58186 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 50080 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 3354 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 32667 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 43186 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 39930 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 30716 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 27751 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 16120 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 45929 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 51376 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 2653 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/dqn/dqn_trader.py:69: DeprecationWarning: NumPy will stop allowing conversion of out-of-bound Python integers to integer arrays.  The conversion of 42845 to uint8 will fail in the future.
+For the old behavior, usually:
+    np.array(value).astype(dtype)`
+will give the desired result (the cast overflows).
+  self.acts_buf[self.ptr] = act
+
+ ==================== 
+
+DQN Trader - Training Mode
+
+ ==================== 
+
+Using device: cpu 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=21, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=59049, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: train
+Number of episodes: 4
+Number of stocks: 10
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Batch size: 32
+Replay buffer size: 500
+Discount factor (gamma): 0.99
+Initial epsilon (training): 1.0
+Minimum epsilon (training): 0.01
+Epsilon decay rate (training): 0.995
+Learning rate (alpha) (training): 0.0003
+Random seed: 76056
+
+
+episode: 1/4, episode end value (USD): 2385.15, duration (seconds): 13.26887
+episode: 2/4, episode end value (USD): 89765.47, duration (seconds): 12.277974
+episode: 3/4, episode end value (USD): 82650.38, duration (seconds): 11.854689
+episode: 4/4, episode end value (USD): 45715.62, duration (seconds): 12.325586
+... saving models ...
+
+Portfolio key statistics:
+Median portfolio value (USD): 64183.00
+Minimum portfolio value (USD): 2385.15
+Maximum portfolio value (USD): 89765.47
+
+Total execution time (seconds): 50.414
+
+ ==================== 
+
+DQN Trader - Testing Mode
+
+ ==================== 
+
+Using device: cpu 
+
+MLP(
+  (layers): Sequential(
+    (0): Linear(in_features=21, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=59049, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: test
+Number of episodes: 4
+Number of stocks: 10
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Batch size: 32
+Replay buffer size: 500
+Discount factor (gamma): 0.99
+Initial epsilon (training): 1.0
+Minimum epsilon (training): 0.01
+Epsilon decay rate (training): 0.995
+Learning rate (alpha) (training): 0.0003
+Random seed: 40200
+
+
+... loading models ...
+episode: 1/4, episode end value (USD): 65090.96, duration (seconds): 0.540972
+episode: 2/4, episode end value (USD): 97582.43, duration (seconds): 0.515876
+episode: 3/4, episode end value (USD): 74698.19, duration (seconds): 0.525804
+episode: 4/4, episode end value (USD): 29690.42, duration (seconds): 0.535456
+
+Portfolio key statistics:
+Median portfolio value (USD): 69894.58
+Minimum portfolio value (USD): 29690.42
+Maximum portfolio value (USD): 97582.43
+
+Total execution time (seconds): 2.348
