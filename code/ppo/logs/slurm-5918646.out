@@ -1,0 +1,111 @@
+Loading python/3.10.8-gpu
+  Loading requirement: nvidia/nvhpc-nompi/22.2 gcc/10.2.0
+    openmpi/4.1.6-cuda-11.6
+
+ ==================== 
+
+PPO Trader - Training Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=33, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=43046721, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=33, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=1, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: train
+Number of episodes: 4
+Number of stocks: 16
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Steps between learning updates (N) (training): 128
+Discount factor (gamma): 0.99
+Learning rate (alpha) (training): 0.0003
+GAE lambda: 0.95
+Policy clip (training): 0.2
+Batch size (training): 32
+Number of epochs (training): 4
+Random seed: 69032
+
+
+Traceback (most recent call last):
+  File "/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/ppo/ppo_trader.py", line 581, in <module>
+    val = play_one_episode(agent, env, args.mode, n_steps, N, learn_iters)
+  File "/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/ppo/ppo_trader.py", line 443, in play_one_episode
+    action, prob, val = agent.choose_action(state)
+  File "/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/ppo/ppo_trader.py", line 227, in choose_action
+    action = dist.sample()
+  File "/work/mdisspt/mdisspt/n2134758/condaenvs/envs/env-pytorch-1.13.1-gpu/lib/python3.10/site-packages/torch/distributions/categorical.py", line 118, in sample
+    samples_2d = torch.multinomial(probs_2d, sample_shape.numel(), True).T
+RuntimeError: number of categories cannot exceed 2^24
+
+ ==================== 
+
+PPO Trader - Testing Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=33, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=43046721, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=33, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=1, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: test
+Number of episodes: 4
+Number of stocks: 16
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Steps between learning updates (N) (training): 128
+Discount factor (gamma): 0.99
+Learning rate (alpha) (training): 0.0003
+GAE lambda: 0.95
+Policy clip (training): 0.2
+Batch size (training): 32
+Number of epochs (training): 4
+Random seed: 3027
+
+
+Traceback (most recent call last):
+  File "/mnt/lustre/e1000/home/mdisspt/mdisspt/n2134758/s2134758/code/ppo/ppo_trader.py", line 561, in <module>
+    with open(f'{models_folder}/scaler.pkl', 'rb') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'ppo_trader_models/scaler.pkl'
