@@ -18,13 +18,23 @@ def download_close_prices(tickers, start_date, end_date):
             print(f"Error downloading data for {ticker}: {e}")
     return equity_data
 
-
 # list of tickers
+
+# 3 tickers
+# tickers = ["AAPL", "JPM", "WMT"]
+
+# 16 tickers
+tickers = ["BA", "CAT", "CVX", "DIS", "GE", "HON", "IBM", "JNJ", "KO", 
+           "MMM", "MRK", "PG", "XOM", "MCD", "AXP", "DD"]
+
+# 20 tickers
+# tickers = ["BA", "CAT", "CVX", "DIS", "GE", "HON", "IBM", "JNJ", "KO", "MMM", 
+#            "MRK", "PG", "XOM", "MCD", "AXP", "DD", "PFE", "WMT", "TRV", "INTC"]
+
+# 30 tickers
 # tickers = ["BA", "CAT", "CVX", "DIS", "GE", "HON", "IBM", "JNJ", "KO", "MMM",
 #            "MRK", "PG", "XOM", "MCD", "AXP", "DD", "PFE", "WMT", "TRV", "INTC",
 #            "JPM", "HP", "NKE", "AAPL", "HD", "AMGN", "VZ", "UNH", "MSFT", "CSCO"]
-
-tickers = ["AAPL", "JPM", "WMT"]
 
 # define start and end dates
 start_date = "2018-01-02"
@@ -37,6 +47,6 @@ equity_close_prices = download_close_prices(tickers, start_date, end_date)
 df = pd.DataFrame(equity_close_prices)
 
 # save the DataFrame to a CSV file
-df.to_csv('equities_close_prices_daily.csv')
+df.to_csv(f'equities_daily_close_{len(tickers)}_tickers_2018_2023.csv')
 
-print("Close prices saved to 'equities_close_prices_daily.csv'")
+print(f"Close prices saved to 'equities_daily_close_{len(tickers)}_tickers_2018_2023.csv'")
