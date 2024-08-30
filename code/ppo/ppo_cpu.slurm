@@ -2,7 +2,7 @@
 
 # Slurm job options (name, compute nodes, job time)
 #SBATCH --job-name=ppo-cpu
-#SBATCH --time=0:40:0
+#SBATCH --time=00:10:00
 #SBATCH --exclusive
 #SBATCH --nodes=1
 #SBATCH --tasks-per-node=1
@@ -52,4 +52,7 @@ cd $SLURM_SUBMIT_DIR
 #     echo "------------------------"
 #     echo
 # done
+
+# Launch the job
+python ppo_trader.py -m train
 python ppo_trader.py -m test

@@ -4,7 +4,7 @@
 #SBATCH --partition=gpu
 #SBATCH --qos=gpu
 #SBATCH --gres=gpu:1
-#SBATCH --time=00:40:00
+#SBATCH --time=00:10:00
 
 # Replace [budget code] below with your project code (e.g. t01)
 #SBATCH --account=mdisspt-s2134758
@@ -47,14 +47,18 @@ cd $SLURM_SUBMIT_DIR
 #     echo
 # done
 
-# Start collecting GPU energy data in the background
-nvidia-smi --loop=5 --filename=smi-${SLURM_JOBID}.txt &
+# # Start collecting GPU energy data in the background
+# nvidia-smi --loop=5 --filename=smi-${SLURM_JOBID}.txt &
 
-# Capture the PID of the nvidia-smi process
-NVSMI_PID=$!
+# # Capture the PID of the nvidia-smi process
+# NVSMI_PID=$!
 
-# Run your application
+# # Run your application
+# python dqn_trader.py -m test
+
+# # Stop the nvidia-smi process after the job is complete
+# kill $NVSMI_PID
+
+# Launch the job
+python dqn_trader.py -m train
 python dqn_trader.py -m test
-
-# Stop the nvidia-smi process after the job is complete
-kill $NVSMI_PID
