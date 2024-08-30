@@ -23,9 +23,12 @@ def download_close_prices(tickers, start_date, end_date):
 # 3 tickers
 # tickers = ["AAPL", "JPM", "WMT"]
 
+# 10 tickers
+tickers = ["BA", "CAT", "CVX", "DIS", "GE", "HON", "IBM", "JNJ", "KO", "MMM"]
+
 # 16 tickers
-tickers = ["BA", "CAT", "CVX", "DIS", "GE", "HON", "IBM", "JNJ", "KO", 
-           "MMM", "MRK", "PG", "XOM", "MCD", "AXP", "DD"]
+# tickers = ["BA", "CAT", "CVX", "DIS", "GE", "HON", "IBM", "JNJ", "KO", "MMM", 
+#            "MRK", "PG", "XOM", "MCD", "AXP", "DD"]
 
 # 20 tickers
 # tickers = ["BA", "CAT", "CVX", "DIS", "GE", "HON", "IBM", "JNJ", "KO", "MMM", 
