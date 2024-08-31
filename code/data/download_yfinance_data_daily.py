@@ -20,24 +20,25 @@ def download_close_prices(tickers, start_date, end_date):
 
 # list of tickers
 
-# 3 tickers
-# tickers = ["AAPL", "JPM", "WMT"]
-
-# 10 tickers
-tickers = ["BA", "CAT", "CVX", "DIS", "GE", "HON", "IBM", "JNJ", "KO", "MMM"]
-
-# 16 tickers
-# tickers = ["BA", "CAT", "CVX", "DIS", "GE", "HON", "IBM", "JNJ", "KO", "MMM", 
-#            "MRK", "PG", "XOM", "MCD", "AXP", "DD"]
-
-# 20 tickers
-# tickers = ["BA", "CAT", "CVX", "DIS", "GE", "HON", "IBM", "JNJ", "KO", "MMM", 
-#            "MRK", "PG", "XOM", "MCD", "AXP", "DD", "PFE", "WMT", "TRV", "INTC"]
-
 # 30 tickers
 # tickers = ["BA", "CAT", "CVX", "DIS", "GE", "HON", "IBM", "JNJ", "KO", "MMM",
 #            "MRK", "PG", "XOM", "MCD", "AXP", "DD", "PFE", "WMT", "TRV", "INTC",
 #            "JPM", "HP", "NKE", "AAPL", "HD", "AMGN", "VZ", "UNH", "MSFT", "CSCO"]
+
+# Baseline experiment tickers
+tickers = ["AAPL", "JPM", "WMT"]
+
+# 1 ticker (stock scaling experiment)
+# tickers = ["BA"]
+
+# 3 tickers (stock scaling experiment)
+# tickers = ["BA", "CAT", "CVX"]
+
+# 5 tickers (stock scaling experiment)
+# tickers = ["BA", "CAT", "CVX", "DIS", "GE"]
+
+# 10 tickers (stock scaling experiment)
+# tickers = ["BA", "CAT", "CVX", "DIS", "GE", "HON", "IBM", "JNJ", "KO", "MMM"]
 
 # define start and end dates
 start_date = "2018-01-02"
