@@ -1,0 +1,486 @@
+Loading python/3.10.8-gpu
+  Loading requirement: nvidia/nvhpc-nompi/22.2 gcc/10.2.0
+    openmpi/4.1.6-cuda-11.6
+Starting Run 1
+
+
+ ==================== 
+
+PPO Trader - Training Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=3, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=3, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=3, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=1, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: train
+Number of episodes: 20
+Number of stocks: 1
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Steps between learning updates (N) (training): 128
+Discount factor (gamma): 0.99
+Learning rate (alpha) (training): 0.0003
+GAE lambda: 0.95
+Policy clip (training): 0.2
+Batch size (training): 32
+Number of epochs (training): 4
+Random seed: 70917
+
+
+episode: 1/20, episode end value (USD): 1043.85, duration (seconds): 4.209083
+episode: 2/20, episode end value (USD): 760.52, duration (seconds): 1.389248
+episode: 3/20, episode end value (USD): 2474.48, duration (seconds): 1.632629
+episode: 4/20, episode end value (USD): 4465.36, duration (seconds): 1.414406
+episode: 5/20, episode end value (USD): 3268.55, duration (seconds): 1.278607
+episode: 6/20, episode end value (USD): 10326.35, duration (seconds): 1.257797
+episode: 7/20, episode end value (USD): 6759.67, duration (seconds): 1.254963
+episode: 8/20, episode end value (USD): 77329.72, duration (seconds): 1.24824
+episode: 9/20, episode end value (USD): 129903.96, duration (seconds): 1.254597
+episode: 10/20, episode end value (USD): 128289.23, duration (seconds): 1.220831
+episode: 11/20, episode end value (USD): 155288.99, duration (seconds): 1.322584
+episode: 12/20, episode end value (USD): 39827.28, duration (seconds): 1.356841
+episode: 13/20, episode end value (USD): 81339.39, duration (seconds): 1.345284
+episode: 14/20, episode end value (USD): 128135.81, duration (seconds): 1.258658
+episode: 15/20, episode end value (USD): 100000.00, duration (seconds): 1.277242
+episode: 16/20, episode end value (USD): 100000.00, duration (seconds): 1.27589
+episode: 17/20, episode end value (USD): 100000.00, duration (seconds): 1.269373
+episode: 18/20, episode end value (USD): 100000.00, duration (seconds): 1.209323
+episode: 19/20, episode end value (USD): 94732.24, duration (seconds): 1.206171
+episode: 20/20, episode end value (USD): 93183.08, duration (seconds): 1.214445
+... saving models ...
+
+Portfolio key statistics:
+Median portfolio value (USD): 87261.24
+Minimum portfolio value (USD): 760.52
+Maximum portfolio value (USD): 155288.99
+Not enough episodes to calculate median portfolio value of last 30 episodes.
+
+Total execution time (seconds): 34.674
+
+ ==================== 
+
+PPO Trader - Testing Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=3, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=3, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=3, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=1, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: test
+Number of episodes: 20
+Number of stocks: 1
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Steps between learning updates (N) (training): 128
+Discount factor (gamma): 0.99
+Learning rate (alpha) (training): 0.0003
+GAE lambda: 0.95
+Policy clip (training): 0.2
+Batch size (training): 32
+Number of epochs (training): 4
+Random seed: 64653
+
+
+... loading models ...
+episode: 1/20, episode end value (USD): 69461.78, duration (seconds): 1.43345
+episode: 2/20, episode end value (USD): 98208.42, duration (seconds): 0.818088
+episode: 3/20, episode end value (USD): 66143.14, duration (seconds): 0.812341
+episode: 4/20, episode end value (USD): 100000.00, duration (seconds): 0.798901
+episode: 5/20, episode end value (USD): 100000.00, duration (seconds): 0.921334
+episode: 6/20, episode end value (USD): 100000.00, duration (seconds): 0.845531
+episode: 7/20, episode end value (USD): 118660.51, duration (seconds): 0.854412
+episode: 8/20, episode end value (USD): 105626.05, duration (seconds): 0.85216
+episode: 9/20, episode end value (USD): 183641.25, duration (seconds): 0.851339
+episode: 10/20, episode end value (USD): 100000.00, duration (seconds): 0.851135
+episode: 11/20, episode end value (USD): 193469.00, duration (seconds): 0.853502
+episode: 12/20, episode end value (USD): 100000.00, duration (seconds): 0.852468
+episode: 13/20, episode end value (USD): 100000.00, duration (seconds): 0.856737
+episode: 14/20, episode end value (USD): 78071.82, duration (seconds): 0.852733
+episode: 15/20, episode end value (USD): 100000.00, duration (seconds): 0.850534
+episode: 16/20, episode end value (USD): 100000.00, duration (seconds): 0.851528
+episode: 17/20, episode end value (USD): 101091.64, duration (seconds): 0.852505
+episode: 18/20, episode end value (USD): 100000.00, duration (seconds): 0.883997
+episode: 19/20, episode end value (USD): 100000.00, duration (seconds): 0.939191
+episode: 20/20, episode end value (USD): 100000.00, duration (seconds): 0.953154
+
+Portfolio key statistics:
+Median portfolio value (USD): 100000.00
+Minimum portfolio value (USD): 66143.14
+Maximum portfolio value (USD): 193469.00
+Not enough episodes to calculate median portfolio value of last 30 episodes.
+
+Total execution time (seconds): 19.434
+
+Finished Run 1
+
+Cleaned folders after Run 1
+
+------------------------
+
+Starting Run 2
+
+
+ ==================== 
+
+PPO Trader - Training Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=3, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=3, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=3, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=1, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: train
+Number of episodes: 20
+Number of stocks: 1
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Steps between learning updates (N) (training): 128
+Discount factor (gamma): 0.99
+Learning rate (alpha) (training): 0.0003
+GAE lambda: 0.95
+Policy clip (training): 0.2
+Batch size (training): 32
+Number of epochs (training): 4
+Random seed: 73796
+
+
+episode: 1/20, episode end value (USD): 1367.07, duration (seconds): 1.678223
+episode: 2/20, episode end value (USD): 1263.60, duration (seconds): 1.32219
+episode: 3/20, episode end value (USD): 1462.47, duration (seconds): 1.30807
+episode: 4/20, episode end value (USD): 1568.43, duration (seconds): 1.275068
+episode: 5/20, episode end value (USD): 1728.43, duration (seconds): 1.265937
+episode: 6/20, episode end value (USD): 1771.12, duration (seconds): 1.263295
+episode: 7/20, episode end value (USD): 1068.56, duration (seconds): 1.260632
+episode: 8/20, episode end value (USD): 2669.08, duration (seconds): 1.260518
+episode: 9/20, episode end value (USD): 2098.81, duration (seconds): 1.26359
+episode: 10/20, episode end value (USD): 2589.65, duration (seconds): 1.265173
+episode: 11/20, episode end value (USD): 1185.64, duration (seconds): 1.26743
+episode: 12/20, episode end value (USD): 3538.09, duration (seconds): 1.265928
+episode: 13/20, episode end value (USD): 3418.15, duration (seconds): 1.32316
+episode: 14/20, episode end value (USD): 8006.69, duration (seconds): 1.298353
+episode: 15/20, episode end value (USD): 23537.05, duration (seconds): 1.323261
+episode: 16/20, episode end value (USD): 66760.28, duration (seconds): 1.333017
+episode: 17/20, episode end value (USD): 86523.05, duration (seconds): 1.283812
+episode: 18/20, episode end value (USD): 101182.11, duration (seconds): 1.25586
+episode: 19/20, episode end value (USD): 93738.86, duration (seconds): 1.25706
+episode: 20/20, episode end value (USD): 100000.00, duration (seconds): 1.316211
+... saving models ...
+
+Portfolio key statistics:
+Median portfolio value (USD): 2629.37
+Minimum portfolio value (USD): 1068.56
+Maximum portfolio value (USD): 101182.11
+Not enough episodes to calculate median portfolio value of last 30 episodes.
+
+Total execution time (seconds): 27.666
+
+ ==================== 
+
+PPO Trader - Testing Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=3, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=3, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=3, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=1, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: test
+Number of episodes: 20
+Number of stocks: 1
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Steps between learning updates (N) (training): 128
+Discount factor (gamma): 0.99
+Learning rate (alpha) (training): 0.0003
+GAE lambda: 0.95
+Policy clip (training): 0.2
+Batch size (training): 32
+Number of epochs (training): 4
+Random seed: 30098
+
+
+... loading models ...
+episode: 1/20, episode end value (USD): 100441.51, duration (seconds): 1.439771
+episode: 2/20, episode end value (USD): 92602.76, duration (seconds): 0.935201
+episode: 3/20, episode end value (USD): 89183.62, duration (seconds): 0.872244
+episode: 4/20, episode end value (USD): 89446.77, duration (seconds): 0.869276
+episode: 5/20, episode end value (USD): 94688.42, duration (seconds): 0.865539
+episode: 6/20, episode end value (USD): 91255.55, duration (seconds): 0.862702
+episode: 7/20, episode end value (USD): 100000.00, duration (seconds): 0.863023
+episode: 8/20, episode end value (USD): 100000.00, duration (seconds): 0.861299
+episode: 9/20, episode end value (USD): 100000.00, duration (seconds): 0.860726
+episode: 10/20, episode end value (USD): 97867.59, duration (seconds): 0.86437
+episode: 11/20, episode end value (USD): 72960.63, duration (seconds): 0.863973
+episode: 12/20, episode end value (USD): 100000.00, duration (seconds): 0.862651
+episode: 13/20, episode end value (USD): 100000.00, duration (seconds): 0.863227
+episode: 14/20, episode end value (USD): 75386.72, duration (seconds): 0.86704
+episode: 15/20, episode end value (USD): 100757.53, duration (seconds): 0.862728
+episode: 16/20, episode end value (USD): 97623.27, duration (seconds): 0.863375
+episode: 17/20, episode end value (USD): 98342.97, duration (seconds): 0.892894
+episode: 18/20, episode end value (USD): 100000.00, duration (seconds): 0.933757
+episode: 19/20, episode end value (USD): 97542.94, duration (seconds): 0.910098
+episode: 20/20, episode end value (USD): 85066.06, duration (seconds): 0.965335
+
+Portfolio key statistics:
+Median portfolio value (USD): 97745.43
+Minimum portfolio value (USD): 72960.63
+Maximum portfolio value (USD): 100757.53
+Not enough episodes to calculate median portfolio value of last 30 episodes.
+
+Total execution time (seconds): 19.523
+
+Finished Run 2
+
+Cleaned folders after Run 2
+
+------------------------
+
+Starting Run 3
+
+
+ ==================== 
+
+PPO Trader - Training Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=3, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=3, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=3, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=1, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: train
+Number of episodes: 20
+Number of stocks: 1
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Steps between learning updates (N) (training): 128
+Discount factor (gamma): 0.99
+Learning rate (alpha) (training): 0.0003
+GAE lambda: 0.95
+Policy clip (training): 0.2
+Batch size (training): 32
+Number of epochs (training): 4
+Random seed: 51445
+
+
+episode: 1/20, episode end value (USD): 2143.81, duration (seconds): 1.651316
+episode: 2/20, episode end value (USD): 962.85, duration (seconds): 1.267747
+episode: 3/20, episode end value (USD): 1304.64, duration (seconds): 1.265365
+episode: 4/20, episode end value (USD): 451.37, duration (seconds): 1.264498
+episode: 5/20, episode end value (USD): 1616.90, duration (seconds): 1.26475
+episode: 6/20, episode end value (USD): 5103.81, duration (seconds): 1.264336
+episode: 7/20, episode end value (USD): 2913.76, duration (seconds): 1.264999
+episode: 8/20, episode end value (USD): 11594.38, duration (seconds): 1.265576
+episode: 9/20, episode end value (USD): 24366.48, duration (seconds): 1.266017
+episode: 10/20, episode end value (USD): 40841.76, duration (seconds): 1.261994
+episode: 11/20, episode end value (USD): 48244.28, duration (seconds): 1.262212
+episode: 12/20, episode end value (USD): 68128.70, duration (seconds): 1.262395
+episode: 13/20, episode end value (USD): 68367.45, duration (seconds): 1.294772
+episode: 14/20, episode end value (USD): 71503.37, duration (seconds): 1.265191
+episode: 15/20, episode end value (USD): 71210.53, duration (seconds): 1.285521
+episode: 16/20, episode end value (USD): 68776.94, duration (seconds): 1.293755
+episode: 17/20, episode end value (USD): 71210.53, duration (seconds): 1.252485
+episode: 18/20, episode end value (USD): 68803.25, duration (seconds): 1.21819
+episode: 19/20, episode end value (USD): 66605.60, duration (seconds): 1.263789
+episode: 20/20, episode end value (USD): 68367.45, duration (seconds): 1.24156
+... saving models ...
+
+Portfolio key statistics:
+Median portfolio value (USD): 44543.02
+Minimum portfolio value (USD): 451.37
+Maximum portfolio value (USD): 71503.37
+Not enough episodes to calculate median portfolio value of last 30 episodes.
+
+Total execution time (seconds): 27.599
+
+ ==================== 
+
+PPO Trader - Testing Mode
+
+ ==================== 
+
+Using device: cuda:0 
+
+ActorNetwork(
+  (actor): Sequential(
+    (0): Linear(in_features=3, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=3, bias=True)
+    (5): Softmax(dim=-1)
+  )
+) 
+ 
+ CriticNetwork(
+  (critic): Sequential(
+    (0): Linear(in_features=3, out_features=32, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=32, out_features=32, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=32, out_features=1, bias=True)
+  )
+) 
+
+
+Hyperparameters:
+Mode: test
+Number of episodes: 20
+Number of stocks: 1
+Initial investment ($): 100000
+Transaction cost rate: 0.02
+Steps between learning updates (N) (training): 128
+Discount factor (gamma): 0.99
+Learning rate (alpha) (training): 0.0003
+GAE lambda: 0.95
+Policy clip (training): 0.2
+Batch size (training): 32
+Number of epochs (training): 4
+Random seed: 95623
+
+
+... loading models ...
+episode: 1/20, episode end value (USD): 119393.58, duration (seconds): 1.216535
+episode: 2/20, episode end value (USD): 120741.20, duration (seconds): 0.706548
+episode: 3/20, episode end value (USD): 120741.20, duration (seconds): 0.709736
+episode: 4/20, episode end value (USD): 119393.58, duration (seconds): 0.706845
+episode: 5/20, episode end value (USD): 126161.80, duration (seconds): 0.706315
+episode: 6/20, episode end value (USD): 119393.58, duration (seconds): 0.708432
+episode: 7/20, episode end value (USD): 119393.58, duration (seconds): 0.70699
+episode: 8/20, episode end value (USD): 119386.26, duration (seconds): 0.708725
+episode: 9/20, episode end value (USD): 119384.49, duration (seconds): 0.707622
+episode: 10/20, episode end value (USD): 126161.80, duration (seconds): 0.70614
+episode: 11/20, episode end value (USD): 119385.10, duration (seconds): 0.705409
+episode: 12/20, episode end value (USD): 119393.58, duration (seconds): 0.706242
+episode: 13/20, episode end value (USD): 126160.87, duration (seconds): 0.703573
+episode: 14/20, episode end value (USD): 119384.49, duration (seconds): 0.706822
+episode: 15/20, episode end value (USD): 119393.58, duration (seconds): 0.705015
+episode: 16/20, episode end value (USD): 119393.58, duration (seconds): 0.703477
+episode: 17/20, episode end value (USD): 126161.80, duration (seconds): 0.704513
+episode: 18/20, episode end value (USD): 126161.80, duration (seconds): 0.708837
+episode: 19/20, episode end value (USD): 119384.49, duration (seconds): 0.732814
+episode: 20/20, episode end value (USD): 126161.80, duration (seconds): 0.698014
+
+Portfolio key statistics:
+Median portfolio value (USD): 119393.58
+Minimum portfolio value (USD): 119384.49
+Maximum portfolio value (USD): 126161.80
+Not enough episodes to calculate median portfolio value of last 30 episodes.
+
+Total execution time (seconds): 16.544
+
+Finished Run 3
+
+Cleaned folders after Run 3
+
+------------------------
+
