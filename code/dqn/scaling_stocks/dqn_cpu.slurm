@@ -2,7 +2,7 @@
 
 # Slurm job options (name, compute nodes, job time)
 #SBATCH --job-name=dqn-cpu
-#SBATCH --time=00:10:00
+#SBATCH --time=02:00:00
 #SBATCH --exclusive
 #SBATCH --nodes=1
 #SBATCH --tasks-per-node=1
@@ -28,31 +28,24 @@ conda activate env-pytorch-1.13.1-gpu
 # Change to the submission directory
 cd $SLURM_SUBMIT_DIR
 
-# Launch the job
-# dlprof --mode=pytorch --delay=3 --reports=summary,detail,iteration --output_path=./dlprof_output --force=true python dqn_trader_dlprof.py -m train
-# srun -n 1 nsys profile --delay=3 -o prof1 python dqn_trader.py -m train
 # Run the job 3 times
-# for run in {1..1}
-# do
-#     echo "Starting Run $run"
-#     echo
+for run in {1..3}
+do
+    echo "Starting Run $run"
+    echo
 
-#     python dqn_trader.py -m train
-#     python dqn_trader.py -m test
+    python dqn_trader.py -m train -c config.yaml
+    python dqn_trader.py -m test -c config.yaml
     
-#     echo
-#     echo "Finished Run $run"
-#     echo
+    echo
+    echo "Finished Run $run"
+    echo
     
-#     # Clean folders
-#     source clean.sh
+    # Clean folders
+    source clean.sh
     
-#     echo "Cleaned folders after Run $run"
-#     echo
-#     echo "------------------------"
-#     echo
-# done
-
-# Launch the job
-python dqn_trader.py -m train
-python dqn_trader.py -m test
+    echo "Cleaned folders after Run $run"
+    echo
+    echo "------------------------"
+    echo
+done
