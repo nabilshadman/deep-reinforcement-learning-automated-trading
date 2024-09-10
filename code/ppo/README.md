@@ -1,4 +1,4 @@
-# PPO Folder
+# Proximal Policy Optimisation (PPO)
 
 This folder contains the implementation of the Proximal Policy Optimisation (PPO) algorithm, supporting both CPU and GPU environments. It includes scripts for training, testing, profiling, and analysing the PPO agent’s performance in an automated trading environment.
 
