@@ -102,6 +102,10 @@ For more details on these enhancements and their impact, refer to the project re
 
 [Your chosen license]
 
+## Project Wiki
+
+For detailed notes, meeting summaries, experimental observations, and literature references, please refer to the [Project Wiki](https://git.ecdf.ed.ac.uk/msc-22-23/s2134758/-/wikis/home). The wiki includes key information about the project's progress, experimental results, and resources used throughout the development process.
+
 ## Contributors
 
 **Researcher:** Nabil Shadman  
