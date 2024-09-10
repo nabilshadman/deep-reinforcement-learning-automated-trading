@@ -1,35 +1,111 @@
-# Comparison of Deep Reinforcement Learning Models for Automated Trading on Heterogeneous HPC System  
 
-**Researcher's Name:** Nabil Shadman  
-**Supervisor's Name:** Dr Joseph Lee  
-**Target HPC System:** [Cirrus](https://www.epcc.ed.ac.uk/hpc-services/cirrus)  
+# Deep Reinforcement Learning for Automated Trading on HPC
 
-This repository currently contains the proof-of-concept (POC) implementation of a broader study to develop, paralellise, and test DRL models on our target heterogeneous HPC system (i.e., Cirrus).  
+This repository contains the code, configurations, and results for the MSc dissertation project: **"Comparison of Deep Reinforcement Learning Models for Automated Trading on Heterogeneous HPC Systems"**. The project implements and evaluates two DRL algorithms: **Deep Q-Network (DQN)** and **Proximal Policy Optimisation (PPO)**, focusing on performance in terms of both **trading metrics** and **computational efficiency** across CPU and GPU nodes on the Cirrus high performance computing (HPC) system.
+
+## Repository Structure
+Here is a high-level overview of the repository's structure: 
+
+```
+/
+├── code/
+│   ├── data/
+│   ├── dqn/
+│   ├── ppo/
+│   ├── test/
+│   ├── torchrl_dqn/
+│   └── torchrl_ppo/
+├── feasibility/
+├── environment.yml
+├── requirements.txt
+├── README.md
+```
+
+- `code/` – Contains all code-related directories for the project.
+  - `data/` – Scripts to download and store datasets used in experiments (e.g., equity prices).
+  - `dqn/` – Scripts and implementation for the DQN model.
+  - `ppo/` – Scripts and implementation for the PPO model.
+  - `test/` – Test scripts to validate environments, agents, and other components.
+  - `torchrl_dqn/` – Contains DQN implementation using the TorchRL framework (in progress).
+  - `torchrl_ppo/` – Contains PPO implementation using the TorchRL framework (in progress).
+- `feasibility/` – Documents related to the feasibility study conducted in the initial stage of the project.
+- `environment.yml` – Conda environment configuration file for setting up project dependencies.
+- `requirements.txt` – Lists Python packages required to run the project.
 
 
-## Background
-**Deep Reinforcement Learning (DRL)** and **High-Performance Computing (HPC)** technologies are applied to solve problems in areas such as video games, large language models, autonomous driving, and automated trading. DRL models, especially when applied in a data-intensive field such as finance, require a vast amount of computational power.   
+## How to Set Up
 
-It is essential for traders to experiment with different models to discover profitable strategies. We believe utilising the computational power of HPC systems can make the process time efficient. In this study, we discuss the feasibility to build DRL models for automated trading on heterogeneous HPC systems (i.e., with a combination of CPUs and GPUs in our case).  
+### 1. Setting Up the Environment
+To set up the project environment using Conda:
+```bash
+conda env create -f environment.yml
+conda activate your-env-name
+```
 
-**Algorithmic trading** as the use of computers to execute and monitor trades based on predefined logic. Reinforcement learning (RL) is a machine learning approach where intelligent agents learn to take actions in an environment to maximise cumulative reward. Neural networks, composed of interconnected nodes, are the basis for learning complex representations of data. Deep reinforcement learning (DRL) is the combination of RL algorithms with neural networks to enable agents to learn and make decisions based on their environment. 
+Alternatively, install Python packages using `pip`:
+```bash
+pip install -r requirements.txt
+```
 
-There are different types of DRL algorithms: value-based algorithms (e.g., [DQN](https://arxiv.org/pdf/1312.5602.pdf)), policy-based algorithms (e.g., [PPO](https://arxiv.org/pdf/1707.06347.pdf)), and actor-critic algorithms (e.g., [DDPG](https://arxiv.org/pdf/1509.02971.pdf)).  
+### 2. Running the Experiments
+Use the provided SLURM scripts in the respective model's directory (i.e. DQN, PPO) to run the programs on Cirrus:
 
-In our experiments, we used an open-source implementation of a **DQN** algorithm for multi-stock trading developed with the Python programming language. There are implementations of the model in [PyTorch](https://github.com/lazyprogrammer/machine_learning_examples/tree/master/pytorch) and in [TensorFlow](https://github.com/lazyprogrammer/machine_learning_examples/tree/master/tf2.0), which are two widely used machine learning (ML) frameworks. We ran the models on the backend nodes of Cirrus, on both CPU and GPU nodes.  
+- **For CPU nodes**:
+  ```bash
+  sbatch dqn_cpu.slurm
+  sbatch ppo_cpu.slurm
+  ```
 
-One of the main objectives of the POC work was to ensure we have the capability to run available DRL model on both CPUs and GPUs and understand its performance. Therefore, we searched for pre-existing open-source models. The open-source DQN model experiment is relevant in our study as it informs us about the runtime, memory usage, CPU utilisation, GPU utilisation, and other metrics. We can use the metrics to estimate the performance metrics in the dissertation stage when we will scale the problem size.  
+- **For GPU nodes**:
+  ```bash
+  sbatch dqn_gpu.slurm
+  sbatch ppo_gpu.slurm
+  ```
+
+## Configuration
+
+The models use YAML configuration files for hyperparameters. These can be found in the respective model directories. Make sure to adjust the file if you need to change hyperparameters.
+
+## Outputs and Logs
+
+Logs generated from SLURM jobs are stored in the `logs/` folder for each model.  
+
+The models output several key metrics:
+- Portfolio value statistics (median, min, max)
+- Execution time
+- CPU/GPU memory usage
+
+Profiling and performance metrics can be found within the log files.
 
 
-## Proposal
-The requirements of project are categorised using the [**MoSCoW**](https://en.wikipedia.org/wiki/MoSCoW_method) method. The "Must Have" requirements include developing two variants of DRL models (value-based DQN and policy-based PPO) using both PyTorch and TensorFlow, testing the models on CPU and GPU nodes to measure performance, and tuning hyperparameters to optimise the models. The "Should Have" requirements involve developing an actor-critic DRL model (e.g., DDPG) using PyTorch and TensorFlow and testing its performance on CPU and GPU nodes. The "Could Have" requirements include building a risk management module to prevent large drawdowns and forward testing the models using live real-time data.  
+## Data
 
+The project uses daily equity or exchange traded fund (ETF) close price data, publicly available from the Yahoo Finance [API](https://pypi.org/project/yfinance/). The data files are located at `code/data/`.
 
-## Content  
-**Feasibility**  
-The [feasibility](https://git.ecdf.ed.ac.uk/msc-22-23/s2134758/-/tree/main/feasibility) folder contains the feasibility report, data, code, and results from POC experiments. Further information on the data and code files, and instructions on reproducing the results are included in each particular model's folder.  
+## Profiling
 
+Separate SLURM script for profiling are provided in the respective model's folder. These scripts integrate profiling tools such as `torch.profiler` to gather performance metrics like execution time and memory usage. Use these profiling-specific scripts to enable profiling.
 
-**Wiki**  
-The [wiki](https://git.ecdf.ed.ac.uk/msc-22-23/s2134758/-/wikis/home) contains the notes from experimental observations, meetings, and literature review.  
+## GPU Monitoring
 
+For GPU runs, there's a commented-out section in the SLURM scripts to collect GPU monitoring data (e.g. power, utilisation) using `nvidia-smi`. Uncomment this section to enable GPU monitoring.
+
+## Open-Source Code and Enhancements
+
+This project builds upon the open-source implementations of the DQN algorithm (developed by [Lazy Programmer](https://github.com/lazyprogrammer/machine_learning_examples)) and the PPO algorithm (developed by [Phil Tabor](https://github.com/philtabor/Youtube-Code-Repository)). Both authors are experienced machine learning practitioners who promote experimentation with their implementations. 
+
+These algorithms were adapted and enhanced for a multi-asset trading environment and integrated with HPC resources. Some of our enhancements include GPU support, environment extensions, YAML-based configuration management, and model architecture improvements for automated trading tasks on HPC systems. 
+
+For more details on these enhancements and their impact, refer to the project report.
+
+## License
+
+[Your chosen license]
+
+## Contributors
+
+**Researcher:** Nabil Shadman  
+**Advisors:** Dr Joseph Lee, Dr Michael Bareford  
+
+## Contact
+For questions or issues, feel free to contact Nabil Shadman at n.shadman@sms.ed.ac.uk.
