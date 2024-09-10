@@ -1,42 +1,24 @@
-# Deep Reinforcement Learning Trading Algorithm with Proximal Policy Optimisation (PPO) Agent  
-**Tech stack:** Python, PyTorch, NumPy, pandas  
+# TorchRL ppo
 
+This folder contains the implementation of the Proximal Policy Optimisation (PPO) agent using the PyTorch Reinforcement Learning (TorchRL) library. The program is currently under development and is intended to leverage the flexibility of TorchRL for building, training, and evaluating the ppo agent in a multi-asset trading environment. The agent implementation has been adapted from the open-source examples of [TorchRL](https://github.com/pytorch/rl).
 
-## Code  
-The includes an implementation of **PPO** model for algorithmic trading.  
+## Contents
 
+- **`ppo_trader_torchrl.py`**: The main script for training the PPO agent using TorchRL. It integrates the custom multi-stock trading environment (`multistock_env_torchrl.py`) to optimise trading strategies over time.
+  
+- **`multistock_env_torchrl.py`**: Defines the multi-asset trading environment in TorchRL, which serves as the interface between the agent and the market simulation.
 
-## Data  
-As supplied, the dataset consists of historical **stock** prices of AAPL (Apple), MSI (Motorola),  
-and SBUX (Starbucks).  
+## Usage
 
+To run the ppo agent on Cirrus HPC, use the appropriate SLURM script based on the target resources:
 
-## Load relevant module on Cirrus
-To load the latest **pytorch** module, execute:  
-`module load pytorch`
+### On CPU:
+```bash
+sbatch ppo_cpu.slurm
+```
+### On GPU:
+```bash
+sbatch ppo_gpu.slurm
+```
 
-
-## How to run the script on frontend node of Cirrus  
-To run the script in **training** mode, execute:   
-`python ppo_trader.py -m train`  
-
-For **testing** mode, execute:   
-`python ppo_trader.py -m test`  
-
-
-## How to run the script on backend node of Cirrus  
-To run on a **CPU** node, execute:  
-`sbatch dqn-pytorch-cpu.slurm`
-
-To run on a **GPU** node, execute:  
-`sbatch dqn-pytorch-gpu.slurm`
-
-
-## To plot results  
-A script is included to plot portfolio value against number of episodes.  
-
-To plot **training** results:  
-`python plot_rl_rewards.py -m train`
-
-To plot **testing** results:  
-`python plot_rl_rewards.py -m test`
+The training logs will be saved in the `logs/` folder for analysis and debugging. The program is under development, and updates will be made to improve functionality and performance. The `ppo_trader_torchrl.py` script can also be run locally for testing purposes, though GPU acceleration is recommended for larger experiments.
