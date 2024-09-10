@@ -27,6 +27,7 @@ from sklearn.preprocessing import StandardScaler
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
 
+# Set random seeds for reproducibility across different runs
 def set_seeds(seed=42):
     random.seed(seed)
     np.random.seed(seed)
@@ -36,26 +37,23 @@ def set_seeds(seed=42):
 
 
 # Function to load configuration from a YAML file
-def load_config(config_file='config.yaml'):
+def load_config(config_file):
     with open(config_file, 'r') as f:
         config = yaml.safe_load(f)
     return config
 
 
-# Let's use AAPL (Apple), MSI (Motorola), SBUX (Starbucks)
+# Load asset price data from a CSV file
 def get_data(data_file):
-  # returns a T x 3 list of stock prices
-  # each row is a different stock
-  # 0 = AAPL
-  # 1 = MSI
-  # 2 = SBUX
+  # Returns a T x 3 list of stock prices
+  # Each row is a different stock
   df = pd.read_csv(data_file)
   return df.values
 
 
+# Obtain a scaler object to normalise environment states
 def get_scaler(env):
-  # return scikit-learn scaler object to scale the states
-  # note: you could also populate the replay buffer here
+  # Return scikit-learn scaler object to scale the states
 
   states = []
   for _ in range(env.n_step):
@@ -70,11 +68,13 @@ def get_scaler(env):
   return scaler
 
 
+# Create a directory if it doesn't exist
 def maybe_make_dir(directory):
   if not os.path.exists(directory):
     os.makedirs(directory)
 
 
+# Memory class for storing experiences for PPO training
 class PPOMemory:
     def __init__(self, batch_size):
         self.states = []
@@ -118,6 +118,7 @@ class PPOMemory:
         self.vals = []
 
 
+# Actor Network for PPO (policy network)
 class ActorNetwork(nn.Module):
     def __init__(self, n_actions, input_dims, alpha,
             fc1_dims=32, fc2_dims=32, chkpt_dir='ppo_trader_models'):
@@ -156,6 +157,7 @@ class ActorNetwork(nn.Module):
     #    self.load_state_dict(torch.load(path))
 
 
+# Critic Network for PPO (value network)
 class CriticNetwork(nn.Module):
     def __init__(self, input_dims, alpha, fc1_dims=32, fc2_dims=32,
             chkpt_dir='ppo_trader_models'):
@@ -192,6 +194,7 @@ class CriticNetwork(nn.Module):
     #     self.load_state_dict(torch.load(path))
 
 
+# Proximal Policy Optimisation (PPO) Agent
 class PPOAgent:
     def __init__(self, n_actions, input_dims, gamma=0.99, alpha=0.0003, gae_lambda=0.95,
             policy_clip=0.2, batch_size=32, n_epochs=4, chkpt_dir='ppo_trader_models'):
@@ -287,10 +290,11 @@ class PPOAgent:
        print(self.actor, "\n", "\n", self.critic, "\n")
 
 
+# Multi-Asset Trading Environment
 class MultiStockEnv:
   """
-  A 3-stock trading environment.
-  State: vector of size 7 (n_stock * 2 + 1)
+  A multi-asset trading environment.
+  State: vector of size 7 (n_stock * 2 + 1) for 3 equities
     - # shares of stock 1 owned
     - # shares of stock 2 owned
     - # shares of stock 3 owned
@@ -305,11 +309,11 @@ class MultiStockEnv:
     - 2 = buy
   """
   def __init__(self, data, initial_investment=20000, transaction_cost_rate=0.02):
-    # data
+    # Data
     self.stock_price_history = data
     self.n_step, self.n_stock = self.stock_price_history.shape
 
-    # instance attributes
+    # Instance attributes
     self.initial_investment = initial_investment
     self.transaction_cost_rate = transaction_cost_rate
     self.cur_step = None
@@ -319,8 +323,8 @@ class MultiStockEnv:
 
     self.action_space = np.arange(3**self.n_stock)
 
-    # action permutations
-    # returns a nested list with elements like:
+    # Action permutations
+    # Returns a nested list with elements like:
     # [0,0,0]
     # [0,0,1]
     # [0,0,2]
@@ -333,7 +337,7 @@ class MultiStockEnv:
     # self.action_list = np.array(list(itertools.product([0, 1, 2], repeat=self.n_stock)))
     self.action_list = list(map(list, itertools.product([0, 1, 2], repeat=self.n_stock)))
 
-    # calculate size of state
+    # Calculate size of state
     self.state_dim = self.n_stock * 2 + 1
 
     self.reset()
@@ -348,29 +352,29 @@ class MultiStockEnv:
   def step(self, action):
     assert action in self.action_space
 
-    # get current value before performing the action
+    # Get current value before performing the action
     prev_val = self._get_val()
 
-    # update price, i.e. go to the next day
+    # Update price, i.e. go to the next day
     self.cur_step += 1
     self.stock_price = self.stock_price_history[self.cur_step]
 
-    # perform the trade
+    # Perform the trade
     self._trade(action)
 
-    # get the new value after taking the action
+    # Get the new value after taking the action
     cur_val = self._get_val()
 
-    # reward is the increase in porfolio value
+    # Reward is the increase in porfolio value
     reward = cur_val - prev_val
 
-    # done if we have run out of data
+    # Done if we have run out of data
     done = self.cur_step == self.n_step - 1
 
-    # store the current value of the portfolio here
+    # Store the current value of the portfolio here
     info = {'cur_val': cur_val}
 
-    # conform to the Gym API
+    # Conform to the Gym API
     return self._get_obs(), reward, done, info
 
   def _get_obs(self):
@@ -384,30 +388,30 @@ class MultiStockEnv:
     return self.stock_owned.dot(self.stock_price) + self.cash_in_hand
 
   def _trade(self, action):
-    # index the action we want to perform
+    # Index the action we want to perform
     # 0 = sell
     # 1 = hold
     # 2 = buy
     # e.g. [2,1,0] means:
-    # buy first stock
-    # hold second stock
-    # sell third stock
+    # Buy first stock
+    # Hold second stock
+    # Sell third stock
     # action_vec = self.action_list[action, :]
     action_vec = self.action_list[action]
 
-    # determine which stocks to buy or sell
-    sell_index = [] # stores index of stocks we want to sell
-    buy_index = [] # stores index of stocks we want to buy
+    # Determine which stocks to buy or sell
+    sell_index = [] # Stores index of stocks we want to sell
+    buy_index = [] # Stores index of stocks we want to buy
     for i, a in enumerate(action_vec):
       if a == 0:
         sell_index.append(i)
       elif a == 2:
         buy_index.append(i)
 
-    # sell any stocks we want to sell
+    # Sell any stocks we want to sell, 
     # then buy any stocks we want to buy
     if sell_index:
-      # NOTE: to simplify the problem, when we sell, we will sell ALL shares of that stock
+      # To simplify the problem, when we sell, we will sell ALL shares of that stock
       for i in sell_index:
       #   self.cash_in_hand += self.stock_price[i] * self.stock_owned[i]
       #   self.stock_owned[i] = 0
@@ -416,8 +420,8 @@ class MultiStockEnv:
          self.cash_in_hand += (total_sell_value - transaction_costs)
          self.stock_owned[i] = 0
     if buy_index:
-      # NOTE: when buying, we will loop through each stock we want to buy,
-      #       and buy one share at a time until we run out of cash
+      # When buying, we will loop through each stock we want to buy,
+      # and buy one share at a time until we run out of cash
       can_buy = True
       while can_buy:
         for i in buy_index:
@@ -432,8 +436,9 @@ class MultiStockEnv:
             can_buy = False
 
 
+# Play one episode of the trading environment
 def play_one_episode(agent, env, is_train, n_steps, N, learn_iters):
-  # note: after transforming states are already 1xD
+  # After transforming states are already 1xD
   state = env.reset()
   state = scaler.transform([state])
   done = False
@@ -464,19 +469,27 @@ if __name__ == '__main__':
   seed = random.randint(0, 100000)
   set_seeds(seed)  # You can choose any integer as the seed
 
-  # # start pynvml if using cuda
+  # # Start pynvml if using cuda
   # if torch.cuda.is_available():
   #   pynvml.nvmlInit()
 
-  # additional info when using cuda
+  # Additional info when using cuda
   # if device.type == 'cuda':
   #     print(torch.cuda.get_device_name(0))
   #     print('Memory Usage:')
   #     print('Allocated:', round(torch.cuda.memory_allocated(0)/1024**3,1), 'GB')
   #     print('Cached:   ', round(torch.cuda.memory_cached(0)/1024**3,1), 'GB')
 
+  # Adding command-line arguments
+  parser = argparse.ArgumentParser()
+  parser.add_argument('-m', '--mode', type=str, required=True,
+                      help='either "train" or "test"')
+  parser.add_argument('-c', '--config', type=str, required=True,
+                        help='Path to the configuration file (YAML)')
+  args = parser.parse_args()
+
   # Load configuration
-  config = load_config('config.yaml')
+  config = load_config(args.config)
 
   # Configuration for the trading environment and simulation
   data_file = config['data_file']
@@ -486,7 +499,7 @@ if __name__ == '__main__':
   initial_investment = config['initial_investment']
   transaction_cost_rate = config['transaction_cost_rate']
   
-  # Hyperparameters for the PPO (Proximal Policy Optimization) agent
+  # Hyperparameters for the PPO (Proximal Policy Optimisation) agent
   N = config['N'] # Number of steps between each learning update
   gamma = config['gamma'] # Discount factor
   alpha = config['alpha'] # Learning rate
@@ -495,19 +508,14 @@ if __name__ == '__main__':
   batch_size = config['batch_size'] # Batch size for training
   n_epochs = config['n_epochs'] # Number of epochs to train on each batch of data
 
-  parser = argparse.ArgumentParser()
-  parser.add_argument('-m', '--mode', type=str, required=True,
-                      help='either "train" or "test"')
-  args = parser.parse_args()
-
-  # determine the mode string and formatting
+  # Determine the mode string and formatting
   mode_str = "Training Mode" if args.mode == "train" else "Testing Mode"
-  # print with visual separation
-  print("\n", "=" * 20, "\n")  # top separator
+  # Print with visual separation
+  print("\n", "=" * 20, "\n")  # Top separator
   print(f"PPO Trader - {mode_str}")
-  print("\n", "=" * 20, "\n")  # bottom separator
+  print("\n", "=" * 20, "\n")  # Bottom separator
 
-  # log device info
+  # Log device info
   print('Using device:', device, "\n")
 
   maybe_make_dir(models_folder)
@@ -532,9 +540,12 @@ if __name__ == '__main__':
      batch_size=batch_size, n_epochs=n_epochs, chkpt_dir=models_folder
      )
 
-  # print model summary
+  # Print model summary
   agent.print_model_summary()
   scaler = get_scaler(env)
+
+  # Report data filename
+  print(f"Data file: {data_file}")
 
   # Report all hyperparameters
   print("\nHyperparameters:")
@@ -553,29 +564,29 @@ if __name__ == '__main__':
   print(f"Random seed: {seed}")
   print("\n")
 
-  # store the final value of the portfolio (end of episode)
+  # Store the final value of the portfolio (end of episode)
   portfolio_value = []
 
   if args.mode == 'test':
-    # then load the previous scaler
+    # Then load the previous scaler
     with open(f'{models_folder}/scaler.pkl', 'rb') as f:
       scaler = pickle.load(f)
 
-    # remake the env with test data
+    # Remake the env with test data
     env = MultiStockEnv(test_data, initial_investment)
 
-    # make sure epsilon is not 1!
-    # no need to run multiple episodes if epsilon = 0, it's deterministic
+    # Make sure epsilon is not 1!
+    # No need to run multiple episodes if epsilon = 0, it's deterministic
     # agent.epsilon = 0.01
 
-    # load trained weights
+    # Load trained weights
     agent.load_models()
 
-  # set counters for iterations and steps
+  # Set counters for iterations and steps
   learn_iters = 0
   n_steps = 0
 
-  # play the game num_episodes times
+  # Play the game num_episodes times
   for e in range(num_episodes):
     t0 = datetime.now()
     val = play_one_episode(agent, env, args.mode, n_steps, N, learn_iters)
@@ -584,27 +595,27 @@ if __name__ == '__main__':
             f"duration (seconds): {dt.total_seconds()}")
     portfolio_value.append(val) # append episode end portfolio value
 
-  # save the weights when we are done
+  # Save the weights when we are done
   if args.mode == 'train':
-    # save the PPO
+    # Save the PPO
     agent.save_models()
 
-    # save the scaler
+    # Save the scaler
     with open(f'{models_folder}/scaler.pkl', 'wb') as f:
       pickle.dump(scaler, f)
 
-  # # measure cpu metrics with psutil
+  # # Measure cpu metrics with psutil
   # process = psutil.Process(os.getpid())
   # memory_info = process.memory_info()
   # memory_usage = memory_info.rss / (1024 ** 2)  # convert to mb
   # num_threads = process.num_threads()
 
-  # # print cpu metrics
+  # # Print cpu metrics
   # print("\npsutil metrics:")
   # print(f"CPU memory usage (MB): {memory_usage:.3f}")
   # print(f"Number of threads: {num_threads}")
 
-  # # print pynvml metrics (if using cuda) and shutdown pynvml
+  # # Print pynvml metrics (if using cuda) and shutdown pynvml
   # if torch.cuda.is_available():
 
   #   print("\nPyNVML metrics:")
@@ -620,7 +631,7 @@ if __name__ == '__main__':
 
   #   pynvml.nvmlShutdown()  # shutdown pynvml after use
 
-  # save portfolio value for each episode
+  # Save portfolio value for each episode
   np.save(f'{rewards_folder}/{args.mode}.npy', portfolio_value)
 
   # Print key statistics of the portfolio values
@@ -628,6 +639,14 @@ if __name__ == '__main__':
   print(f"Median portfolio value (USD): {np.median(portfolio_value):.2f}")
   print(f"Minimum portfolio value (USD): {np.min(portfolio_value):.2f}")
   print(f"Maximum portfolio value (USD): {np.max(portfolio_value):.2f}")
+
+  # Calculate and print the median portfolio value of the last 30 episodes
+  if len(portfolio_value) >= 30:
+      last_30_portfolio_values = portfolio_value[-30:]
+      median_last_30 = np.median(last_30_portfolio_values)
+      print(f"Median portfolio value of last 30 episodes (USD): {median_last_30:.2f}")
+  else:
+      print("Not enough episodes to calculate median portfolio value of last 30 episodes.")
 
   # After all processing is done, calculate and print total execution time
   end_time = time.time()

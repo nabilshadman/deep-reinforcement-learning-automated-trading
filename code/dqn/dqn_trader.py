@@ -26,6 +26,7 @@ from sklearn.preprocessing import StandardScaler
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
 
+# Set random seeds for reproducibility across different runs
 def set_seeds(seed=42):
     random.seed(seed)
     np.random.seed(seed)
@@ -35,26 +36,24 @@ def set_seeds(seed=42):
 
 
 # Function to load configuration from a YAML file
-def load_config(config_file='config.yaml'):
+def load_config(config_file):
     with open(config_file, 'r') as f:
         config = yaml.safe_load(f)
     return config
 
 
-# Let's use AAPL (Apple), MSI (Motorola), SBUX (Starbucks)
+# Load asset price data (AAPL, MSI, SBUX) from a CSV file
 def get_data(data_file):
-  # returns a T x 3 list of stock prices
-  # each row is a different stock
-  # 0 = AAPL
-  # 1 = MSI
-  # 2 = SBUX
+  # Returns a T x 3 list of stock prices
+  # Each row is a different stock
   df = pd.read_csv(data_file)
   return df.values
 
 
-### The experience replay memory ###
+# Experience replay memory for storing agent experiences
 class ReplayBuffer:
   def __init__(self, obs_dim, act_dim, size, batch_size):
+    # Initialize buffers to store observations, actions, rewards, and done flags
     self.obs1_buf = np.zeros([size, obs_dim], dtype=np.float32)
     self.obs2_buf = np.zeros([size, obs_dim], dtype=np.float32)
     self.acts_buf = np.zeros(size, dtype=np.uint8)
@@ -62,7 +61,8 @@ class ReplayBuffer:
     self.done_buf = np.zeros(size, dtype=np.uint8)
     self.ptr, self.size, self.max_size = 0, 0, size
     self.batch_size = batch_size
-
+  
+  # Store experience in the buffer
   def store(self, obs, act, rew, next_obs, done):
     self.obs1_buf[self.ptr] = obs
     self.obs2_buf[self.ptr] = next_obs
@@ -72,6 +72,7 @@ class ReplayBuffer:
     self.ptr = (self.ptr+1) % self.max_size
     self.size = min(self.size+1, self.max_size)
 
+  # Sample a batch of experiences from the buffer
   def sample_batch(self):
     idxs = np.random.randint(0, self.size, size=self.batch_size)
     return dict(s=self.obs1_buf[idxs],
@@ -81,9 +82,9 @@ class ReplayBuffer:
                 d=self.done_buf[idxs])
 
 
+# Obtain a scaler object to normalise environment states
 def get_scaler(env):
-  # return scikit-learn scaler object to scale the states
-  # note: you could also populate the replay buffer here
+  # Return scikit-learn scaler object to scale the states
 
   states = []
   for _ in range(env.n_step):
@@ -98,11 +99,13 @@ def get_scaler(env):
   return scaler
 
 
+# Create a directory if it doesn't exist
 def maybe_make_dir(directory):
   if not os.path.exists(directory):
     os.makedirs(directory)
 
 
+# Multi-Layer Perceptron (MLP) neural network model
 class MLP(nn.Module):
   def __init__(self, n_inputs, n_action, n_hidden_layers=2, hidden_dim=32):
     super(MLP, self).__init__()
@@ -115,11 +118,11 @@ class MLP(nn.Module):
       self.layers.append(layer)
       self.layers.append(nn.ReLU())
 
-    # final layer
+    # Final layer
     self.layers.append(nn.Linear(M, n_action))
     self.layers = nn.Sequential(*self.layers)
 
-    # move the model to the device
+    # Move the model to the device
     self.to(device)
 
   def forward(self, X):
@@ -132,39 +135,42 @@ class MLP(nn.Module):
     self.load_state_dict(torch.load(path))
 
 
+# Generate predictions from the model
 def predict(model, np_states):
   with torch.no_grad():
-    # ensure model is on the correct device
+    # Ensure model is on the correct device
     model.to(device)
-    # convert numpy array to torch tensor and move it to the device
+    # Convert numpy array to torch tensor and move it to the device
     inputs = torch.from_numpy(np_states.astype(np.float32)).to(device) 
     output = model(inputs)
     #print("output:", output)
-    # transfer predictions back to CPU for NumPy operations
+    # Transfer predictions back to CPU for NumPy operations
     return output.cpu().numpy()
 
 
+# Perform one training step on the model
 def train_one_step(model, criterion, optimizer, inputs, targets):
-  # convert to tensors
+  # Convert to tensors
   inputs = torch.from_numpy(inputs.astype(np.float32)).to(device)
   targets = torch.from_numpy(targets.astype(np.float32)).to(device)
 
-  # zero the parameter gradients
+  # Zero the parameter gradients
   optimizer.zero_grad()
 
-  # forward pass
+  # Forward pass
   outputs = model(inputs)
   loss = criterion(outputs, targets)
         
-  # backward and optimize
+  # Backward and optimise
   loss.backward()
   optimizer.step()
 
 
+# Multi-Asset Trading Environment
 class MultiStockEnv:
   """
-  A 3-stock trading environment.
-  State: vector of size 7 (n_stock * 2 + 1)
+  A multi-asset trading environment.
+  State: vector of size 7 (n_stock * 2 + 1) for 3 stocks
     - # shares of stock 1 owned
     - # shares of stock 2 owned
     - # shares of stock 3 owned
@@ -179,11 +185,11 @@ class MultiStockEnv:
     - 2 = buy
   """
   def __init__(self, data, initial_investment=20000, transaction_cost_rate=0.02):
-    # data
+    # Data
     self.stock_price_history = data
     self.n_step, self.n_stock = self.stock_price_history.shape
 
-    # instance attributes
+    # Instance attributes
     self.initial_investment = initial_investment
     self.transaction_cost_rate = transaction_cost_rate
     self.cur_step = None
@@ -193,7 +199,7 @@ class MultiStockEnv:
 
     self.action_space = np.arange(3**self.n_stock)
 
-    # action permutations
+    # Action permutations
     # returns a nested list with elements like:
     # [0,0,0]
     # [0,0,1]
@@ -207,7 +213,7 @@ class MultiStockEnv:
     # self.action_list = np.array(list(itertools.product([0, 1, 2], repeat=self.n_stock)))
     self.action_list = list(map(list, itertools.product([0, 1, 2], repeat=self.n_stock)))
 
-    # calculate size of state
+    # Calculate size of state
     self.state_dim = self.n_stock * 2 + 1
 
     self.reset()
@@ -222,29 +228,29 @@ class MultiStockEnv:
   def step(self, action):
     assert action in self.action_space
 
-    # get current value before performing the action
+    # Get current value before performing the action
     prev_val = self._get_val()
 
-    # update price, i.e. go to the next day
+    # Update price, i.e. go to the next day
     self.cur_step += 1
     self.stock_price = self.stock_price_history[self.cur_step]
 
-    # perform the trade
+    # Perform the trade
     self._trade(action)
 
-    # get the new value after taking the action
+    # Get the new value after taking the action
     cur_val = self._get_val()
 
-    # reward is the increase in porfolio value
+    # Reward is the increase in porfolio value
     reward = cur_val - prev_val
 
-    # done if we have run out of data
+    # Done if we have run out of data
     done = self.cur_step == self.n_step - 1
 
-    # store the current value of the portfolio here
+    # Store the current value of the portfolio here
     info = {'cur_val': cur_val}
 
-    # conform to the Gym API
+    # Conform to the Gym API
     return self._get_obs(), reward, done, info
 
   def _get_obs(self):
@@ -258,41 +264,41 @@ class MultiStockEnv:
     return self.stock_owned.dot(self.stock_price) + self.cash_in_hand
 
   def _trade(self, action):
-    # index the action we want to perform
+    # Index the action we want to perform
     # 0 = sell
     # 1 = hold
     # 2 = buy
     # e.g. [2,1,0] means:
-    # buy first stock
-    # hold second stock
-    # sell third stock
+    # Buy first stock
+    # Hold second stock
+    # Sell third stock
     # action_vec = self.action_list[action, :]
     action_vec = self.action_list[action]
 
-    # determine which stocks to buy or sell
-    sell_index = [] # stores index of stocks we want to sell
-    buy_index = [] # stores index of stocks we want to buy
+    # Determine which stocks to buy or sell
+    sell_index = [] # Stores index of stocks we want to sell
+    buy_index = [] # Stores index of stocks we want to buy
     for i, a in enumerate(action_vec):
       if a == 0:
         sell_index.append(i)
       elif a == 2:
         buy_index.append(i)
 
-    # sell any stocks we want to sell
+    # Sell any stocks we want to sell, 
     # then buy any stocks we want to buy
     if sell_index:
-      # NOTE: to simplify the problem, when we sell, we will sell ALL shares of that stock
+      # To simplify the problem, when we sell, we will sell ALL shares of that stock
       for i in sell_index:
         # self.cash_in_hand += self.stock_price[i] * self.stock_owned[i]
         # self.stock_owned[i] = 0
-        # deduct transaction costs when selling
+        # Deduct transaction costs when selling
         total_sell_value = self.stock_price[i] * self.stock_owned[i]
         transaction_costs = total_sell_value * self.transaction_cost_rate
         self.cash_in_hand += (total_sell_value - transaction_costs)
         self.stock_owned[i] = 0
     if buy_index:
-      # NOTE: when buying, we will loop through each stock we want to buy,
-      #       and buy one share at a time until we run out of cash
+      # When buying, we will loop through each stock we want to buy,
+      # and buy one share at a time until we run out of cash
       can_buy = True
       while can_buy:
         for i in buy_index:
@@ -301,13 +307,14 @@ class MultiStockEnv:
                                   * self.transaction_cost_rate):
             # self.stock_owned[i] += 1 # buy one share
             # self.cash_in_hand -= self.stock_price[i]
-            # deduct transaction costs when buying
+            # Deduct transaction costs when buying
             self.stock_owned[i] += 1
             self.cash_in_hand -= (self.stock_price[i] + self.stock_price[i] * self.transaction_cost_rate)
           else:
             can_buy = False
 
 
+# Deep Q-Network (DQN) Agent
 class DQNAgent(object):
   def __init__(self, state_size, action_size, batch_size=32, buffer_size=500, gamma=0.99, 
                epsilon=1.0, epsilon_min=0.01, epsilon_decay=0.995, alpha=0.0003):
@@ -316,13 +323,13 @@ class DQNAgent(object):
     self.batch_size = batch_size
     self.memory = ReplayBuffer(obs_dim=state_size, act_dim=action_size, 
                                size=buffer_size, batch_size=batch_size)
-    self.gamma = gamma  # discount rate
-    self.epsilon = epsilon  # exploration rate
+    self.gamma = gamma  # Discount rate
+    self.epsilon = epsilon  # Exploration rate
     self.epsilon_min = epsilon_min
     self.epsilon_decay = epsilon_decay
-    self.model = MLP(state_size, action_size).to(device) # initialize model and move it to device
+    self.model = MLP(state_size, action_size).to(device) # Initialise model and move it to device
 
-    # loss and optimizer
+    # Loss and optimiser
     self.criterion = nn.MSELoss()
     self.optimizer = torch.optim.Adam(self.model.parameters(), lr=alpha)
 
@@ -336,11 +343,11 @@ class DQNAgent(object):
     return np.argmax(act_values[0])  # returns action
 
   def replay(self):
-    # first check if replay buffer contains enough data
+    # First check if replay buffer contains enough data
     if self.memory.size < self.batch_size:
       return
 
-    # sample a batch of data from the replay memory
+    # Sample a batch of data from the replay memory
     minibatch = self.memory.sample_batch()
     states = minibatch['s']
     actions = minibatch['a']
@@ -348,7 +355,7 @@ class DQNAgent(object):
     next_states = minibatch['s2']
     done = minibatch['d']
 
-    # calculate the target: Q(s',a)
+    # Calculate the target: Q(s',a)
     target = rewards + (1 - done) * self.gamma * np.amax(predict(self.model, next_states), axis=1)
 
     # With the PyTorch API, it is simplest to have the target be the 
@@ -362,7 +369,7 @@ class DQNAgent(object):
     target_full = predict(self.model, states)
     target_full[np.arange(self.batch_size), actions] = target
 
-    # run one training step
+    # Run one training step
     train_one_step(self.model, self.criterion, self.optimizer, states, target_full)
 
     if self.epsilon > self.epsilon_min:
@@ -380,8 +387,9 @@ class DQNAgent(object):
     print(self.model, "\n")
 
 
+# Play one episode of the trading environment
 def play_one_episode(agent, env, is_train):
-  # note: after transforming states are already 1xD
+  # After transforming, states are already 1xD
   state = env.reset()
   state = scaler.transform([state])
   done = False
@@ -407,19 +415,27 @@ if __name__ == '__main__':
   seed = random.randint(0, 100000)
   set_seeds(seed)  # You can choose any integer as the seed
 
-  # # start pynvml if using cuda
+  # # Start pynvml if using cuda
   # if torch.cuda.is_available():
   #   pynvml.nvmlInit()
 
-  # additional info when using cuda
+  # Additional info when using cuda
   # if device.type == 'cuda':
   #     print(torch.cuda.get_device_name(0))
   #     print('Memory Usage:')
   #     print('Allocated:', round(torch.cuda.memory_allocated(0)/1024**3,1), 'GB')
   #     print('Cached:   ', round(torch.cuda.memory_cached(0)/1024**3,1), 'GB')
 
+  # Adding command-line arguments
+  parser = argparse.ArgumentParser()
+  parser.add_argument('-m', '--mode', type=str, required=True,
+                      help='either "train" or "test"')
+  parser.add_argument('-c', '--config', type=str, required=True,
+                        help='Path to the configuration file (YAML)')
+  args = parser.parse_args()
+
   # Load configuration
-  config = load_config('config.yaml')
+  config = load_config(args.config)
 
   # Configuration for the trading environment and simulation
   data_file = config['data_file']
@@ -438,19 +454,14 @@ if __name__ == '__main__':
   epsilon_decay = config['epsilon_decay']
   alpha = config['alpha']
   
-  parser = argparse.ArgumentParser()
-  parser.add_argument('-m', '--mode', type=str, required=True,
-                      help='either "train" or "test"')
-  args = parser.parse_args()
-
-  # determine the mode string and formatting
+  # Determine the mode string and formatting
   mode_str = "Training Mode" if args.mode == "train" else "Testing Mode"
-  # print with visual separation
-  print("\n", "=" * 20, "\n")  # top separator
+  # Print with visual separation
+  print("\n", "=" * 20, "\n")  # Top separator
   print(f"DQN Trader - {mode_str}")
-  print("\n", "=" * 20, "\n")  # bottom separator
+  print("\n", "=" * 20, "\n")  # Bottom separator
 
-  # log device info
+  # Log device info
   print('Using device:', device, "\n")
 
   maybe_make_dir(models_folder)
@@ -471,9 +482,12 @@ if __name__ == '__main__':
                    gamma=gamma, epsilon=epsilon, epsilon_min=epsilon_min, 
                    epsilon_decay=epsilon_decay, alpha=alpha)
 
-  # print model summary
+  # Print model summary
   agent.print_model_summary()
   scaler = get_scaler(env)
+
+  # Report data filename
+  print(f"Data file: {data_file}")
 
   # Report all hyperparameters
   print("\nHyperparameters:")
@@ -492,54 +506,54 @@ if __name__ == '__main__':
   print(f"Random seed: {seed}")
   print("\n")
 
-  # store the final value of the portfolio (end of episode)
+  # Store the final value of the portfolio (end of episode)
   portfolio_value = []
 
   if args.mode == 'test':
-    # then load the previous scaler
+    # Then load the previous scaler
     with open(f'{models_folder}/scaler.pkl', 'rb') as f:
       scaler = pickle.load(f)
 
-    # remake the env with test data
+    # Remake the env with test data
     env = MultiStockEnv(test_data, initial_investment)
 
-    # make sure epsilon is not 1!
-    # no need to run multiple episodes if epsilon = 0, it's deterministic
+    # Make sure epsilon is not 1!
+    # No need to run multiple episodes if epsilon = 0, it's deterministic
     agent.epsilon = 0.01
 
-    # load trained weights
+    # Load trained weights
     agent.load(f'{models_folder}/dqn.ckpt')
 
-  # play the game num_episodes times
+  # Play the game num_episodes times
   for e in range(num_episodes):
     t0 = datetime.now()
     val = play_one_episode(agent, env, args.mode)
     dt = datetime.now() - t0
     print(f"episode: {e + 1}/{num_episodes}, episode end value (USD): {val:.2f}, "
           f"duration (seconds): {dt.total_seconds()}")
-    portfolio_value.append(val) # append episode end portfolio value
+    portfolio_value.append(val) # Append episode end portfolio value
 
-  # save the weights when we are done
+  # Save the weights when we are done
   if args.mode == 'train':
-    # save the DQN
+    # Save the DQN
     agent.save(f'{models_folder}/dqn.ckpt')
 
-    # save the scaler
+    # Save the scaler
     with open(f'{models_folder}/scaler.pkl', 'wb') as f:
       pickle.dump(scaler, f)
 
-  # # measure cpu metrics with psutil
+  # # Measure cpu metrics with psutil
   # process = psutil.Process(os.getpid())
   # memory_info = process.memory_info()
   # memory_usage = memory_info.rss / (1024 ** 2)  # convert to mb
   # num_threads = process.num_threads()
 
-  # # print cpu metrics
+  # # Print cpu metrics
   # print("\npsutil metrics:")
   # print(f"CPU memory usage (MB): {memory_usage:.3f}")
   # print(f"Number of threads: {num_threads}")
 
-  # # print pynvml metrics (if using cuda) and shutdown pynvml
+  # # Print pynvml metrics (if using cuda) and shutdown pynvml
   # if torch.cuda.is_available():
 
   #   print("\nPyNVML metrics:")
@@ -555,7 +569,7 @@ if __name__ == '__main__':
 
   #   pynvml.nvmlShutdown()  # shutdown pynvml after use
 
-  # save portfolio value for each episode
+  # Save portfolio value for each episode
   np.save(f'{rewards_folder}/{args.mode}.npy', portfolio_value)
 
   # Print key statistics of the portfolio values
@@ -563,6 +577,14 @@ if __name__ == '__main__':
   print(f"Median portfolio value (USD): {np.median(portfolio_value):.2f}")
   print(f"Minimum portfolio value (USD): {np.min(portfolio_value):.2f}")
   print(f"Maximum portfolio value (USD): {np.max(portfolio_value):.2f}")
+
+  # Calculate and print the median portfolio value of the last 30 episodes
+  if len(portfolio_value) >= 30:
+      last_30_portfolio_values = portfolio_value[-30:]
+      median_last_30 = np.median(last_30_portfolio_values)
+      print(f"Median portfolio value of last 30 episodes (USD): {median_last_30:.2f}")
+  else:
+      print("Not enough episodes to calculate median portfolio value of last 30 episodes.")
 
   # After all processing is done, calculate and print total execution time
   end_time = time.time()

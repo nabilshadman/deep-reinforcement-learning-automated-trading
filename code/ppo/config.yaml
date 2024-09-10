@@ -1,5 +1,5 @@
 # Configuration for the trading environment and simulation
-data_file: "equities_daily_close_10_tickers_2018_2023.csv"  # CSV file containing stock data
+data_file: "equities_daily_close_2018_2023.csv"  # CSV file containing stock data
 models_folder: "ppo_trader_models"  # Folder to save model checkpoints
 rewards_folder: "ppo_trader_rewards"  # Folder to save rewards
 num_episodes: 4  # Number of episodes to train/test
