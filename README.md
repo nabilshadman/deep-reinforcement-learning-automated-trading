@@ -1,7 +1,15 @@
 
 # Deep Reinforcement Learning for Automated Trading on HPC
 
-This repository contains the code, configurations, and results for the MSc dissertation project: **"Comparison of Deep Reinforcement Learning Models for Automated Trading on Heterogeneous HPC Systems"**. The project implements and evaluates two DRL algorithms: **Deep Q-Network (DQN)** and **Proximal Policy Optimisation (PPO)**, focusing on performance in terms of both **trading metrics** and **computational efficiency** across CPU and GPU nodes on the Cirrus high performance computing (HPC) system.
+This repository contains the implementation and evaluation of Deep Reinforcement Learning (DRL) models for automated trading on High-Performance Computing (HPC) system. The project focuses on two widely used DRL algorithms: Deep Q-Network (DQN) and Proximal Policy Optimisation (PPO). Our goal is to compare these models in terms of both trading performance and computational efficiency across CPU and GPU nodes on the Cirrus HPC system.
+
+Key Features:
+- Implementation of DQN and PPO algorithms for multi-asset trading
+- Integration with HPC resources for scalable training and testing
+- Performance evaluation on CPU and GPU nodes
+- Comprehensive analysis of trading metrics and computational efficiency
+
+This project is part of an MSc dissertation titled "Comparison of Deep Reinforcement Learning Models for Automated Trading on Heterogeneous HPC System".
 
 ## Repository Structure
 Here is a high-level overview of the repository's structure: 
@@ -32,10 +40,15 @@ Here is a high-level overview of the repository's structure:
 - `environment.yml` – Conda environment configuration file for setting up project dependencies.
 - `requirements.txt` – Lists Python packages required to run the project.
 
+# Hardware Environment
+[Cirrus](https://www.epcc.ed.ac.uk/hpc-services/cirrus) is our primary HPC platform for testing our implementations, offering both CPU and GPU nodes to efficiently train and evaluate our DRL models.  
 
-## How to Set Up
+# Software Environment
+[PyTorch](https://pytorch.org/) is our primary machine learning framework for implementing DQN and PPO models. In addition to PyTorch, we explored other frameworks or libraries such as TensorFlow and TorchRL during the feasibility and prototyping phases to assess their suitability for the project. The environment is managed through [Conda](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html) to ensure reproducibility across platforms.
 
-### 1. Setting Up the Environment
+## How to Set Up (on Cirrus)
+
+### 1. Set Up the Environment
 To set up the project environment using Conda:
 ```bash
 conda env create -f environment.yml
@@ -47,20 +60,62 @@ Alternatively, install Python packages using `pip`:
 pip install -r requirements.txt
 ```
 
-### 2. Running the Experiments
+### 2. Run the Experiments
 Use the provided SLURM scripts in the respective model's directory (i.e. DQN, PPO) to run the programs on Cirrus:
 
 - **For CPU nodes**:
   ```bash
+  # DQN
   sbatch dqn_cpu.slurm
+
+  # PPO
   sbatch ppo_cpu.slurm
   ```
 
 - **For GPU nodes**:
   ```bash
+  # DQN
   sbatch dqn_gpu.slurm
+
+  # PPO
   sbatch ppo_gpu.slurm
   ```
+
+## How to Set Up (on local machine)
+To run the DQN or PPO programs on a local machine (e.g, Windows, Mac):  
+
+### 1. Install dependencies:
+
+```bash
+# Using conda
+conda env create -f environment.yml
+conda activate your-env-name
+
+# Or using pip
+pip install -r requirements.txt
+```
+
+### 2. Train the model:
+From the respective model's directory:  
+```bash
+# DQN
+python dqn_trader.py -m train -c config.yaml
+
+# PPO
+python ppo_trader.py -m train -c config.yaml
+```
+
+### 3. Test the model:
+From the respective model's directory:
+```bash
+# DQN
+python dqn_trader.py -m test -c config.yaml
+
+# PPO
+python ppo_trader.py -m test -c config.yaml
+```
+
+Ensure any necessary configuration changes are made in the ```config.yaml``` file before running.
 
 ## Configuration
 
@@ -80,7 +135,7 @@ Profiling and performance metrics can be found within the log files.
 
 ## Data
 
-The project uses daily equity or exchange traded fund (ETF) close price data, publicly available from the Yahoo Finance [API](https://pypi.org/project/yfinance/). The data files are located at `code/data/`.
+The project uses daily equity or exchange traded fund (ETF) close price data, publicly available from the [Yahoo Finance](https://pypi.org/project/yfinance/) API. The data files are located at `code/data/`.
 
 ## Profiling
 
