@@ -1,35 +1,17 @@
-# Comparison of Deep Reinforcement Learning Models for Automated Trading on Heterogeneous HPC System  
+# Feasibility Study
 
-**Researcher's Name:** Nabil Shadman  
-**Supervisor's Name:** Dr Joseph Lee  
-**Target HPC System:** [Cirrus](https://www.epcc.ed.ac.uk/hpc-services/cirrus)  
+This folder contains the resources and analysis conducted during the initial feasibility study for this project. The study aimed to evaluate the suitability of Deep Reinforcement Learning (DRL) models, particularly the Deep Q-Network (DQN), for automated trading using HPC resources.
 
-This repository currently contains the proof-of-concept (POC) implementation of a broader study to develop, paralellise, and test DRL models on our target heterogeneous HPC system (i.e., Cirrus).  
+## Contents
 
+- **`feasibility_report.pdf`**: A summary report of the feasibility study, covering the technical evaluation of DRL models, their performance on multi-stock trading tasks, and their scalability on HPC platforms like Cirrus.
+- **`models/`**: This folder contains the models and scripts tested during the study, focusing on the DQN algorithm.
+  - **DQN**: Contains both PyTorch and TensorFlow implementations of the DQN algorithm.
+- **Profiling Data**: Logs and profiling outputs for DQN models, gathered from tests run on CPU and GPU nodes. This data is useful for understanding execution times, memory usage, and computational performance at scale.
 
-## Background
-**Deep Reinforcement Learning (DRL)** and **High-Performance Computing (HPC)** technologies are applied to solve problems in areas such as video games, large language models, autonomous driving, and automated trading. DRL models, especially when applied in a data-intensive field such as finance, require a vast amount of computational power.   
+## Usage
 
-It is essential for traders to experiment with different models to discover profitable strategies. We believe utilising the computational power of HPC systems can make the process time efficient. In this study, we discuss the feasibility to build DRL models for automated trading on heterogeneous HPC systems (i.e., with a combination of CPUs and GPUs in our case).  
+- **Run Models**: SLURM scripts are provided in the `models/` directory for executing the DQN models on Cirrus. These include scripts for both CPU and GPU nodes.
+- **Performance Metrics**: The `miscellaneous/` subdirectory contains profiling data, including execution times and resource utilisation on HPC resources. Use this data to assess the efficiency and scalability of the models.
 
-**Algorithmic trading** as the use of computers to execute and monitor trades based on predefined logic. Reinforcement learning (RL) is a machine learning approach where intelligent agents learn to take actions in an environment to maximise cumulative reward. Neural networks, composed of interconnected nodes, are the basis for learning complex representations of data. Deep reinforcement learning (DRL) is the combination of RL algorithms with neural networks to enable agents to learn and make decisions based on their environment. 
-
-There are different types of DRL algorithms: value-based algorithms (e.g., [DQN](https://arxiv.org/pdf/1312.5602.pdf)), policy-based algorithms (e.g., [PPO](https://arxiv.org/pdf/1707.06347.pdf)), and actor-critic algorithms (e.g., [DDPG](https://arxiv.org/pdf/1509.02971.pdf)).  
-
-In our experiments, we used an open-source implementation of a **DQN** algorithm for multi-stock trading developed with the Python programming language. There are implementations of the model in [PyTorch](https://github.com/lazyprogrammer/machine_learning_examples/tree/master/pytorch) and in [TensorFlow](https://github.com/lazyprogrammer/machine_learning_examples/tree/master/tf2.0), which are two widely used machine learning (ML) frameworks. We ran the models on the backend nodes of Cirrus, on both CPU and GPU nodes.  
-
-One of the main objectives of the POC work was to ensure we have the capability to run available DRL model on both CPUs and GPUs and understand its performance. Therefore, we searched for pre-existing open-source models. The open-source DQN model experiment is relevant in our study as it informs us about the runtime, memory usage, CPU utilisation, GPU utilisation, and other metrics. We can use the metrics to estimate the performance metrics in the dissertation stage when we will scale the problem size.  
-
-
-## Proposal
-The requirements of project are categorised using the [**MoSCoW**](https://en.wikipedia.org/wiki/MoSCoW_method) method. The "Must Have" requirements include developing two variants of DRL models (value-based DQN and policy-based PPO) using both PyTorch and TensorFlow, testing the models on CPU and GPU nodes to measure performance, and tuning hyperparameters to optimise the models. The "Should Have" requirements involve developing an actor-critic DRL model (e.g., DDPG) using PyTorch and TensorFlow and testing its performance on CPU and GPU nodes. The "Could Have" requirements include building a risk management module to prevent large drawdowns and forward testing the models using live real-time data.  
-
-
-## Content  
-**Feasibility**  
-The [feasibility](https://git.ecdf.ed.ac.uk/msc-22-23/s2134758/-/tree/main/feasibility) folder contains the feasibility report, data, code, and results from POC experiments. Further information on the data and code files, and instructions on reproducing the results are included in each particular model's folder.  
-
-
-**Wiki**  
-The [wiki](https://git.ecdf.ed.ac.uk/msc-22-23/s2134758/-/wikis/home) contains the notes from experimental observations, meetings, and literature review.  
-
+For more details, refer to the `feasibility_report.pdf`, which includes findings and insights from the study.
