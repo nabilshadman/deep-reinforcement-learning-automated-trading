@@ -98,10 +98,6 @@ These algorithms were adapted and enhanced for a multi-asset trading environment
 
 For more details on these enhancements and their impact, refer to the project report.
 
-## License
-
-[Your chosen license]
-
 ## Project Wiki
 
 For detailed notes, meeting summaries, experimental observations, and literature references, please refer to the [Project Wiki](https://git.ecdf.ed.ac.uk/msc-22-23/s2134758/-/wikis/home). The wiki includes key information about the project's progress, experimental results, and resources used throughout the development process.
@@ -113,3 +109,7 @@ For detailed notes, meeting summaries, experimental observations, and literature
 
 ## Contact
 For questions or issues, feel free to contact Nabil Shadman at n.shadman@sms.ed.ac.uk.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.  
