@@ -1,6 +1,6 @@
-# TorchRL ppo
+# TorchRL PPO
 
-This folder contains the implementation of the Proximal Policy Optimisation (PPO) agent using the PyTorch Reinforcement Learning (TorchRL) library. The program is currently under development and is intended to leverage the flexibility of TorchRL for building, training, and evaluating the ppo agent in a multi-asset trading environment. The agent implementation has been adapted from the open-source examples of [TorchRL](https://github.com/pytorch/rl).
+This folder contains the implementation of the Proximal Policy Optimisation (PPO) agent using the PyTorch Reinforcement Learning (TorchRL) library. The program is currently under development and is intended to leverage the flexibility of TorchRL for building, training, and evaluating the PPO agent in a multi-asset trading environment. The agent implementation has been adapted from the open-source examples of [TorchRL](https://github.com/pytorch/rl).
 
 ## Contents
 
@@ -10,7 +10,7 @@ This folder contains the implementation of the Proximal Policy Optimisation (PPO
 
 ## Usage
 
-To run the ppo agent on Cirrus HPC, use the appropriate SLURM script based on the target resources:
+To run the PPO agent on Cirrus HPC, use the appropriate SLURM script based on the target resources:
 
 ### On CPU:
 ```bash
