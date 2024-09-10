@@ -40,10 +40,10 @@ Here is a high-level overview of the repository's structure:
 - `environment.yml` – Conda environment configuration file for setting up project dependencies.
 - `requirements.txt` – Lists Python packages required to run the project.
 
-# Hardware Environment
+## Hardware Environment
 [Cirrus](https://www.epcc.ed.ac.uk/hpc-services/cirrus) is our primary HPC platform for testing our implementations, offering both CPU and GPU nodes to efficiently train and evaluate our DRL models.  
 
-# Software Environment
+## Software Environment
 [PyTorch](https://pytorch.org/) is our primary machine learning framework for implementing DQN and PPO models. In addition to PyTorch, we explored other frameworks or libraries such as TensorFlow and TorchRL during the feasibility and prototyping phases to assess their suitability for the project. The environment is managed through [Conda](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html) to ensure reproducibility across platforms.
 
 ## How to Set Up (on Cirrus)
