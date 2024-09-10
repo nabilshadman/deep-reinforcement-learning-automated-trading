@@ -5,7 +5,7 @@ This code is adapted from the original open-source implementation by Lazy Progra
 (https://github.com/lazyprogrammer). Lazy Programmer's version provides the foundational 
 DQN structure, which encourages experimentation and customisation.
 
-Our implementation extends the original work by adding support for GPU training, 
+Our implementation extends the original work by adding support for GPU acceleration, 
 an enhanced trading environment, flexible configuration management, 
 hyperparameter tuning, and profiling capabilities for high-performance computing 
 (HPC) systems. For more details on the modifications and their impact, please 
