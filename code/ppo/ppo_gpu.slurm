@@ -60,5 +60,5 @@ cd $SLURM_SUBMIT_DIR
 # kill $NVSMI_PID
 
 # Launch the job
-python ppo_trader.py -m train
-python ppo_trader.py -m test
+python ppo_trader.py -m train -c config.yaml
+python ppo_trader.py -m test -c config.yaml

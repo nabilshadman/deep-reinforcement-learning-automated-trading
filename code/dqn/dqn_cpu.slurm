@@ -54,5 +54,5 @@ cd $SLURM_SUBMIT_DIR
 # done
 
 # Launch the job
-python dqn_trader.py -m train
-python dqn_trader.py -m test
+python dqn_trader.py -m train -c config.yaml
+python dqn_trader.py -m test -c config.yaml
