@@ -23,10 +23,11 @@ Here is a high-level overview of the repository's structure:
 │   ├── test/
 │   ├── torchrl_dqn/
 │   └── torchrl_ppo/
+├── experiments/
 ├── feasibility/
+├── report/
 ├── environment.yml
 ├── requirements.txt
-├── README.md
 ```
 
 - `code/` – Contains all code-related directories for the project.
@@ -36,7 +37,9 @@ Here is a high-level overview of the repository's structure:
   - `test/` – Test scripts to validate environments, agents, and other components.
   - `torchrl_dqn/` – Contains DQN implementation using the TorchRL framework (in progress).
   - `torchrl_ppo/` – Contains PPO implementation using the TorchRL framework (in progress).
+- `experiments/` – Contains Excel files and charts documenting the results of experiments, including baseline comparisons, hyperparameter tuning, scaling tests, and transferability.
 - `feasibility/` – Documents related to the feasibility study conducted in the initial stage of the project.
+- `report/` – Includes project reports and presentations (PDF format).
 - `environment.yml` – Conda environment configuration file for setting up project dependencies.
 - `requirements.txt` – Lists Python packages required to run the project.
 
