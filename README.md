@@ -166,7 +166,7 @@ For detailed notes, meeting summaries, experimental observations, and literature
 **Advisors:** Dr Joseph Lee, Dr Michael Bareford  
 
 ## Contact
-For questions or issues, feel free to contact Nabil Shadman at n.shadman@sms.ed.ac.uk.
+For questions or issues, feel free to contact Nabil Shadman at nabil.shadman@gmail.com.
 
 ## License
 
