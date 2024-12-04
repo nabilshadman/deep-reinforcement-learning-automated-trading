@@ -171,3 +171,16 @@ For questions or issues, feel free to contact Nabil Shadman at nabil.shadman@gma
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.  
+
+## Citation  
+
+If you use this work in your research, please cite:  
+
+```bibtex  
+@misc{drl-automated-trading-hpc,
+  author = {Shadman, Nabil},
+  title = {Comparison of Deep Reinforcement Learning Models for Automated Trading on Heterogeneous HPC System},
+  year = {2024},
+  publisher = {GitHub},
+  url = {https://github.com/nabilshadman/deep-reinforcement-learning-automated-trading}
+}
