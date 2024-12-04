@@ -9,7 +9,7 @@ Key Features:
 - Performance evaluation on CPU and GPU nodes
 - Comprehensive analysis of trading metrics and computational efficiency
 
-This project is part of an MSc dissertation titled "Comparison of Deep Reinforcement Learning Models for Automated Trading on Heterogeneous HPC System".
+This project is part of an MSc [dissertation](https://github.com/nabilshadman/deep-reinforcement-learning-automated-trading/blob/main/report/report.pdf) titled "Comparison of Deep Reinforcement Learning Models for Automated Trading on Heterogeneous HPC System".
 
 ## Repository Structure
 Here is a high-level overview of the repository's structure: 
@@ -154,7 +154,7 @@ This project builds upon the open-source implementations of the DQN algorithm (d
 
 These algorithms were adapted and enhanced for a multi-asset trading environment and integrated with HPC resources. Some of our enhancements include GPU support, environment extensions, YAML-based configuration management, and model architecture improvements for automated trading tasks on HPC systems. 
 
-For more details on these enhancements and their impact, refer to the project report.
+For more details on these enhancements and their impact, refer to the project [report](https://github.com/nabilshadman/deep-reinforcement-learning-automated-trading/blob/main/report/report.pdf).
 
 ## Project Wiki
 
