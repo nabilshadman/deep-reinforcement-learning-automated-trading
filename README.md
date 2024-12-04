@@ -1,6 +1,11 @@
 
 # Deep Reinforcement Learning for Automated Trading on HPC
 
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Python](https://img.shields.io/badge/python-3.8%2B-blue)
+![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?&logo=PyTorch&logoColor=white)
+![HPC](https://img.shields.io/badge/HPC-Cirrus-orange)
+
 This repository contains the implementation and evaluation of Deep Reinforcement Learning (DRL) models for automated trading on High-Performance Computing (HPC) system. The project focuses on two widely used DRL algorithms: Deep Q-Network (DQN) and Proximal Policy Optimisation (PPO). Our goal is to compare these models in terms of both trading performance and computational efficiency across CPU and GPU nodes on the Cirrus HPC system.
 
 Key Features:
@@ -10,6 +15,26 @@ Key Features:
 - Comprehensive analysis of trading metrics and computational efficiency
 
 This project is part of an MSc [dissertation](https://github.com/nabilshadman/deep-reinforcement-learning-automated-trading/blob/main/report/report.pdf) titled "Comparison of Deep Reinforcement Learning Models for Automated Trading on Heterogeneous HPC System".
+
+
+## Table of Contents
+- [Repository Structure](#repository-structure)
+- [Hardware Environment](#hardware-environment)
+- [Software Environment](#software-environment)
+- [How to Set Up (on Cirrus)](#how-to-set-up-on-cirrus)
+- [How to Set Up (on local machine)](#how-to-set-up-on-local-machine)
+- [Configuration](#configuration)
+- [Outputs and Logs](#outputs-and-logs)
+- [Data](#data)
+- [Profiling](#profiling)
+- [GPU Monitoring](#gpu-monitoring)
+- [Open-Source Code and Enhancements](#open-source-code-and-enhancements)
+- [Project Wiki](#project-wiki)
+- [Contributors](#contributors)
+- [Contact](#contact)
+- [License](#license)
+- [Citation](#citation)
+
 
 ## Repository Structure
 Here is a high-level overview of the repository's structure: 
@@ -43,11 +68,14 @@ Here is a high-level overview of the repository's structure:
 - `environment.yml` – Conda environment configuration file for setting up project dependencies.
 - `requirements.txt` – Lists Python packages required to run the project.
 
+
 ## Hardware Environment
 [Cirrus](https://www.epcc.ed.ac.uk/hpc-services/cirrus) is our primary HPC platform for testing our implementations, offering both CPU and GPU nodes to efficiently train and evaluate our DRL models.  
 
+
 ## Software Environment
 [PyTorch](https://pytorch.org/) is our primary machine learning framework for implementing DQN and PPO models. In addition to PyTorch, we explored other frameworks or libraries such as TensorFlow and TorchRL during the feasibility and prototyping phases to assess their suitability for the project. The environment is managed through [Conda](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html) to ensure reproducibility across platforms.
+
 
 ## How to Set Up (on Cirrus)
 
@@ -83,6 +111,7 @@ Use the provided SLURM scripts in the respective model's directory (i.e. DQN, PP
   # PPO
   sbatch ppo_gpu.slurm
   ```
+
 
 ## How to Set Up (on local machine)
 To run the DQN or PPO programs on a local machine (e.g, Windows, Mac):  
@@ -140,13 +169,16 @@ Profiling and performance metrics can be found within the log files.
 
 The project uses daily equity or exchange traded fund (ETF) close price data, publicly available from the [Yahoo Finance](https://pypi.org/project/yfinance/) API. The data files are located at `code/data/`.
 
+
 ## Profiling
 
 Separate SLURM script for profiling are provided in the respective model's folder. These scripts integrate profiling tools such as `torch.profiler` to gather performance metrics like execution time and memory usage. Use these profiling-specific scripts to enable profiling.
 
+
 ## GPU Monitoring
 
 For GPU runs, there's a commented-out section in the SLURM scripts to collect GPU monitoring data (e.g. power, utilisation) using `nvidia-smi`. Uncomment this section to enable GPU monitoring.
+
 
 ## Open-Source Code and Enhancements
 
@@ -156,21 +188,26 @@ These algorithms were adapted and enhanced for a multi-asset trading environment
 
 For more details on these enhancements and their impact, refer to the project [report](https://github.com/nabilshadman/deep-reinforcement-learning-automated-trading/blob/main/report/report.pdf).
 
+
 ## Project Wiki
 
 For detailed notes, meeting summaries, experimental observations, and literature references, please refer to the [Project Wiki](https://git.ecdf.ed.ac.uk/msc-22-23/s2134758/-/wikis/home). The wiki includes key information about the project's progress, experimental results, and resources used throughout the development process.
+
 
 ## Contributors
 
 **Researcher:** Nabil Shadman  
 **Advisors:** Dr Joseph Lee, Dr Michael Bareford  
 
+
 ## Contact
 For questions or issues, feel free to contact Nabil Shadman at nabil.shadman@gmail.com.
+
 
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.  
+
 
 ## Citation  
 
