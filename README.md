@@ -2,7 +2,7 @@
 # Deep Reinforcement Learning for Automated Trading on HPC
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Python](https://img.shields.io/badge/python-3.8%2B-blue)
+![Python](https://img.shields.io/badge/python-3.10%2B-blue)
 ![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?&logo=PyTorch&logoColor=white)
 ![HPC](https://img.shields.io/badge/HPC-Cirrus-orange)
 
@@ -218,6 +218,9 @@ If you use this work in your research, please cite:
   author = {Shadman, Nabil},
   title = {Comparison of Deep Reinforcement Learning Models for Automated Trading on Heterogeneous HPC System},
   year = {2024},
+  month = {9},
   publisher = {GitHub},
-  url = {https://github.com/nabilshadman/deep-reinforcement-learning-automated-trading}
+  url = {https://github.com/nabilshadman/deep-reinforcement-learning-automated-trading},
+  note = {Master's Dissertation},
+  institution = {The University of Edinburgh}
 }
