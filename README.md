@@ -16,6 +16,21 @@ Key Features:
 
 This project is part of an MSc [dissertation](https://github.com/nabilshadman/deep-reinforcement-learning-automated-trading/blob/main/report/report.pdf) titled "Comparison of Deep Reinforcement Learning Models for Automated Trading on Heterogeneous HPC System".
 
+<table width="100%">
+<tr>
+<td width="50%"><strong>Deep Q-Network (DQN)</strong></td>
+<td width="50%"><strong>Proximal Policy Optimisation (PPO)</strong></td>
+</tr>
+<tr>
+<td><img src="https://github.com/user-attachments/assets/9411f821-e2db-4941-a863-2b22c21e3c2f" width="100%" alt="DQN Architecture"></td>
+<td><img src="https://github.com/user-attachments/assets/1a3e477b-271f-4b32-83dd-566dc3fb3524" width="100%" alt="PPO Architecture"></td>
+</tr>
+<tr>
+<td><em>DQN architecture [1]</em></td>
+<td><em>PPO architecture [2]</em></td>
+</tr>
+</table>
+
 
 ## Table of Contents
 - [Repository Structure](#repository-structure)
@@ -34,7 +49,7 @@ This project is part of an MSc [dissertation](https://github.com/nabilshadman/de
 - [Contact](#contact)
 - [License](#license)
 - [Citation](#citation)
-
+- [References](#references)
 
 ## Repository Structure
 Here is a high-level overview of the repository's structure: 
@@ -71,6 +86,11 @@ Here is a high-level overview of the repository's structure:
 
 ## Hardware Environment
 [Cirrus](https://www.epcc.ed.ac.uk/hpc-services/cirrus) is our primary HPC platform for testing our implementations, offering both CPU and GPU nodes to efficiently train and evaluate our DRL models.  
+
+<div style="width: 400px; border: 1px solid #ddd; padding: 10px; margin: 10px 0">
+   <img src="https://github.com/user-attachments/assets/d06c7ebd-fada-4a58-936b-10f73bc92372" width="350" alt="Cirrus Architecture">
+   <p><em>Cirrus HPC System [3]</em></p>
+</div>
 
 
 ## Software Environment
@@ -224,3 +244,24 @@ If you use this work in your research, please cite:
   note = {Master's Dissertation},
   institution = {The University of Edinburgh}
 }
+```
+
+
+## References
+
+```reference
+[1] A. Nair et al., "Massively parallel methods for deep reinforcement learning," arXiv.org, 
+    https://arxiv.org/abs/1507.04296 (accessed August 24, 2024).
+```
+
+```reference
+[2] N. Firdous, N. Mohi Ud Din, and A. Assad, "An imbalanced classification approach for 
+    establishment of cause-effect relationship between Heart-Failure and Pulmonary Embolism 
+    using Deep Reinforcement Learning," Engineering Applications of Artificial Intelligence,
+    Sept. 2023.
+```
+
+```reference
+[3] The University of Edinburgh, "High Performance Computing services," 
+    https://www.epcc.ed.ac.uk/high-performance-computing-services (accessed September 16, 2024).
+```
