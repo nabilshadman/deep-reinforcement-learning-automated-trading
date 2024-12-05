@@ -36,6 +36,7 @@ This project is part of an MSc [dissertation](https://github.com/nabilshadman/de
 - [Repository Structure](#repository-structure)
 - [Hardware Environment](#hardware-environment)
 - [Software Environment](#software-environment)
+- [Prerequisites](#prerequisites)
 - [How to Set Up (on Cirrus)](#how-to-set-up-on-cirrus)
 - [How to Set Up (on local machine)](#how-to-set-up-on-local-machine)
 - [Configuration](#configuration)
@@ -87,14 +88,30 @@ Here is a high-level overview of the repository's structure:
 ## Hardware Environment
 [Cirrus](https://www.epcc.ed.ac.uk/hpc-services/cirrus) is our primary HPC platform for testing our implementations, offering both CPU and GPU nodes to efficiently train and evaluate our DRL models.  
 
-<div style="width: 400px; border: 1px solid #ddd; padding: 10px; margin: 10px 0">
-   <img src="https://github.com/user-attachments/assets/d06c7ebd-fada-4a58-936b-10f73bc92372" width="350" alt="Cirrus Architecture">
-   <p><em>Cirrus HPC System [3]</em></p>
-</div>
+<table width="500">
+<tr>
+<td><strong>Cirrus</strong></td>
+</tr>
+<tr>
+<td><img src="https://github.com/user-attachments/assets/d06c7ebd-fada-4a58-936b-10f73bc92372" width="450" alt="Cirrus Architecture"></td>
+</tr>
+<tr>
+<td><em>Cirrus HPC cluster at EPCC's Advanced Computing Facility [3]</em></td>
+</tr>
+</table>
 
 
 ## Software Environment
 [PyTorch](https://pytorch.org/) is our primary machine learning framework for implementing DQN and PPO models. In addition to PyTorch, we explored other frameworks or libraries such as TensorFlow and TorchRL during the feasibility and prototyping phases to assess their suitability for the project. The environment is managed through [Conda](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html) to ensure reproducibility across platforms.
+
+
+## Prerequisites
+
+- Python 3.10+
+- PyTorch and supporting libraries (see `requirements.txt` or `environment.yml`)
+- Conda or pip package manager
+- CUDA-capable GPU recommended
+- Cirrus HPC access credentials (for HPC usage)
 
 
 ## How to Set Up (on Cirrus)
