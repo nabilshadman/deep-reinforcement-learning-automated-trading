@@ -88,15 +88,15 @@ Here is a high-level overview of the repository's structure:
 ## Hardware Environment
 [Cirrus](https://www.epcc.ed.ac.uk/hpc-services/cirrus) is our primary HPC platform for testing our implementations, offering both CPU and GPU nodes to efficiently train and evaluate our DRL models.  
 
-<table width="500">
+<table width="400">
 <tr>
 <td><strong>Cirrus</strong></td>
 </tr>
 <tr>
-<td><img src="https://github.com/user-attachments/assets/d06c7ebd-fada-4a58-936b-10f73bc92372" width="450" alt="Cirrus Architecture"></td>
+<td><img src="https://github.com/user-attachments/assets/d06c7ebd-fada-4a58-936b-10f73bc92372" width="350" alt="Cirrus Architecture"></td>
 </tr>
 <tr>
-<td><em>Cirrus HPC cluster at EPCC's Advanced Computing Facility [3]</em></td>
+<td><em>Cirrus at EPCC's Advanced Computing Facility [3]</em></td>
 </tr>
 </table>
 
