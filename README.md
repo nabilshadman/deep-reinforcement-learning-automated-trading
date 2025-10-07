@@ -257,7 +257,7 @@ If you use this work in your research, please cite:
   year = {2024},
   month = {9},
   publisher = {GitHub},
-  url = {https://github.com/nabilshadman/deep-reinforcement-learning-automated-trading},
+  url = {https://github.com/nabilshadman/deep-reinforcement-learning-automated-trading-hpc},
   note = {Master's Dissertation},
   institution = {The University of Edinburgh}
 }
